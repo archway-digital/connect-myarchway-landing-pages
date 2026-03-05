@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import Reality from '../../components/Reality.astro';
+import WhatsInside from '../../components/WhatsInside.astro';
+import WhyNow from '../../components/WhyNow.astro';
+import Authority from '../../components/Authority.astro';
+import ChecklistForm from '../../components/ChecklistForm.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="12-Point Insurance Agency Cyber Checklist | Archway"
+  description="Download the 12-Point Security Checklist built specifically for independent insurance agencies. Know where you're solid, where you're exposed, and what's urgent."
+>
+  <Nav />
+  <Hero />
+  <Reality />
+  <WhatsInside />
+  <WhyNow />
+  <Authority />
+  <ChecklistForm />
+  <Footer />
+</Layout>
+
+<script>
+  // Scroll-triggered fade animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
