@@ -139,7 +139,8 @@
   }
 
   .problem-callout {
-    background: linear-gradient(135deg, var(--dark) 0%, #252a35 100%);
+    background: var(--light-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 40px;
     border-left: 4px solid var(--orange);
@@ -148,13 +149,13 @@
   .problem-callout h3 {
     font-size: 24px;
     font-weight: 800;
-    color: var(--white);
+    color: var(--charcoal);
     margin-bottom: 16px;
   }
 
   .problem-callout p {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-light);
     line-height: 1.7;
   }
 
@@ -165,7 +166,7 @@
     gap: 8px;
     margin-top: 32px;
     padding-top: 28px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--border);
   }
 
   .flow-item {
@@ -179,7 +180,7 @@
   .flow-item span {
     font-size: 11px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -193,36 +194,18 @@
     justify-content: center;
   }
 
-  .flow-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .flow-icon.lead {
-    background: rgba(34, 197, 94, 0.15);
-  }
-  .flow-icon.lead svg {
-    fill: #22c55e;
-  }
-
-  .flow-icon.gap {
-    background: rgba(250, 204, 21, 0.15);
-  }
-  .flow-icon.gap svg {
-    fill: #facc15;
-  }
-
-  .flow-icon.lost {
-    background: rgba(239, 68, 68, 0.15);
-  }
-  .flow-icon.lost svg {
-    fill: #ef4444;
-  }
+  .flow-icon svg { width: 22px; height: 22px; }
+  .flow-icon.lead { background: rgba(34, 197, 94, 0.15); }
+  .flow-icon.lead svg { fill: #22c55e; }
+  .flow-icon.gap { background: rgba(250, 204, 21, 0.15); }
+  .flow-icon.gap svg { fill: #facc15; }
+  .flow-icon.lost { background: rgba(239, 68, 68, 0.15); }
+  .flow-icon.lost svg { fill: #ef4444; }
 
   .flow-arrow svg {
     width: 20px;
     height: 20px;
-    fill: rgba(255, 255, 255, 0.2);
+    fill: #d1d5db;
   }
 
   @media (max-width: 768px) {

@@ -104,15 +104,17 @@
   }
 
   .question-box {
-    background: linear-gradient(135deg, var(--dark) 0%, #252a35 100%);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 16px;
     padding: 40px;
+    box-shadow: var(--card-shadow);
   }
 
   .question-box h3 {
     font-size: 20px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--charcoal);
     margin-bottom: 28px;
   }
 
@@ -129,7 +131,7 @@
     align-items: flex-start;
     gap: 14px;
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text);
     line-height: 1.5;
     font-style: italic;
   }
@@ -154,7 +156,7 @@
     font-weight: 600;
     color: var(--orange);
     padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--border);
   }
 
   @media (max-width: 768px) {

@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="section section-dark" id="whats-inside">
+<section class="section section-alt" id="whats-inside">
   <div class="section-inner">
     <div class="checklist-intro fade-up">
       <div class="section-label">What's Inside</div>
@@ -107,8 +107,8 @@
   }
 
   .checklist-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 28px 24px;
     transition: all 0.25s;
@@ -116,8 +116,8 @@
 
   .checklist-card:hover {
     border-color: rgba(244, 128, 33, 0.3);
-    background: rgba(244, 128, 33, 0.04);
     transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
   }
 
   .checklist-card-icon {
@@ -140,7 +140,7 @@
   .checklist-card h4 {
     font-size: 15px;
     font-weight: 600;
-    color: var(--white);
+    color: var(--charcoal);
     line-height: 1.4;
   }
 
@@ -154,13 +154,13 @@
     grid-column: 1 / -1;
     font-size: 24px;
     font-weight: 700;
-    color: var(--white);
+    color: var(--charcoal);
     margin-bottom: 4px;
   }
 
   .outcome-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 24px;
     text-align: center;
@@ -190,7 +190,7 @@
   .outcome-item p {
     font-size: 15px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--charcoal);
   }
 
   @media (max-width: 1024px) {

@@ -4,22 +4,22 @@
 <section class="form-section" id="form">
   <div class="form-inner">
     <div class="form-header fade-up">
-      <h2>Get the 12-Point Insurance Agency Cyber Checklist</h2>
-      <p>Free download. No sales pitch. Just clarity.</p>
+      <h2>Get the AI Quick Wins Guide</h2>
+      <p>Free download. No sales pitch. Just practical AI workflows for your agency.</p>
     </div>
     <div class="form-card fade-up" id="form-card">
       <form id="checklist-form">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required />
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
         </div>
         <div class="form-group">
           <label for="agency">Agency Name</label>
-          <input type="text" id="agency" name="agency" placeholder="Your agency name" required />
+          <input type="text" id="agency" name="agency" placeholder="Your agency name" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@youragency.com" required />
+          <input type="email" id="email" name="email" placeholder="you@youragency.com" required>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -29,7 +29,7 @@
               <option value="owner">Agency Owner / Principal</option>
               <option value="operations">Operations Manager</option>
               <option value="it">IT / Technology Lead</option>
-              <option value="compliance">Compliance Officer</option>
+              <option value="producer">Producer / Sales</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -37,17 +37,17 @@
             <label for="size">Approximate Agency Size</label>
             <select id="size" name="size" required>
               <option value="" disabled selected>Select size</option>
-              <option value="1-10">1 – 10 employees</option>
-              <option value="11-25">11 – 25 employees</option>
-              <option value="26-50">26 – 50 employees</option>
-              <option value="51-100">51 – 100 employees</option>
+              <option value="1-10">1 &ndash; 10 employees</option>
+              <option value="11-25">11 &ndash; 25 employees</option>
+              <option value="26-50">26 &ndash; 50 employees</option>
+              <option value="51-100">51 &ndash; 100 employees</option>
               <option value="100+">100+ employees</option>
             </select>
           </div>
         </div>
         <button type="submit" class="form-submit">
           <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-          Send Me the Checklist
+          Send Me the Guide
         </button>
       </form>
       <div class="thank-you" id="thank-you">
@@ -55,10 +55,10 @@
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
         <h3>Check your inbox!</h3>
-        <p>Your 12-Point Cyber Checklist is on its way.</p>
-        <a href="#" class="thank-you-cta">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-          Book a 15-Minute Security Gap Review
+        <p>Your AI Quick Wins Guide is on its way.</p>
+        <a href="#" class="thank-you-cta purple">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Schedule an AI Readiness Conversation
         </a>
       </div>
     </div>
@@ -76,3 +76,16 @@
     if (thankYou) thankYou.classList.add('active');
   });
 </script>
+
+<style>
+  .thank-you-cta.purple {
+    background: rgba(86, 54, 209, 0.08);
+    border: 1px solid rgba(86, 54, 209, 0.2);
+    color: var(--purple);
+  }
+
+  .thank-you-cta.purple:hover {
+    background: rgba(86, 54, 209, 0.15);
+    border-color: rgba(86, 54, 209, 0.35);
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+---
+
+<section class="section section-light">
+  <div class="section-inner">
+    <div class="authority-inner fade-up">
+      <div class="section-label">About Archway</div>
+      <h2>Built for agencies, by the team that works inside them.</h2>
+      <p>Archway works with agencies to implement:</p>
+      <div class="authority-services">
+        <div class="authority-service">
+          <div class="authority-service-icon workflow"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg></div>
+          AI Workflow Automation
+        </div>
+        <div class="authority-service">
+          <div class="authority-service-icon commission"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+          Commission Automation
+        </div>
+        <div class="authority-service">
+          <div class="authority-service-icon ams"><svg viewBox="0 0 24 24"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/></svg></div>
+          AMS Integrations
+        </div>
+        <div class="authority-service">
+          <div class="authority-service-icon deploy"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg></div>
+          Practical AI Deployments
+        </div>
+      </div>
+      <p class="authority-note">This guide reflects real implementations &mdash; not theory.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .authority-inner {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .authority-inner > p {
+    margin-top: 12px;
+    margin-bottom: 36px;
+  }
+
+  .authority-services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .authority-service {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+    padding: 14px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+
+  .authority-service:hover {
+    border-color: var(--orange);
+    box-shadow: 0 2px 8px rgba(244, 128, 33, 0.08);
+  }
+
+  .authority-service-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .authority-service-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .authority-service-icon.workflow { background: rgba(86, 54, 209, 0.1); }
+  .authority-service-icon.workflow svg { fill: var(--purple); }
+  .authority-service-icon.commission { background: rgba(244, 128, 33, 0.1); }
+  .authority-service-icon.commission svg { fill: var(--orange); }
+  .authority-service-icon.ams { background: rgba(64, 84, 178, 0.1); }
+  .authority-service-icon.ams svg { fill: var(--blue); }
+  .authority-service-icon.deploy { background: rgba(34, 197, 94, 0.1); }
+  .authority-service-icon.deploy svg { fill: #22c55e; }
+
+  .authority-note {
+    margin-top: 36px;
+    font-size: 16px;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .authority-services {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
