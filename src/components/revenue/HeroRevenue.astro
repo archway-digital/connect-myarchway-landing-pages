@@ -1,0 +1,160 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+      Marketing / Revenue
+    </div>
+    <h1>Are Your Leads <em>Actually Turning</em> Into Revenue?</h1>
+    <p class="hero-sub">Download the Revenue Activation Checklist built specifically for independent insurance agencies.</p>
+    <a href="#form" class="hero-cta">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Get the Checklist
+    </a>
+    <p class="hero-micro">Built for agencies that want marketing tied to real revenue</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1e2535 50%, #1a2340 100%);
+    padding: 100px 24px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(64, 84, 178, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(244, 128, 33, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(64, 84, 178, 0.15);
+    border: 1px solid rgba(64, 84, 178, 0.3);
+    color: #8b9cf7;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .hero-badge svg {
+    width: 16px;
+    height: 16px;
+    fill: #8b9cf7;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(244, 128, 33, 0.3);
+  }
+
+  .hero-cta:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(244, 128, 33, 0.4);
+  }
+
+  .hero-cta svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--white);
+  }
+
+  .hero-micro {
+    margin-top: 16px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 72px 24px 88px;
+    }
+    .hero h1 {
+      font-size: 32px;
+    }
+    .hero-sub {
+      font-size: 17px;
+    }
+    .hero-cta {
+      font-size: 16px;
+      padding: 16px 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 27px;
+    }
+  }
+</style>

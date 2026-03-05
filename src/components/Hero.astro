@@ -1,0 +1,160 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      IT / Cybersecurity
+    </div>
+    <h1>Is Your Agency <em>Actually Ready</em> for a Carrier Cyber Questionnaire?</h1>
+    <p class="hero-sub">Download the 12-Point Security Checklist we use when reviewing independent insurance agencies.</p>
+    <a href="#form" class="hero-cta">
+      <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Download the Checklist
+    </a>
+    <p class="hero-micro">Built specifically for insurance agencies (not generic IT advice)</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #252a35 50%, #1e2740 100%);
+    padding: 100px 24px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(244, 128, 33, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(64, 84, 178, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(244, 128, 33, 0.12);
+    border: 1px solid rgba(244, 128, 33, 0.25);
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .hero-badge svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--orange);
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(244, 128, 33, 0.3);
+  }
+
+  .hero-cta:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(244, 128, 33, 0.4);
+  }
+
+  .hero-cta svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--white);
+  }
+
+  .hero-micro {
+    margin-top: 16px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 72px 24px 88px;
+    }
+    .hero h1 {
+      font-size: 32px;
+    }
+    .hero-sub {
+      font-size: 17px;
+    }
+    .hero-cta {
+      font-size: 16px;
+      padding: 16px 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 27px;
+    }
+  }
+</style>

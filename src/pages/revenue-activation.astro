@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import HeroRevenue from '../components/revenue/HeroRevenue.astro';
+import TheProblem from '../components/revenue/TheProblem.astro';
+import ChecklistCovers from '../components/revenue/ChecklistCovers.astro';
+import WhyItMatters from '../components/revenue/WhyItMatters.astro';
+import AuthorityRevenue from '../components/revenue/AuthorityRevenue.astro';
+import RevenueForm from '../components/revenue/RevenueForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Agency Revenue Activation Checklist | Archway"
+  description="Download the Revenue Activation Checklist built specifically for independent insurance agencies. Find where revenue is leaking and what to fix first."
+>
+  <Nav />
+  <HeroRevenue />
+  <TheProblem />
+  <ChecklistCovers />
+  <WhyItMatters />
+  <AuthorityRevenue />
+  <RevenueForm />
+  <Footer />
+</Layout>
+
+<script>
+  // Scroll-triggered fade animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

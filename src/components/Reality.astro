@@ -1,0 +1,166 @@
+---
+---
+
+<section class="section section-light">
+  <div class="section-inner">
+    <div class="section-label">The Reality</div>
+    <h2>Most agencies think they're secure because nothing bad has happened.</h2>
+    <div class="reality-content">
+      <div class="reality-left fade-up">
+        <p>But here's what we see regularly:</p>
+        <ul class="pain-list">
+          <li>
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            Backups exist &mdash; but no one has tested restoring AMS or shared drives
+          </li>
+          <li>
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            MFA is partially enforced
+          </li>
+          <li>
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            Former employees still have access
+          </li>
+          <li>
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            No documented security review in the last 12 months
+          </li>
+          <li>
+            <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            Carrier cyber questionnaires are getting stricter every year
+          </li>
+        </ul>
+      </div>
+      <div class="reality-callout fade-up">
+        <h3>Cyber risk isn't theoretical anymore.</h3>
+        <p>Carriers are asking harder questions. Compliance expectations are rising. And agencies are expected to prove &mdash; not assume &mdash; their security posture.</p>
+        <div class="callout-stat">
+          <div class="callout-stat-item">
+            <span class="num">82%</span>
+            <span class="label">of breaches involve<br />human element</span>
+          </div>
+          <div class="callout-stat-item">
+            <span class="num">$4.5M</span>
+            <span class="label">avg. cost of<br />a data breach</span>
+          </div>
+          <div class="callout-stat-item">
+            <span class="num">277</span>
+            <span class="label">days avg. to identify<br />a breach</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reality-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .reality-left p {
+    margin-bottom: 24px;
+  }
+
+  .reality-left p:first-child {
+    font-size: 20px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .pain-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: rgba(244, 128, 33, 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .pain-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--orange);
+  }
+
+  .reality-callout {
+    background: linear-gradient(135deg, var(--dark) 0%, #252a35 100%);
+    border-radius: 16px;
+    padding: 40px;
+    border-left: 4px solid var(--orange);
+  }
+
+  .reality-callout h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .reality-callout p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
+  }
+
+  .callout-stat {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .callout-stat-item {
+    text-align: center;
+  }
+
+  .callout-stat-item .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--orange);
+    display: block;
+  }
+
+  .callout-stat-item .label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .reality-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .callout-stat {
+      flex-wrap: wrap;
+    }
+  }
+</style>
