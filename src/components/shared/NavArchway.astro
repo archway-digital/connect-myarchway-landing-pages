@@ -10,10 +10,7 @@ const { ctaText = 'Book a Meeting', ctaHref = '#form' } = Astro.props;
 <nav class="nav-archway">
   <div class="nav-inner">
     <a href="https://www.myarchway.com/" class="nav-logo" target="_blank" rel="noopener">
-      <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      </div>
-      <span>Archway</span>
+      <img src="/images/archway-logo.png" alt="Archway" class="nav-logo-img" />
     </a>
     <a href={ctaHref} class="nav-cta">
       <svg viewBox="0 0 24 24"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"/></svg>
@@ -43,26 +40,12 @@ const { ctaText = 'Book a Meeting', ctaHref = '#form' } = Astro.props;
   .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
-    color: var(--charcoal);
-    font-size: 20px;
-    font-weight: 700;
   }
 
-  .nav-logo-icon {
-    width: 36px;
+  .nav-logo-img {
     height: 36px;
-    background: var(--orange);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-logo-icon svg {
-    width: 20px;
-    height: 20px;
+    width: auto;
   }
 
   .nav-cta {
