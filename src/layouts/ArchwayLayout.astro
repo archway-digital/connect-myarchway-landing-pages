@@ -1,5 +1,4 @@
 ---
-import UtilityBar from '../components/shared/UtilityBar.astro';
 import NavArchway from '../components/shared/NavArchway.astro';
 import FooterArchway from '../components/shared/FooterArchway.astro';
 
@@ -10,7 +9,7 @@ interface Props {
   ctaHref?: string;
 }
 
-const { title, description, ctaText = 'Book a Meeting', ctaHref = '#form' } = Astro.props;
+const { title, description, ctaText = 'Book a Meeting', ctaHref = '#hero-form' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -25,7 +24,6 @@ const { title, description, ctaText = 'Book a Meeting', ctaHref = '#form' } = As
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <UtilityBar />
   <NavArchway ctaText={ctaText} ctaHref={ctaHref} />
   <slot />
   <FooterArchway />

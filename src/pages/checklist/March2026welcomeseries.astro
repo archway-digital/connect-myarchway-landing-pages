@@ -8,14 +8,13 @@ import WhyNow from '../../components/WhyNow.astro';
 import Authority from '../../components/Authority.astro';
 import PartnerLogos from '../../components/shared/PartnerLogos.astro';
 import BottomCTA from '../../components/shared/BottomCTA.astro';
-import ChecklistForm from '../../components/ChecklistForm.astro';
 ---
 
 <ArchwayLayout
   title="12-Point Insurance Agency Cyber Checklist | Archway"
   description="Download the 12-Point Security Checklist built specifically for independent insurance agencies. Know where you're solid, where you're exposed, and what's urgent."
   ctaText="Get the Checklist"
-  ctaHref="#form"
+  ctaHref="#hero-form"
 >
   <Hero />
   <StatsBar stats={[
@@ -32,9 +31,8 @@ import ChecklistForm from '../../components/ChecklistForm.astro';
     heading="Ready to see where your agency stands?"
     subtext="Download the 12-point checklist and find out in under 10 minutes."
     ctaText="Get the Checklist"
-    ctaHref="#form"
+    ctaHref="#hero-form"
   />
-  <ChecklistForm />
 </ArchwayLayout>
 
 <script>

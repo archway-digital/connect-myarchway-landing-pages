@@ -8,14 +8,13 @@ import WhyItMattersAI from '../../components/quickwins/WhyItMattersAI.astro';
 import AuthorityQuickwins from '../../components/quickwins/AuthorityQuickwins.astro';
 import PartnerLogos from '../../components/shared/PartnerLogos.astro';
 import BottomCTA from '../../components/shared/BottomCTA.astro';
-import QuickwinsForm from '../../components/quickwins/QuickwinsForm.astro';
 ---
 
 <ArchwayLayout
   title="AI Quick Wins for Insurance Agencies | Archway"
   description="See the practical AI workflows insurance agencies are implementing right now. No hype — just real use cases that reduce workload and improve speed."
   ctaText="See the AI Quick Wins"
-  ctaHref="#form"
+  ctaHref="#hero-form"
 >
   <HeroQuickwins />
   <StatsBar stats={[
@@ -32,9 +31,8 @@ import QuickwinsForm from '../../components/quickwins/QuickwinsForm.astro';
     heading="Ready to see what AI can do for your agency?"
     subtext="Get the quick wins guide — real workflows, no fluff."
     ctaText="See the AI Quick Wins"
-    ctaHref="#form"
+    ctaHref="#hero-form"
   />
-  <QuickwinsForm />
 </ArchwayLayout>
 
 <script>
@@ -48,19 +46,6 @@ import QuickwinsForm from '../../components/quickwins/QuickwinsForm.astro';
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Form submission
-  const form = document.getElementById('checklist-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const thankYou = document.getElementById('thank-you');
-      if (form && thankYou) {
-        form.style.display = 'none';
-        thankYou.classList.add('active');
-      }
-    });
-  }
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

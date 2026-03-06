@@ -3,7 +3,6 @@ import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 import HeroSpring from '../../components/springclean/HeroSpring.astro';
 import TrustBar from '../../components/springclean/TrustBar.astro';
 import ThreeChecklists from '../../components/springclean/ThreeChecklists.astro';
-import SpringForm from '../../components/springclean/SpringForm.astro';
 import SocialProof from '../../components/springclean/SocialProof.astro';
 import PartnerLogos from '../../components/shared/PartnerLogos.astro';
 import BottomCTA from '../../components/shared/BottomCTA.astro';
@@ -13,19 +12,18 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   title="Spring Clean Your Tech Stack | Archway"
   description="Three free checklists to help independent insurance agencies find security gaps, marketing issues, and automation opportunities before they find you."
   ctaText="Send Me the Free Checklist"
-  ctaHref="#form"
+  ctaHref="#hero-form"
 >
   <HeroSpring />
   <TrustBar />
   <ThreeChecklists />
-  <SpringForm />
   <SocialProof />
   <PartnerLogos />
   <BottomCTA
     heading="Already Know You Have Gaps?"
     subtext="Skip the checklist and book a quick Security Assessment or System Review directly. We'll walk through your stack, identify the highest-priority issues, and give you a clear action plan — no obligation."
     ctaText="Book a Free Review"
-    ctaHref="#"
+    ctaHref="#hero-form"
   />
 </ArchwayLayout>
 
@@ -40,36 +38,6 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Form submission
-  const form = document.getElementById('checklist-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const thankYou = document.getElementById('thank-you');
-      if (form && thankYou) {
-        form.style.display = 'none';
-        thankYou.classList.add('active');
-      }
-    });
-  }
-
-  // "All Three" checkbox logic
-  const allCheckbox = document.querySelector('input[value="all"]') as HTMLInputElement;
-  const individualCheckboxes = document.querySelectorAll('input[name="checklist"]:not([value="all"])') as NodeListOf<HTMLInputElement>;
-
-  allCheckbox?.addEventListener('change', () => {
-    if (allCheckbox.checked) {
-      individualCheckboxes.forEach(cb => { cb.checked = true; });
-    }
-  });
-
-  individualCheckboxes.forEach(cb => {
-    cb.addEventListener('change', () => {
-      const allChecked = Array.from(individualCheckboxes).every(c => c.checked);
-      if (allCheckbox) allCheckbox.checked = allChecked;
-    });
-  });
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

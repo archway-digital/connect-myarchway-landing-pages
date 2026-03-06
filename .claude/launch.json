@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "dev",
-      "runtimeExecutable": "/Users/keviyoung/Library/CloudStorage/OneDrive-acrisurellc.com/Documents/Claude/connect-myarchway-landing-pages/.claude/run-dev.sh",
-      "runtimeArgs": [],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "export PATH=/Users/keviyoung/.local/node/bin:$PATH && npx astro dev"],
       "port": 4321
     }
   ]

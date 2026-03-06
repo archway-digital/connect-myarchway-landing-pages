@@ -127,11 +127,18 @@ body {
 }
 
 .hero-inner {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 48px;
+  align-items: center;
   position: relative;
   z-index: 1;
+}
+
+.hero-text {
+  text-align: left;
 }
 
 .hero-badge {
@@ -174,43 +181,41 @@ body {
   font-size: 20px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 24px;
 }
 
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--orange);
-  color: var(--white);
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 18px 40px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
+/* ── HERO FORM CARD (right column) ── */
+.hero-form-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.hero-cta:hover {
-  background: var(--orange-dark);
-  transform: translateY(-2px);
+.hero-form-card .form-header {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-.hero-cta svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--white);
+.hero-form-card .form-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--charcoal);
+  margin-bottom: 6px;
 }
 
-.hero-micro {
-  margin-top: 16px;
+.hero-form-card .form-header p {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-light);
+}
+
+.hero-form-card .form-privacy {
+  margin-top: 12px;
+  font-size: 12px;
 }
 
 /* ── BOTTOM CTA SECTION ── */
@@ -466,15 +471,24 @@ body {
   .hero {
     padding: 72px 24px 88px;
   }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-text {
+    text-align: center;
+  }
   .hero h1 {
     font-size: 32px;
   }
   .hero-sub {
     font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
   }
-  .hero-cta {
-    font-size: 16px;
-    padding: 16px 32px;
+  .hero-form-card {
+    min-height: auto;
   }
   .form-row {
     grid-template-columns: 1fr;
