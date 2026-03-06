@@ -1,28 +1,41 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import NavQuickwins from '../../components/quickwins/NavQuickwins.astro';
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 import HeroQuickwins from '../../components/quickwins/HeroQuickwins.astro';
+import StatsBar from '../../components/shared/StatsBar.astro';
 import TheTruth from '../../components/quickwins/TheTruth.astro';
 import WhatYoullSee from '../../components/quickwins/WhatYoullSee.astro';
 import WhyItMattersAI from '../../components/quickwins/WhyItMattersAI.astro';
 import AuthorityQuickwins from '../../components/quickwins/AuthorityQuickwins.astro';
+import PartnerLogos from '../../components/shared/PartnerLogos.astro';
+import BottomCTA from '../../components/shared/BottomCTA.astro';
 import QuickwinsForm from '../../components/quickwins/QuickwinsForm.astro';
-import Footer from '../../components/Footer.astro';
 ---
 
-<Layout
+<ArchwayLayout
   title="AI Quick Wins for Insurance Agencies | Archway"
   description="See the practical AI workflows insurance agencies are implementing right now. No hype — just real use cases that reduce workload and improve speed."
+  ctaText="See the AI Quick Wins"
+  ctaHref="#form"
 >
-  <NavQuickwins />
   <HeroQuickwins />
+  <StatsBar stats={[
+    { number: '40%', label: 'of admin tasks are automatable' },
+    { number: '3-5', label: 'AI workflows per agency to start' },
+    { number: '70%+', label: 'time saved on repetitive tasks' },
+  ]} />
   <TheTruth />
   <WhatYoullSee />
   <WhyItMattersAI />
   <AuthorityQuickwins />
+  <PartnerLogos />
+  <BottomCTA
+    heading="Ready to see what AI can do for your agency?"
+    subtext="Get the quick wins guide — real workflows, no fluff."
+    ctaText="See the AI Quick Wins"
+    ctaHref="#form"
+  />
   <QuickwinsForm />
-  <Footer />
-</Layout>
+</ArchwayLayout>
 
 <script>
   // Scroll-triggered fade animations

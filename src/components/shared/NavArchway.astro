@@ -1,0 +1,100 @@
+---
+interface Props {
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const { ctaText = 'Book a Meeting', ctaHref = '#form' } = Astro.props;
+---
+
+<nav class="nav-archway">
+  <div class="nav-inner">
+    <a href="https://www.myarchway.com/" class="nav-logo" target="_blank" rel="noopener">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <span>Archway</span>
+    </a>
+    <a href={ctaHref} class="nav-cta">
+      <svg viewBox="0 0 24 24"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"/></svg>
+      <span class="nav-cta-text">{ctaText}</span>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav-archway {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logo-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--orange-dark);
+  }
+
+  .nav-cta svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--white);
+  }
+
+  @media (max-width: 480px) {
+    .nav-cta-text {
+      display: none;
+    }
+    .nav-cta {
+      padding: 10px;
+    }
+  }
+</style>

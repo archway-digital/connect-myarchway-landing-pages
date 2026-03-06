@@ -1,0 +1,56 @@
+---
+---
+
+<footer class="footer-archway">
+  <div class="footer-bottom">
+    <p>&copy; 2026 Archway. Built exclusively for independent insurance agencies.</p>
+    <div class="footer-links">
+      <a href="https://www.myarchway.com/privacy-policy/">Privacy Policy</a>
+      <a href="https://www.myarchway.com/terms-and-conditions/">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-archway {
+    background: var(--navy);
+    padding: 24px;
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--orange);
+  }
+
+  @media (max-width: 768px) {
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+</style>

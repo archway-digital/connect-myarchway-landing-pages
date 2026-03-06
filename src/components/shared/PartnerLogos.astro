@@ -1,0 +1,74 @@
+---
+---
+
+<section class="partners">
+  <div class="partners-inner">
+    <h3>Our Insuretech Partners</h3>
+    <div class="partners-grid">
+      <div class="partner-item">Applied</div>
+      <div class="partner-item">EZLynx</div>
+      <div class="partner-item">HawkSoft</div>
+      <div class="partner-item">Vertafore</div>
+      <div class="partner-item">Partner Platform</div>
+      <div class="partner-item">Trusted Choice</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .partners {
+    background: var(--white);
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .partners-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .partners-inner h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .partner-item {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-light);
+    opacity: 0.5;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: opacity 0.2s;
+    /* Replace with <img> when logo files are available */
+  }
+
+  .partner-item:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .partners-grid {
+      gap: 16px;
+    }
+    .partner-item {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+  }
+</style>

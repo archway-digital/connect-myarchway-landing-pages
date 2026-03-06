@@ -1,0 +1,37 @@
+---
+import UtilityBar from '../components/shared/UtilityBar.astro';
+import NavArchway from '../components/shared/NavArchway.astro';
+import FooterArchway from '../components/shared/FooterArchway.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const { title, description, ctaText = 'Book a Meeting', ctaHref = '#form' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <UtilityBar />
+  <NavArchway ctaText={ctaText} ctaHref={ctaHref} />
+  <slot />
+  <FooterArchway />
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

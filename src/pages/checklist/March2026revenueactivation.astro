@@ -1,28 +1,41 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 import HeroRevenue from '../../components/revenue/HeroRevenue.astro';
+import StatsBar from '../../components/shared/StatsBar.astro';
 import TheProblem from '../../components/revenue/TheProblem.astro';
 import ChecklistCovers from '../../components/revenue/ChecklistCovers.astro';
 import WhyItMatters from '../../components/revenue/WhyItMatters.astro';
 import AuthorityRevenue from '../../components/revenue/AuthorityRevenue.astro';
+import PartnerLogos from '../../components/shared/PartnerLogos.astro';
+import BottomCTA from '../../components/shared/BottomCTA.astro';
 import RevenueForm from '../../components/revenue/RevenueForm.astro';
-import Footer from '../../components/Footer.astro';
 ---
 
-<Layout
+<ArchwayLayout
   title="Agency Revenue Activation Checklist | Archway"
   description="Download the Revenue Activation Checklist built specifically for independent insurance agencies. Find where revenue is leaking and what to fix first."
+  ctaText="Get the Checklist"
+  ctaHref="#form"
 >
-  <Nav />
   <HeroRevenue />
+  <StatsBar stats={[
+    { number: '68%', label: 'of leads never get a follow-up' },
+    { number: '35%', label: 'revenue leaks from broken pipelines' },
+    { number: '5x', label: 'ROI from structured follow-up' },
+  ]} />
   <TheProblem />
   <ChecklistCovers />
   <WhyItMatters />
   <AuthorityRevenue />
+  <PartnerLogos />
+  <BottomCTA
+    heading="Stop leaving revenue on the table."
+    subtext="Download the checklist and find out where your agency is leaking revenue."
+    ctaText="Get the Checklist"
+    ctaHref="#form"
+  />
   <RevenueForm />
-  <Footer />
-</Layout>
+</ArchwayLayout>
 
 <script>
   // Scroll-triggered fade animations
