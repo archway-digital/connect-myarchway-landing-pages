@@ -4,15 +4,17 @@ interface Props {
   subtext?: string;
   ctaText: string;
   ctaHref: string;
+  ctaVariant?: 'primary' | 'secondary';
 }
 
-const { heading, subtext, ctaText, ctaHref } = Astro.props;
+const { heading, subtext, ctaText, ctaHref, ctaVariant = 'primary' } = Astro.props;
+const btnClass = ctaVariant === 'secondary' ? 'cta-button-secondary' : 'cta-button';
 ---
 
 <section class="cta-section">
   <div class="section-inner" style="text-align: center;">
     <h2>{heading}</h2>
     {subtext && <p>{subtext}</p>}
-    <a href={ctaHref} class="cta-button">{ctaText}</a>
+    <a href={ctaHref} class={btnClass}>{ctaText}</a>
   </div>
 </section>

@@ -4,28 +4,39 @@ import HeroSpring from '../../components/springclean/HeroSpring.astro';
 import TrustBar from '../../components/springclean/TrustBar.astro';
 import ThreeChecklists from '../../components/springclean/ThreeChecklists.astro';
 import SocialProof from '../../components/springclean/SocialProof.astro';
-import PartnerLogos from '../../components/shared/PartnerLogos.astro';
 import BottomCTA from '../../components/shared/BottomCTA.astro';
 ---
 
 <ArchwayLayout
-  title="Spring Clean Your Tech Stack | Archway"
-  description="Three free checklists to help independent insurance agencies find security gaps, marketing issues, and automation opportunities before they find you."
-  ctaText="Send Me the Free Checklist"
+  title="Spring Tech Cleanup | Archway"
+  description="Free spring tech cleanup guide for independent insurance agencies. Find the gaps in your systems before carriers, compliance, or a breach finds them for you."
+  ctaText="Get the Free Guide"
   ctaHref="#hero-form"
 >
   <HeroSpring />
   <TrustBar />
   <ThreeChecklists />
   <SocialProof />
-  <PartnerLogos />
   <BottomCTA
     heading="Already Know You Have Gaps?"
-    subtext="Skip the checklist and book a quick Security Assessment or System Review directly. We'll walk through your stack, identify the highest-priority issues, and give you a clear action plan — no obligation."
+    subtext="Some agencies download the guide and immediately recognize something that needs attention. If that's you, skip ahead — book a quick Security Assessment or System Review and we'll walk through your stack together."
     ctaText="Book a Free Review"
     ctaHref="#hero-form"
+    ctaVariant="secondary"
   />
+  <p class="micro-copy">30 minutes. No pitch. Just a clear picture of where you stand.</p>
 </ArchwayLayout>
+
+<style>
+  .micro-copy {
+    text-align: center;
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    padding: 0 24px 24px;
+    margin-top: -56px;
+  }
+</style>
 
 <script>
   // Scroll-triggered fade animations
