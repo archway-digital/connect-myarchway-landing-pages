@@ -306,6 +306,107 @@
     return html;
   }
 
+  function generateFallbackAnalysis(url, scores, auditDetails) {
+    var lines = [];
+    var ad = auditDetails || {};
+
+    // What's Working
+    var strengths = [];
+    if (scores.seo >= 80) strengths.push('SEO fundamentals (' + scores.seo + '/100)');
+    if (scores.mobile >= 80) strengths.push('mobile performance (' + scores.mobile + '/100)');
+    if (scores.conversion >= 80) strengths.push('accessibility and UX (' + scores.conversion + '/100)');
+    if (scores.trust >= 80) strengths.push('best practices (' + scores.trust + '/100)');
+    if (scores.speed >= 80) strengths.push('page speed (' + scores.speed + '/100)');
+
+    if (strengths.length > 0) {
+      lines.push("**What's Working**");
+      lines.push('Your site scores well in ' + strengths.join(' and ') + '. That gives you a solid foundation to build on.');
+      lines.push('');
+    }
+
+    // Technical SEO
+    lines.push('**Technical SEO**');
+    if (scores.seo >= 90) {
+      lines.push('Your SEO score of ' + scores.seo + ' is strong. Your page titles, meta descriptions, and heading structure are likely in good shape. Make sure your XML sitemap is submitted to Google Search Console and your pages use canonical tags to avoid duplicate content issues.');
+    } else if (scores.seo >= 50) {
+      lines.push('Your SEO score of ' + scores.seo + ' suggests some foundational issues. Common culprits at this level: missing or duplicate meta descriptions, heading tags used out of order, or missing alt text on images. Check that every page has a unique title tag under 60 characters and a meta description under 155 characters.');
+    } else {
+      lines.push('Your SEO score of ' + scores.seo + ' indicates significant gaps in basic search optimization. Your site likely has missing meta descriptions, poor heading structure, and may not be easily crawlable by Google. Start by auditing every page for unique title tags, meta descriptions, and proper heading hierarchy (one H1 per page).');
+    }
+    if (ad.isHttps === false) {
+      lines.push('Your site is not on HTTPS — this is a critical fix. Google flags non-HTTPS sites as "Not Secure" and it directly hurts rankings.');
+    }
+    lines.push('');
+
+    // Local SEO
+    lines.push('**Local SEO**');
+    if (scores.seo >= 80) {
+      lines.push('With a strong SEO baseline, your local search presence is likely in decent shape. To push further: make sure your Google Business Profile is claimed and fully filled out, your NAP (name, address, phone) is consistent across all directories, and you have location-specific pages if you serve multiple areas.');
+    } else if (scores.seo >= 50) {
+      lines.push("Local search is where most independent agencies win or lose online. At your current level, your site may be missing location-specific content and schema markup that helps Google connect your agency to local searches. Add your city and state to your homepage title tag, and make sure you've claimed your Google Business Profile.");
+    } else {
+      lines.push('Your site is likely invisible in local search results right now. When someone searches "insurance agency near me," agencies with proper local SEO are getting that call instead of you. Claim your Google Business Profile, add structured data (LocalBusiness schema), and create location-specific landing pages with your city name in the title.');
+    }
+    lines.push('');
+
+    // Page Speed & Core Web Vitals
+    lines.push('**Page Speed & Core Web Vitals**');
+    var speedNote = 'Your mobile performance score is ' + scores.mobile + '/100';
+    if (ad.lcp !== null && ad.lcp !== undefined) {
+      var lcpVal = Math.round(ad.lcp * 100);
+      speedNote += ' with an LCP score of ' + lcpVal;
+    }
+    if (ad.speedIndex !== null && ad.speedIndex !== undefined) {
+      var siVal = Math.round(ad.speedIndex * 100);
+      speedNote += ' and a Speed Index of ' + siVal;
+    }
+    speedNote += '.';
+    lines.push(speedNote);
+
+    if (scores.mobile >= 90) {
+      lines.push('Your site loads quickly on mobile — that puts you ahead of most agency websites. Keep images optimized and monitor your Core Web Vitals in Google Search Console.');
+    } else if (scores.mobile >= 50) {
+      lines.push("Your site is loading slower than it should. At this level, visitors on mobile are waiting too long and some are leaving before they see anything. Common fixes: compress and lazy-load images, remove unused CSS and JavaScript, and consider upgrading to faster hosting. If you're on a shared hosting plan from your AMS provider, that may be the bottleneck.");
+    } else {
+      lines.push("Your site is critically slow on mobile. Roughly half your visitors are likely bouncing before the page even finishes loading. This is usually caused by oversized images, too many third-party scripts, or poor hosting. A performance-focused rebuild may be more cost-effective than trying to patch what's there.");
+    }
+
+    if (ad.tbt !== null && ad.tbt !== undefined) {
+      var tbtVal = Math.round(ad.tbt * 100);
+      if (tbtVal < 50) {
+        lines.push('Your Total Blocking Time score of ' + tbtVal + ' means the browser is locked up processing JavaScript for too long — buttons and forms feel unresponsive to visitors.');
+      }
+    }
+    lines.push('');
+
+    // UI & Conversion
+    lines.push('**UI & Conversion**');
+    if (scores.conversion >= 90) {
+      lines.push("Your accessibility score of " + scores.conversion + " is excellent, which usually means your site has good structure, readable text, and tappable buttons. Make sure you're capitalizing on that by having clear calls-to-action above the fold and visible quote forms on every key page.");
+    } else if (scores.conversion >= 50) {
+      lines.push("Your accessibility score of " + scores.conversion + " points to UX issues that are probably hurting conversions. Common problems: buttons that are too small to tap on mobile, low color contrast that makes text hard to read, or form labels that aren't properly connected to their fields. These aren't just accessibility issues — they directly affect whether visitors take action.");
+    } else {
+      lines.push("Your accessibility score of " + scores.conversion + " suggests serious usability problems. Visitors on mobile are likely struggling to navigate your site, read your content, or tap your buttons accurately. This means your site isn't just hard to use for people with disabilities — it's hard to use for everyone. Fixing tap targets, contrast, and form structure should be a top priority.");
+    }
+
+    if (scores.trust < 80) {
+      lines.push("Your best practices score of " + scores.trust + " may indicate missing trust signals — HTTPS issues, outdated libraries, or browser errors in the console. For an insurance agency, trust is everything. Make sure you have carrier logos, client testimonials, team photos, and visible contact info.");
+    }
+    lines.push('');
+
+    // Biggest Priority
+    lines.push('**Biggest Priority**');
+    var lowest = { name: 'Mobile Experience', score: scores.mobile };
+    if (scores.speed < lowest.score) lowest = { name: 'Page Speed', score: scores.speed };
+    if (scores.seo < lowest.score) lowest = { name: 'SEO', score: scores.seo };
+    if (scores.conversion < lowest.score) lowest = { name: 'Conversion Design', score: scores.conversion };
+    if (scores.trust < lowest.score) lowest = { name: 'Trust & Authority', score: scores.trust };
+
+    lines.push('Your weakest area is ' + lowest.name + ' at ' + lowest.score + '/100 — fixing this first will have the biggest impact on whether visitors stay on your site and reach out to your agency.');
+
+    return lines.join('\n');
+  }
+
   function runAnalysis(url, scores, auditDetails) {
     var analysisDiv = document.getElementById('grader-analysis');
     analysisDiv.style.display = 'block';
@@ -328,12 +429,13 @@
       if (data.analysis) {
         analysisDiv.innerHTML = renderAnalysisMarkdown(data.analysis);
       } else {
-        analysisDiv.style.display = 'none';
+        throw new Error('No analysis in response');
       }
     })
     .catch(function(err) {
-      console.error('Claude analysis error:', err);
-      analysisDiv.style.display = 'none';
+      console.error('Claude analysis unavailable, using fallback:', err);
+      var fallback = generateFallbackAnalysis(url, scores, auditDetails);
+      analysisDiv.innerHTML = renderAnalysisMarkdown(fallback);
     });
   }
 
