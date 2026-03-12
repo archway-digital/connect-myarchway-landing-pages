@@ -3,38 +3,66 @@
 
 <section class="section problem-section">
   <div class="section-inner">
-    <div class="problem-inner fade-up">
-      <h2>The Gaps That Hurt Agencies Are Almost Always the Ones Nobody Was Looking For</h2>
-      <p>Independent agencies run lean. That means tech stacks that get set up once and forgotten. Security settings from a previous employee. A website that used to convert leads but stopped somewhere along the way. Tools that are paid for but not actually used.</p>
-      <p>None of it feels like a crisis &mdash; until it is.</p>
-      <p>Carrier cyber requirements are tightening. Compliance expectations are increasing. And the agencies that get caught flat-footed aren&rsquo;t the ones ignoring the problem on purpose &mdash; they&rsquo;re the ones who just never had a clear picture of where they stood.</p>
+    <div class="problem-grid fade-up">
+      <div class="problem-heading">
+        <h2>The Gaps That Hurt Agencies Are Almost Always the Ones Nobody Was Looking For</h2>
+      </div>
+      <div class="problem-body">
+        <div class="accent-bar"></div>
+        <p>Independent agencies run lean. That means tech stacks that get set up once and forgotten. Security settings from a previous employee. A website that used to convert leads but stopped somewhere along the way. Tools that are paid for but not actually used.</p>
+        <p class="pull-quote">None of it feels like a crisis &mdash; until it is.</p>
+        <p>Carrier cyber requirements are tightening. Compliance expectations are increasing. And the agencies that get caught flat-footed aren&rsquo;t the ones ignoring the problem on purpose &mdash; they&rsquo;re the ones who just never had a clear picture of where they stood.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .problem-section {
-    background: var(--white);
+    background: var(--light-bg);
   }
 
-  .problem-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 48px;
+    align-items: start;
   }
 
-  .problem-inner h2 {
-    margin-bottom: 28px;
+  .problem-heading h2 {
+    text-align: left;
   }
 
-  .problem-inner p {
+  .accent-bar {
+    width: 48px;
+    height: 3px;
+    background: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .problem-body p {
     font-size: 18px;
     line-height: 1.7;
     color: var(--text-light);
     margin-bottom: 20px;
   }
 
-  .problem-inner p:last-child {
+  .problem-body p:last-child {
     margin-bottom: 0;
+  }
+
+  .problem-body p.pull-quote {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1.4;
+    margin: 28px 0;
+  }
+
+  @media (max-width: 768px) {
+    .problem-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
   }
 </style>

@@ -1,0 +1,585 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        Website / Digital Presence
+      </div>
+      <h1>Pull Out Your Phone. Search Your Agency. <em>What Do You See?</em></h1>
+      <p class="hero-sub">Most agency owners haven&rsquo;t looked at their website through a client&rsquo;s eyes in over a year. What shows up &mdash; on mobile, on Google, on the page itself &mdash; might be costing you more than you think.</p>
+      <p class="hero-sub hero-sub-secondary">Find out exactly where you stand in under 60 seconds.</p>
+    </div>
+
+    <div class="hero-form-card" id="hero-form">
+      <!-- Form state -->
+      <div id="grader-form-state">
+        <div class="form-header">
+          <h2>Get Your Free Website Grade</h2>
+          <p>Enter your website &mdash; we&rsquo;ll score it across 5 categories.</p>
+        </div>
+        <div id="hs-grader-form"></div>
+        <p class="form-privacy">No spam. No sales pressure. Just your honest score.</p>
+      </div>
+
+      <!-- Loading state (hidden by default) -->
+      <div id="grader-loading-state" style="display:none;">
+        <div class="loading-inner">
+          <div class="loading-spinner"></div>
+          <h3>Analyzing your website&hellip;</h3>
+          <p>This usually takes 15&ndash;30 seconds.</p>
+        </div>
+      </div>
+
+      <!-- Results state (hidden by default) -->
+      <div id="grader-results-state" style="display:none;">
+        <div class="results-inner">
+          <div class="results-header">
+            <h3>Your Website Score</h3>
+            <div class="overall-score" id="overall-score"></div>
+          </div>
+          <div class="results-url" id="results-url"></div>
+          <div class="score-rows" id="score-rows"></div>
+          <div id="grader-analysis" style="display:none;">
+            <p id="analysis-text">Getting your analysis&hellip;</p>
+          </div>
+          <a href="#hero-form" class="results-cta" id="results-cta">Want to talk about your score? Book a free review &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Error state (hidden by default) -->
+      <div id="grader-error-state" style="display:none;">
+        <div class="error-inner">
+          <div class="error-icon">!</div>
+          <h3>We couldn&rsquo;t reach that site</h3>
+          <p>No worries &mdash; we&rsquo;ll analyze it manually and email your results within 24 hours.</p>
+          <a href="#hero-form" class="results-cta">Back to top &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+<script is:inline>
+  var graderSubmittedUrl = '';
+
+  hbspt.forms.create({
+    portalId: "6869933",
+    formId: "cd1969af-ef3a-42ef-93c1-1e5b04913a92",
+    region: "na2",
+    target: "#hs-grader-form",
+    onBeforeFormSubmit: function($form) {
+      // Capture the website URL before submission
+      var inputs = $form.querySelectorAll ? $form.querySelectorAll('input') : $form.find('input');
+      if (inputs.forEach) {
+        inputs.forEach(function(input) {
+          if (input.type === 'url' || input.type === 'text') {
+            var val = input.value;
+            if (val && (val.indexOf('.') > -1) && !val.indexOf('@') > -1) {
+              graderSubmittedUrl = val;
+            }
+          }
+        });
+      }
+      // Also check by name attribute for HubSpot website field
+      var urlInput = $form.querySelector ? $form.querySelector('input[name="website"]') : null;
+      if (!urlInput) urlInput = $form.querySelector ? $form.querySelector('input[name="company_website"]') : null;
+      if (!urlInput) urlInput = $form.querySelector ? $form.querySelector('input[type="url"]') : null;
+      if (urlInput && urlInput.value) {
+        graderSubmittedUrl = urlInput.value;
+      }
+    },
+    onFormSubmitted: function() {
+      if (!graderSubmittedUrl) {
+        // Fallback: try to find URL from the iframe
+        var iframe = document.querySelector('#hs-grader-form iframe');
+        if (iframe) {
+          try {
+            var iframeInputs = iframe.contentDocument.querySelectorAll('input[type="url"], input[name="website"], input[name="company_website"]');
+            iframeInputs.forEach(function(input) {
+              if (input.value) graderSubmittedUrl = input.value;
+            });
+          } catch(e) {}
+        }
+      }
+
+      if (graderSubmittedUrl) {
+        runGrader(graderSubmittedUrl);
+      } else {
+        // No URL captured — show a generic thank you
+        showError();
+      }
+    },
+    css: "\
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+      \
+      .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .hs-form fieldset { max-width: 100% !important; }\
+      .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+      .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+      \
+      .hs-form-field { margin-bottom: 16px; }\
+      \
+      .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+      \
+      .hs-form-required { color: #ef4444; margin-left: 2px; }\
+      \
+      .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+      \
+      .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+      \
+      .hs-input::placeholder { color: #9ca3af; }\
+      \
+      select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+      \
+      .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+      \
+      .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+      .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+      \
+      .hs-submit { margin-top: 8px; }\
+      \
+      .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+      .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+      \
+      .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+      .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+      .hs-input.error { border-color: #ef4444 !important; }\
+      \
+      .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+      .legal-consent-container a { color: #f48021; }\
+      \
+      @media (max-width: 480px) {\
+        .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+      }\
+    "
+  });
+
+  function normalizeUrl(url) {
+    url = url.trim();
+    if (!url.match(/^https?:\/\//i)) {
+      url = 'https://' + url;
+    }
+    return url;
+  }
+
+  function runGrader(url) {
+    url = normalizeUrl(url);
+
+    // Show loading state
+    document.getElementById('grader-form-state').style.display = 'none';
+    document.getElementById('grader-loading-state').style.display = 'flex';
+
+    var apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
+      + '?url=' + encodeURIComponent(url)
+      + '&strategy=mobile'
+      + '&category=performance'
+      + '&category=seo'
+      + '&category=accessibility'
+      + '&category=best-practices';
+
+    fetch(apiUrl)
+      .then(function(response) {
+        if (!response.ok) throw new Error('API error');
+        return response.json();
+      })
+      .then(function(data) {
+        if (!data.lighthouseResult || !data.lighthouseResult.categories) {
+          throw new Error('No lighthouse data');
+        }
+
+        var cats = data.lighthouseResult.categories;
+        var audits = data.lighthouseResult.audits || {};
+
+        var scores = {
+          mobile: Math.round((cats.performance ? cats.performance.score : 0) * 100),
+          speed: Math.round((cats.performance ? cats.performance.score : 0) * 100),
+          seo: Math.round((cats.seo ? cats.seo.score : 0) * 100),
+          conversion: Math.round((cats.accessibility ? cats.accessibility.score : 0) * 100),
+          trust: Math.round((cats['best-practices'] ? cats['best-practices'].score : 0) * 100)
+        };
+
+        // Refine speed score using specific metrics if available
+        var speedIndexScore = audits['speed-index'] ? audits['speed-index'].score : null;
+        var lcpScore = audits['largest-contentful-paint'] ? audits['largest-contentful-paint'].score : null;
+        if (speedIndexScore !== null && lcpScore !== null) {
+          scores.speed = Math.round(((speedIndexScore + lcpScore) / 2) * 100);
+        }
+
+        scores.overall = Math.round((scores.mobile + scores.speed + scores.seo + scores.conversion + scores.trust) / 5);
+
+        // Extract raw audit scores for deep analysis
+        var auditDetails = {
+          speedIndex: speedIndexScore,
+          lcp: lcpScore,
+          tti: audits['interactive'] ? audits['interactive'].score : null,
+          tbt: audits['total-blocking-time'] ? audits['total-blocking-time'].score : null,
+          isHttps: audits['is-on-https'] ? (audits['is-on-https'].score === 1) : null
+        };
+
+        showResults(url, scores, auditDetails);
+      })
+      .catch(function(err) {
+        console.error('PageSpeed API error:', err);
+        showError();
+      });
+  }
+
+  function getScoreColor(score) {
+    if (score >= 90) return '#22c55e';
+    if (score >= 50) return '#f48021';
+    return '#ef4444';
+  }
+
+  function getScoreLabel(score) {
+    if (score >= 90) return 'Good';
+    if (score >= 50) return 'Needs Work';
+    return 'Poor';
+  }
+
+  function showResults(url, scores, auditDetails) {
+    document.getElementById('grader-loading-state').style.display = 'none';
+    document.getElementById('grader-results-state').style.display = 'block';
+
+    // Overall score
+    var overallEl = document.getElementById('overall-score');
+    var overallColor = getScoreColor(scores.overall);
+    overallEl.innerHTML = '<span style="color:' + overallColor + '">' + scores.overall + '</span><small>/100</small>';
+
+    // URL display
+    document.getElementById('results-url').textContent = url.replace(/^https?:\/\//, '');
+
+    // Score rows
+    var categories = [
+      { name: 'Mobile Experience', score: scores.mobile },
+      { name: 'Page Speed', score: scores.speed },
+      { name: 'Local SEO', score: scores.seo },
+      { name: 'Conversion Design', score: scores.conversion },
+      { name: 'Trust & Authority', score: scores.trust }
+    ];
+
+    var rowsHtml = '';
+    categories.forEach(function(cat) {
+      var color = getScoreColor(cat.score);
+      var label = getScoreLabel(cat.score);
+      var barWidth = Math.max(cat.score, 5);
+      rowsHtml += '<div class="score-row">'
+        + '<div class="score-row-label">' + cat.name + '</div>'
+        + '<div class="score-row-bar"><div class="score-row-fill" style="width:' + barWidth + '%;background:' + color + '"></div></div>'
+        + '<div class="score-row-value" style="color:' + color + '">' + cat.score + ' <span class="score-tag">' + label + '</span></div>'
+        + '</div>';
+    });
+
+    document.getElementById('score-rows').innerHTML = rowsHtml;
+
+    // Run deep Claude analysis
+    runAnalysis(url, scores, auditDetails);
+  }
+
+  function renderAnalysisMarkdown(text) {
+    // Convert **bold headers** to styled h4 and paragraphs to p elements
+    var lines = text.split('\n');
+    var html = '';
+    var i = 0;
+    while (i < lines.length) {
+      var line = lines[i].trim();
+      if (!line) { i++; continue; }
+      // Check for **Header** pattern (standalone bold line)
+      var headerMatch = line.match(/^\*\*(.+?)\*\*$/);
+      if (headerMatch) {
+        html += '<h4 class="analysis-heading">' + headerMatch[1] + '</h4>';
+      } else {
+        // Replace inline **bold** with <strong>
+        var processed = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        html += '<p class="analysis-paragraph">' + processed + '</p>';
+      }
+      i++;
+    }
+    return html;
+  }
+
+  function runAnalysis(url, scores, auditDetails) {
+    var analysisDiv = document.getElementById('grader-analysis');
+    analysisDiv.style.display = 'block';
+    analysisDiv.innerHTML = '<p class="analysis-paragraph" style="font-style:italic;">Analyzing your results\u2026</p>';
+
+    fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        url: url,
+        scores: scores,
+        auditDetails: auditDetails
+      })
+    })
+    .then(function(response) {
+      if (!response.ok) throw new Error('Analysis API error');
+      return response.json();
+    })
+    .then(function(data) {
+      if (data.analysis) {
+        analysisDiv.innerHTML = renderAnalysisMarkdown(data.analysis);
+      } else {
+        analysisDiv.style.display = 'none';
+      }
+    })
+    .catch(function(err) {
+      console.error('Claude analysis error:', err);
+      analysisDiv.style.display = 'none';
+    });
+  }
+
+  function showError() {
+    document.getElementById('grader-form-state').style.display = 'none';
+    document.getElementById('grader-loading-state').style.display = 'none';
+    document.getElementById('grader-results-state').style.display = 'none';
+    document.getElementById('grader-error-state').style.display = 'flex';
+  }
+</script>
+
+<style>
+  .hero-sub-secondary {
+    margin-top: -8px;
+    font-weight: 500;
+  }
+
+  #hs-grader-form {
+    width: 100%;
+  }
+
+  #hs-grader-form iframe {
+    width: 100% !important;
+    min-height: 400px;
+  }
+
+  /* Loading state */
+  #grader-loading-state {
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .loading-inner {
+    text-align: center;
+  }
+
+  .loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #e2e5ea;
+    border-top-color: #f48021;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .loading-inner h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .loading-inner p {
+    font-size: 14px;
+    color: var(--text-light);
+  }
+
+  /* Results state */
+  .results-inner {
+    text-align: center;
+  }
+
+  .results-header {
+    margin-bottom: 8px;
+  }
+
+  .results-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .overall-score {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .overall-score small {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 0;
+  }
+
+  .results-url {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    word-break: break-all;
+  }
+
+  .score-rows {
+    text-align: left;
+  }
+
+  :global(.score-row) {
+    display: grid;
+    grid-template-columns: 140px 1fr 90px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  :global(.score-row:last-child) {
+    border-bottom: none;
+  }
+
+  :global(.score-row-label) {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  :global(.score-row-bar) {
+    height: 8px;
+    background: #e2e5ea;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  :global(.score-row-fill) {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+
+  :global(.score-row-value) {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  :global(.score-tag) {
+    font-size: 11px;
+    font-weight: 500;
+    display: block;
+    line-height: 1;
+  }
+
+  #grader-analysis {
+    background: var(--light-bg);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    text-align: left;
+  }
+
+  :global(.analysis-heading) {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    margin-top: 14px;
+  }
+
+  :global(.analysis-heading:first-child) {
+    margin-top: 0;
+  }
+
+  :global(.analysis-paragraph) {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0 0 6px;
+  }
+
+  :global(.analysis-paragraph:last-child) {
+    margin-bottom: 0;
+  }
+
+  .results-cta {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--orange);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .results-cta:hover {
+    color: var(--orange-dark);
+  }
+
+  /* Error state */
+  #grader-error-state {
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+
+  .error-inner {
+    text-align: center;
+  }
+
+  .error-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    font-size: 28px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .error-inner h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .error-inner p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 480px) {
+    :global(.score-row) {
+      grid-template-columns: 110px 1fr 70px;
+      gap: 8px;
+    }
+
+    :global(.score-row-label) {
+      font-size: 12px;
+    }
+
+    .overall-score {
+      font-size: 44px;
+    }
+  }
+</style>

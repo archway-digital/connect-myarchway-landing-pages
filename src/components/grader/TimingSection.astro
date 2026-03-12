@@ -1,0 +1,153 @@
+---
+---
+
+<section class="section timing-section">
+  <div class="section-inner">
+    <div class="timing-intro fade-up">
+      <div class="section-label">Your Site Is Working Against You</div>
+      <h2>Your Agency Grew. Your Website Is Still Stuck in Year One.</h2>
+    </div>
+
+    <div class="accordion fade-up">
+      <div class="accordion-item open">
+        <button class="accordion-trigger" aria-expanded="true">
+          <span>The AMS Template Problem</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p>You&rsquo;ve added producers, expanded your book, and built a real operation. But if your website still looks like it did three years ago &mdash; or worse, it came from the template your AMS vendor handed you &mdash; it&rsquo;s not keeping up with the agency you&rsquo;ve become.</p>
+          <p>HawkSoft, Applied, Vertafore. They&rsquo;re great for running your book. They&rsquo;re not web design companies, and the sites they provide look exactly like what they are: placeholders with your logo on them. Same layout. Same stock photos. Same generic &ldquo;get a quote&rdquo; button that nobody clicks. Meanwhile, the agency down the street with a real site is getting the call.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span>What Real Agency Sites Do</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p>A real agency website shows up in the local map pack when someone searches &ldquo;insurance agency near me.&rdquo; It loads in under two seconds on a phone. It has a clear call-to-action above the fold, real photos of your team, carrier logos that build trust, and client reviews that close the deal before you ever pick up the phone.</p>
+          <p>It&rsquo;s not a brochure &mdash; it&rsquo;s a tool that works for you around the clock. Every page has a job. Every element earns its place. And when a prospect lands on it, they don&rsquo;t bounce to the next agency. They call you.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">
+          <span>The Timing Window</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p>A proper website rebuild takes 8&ndash;12 weeks. If your peak season starts in September, that puts Q2 as the last comfortable window to start. Every week you wait compresses the timeline and raises the cost.</p>
+          <p><em>Getting your grade now gives you time to fix it &mdash; not scramble.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.parentElement;
+      const isOpen = item.classList.contains('open');
+
+      // Close all items
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<style>
+  .timing-section {
+    background: var(--white);
+  }
+
+  .timing-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+
+  .accordion {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #e2e5ea;
+  }
+
+  .accordion-item:first-child {
+    border-top: 1px solid #e2e5ea;
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+  }
+
+  .accordion-trigger span {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    transition: color 0.2s;
+  }
+
+  .accordion-trigger:hover span {
+    color: var(--orange);
+  }
+
+  .accordion-chevron {
+    color: var(--text-light);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .accordion-item.open .accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-item.open .accordion-trigger span {
+    color: var(--orange);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 0;
+  }
+
+  .accordion-item.open .accordion-content {
+    max-height: 500px;
+    padding: 0 0 24px;
+  }
+
+  .accordion-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .accordion-content p:last-child {
+    margin-bottom: 0;
+  }
+</style>

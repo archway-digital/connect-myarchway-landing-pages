@@ -1,0 +1,128 @@
+---
+---
+
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="grade-intro fade-up">
+      <div class="section-label">What We Score</div>
+      <h2>Five Categories. One Clear Picture of Where You Stand.</h2>
+    </div>
+
+    <div class="tabs-container fade-up">
+      <div class="tab-bar" role="tablist">
+        <button class="tab active" data-tab="0" role="tab" aria-selected="true">Mobile Experience</button>
+        <button class="tab" data-tab="1" role="tab" aria-selected="false">Page Speed</button>
+        <button class="tab" data-tab="2" role="tab" aria-selected="false">Local SEO</button>
+        <button class="tab" data-tab="3" role="tab" aria-selected="false">Conversion Design</button>
+        <button class="tab" data-tab="4" role="tab" aria-selected="false">Trust &amp; Authority</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="0" role="tabpanel">
+        <p>Over 60% of insurance shoppers start on their phone. We check whether your site responds properly on mobile devices, whether text is readable without zooming, buttons are large enough to tap, and forms actually work on small screens. If a prospect has to pinch and scroll just to find your phone number, you&rsquo;re losing them before they ever make contact.</p>
+      </div>
+      <div class="tab-panel" data-panel="1" role="tabpanel">
+        <p>Every second counts. If your site takes more than three seconds to load, roughly half your visitors leave before they see a single word. We measure actual load times, check for oversized images, render-blocking scripts, and hosting performance. Slow sites don&rsquo;t just frustrate visitors &mdash; Google penalizes them in search rankings too.</p>
+      </div>
+      <div class="tab-panel" data-panel="2" role="tabpanel">
+        <p>When someone searches &ldquo;insurance agency near me,&rdquo; do you show up? We look at your meta tags, title structure, schema markup, and whether your site is connected to Google Business Profile. Local SEO is how agencies win the searches that actually matter &mdash; the ones from people in your area who are ready to buy.</p>
+      </div>
+      <div class="tab-panel" data-panel="3" role="tabpanel">
+        <p>Traffic without conversion is just wasted money. We evaluate whether your site has clear calls-to-action, visible quote forms, logical page flow, and accessible navigation. A good insurance website doesn&rsquo;t just look professional &mdash; it guides visitors toward taking action, whether that&rsquo;s requesting a quote, calling your office, or booking a meeting.</p>
+      </div>
+      <div class="tab-panel" data-panel="4" role="tabpanel">
+        <p>Insurance is a trust business. We check for HTTPS security, client testimonials, carrier and association logos, team bios, and visible contact information. These signals tell a visitor &mdash; in seconds &mdash; whether your agency is legitimate and established. Without them, you&rsquo;re asking strangers to hand you their most valuable assets on faith alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+
+<style>
+  .grade-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .tab-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 1px solid #e2e5ea;
+    margin-bottom: 32px;
+  }
+
+  .tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .tab:hover {
+    color: var(--charcoal);
+  }
+
+  .tab.active {
+    color: var(--orange);
+    font-weight: 700;
+    border-bottom-color: var(--orange);
+  }
+
+  .tab-panel {
+    display: none;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 120px;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+
+  .tab-panel p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+
+  @media (max-width: 768px) {
+    .tab-bar {
+      overflow-x: auto;
+      justify-content: flex-start;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .tab-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      white-space: nowrap;
+      font-size: 14px;
+      padding: 10px 16px;
+    }
+  }
+</style>
