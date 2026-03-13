@@ -66,50 +66,45 @@
 <script is:inline>
   var graderSubmittedUrl = '';
 
+  // Poll for the website input and attach listener as soon as it appears
+  var urlWatcher = setInterval(function() {
+    var input = document.querySelector('#hs-grader-form input[name="website"]')
+      || document.querySelector('#hs-grader-form input[name="company_website"]')
+      || document.querySelector('#hs-grader-form input[type="url"]');
+    if (input) {
+      clearInterval(urlWatcher);
+      input.addEventListener('input', function() { graderSubmittedUrl = input.value; });
+      input.addEventListener('change', function() { graderSubmittedUrl = input.value; });
+    }
+  }, 500);
+
   hbspt.forms.create({
     portalId: "6869933",
     formId: "cd1969af-ef3a-42ef-93c1-1e5b04913a92",
     region: "na2",
     target: "#hs-grader-form",
-    onBeforeFormSubmit: function($form) {
-      // Capture the website URL before submission
-      var inputs = $form.querySelectorAll ? $form.querySelectorAll('input') : $form.find('input');
-      if (inputs.forEach) {
+    onFormSubmitted: function() {
+      // Last-chance capture directly from the DOM
+      if (!graderSubmittedUrl) {
+        var input = document.querySelector('#hs-grader-form input[name="website"]')
+          || document.querySelector('#hs-grader-form input[name="company_website"]')
+          || document.querySelector('#hs-grader-form input[type="url"]');
+        if (input && input.value) graderSubmittedUrl = input.value;
+      }
+      // Final fallback: scan text inputs for anything with a dot (URL-like)
+      if (!graderSubmittedUrl) {
+        var inputs = document.querySelectorAll('#hs-grader-form input[type="text"], #hs-grader-form input[type="url"]');
         inputs.forEach(function(input) {
-          if (input.type === 'url' || input.type === 'text') {
-            var val = input.value;
-            if (val && (val.indexOf('.') > -1) && !val.indexOf('@') > -1) {
-              graderSubmittedUrl = val;
-            }
+          var val = input.value;
+          if (val && val.indexOf('.') > -1 && val.indexOf('@') === -1) {
+            graderSubmittedUrl = val;
           }
         });
-      }
-      // Also check by name attribute for HubSpot website field
-      var urlInput = $form.querySelector ? $form.querySelector('input[name="website"]') : null;
-      if (!urlInput) urlInput = $form.querySelector ? $form.querySelector('input[name="company_website"]') : null;
-      if (!urlInput) urlInput = $form.querySelector ? $form.querySelector('input[type="url"]') : null;
-      if (urlInput && urlInput.value) {
-        graderSubmittedUrl = urlInput.value;
-      }
-    },
-    onFormSubmitted: function() {
-      if (!graderSubmittedUrl) {
-        // Fallback: try to find URL from the iframe
-        var iframe = document.querySelector('#hs-grader-form iframe');
-        if (iframe) {
-          try {
-            var iframeInputs = iframe.contentDocument.querySelectorAll('input[type="url"], input[name="website"], input[name="company_website"]');
-            iframeInputs.forEach(function(input) {
-              if (input.value) graderSubmittedUrl = input.value;
-            });
-          } catch(e) {}
-        }
       }
 
       if (graderSubmittedUrl) {
         runGrader(graderSubmittedUrl);
       } else {
-        // No URL captured — show a generic thank you
         showError();
       }
     },
@@ -184,7 +179,8 @@
       + '&category=performance'
       + '&category=seo'
       + '&category=accessibility'
-      + '&category=best-practices';
+      + '&category=best-practices'
+      + '&key=AIzaSyAqnfX4k9mSEg28dJtZ0CHfYbPEXc1SR30';
 
     fetch(apiUrl)
       .then(function(response) {
