@@ -63,16 +63,23 @@
 <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
 <script is:inline>
   var graderSubmittedUrl = '';
+  var capturedEmail = '';
 
-  // Poll for the website input and attach listener as soon as it appears
-  var urlWatcher = setInterval(function() {
-    var input = document.querySelector('#hs-grader-form input[name="website"]')
+  // Poll for the website and email inputs and attach listeners as soon as they appear
+  var formWatcher = setInterval(function() {
+    var urlInput = document.querySelector('#hs-grader-form input[name="website"]')
       || document.querySelector('#hs-grader-form input[name="company_website"]')
       || document.querySelector('#hs-grader-form input[type="url"]');
-    if (input) {
-      clearInterval(urlWatcher);
-      input.addEventListener('input', function() { graderSubmittedUrl = input.value; });
-      input.addEventListener('change', function() { graderSubmittedUrl = input.value; });
+    var emailInput = document.querySelector('#hs-grader-form input[name="email"]')
+      || document.querySelector('#hs-grader-form input[type="email"]');
+    if (urlInput) {
+      clearInterval(formWatcher);
+      urlInput.addEventListener('input', function() { graderSubmittedUrl = urlInput.value; });
+      urlInput.addEventListener('change', function() { graderSubmittedUrl = urlInput.value; });
+      if (emailInput) {
+        emailInput.addEventListener('input', function() { capturedEmail = emailInput.value; });
+        emailInput.addEventListener('change', function() { capturedEmail = emailInput.value; });
+      }
     }
   }, 500);
 
@@ -82,7 +89,7 @@
     region: "na2",
     target: "#hs-grader-form",
     onFormSubmitted: function() {
-      // Last-chance capture directly from the DOM
+      // Last-chance URL capture directly from the DOM
       if (!graderSubmittedUrl) {
         var input = document.querySelector('#hs-grader-form input[name="website"]')
           || document.querySelector('#hs-grader-form input[name="company_website"]')
@@ -98,6 +105,12 @@
             graderSubmittedUrl = val;
           }
         });
+      }
+      // Last-chance email capture
+      if (!capturedEmail) {
+        var emailInput = document.querySelector('#hs-grader-form input[name="email"]')
+          || document.querySelector('#hs-grader-form input[type="email"]');
+        if (emailInput && emailInput.value) capturedEmail = emailInput.value;
       }
 
       if (graderSubmittedUrl) {
@@ -298,6 +311,28 @@
 
     if (parts.length > 0) {
       narrativeDiv.innerHTML = '<p>' + parts.join(' ') + '</p>';
+    }
+
+    // Post note and task to HubSpot contact record (silent — never blocks UI)
+    if (capturedEmail) {
+      fetch('/api/hubspot-note', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: capturedEmail,
+          url: url,
+          scores: {
+            overall: scores.overall,
+            mobile: scores.mobile,
+            pageSpeed: scores.speed,
+            seo: scores.seo,
+            conversion: scores.conversion,
+            trust: scores.trust
+          },
+          narrative: narrativeDiv.textContent || ''
+        })
+      })
+      .catch(function(err) { console.error('HubSpot note failed:', err); });
     }
   }
 
