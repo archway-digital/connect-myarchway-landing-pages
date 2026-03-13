@@ -287,30 +287,142 @@
 
     document.getElementById('score-rows').innerHTML = rowsHtml;
 
-    // Build narrative from Google's own data
+    // Build full narrative from Google's Lighthouse data
     var narrativeDiv = document.getElementById('grader-narrative');
     var audits = data.lighthouseResult.audits || {};
     var cats = data.lighthouseResult.categories || {};
-    var parts = [];
 
-    var perfDesc = cats.performance && cats.performance.description ? cats.performance.description : '';
-    if (perfDesc) parts.push(perfDesc);
-
-    var details = [];
-    var lcpDisplay = audits['largest-contentful-paint'] ? audits['largest-contentful-paint'].displayValue : null;
-    var siDisplay = audits['speed-index'] ? audits['speed-index'].displayValue : null;
-    var tbtDisplay = audits['total-blocking-time'] ? audits['total-blocking-time'].displayValue : null;
-
-    if (lcpDisplay) details.push('largest contentful paint is ' + lcpDisplay);
-    if (siDisplay) details.push('speed index is ' + siDisplay);
-    if (tbtDisplay) details.push('total blocking time is ' + tbtDisplay);
-
-    if (details.length > 0) {
-      parts.push('Your ' + details.join(', ') + '.');
+    function metricColor(s) {
+      if (s === null || s === undefined) return '#9ca3af';
+      if (s >= 0.9) return '#22c55e';
+      if (s >= 0.5) return '#f48021';
+      return '#ef4444';
     }
 
-    if (parts.length > 0) {
-      narrativeDiv.innerHTML = '<p>' + parts.join(' ') + '</p>';
+    function getFailingAudits(category) {
+      if (!category || !category.auditRefs) return [];
+      var failing = [];
+      category.auditRefs.forEach(function(ref) {
+        var audit = audits[ref.id];
+        if (!audit) return;
+        if (audit.scoreDisplayMode === 'notApplicable') return;
+        if (audit.scoreDisplayMode === 'informative') return;
+        if (audit.scoreDisplayMode === 'manual') return;
+        if (audit.score !== null && audit.score !== undefined && audit.score < 0.9) {
+          failing.push({ title: audit.title, score: audit.score, displayValue: audit.displayValue || '' });
+        }
+      });
+      failing.sort(function(a, b) { return a.score - b.score; });
+      return failing;
+    }
+
+    function renderSection(heading, catKey, catLabel, metricsHtml) {
+      var cat = cats[catKey];
+      if (!cat) return '';
+      var catScore = Math.round(cat.score * 100);
+      var badgeColor = getScoreColor(catScore);
+      var failing = getFailingAudits(cat);
+      var s = '<div class="narrative-section">';
+      s += '<h4 class="narrative-heading">' + heading + '</h4>';
+      s += '<div class="narrative-score-badge" style="background:' + badgeColor + '">' + catLabel + ': ' + catScore + '/100</div>';
+      if (metricsHtml) s += metricsHtml;
+      if (failing.length > 0) {
+        var showCount = Math.min(failing.length, 5);
+        s += '<div class="narrative-issues"><span class="issues-label">Needs attention:</span><ul class="issues-list">';
+        for (var i = 0; i < showCount; i++) {
+          var suffix = failing[i].displayValue ? ' (' + failing[i].displayValue + ')' : '';
+          s += '<li>' + failing[i].title + suffix + '</li>';
+        }
+        if (failing.length > showCount) {
+          s += '<li class="issues-more">+ ' + (failing.length - showCount) + ' more</li>';
+        }
+        s += '</ul></div>';
+      } else {
+        s += '<p class="narrative-pass">All checks passed.</p>';
+      }
+      s += '</div>';
+      return s;
+    }
+
+    // Performance section with Core Web Vitals grid
+    var coreMetrics = [
+      { id: 'first-contentful-paint', label: 'First Contentful Paint (FCP)' },
+      { id: 'largest-contentful-paint', label: 'Largest Contentful Paint (LCP)' },
+      { id: 'speed-index', label: 'Speed Index' },
+      { id: 'total-blocking-time', label: 'Total Blocking Time (TBT)' },
+      { id: 'cumulative-layout-shift', label: 'Cumulative Layout Shift (CLS)' },
+      { id: 'interactive', label: 'Time to Interactive (TTI)' }
+    ];
+    var metricsGrid = '<div class="metric-grid">';
+    coreMetrics.forEach(function(m) {
+      var audit = audits[m.id];
+      if (!audit || audit.scoreDisplayMode === 'notApplicable') return;
+      var val = audit.displayValue || 'N/A';
+      var color = metricColor(audit.score);
+      metricsGrid += '<div class="metric-item">'
+        + '<span class="metric-dot" style="background:' + color + '"></span>'
+        + '<span class="metric-label">' + m.label + '</span>'
+        + '<span class="metric-value">' + val + '</span>'
+        + '</div>';
+    });
+    metricsGrid += '</div>';
+
+    var narrativeHtml = '';
+    narrativeHtml += renderSection('Core Web Vitals & Speed', 'performance', 'Performance', metricsGrid);
+    narrativeHtml += renderSection('SEO', 'seo', 'SEO', null);
+    narrativeHtml += renderSection('Accessibility', 'accessibility', 'Accessibility', null);
+    narrativeHtml += renderSection('Best Practices', 'best-practices', 'Best Practices', null);
+    narrativeDiv.innerHTML = narrativeHtml;
+
+    // Build structured plain-text narrative for HubSpot note
+    function buildHubSpotNarrative() {
+      var lines = [];
+
+      function addCategoryNarrative(heading, catKey) {
+        var cat = cats[catKey];
+        if (!cat) return;
+        var catScore = Math.round(cat.score * 100);
+        lines.push('');
+        lines.push(heading.toUpperCase());
+        lines.push('Score: ' + catScore + '/100');
+
+        // Add metrics for performance category
+        if (catKey === 'performance') {
+          var metricIds = [
+            { id: 'first-contentful-paint', label: 'First Contentful Paint' },
+            { id: 'largest-contentful-paint', label: 'Largest Contentful Paint' },
+            { id: 'speed-index', label: 'Speed Index' },
+            { id: 'total-blocking-time', label: 'Total Blocking Time' },
+            { id: 'cumulative-layout-shift', label: 'Cumulative Layout Shift' },
+            { id: 'interactive', label: 'Time to Interactive' }
+          ];
+          metricIds.forEach(function(m) {
+            var a = audits[m.id];
+            if (a && a.displayValue && a.scoreDisplayMode !== 'notApplicable') {
+              lines.push('  ' + m.label + ': ' + a.displayValue);
+            }
+          });
+        }
+
+        // Add failing audits
+        var failing = getFailingAudits(cat);
+        if (failing.length > 0) {
+          lines.push('Needs attention:');
+          failing.forEach(function(f) {
+            var suffix = f.displayValue ? ' (' + f.displayValue + ')' : '';
+            lines.push('  - ' + f.title + suffix);
+          });
+        } else {
+          lines.push('All checks passed.');
+        }
+      }
+
+      addCategoryNarrative('Core Web Vitals & Speed', 'performance');
+      addCategoryNarrative('SEO', 'seo');
+      addCategoryNarrative('Accessibility', 'accessibility');
+      addCategoryNarrative('Best Practices', 'best-practices');
+
+      return lines.join('\n');
     }
 
     // Post note and task to HubSpot contact record (silent — never blocks UI)
@@ -329,7 +441,7 @@
             conversion: scores.conversion,
             trust: scores.trust
           },
-          narrative: narrativeDiv.textContent || ''
+          narrative: buildHubSpotNarrative()
         })
       })
       .catch(function(err) { console.error('HubSpot note failed:', err); });
@@ -493,6 +605,132 @@
     font-size: 13px;
     line-height: 1.6;
     color: var(--text-light);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  #grader-narrative::-webkit-scrollbar { width: 4px; }
+  #grader-narrative::-webkit-scrollbar-track { background: transparent; }
+  #grader-narrative::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  :global(.narrative-section) {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  :global(.narrative-section:last-child) {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  :global(.narrative-section:first-child) {
+    padding-top: 0;
+  }
+
+  :global(.narrative-heading) {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--charcoal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  :global(.narrative-score-badge) {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  :global(.metric-grid) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    margin-bottom: 10px;
+  }
+
+  :global(.metric-item) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  :global(.metric-dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  :global(.metric-label) {
+    color: var(--text-light);
+    flex: 1;
+    min-width: 0;
+  }
+
+  :global(.metric-value) {
+    font-weight: 700;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+
+  :global(.narrative-issues) {
+    margin-top: 6px;
+  }
+
+  :global(.issues-label) {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  :global(.issues-list) {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+  }
+
+  :global(.issues-list li) {
+    font-size: 12px;
+    color: var(--text-light);
+    padding: 2px 0 2px 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  :global(.issues-list li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ef4444;
+  }
+
+  :global(.issues-list li.issues-more) {
+    color: var(--orange);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  :global(.issues-list li.issues-more::before) {
+    display: none;
+  }
+
+  :global(.narrative-pass) {
+    font-size: 12px;
+    color: #22c55e;
+    font-weight: 600;
+    margin-top: 4px;
   }
 
   .results-cta {
@@ -559,6 +797,10 @@
 
     .overall-score {
       font-size: 44px;
+    }
+
+    :global(.metric-grid) {
+      grid-template-columns: 1fr;
     }
   }
 </style>

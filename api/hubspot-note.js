@@ -52,7 +52,7 @@ export default async function handler(req, res) {
       `Conversion Design: ${scores.conversion}/100`,
       `Trust & Authority: ${scores.trust}/100`,
       '',
-      'PAGESPEED NARRATIVE',
+      'DETAILED ANALYSIS',
       narrative || 'Not available'
     ].join('\n');
 
