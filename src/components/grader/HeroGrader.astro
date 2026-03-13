@@ -406,33 +406,8 @@
   function runAnalysis(url, scores, auditDetails) {
     var analysisDiv = document.getElementById('grader-analysis');
     analysisDiv.style.display = 'block';
-    analysisDiv.innerHTML = '<p class="analysis-paragraph" style="font-style:italic;">Analyzing your results\u2026</p>';
-
-    fetch('/api/analyze', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        url: url,
-        scores: scores,
-        auditDetails: auditDetails
-      })
-    })
-    .then(function(response) {
-      if (!response.ok) throw new Error('Analysis API error');
-      return response.json();
-    })
-    .then(function(data) {
-      if (data.analysis) {
-        analysisDiv.innerHTML = renderAnalysisMarkdown(data.analysis);
-      } else {
-        throw new Error('No analysis in response');
-      }
-    })
-    .catch(function(err) {
-      console.error('Claude analysis unavailable, using fallback:', err);
-      var fallback = generateFallbackAnalysis(url, scores, auditDetails);
-      analysisDiv.innerHTML = renderAnalysisMarkdown(fallback);
-    });
+    var fallback = generateFallbackAnalysis(url, scores, auditDetails);
+    analysisDiv.innerHTML = renderAnalysisMarkdown(fallback);
   }
 
   function showError() {
