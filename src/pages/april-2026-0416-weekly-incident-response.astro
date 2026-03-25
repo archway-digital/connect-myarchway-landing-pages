@@ -1,0 +1,61 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Does Your Agency Have an Incident Response Plan? | Archway"
+  description="Book a compliance review and walk away with incident response documentation that is written, tested, and ready before anyone asks for it."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Does Your Agency Have an <em>Incident Response Plan?</em>"
+    subhead="Book a compliance review and walk away with incident response documentation that is written, tested, and ready before anyone asks for it."
+    formId="PLACEHOLDER_FORM_ID_07"
+  />
+  <ComplianceBody
+    bodyHtml="<p>Carriers are asking for incident response documentation more frequently. The question is not whether you need it. The question is whether you have it before someone asks.</p><p>A compliance review from Archway includes incident response plan review or creation alongside your full security posture assessment. Who to call, what to do in the first 24 hours, what to tell clients, and what to tell your carrier. All of it documented and ready.</p><p>Price range is $689 to $4,080. Most reviews are completed within two weeks of booking.</p>"
+    bullets={[
+      "Incident response plan review or creation",
+      "Security controls and access management",
+      "MFA enforcement across all users and systems",
+      "Backup and disaster recovery validation",
+      "NYDFS and carrier cyber requirement alignment",
+      "Written findings report and remediation priority list"
+    ]}
+  />
+  <BottomCTA
+    heading="Ready to find out where you stand?"
+    subtext="Book your compliance review now. Most reviews are completed within two weeks of booking."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

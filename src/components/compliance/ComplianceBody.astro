@@ -1,0 +1,119 @@
+---
+interface Props {
+  bodyHtml: string;
+  bullets: string[];
+  authorityLine?: string;
+  whoThisIsFor?: string;
+}
+
+const { bodyHtml, bullets, authorityLine, whoThisIsFor } = Astro.props;
+---
+
+<section class="section section-light">
+  <div class="section-inner">
+    <div class="compliance-body fade-up">
+      <div class="body-prose" set:html={bodyHtml} />
+
+      <ul class="bullet-list">
+        {bullets.map((bullet) => (
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f48021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+
+      {authorityLine && (
+        <div class="authority-line">
+          <p>{authorityLine}</p>
+        </div>
+      )}
+
+      {whoThisIsFor && (
+        <div class="who-this-is-for">
+          <h3>Who this is for</h3>
+          <p>{whoThisIsFor}</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .compliance-body {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .body-prose {
+    margin-bottom: 32px;
+  }
+
+  :global(.body-prose p) {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  :global(.body-prose p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .bullet-list li svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .authority-line {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 8px;
+  }
+
+  .authority-line p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--blue);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .who-this-is-for {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 8px;
+  }
+
+  .who-this-is-for h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .who-this-is-for p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+</style>

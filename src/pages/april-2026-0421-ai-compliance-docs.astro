@@ -1,0 +1,62 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Your Compliance Documents Should Live in SharePoint | Archway"
+  description="Book a compliance review and walk away with editable SOP and compliance documents that live where your team can actually find them."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Your Compliance Documents Should Live in SharePoint. <em>We Can Build That.</em>"
+    subhead="Book a compliance review and walk away with editable SOP and compliance documents that live where your team can actually find them."
+    formId="PLACEHOLDER_FORM_ID_09"
+  />
+  <ComplianceBody
+    bodyHtml="<p>Most agencies store their compliance documentation in the wrong place. A PDF someone emailed once. A folder nobody maintains. The memory of the person who set it up. None of that holds up when a carrier, an auditor, or a new team member asks for it.</p><p>We build editable SOP and compliance documents that live in SharePoint. Versioned, accessible to the right people, and easy to update when your setup or carrier requirements change. Incident response plans, security policies, vendor access lists. All of it in one place, owned by your agency, not a single person&rsquo;s inbox.</p><p>A compliance review is where we start. It tells us what documents you need, what your current setup is missing, and what needs to be built or updated.</p><p>Price range is $689 to $4,080. Most reviews are completed within two weeks of booking.</p>"
+    bullets={[
+      "Editable SOPs and compliance documents built in SharePoint",
+      "Incident response plan review or creation",
+      "Security policy documentation and version control setup",
+      "Access control and vendor documentation",
+      "NYDFS and carrier cyber requirement alignment",
+      "Written findings report and remediation priority list"
+    ]}
+    whoThisIsFor="Agencies already in Microsoft 365 who want their compliance documentation to live where their team already works, not scattered across email threads and personal folders."
+  />
+  <BottomCTA
+    heading="Ready to find out where you stand?"
+    subtext="Book your compliance review now. Most reviews are completed within two weeks of booking."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

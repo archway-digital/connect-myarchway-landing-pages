@@ -1,0 +1,100 @@
+---
+interface Props {
+  headline: string;
+  subhead: string;
+  formId: string;
+}
+
+const { headline, subhead, formId } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        Compliance Season 2026
+      </div>
+      <h1 set:html={headline} />
+      <p class="hero-sub">{subhead}</p>
+    </div>
+
+    <div class="hero-form-card" id="hero-form">
+      <div class="form-header">
+        <h2>Get the Free Checklist</h2>
+        <p>Takes 30 seconds.</p>
+      </div>
+      <div id="hs-compliance-form"></div>
+      <p class="form-privacy">No spam. No sales call unless you want one. Just the checklist.</p>
+    </div>
+  </div>
+</section>
+
+<script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+<script is:inline define:vars={{ formId }}>
+  hbspt.forms.create({
+    portalId: "6869933",
+    formId: formId,
+    region: "na2",
+    target: "#hs-compliance-form",
+    css: "\
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+      \
+      .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .hs-form fieldset { max-width: 100% !important; }\
+      .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+      .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+      \
+      .hs-form-field { margin-bottom: 16px; }\
+      \
+      .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+      \
+      .hs-form-required { color: #ef4444; margin-left: 2px; }\
+      \
+      .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+      \
+      .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+      \
+      .hs-input::placeholder { color: #9ca3af; }\
+      \
+      select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+      \
+      .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+      \
+      .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+      .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+      \
+      .hs-submit { margin-top: 8px; }\
+      \
+      .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+      .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+      \
+      .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+      .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+      .hs-input.error { border-color: #ef4444 !important; }\
+      \
+      .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+      .legal-consent-container a { color: #f48021; }\
+      \
+      @media (max-width: 480px) {\
+        .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+      }\
+    "
+  });
+</script>
+
+<style>
+  #hs-compliance-form {
+    width: 100%;
+  }
+
+  #hs-compliance-form iframe {
+    width: 100% !important;
+    min-height: 400px;
+  }
+</style>

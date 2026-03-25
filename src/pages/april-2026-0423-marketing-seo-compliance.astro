@@ -1,0 +1,61 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Compliance Signals That Help Your Agency Rank Higher | Archway"
+  description="Book a compliance review and improve both your security posture and your online trust signals at the same time."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Compliance Signals That Help Your Agency <em>Rank Higher</em>"
+    subhead="Book a compliance review and improve both your security posture and your online trust signals at the same time."
+    formId="PLACEHOLDER_FORM_ID_10"
+  />
+  <ComplianceBody
+    bodyHtml="<p>SSL certificates, privacy policies, secure contact forms, and data handling transparency are not just compliance requirements. They are signals Google uses when evaluating a site&rsquo;s trustworthiness. A site that looks secure ranks better and converts better.</p><p>A compliance review from Archway covers your full security posture and flags anything on the website side that is affecting your trust signals. You address the compliance requirement and improve your SEO positioning at the same time.</p><p>Price range is $689 to $4,080. Most reviews are completed within two weeks of booking.</p>"
+    bullets={[
+      "Security controls and access management",
+      "SSL certificate validity and configuration",
+      "Privacy policy accuracy and data disclosure requirements",
+      "MFA enforcement across all users and systems",
+      "NYDFS and carrier cyber requirement alignment",
+      "Written findings report and remediation priority list"
+    ]}
+  />
+  <BottomCTA
+    heading="Ready to find out where you stand?"
+    subtext="Book your compliance review now. Most reviews are completed within two weeks of booking."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

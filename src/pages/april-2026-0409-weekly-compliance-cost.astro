@@ -1,0 +1,61 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Book Your Compliance Review | Archway"
+  description="Find out exactly where your agency stands before a carrier, a breach, or a renewal conversation does it for you."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Book Your <em>Compliance Review</em>"
+    subhead="Find out exactly where your agency stands before a carrier, a breach, or a renewal conversation does it for you."
+    formId="PLACEHOLDER_FORM_ID_04"
+  />
+  <ComplianceBody
+    bodyHtml="<p>A compliance gap rarely shows up as a fine. It shows up as a carrier scrutinizing your renewal, a breach with incomplete documentation, or a claim conversation that gets complicated.</p><p>A compliance review from Archway covers your security controls, backup and recovery posture, incident response documentation, and carrier requirement alignment. You walk away with a written report and a prioritized list of what to fix.</p><p>Price range is $689 to $4,080 depending on scope. Most reviews are completed within two weeks of booking.</p>"
+    bullets={[
+      "Security controls and access management",
+      "MFA enforcement across all users and systems",
+      "Backup and disaster recovery validation",
+      "Incident response plan review or creation",
+      "NYDFS and carrier cyber requirement alignment",
+      "Written findings report and remediation priority list"
+    ]}
+  />
+  <BottomCTA
+    heading="Ready to find out where you stand?"
+    subtext="Book your compliance review now. Most reviews are completed within two weeks of booking."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

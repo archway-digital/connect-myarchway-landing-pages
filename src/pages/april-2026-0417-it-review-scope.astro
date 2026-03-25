@@ -1,0 +1,62 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Here Is What a Compliance Review Actually Covers | Archway"
+  description="Book your review and walk away with a written report and documentation you can hand to any carrier, partner, or auditor who asks."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Here Is What a Compliance Review <em>Actually Covers</em>"
+    subhead="Book your review and walk away with a written report and documentation you can hand to any carrier, partner, or auditor who asks."
+    formId="PLACEHOLDER_FORM_ID_08"
+  />
+  <ComplianceBody
+    bodyHtml="<p>A compliance review from Archway is not a checklist you fill out yourself. We review your actual setup: security controls, MFA enforcement, backup and recovery validation, incident response documentation, and alignment with current NYDFS and carrier cyber requirements.</p><p>You get a written findings report and a prioritized list of what needs attention. The deliverable is documentation you can hand to a carrier, a partner, or an auditor when they ask.</p><p>Price range is $689 to $4,080 depending on agency size and scope. Most reviews are completed within two weeks of booking.</p>"
+    bullets={[
+      "Security controls and access management",
+      "MFA enforcement across all users and systems",
+      "Backup and disaster recovery validation",
+      "Incident response plan review or creation",
+      "NYDFS and carrier cyber requirement alignment",
+      "Written findings report and remediation priority list"
+    ]}
+    authorityLine="Archway works exclusively with independent insurance agencies. We know what carriers are asking for because we help agencies answer those questions every day."
+  />
+  <BottomCTA
+    heading="Ready to find out where you stand?"
+    subtext="Book your compliance review now. Most reviews are completed within two weeks of booking."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

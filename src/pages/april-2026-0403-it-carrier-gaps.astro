@@ -1,0 +1,60 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceDownload from '../components/compliance/HeroComplianceDownload.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="The Compliance Gaps Carriers Are Flagging Right Now | Archway"
+  description="Download the free compliance checklist and see where your agency stands before a carrier asks first."
+  ctaText="Get the Free Checklist"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceDownload
+    headline="The Compliance Gaps Carriers Are <em>Flagging Right Now</em>"
+    subhead="Download the free checklist and see where your agency stands before a carrier asks first."
+    formId="PLACEHOLDER_FORM_ID_02"
+  />
+  <ComplianceBody
+    bodyHtml="<p>Carrier cyber requirements moved again this year. Agencies that have not formally reviewed their security posture in the last 12 months are the ones getting caught off guard at renewal.</p><p>This checklist covers the four areas carriers are scrutinizing most: MFA enforcement, backup validation, incident response documentation, and security assessment currency. Download it, run through it in 10 minutes, and know exactly where you stand.</p>"
+    bullets={[
+      "MFA enforcement status across all users and admin accounts",
+      "Backup validation and disaster recovery documentation",
+      "Incident response plan basics and what carriers want to see on file",
+      "Security assessment age and what renewal conversations require",
+      "NYDFS and carrier cyber requirement alignment checklist"
+    ]}
+  />
+  <BottomCTA
+    heading="Already know there are gaps?"
+    subtext="Some agencies review the checklist and immediately spot something that needs attention. If that is you, book a compliance review and we will walk through it together."
+    ctaText="Request My Compliance Review"
+    ctaHref="/april-2026-0409-weekly-compliance-cost"
+  />
+</ArchwayLayout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
