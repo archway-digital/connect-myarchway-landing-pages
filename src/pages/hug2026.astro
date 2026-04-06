@@ -1,0 +1,564 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+const formId = "aba2293f-235e-48be-b94a-bfaf41131015";
+---
+
+<ArchwayLayout title="Book Time with Archway at HUG National 2026 | Archway" description="Meet the Archway team at HUG National 2026. Book time at Booth 28, April 8-10, Loews Arlington Hotel, Arlington TX." ctaText="Book My Time at HUG" ctaHref="#hero-form">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          Official HawkSoft Partner
+        </div>
+        <h1>Book Time with Archway at <em>HUG National 2026</em></h1>
+        <p class="hero-sub">Booth 28 &middot; April 8&ndash;10 &middot; Loews Arlington Hotel &middot; Arlington, TX</p>
+        <p class="hero-intro">We&rsquo;ll be at the HUG National Conference and we&rsquo;d love to connect. Whether you&rsquo;ve got a tech challenge, a security question, or just want to talk through what other HawkSoft agencies are doing, let&rsquo;s make sure we get time together.</p>
+        <p class="hero-intro">Fill out the form and we&rsquo;ll schedule a time to meet at the event.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Book My Time at HUG</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+        <div id="hs-hug-form"></div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ formId }}>
+    hbspt.forms.create({
+      portalId: "6869933",
+      formId: formId,
+      region: "na2",
+      target: "#hs-hug-form",
+      css: "\
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+        \
+        .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .hs-form fieldset { max-width: 100% !important; }\
+        .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+        .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+        \
+        .hs-form-field { margin-bottom: 16px; }\
+        \
+        .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+        \
+        .hs-form-required { color: #ef4444; margin-left: 2px; }\
+        \
+        .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+        \
+        .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+        \
+        .hs-input::placeholder { color: #9ca3af; }\
+        \
+        select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+        \
+        .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+        \
+        .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+        .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+        \
+        .hs-submit { margin-top: 8px; }\
+        \
+        .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+        .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+        \
+        .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+        .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+        .hs-input.error { border-color: #ef4444 !important; }\
+        \
+        .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+        .legal-consent-container a { color: #f48021; }\
+        \
+        @media (max-width: 480px) {\
+          .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+        }\
+      "
+    });
+  </script>
+
+  <!-- Services Grid -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="services-header fade-up">
+        <p class="section-label">What We Do</p>
+        <h2>Empowering Independent Insurance Agencies with Tailored IT&nbsp;Solutions</h2>
+      </div>
+      <div class="services-grid fade-up">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Security &amp; Compliance</h3>
+          <p>Ensure data security and compliance with regulations to prevent breaches and protect sensitive information.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>24/7 Help Desk</h3>
+          <p>Our experienced IT team provides prompt issue resolution with around-the-clock remote support.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Managed IT Services</h3>
+          <p>Proactive monitoring, maintenance, and management of your entire technology infrastructure so you can focus on your agency.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h3>Tech Consulting</h3>
+          <p>Receive expert guidance on selecting and implementing the right products to address your specific business needs.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3>Backup &amp; Recovery</h3>
+          <p>Protect your valuable data and ensure business continuity with our robust backup and recovery services.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>Enhance your online presence with web design, development, SEO, social media marketing, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="section-inner">
+      <div class="stats-grid fade-up">
+        <div class="stat">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">Years of Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">400+</span>
+          <span class="stat-label">Insurance Agency Clients</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">5,983+</span>
+          <span class="stat-label">Secured Desktops</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">280+</span>
+          <span class="stat-label">Client Testimonials</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="about-section fade-up">
+        <p class="section-label">About Archway Computer</p>
+        <h2>Your Insurance Agency&rsquo;s Trusted Technology&nbsp;Partner</h2>
+        <p>Archway Computer is a premier IT support company that specializes in providing cutting-edge technology services for independent insurance agencies of all shapes and sizes. We understand that in today&rsquo;s fast-paced and technology-driven world, having reliable IT support is crucial for the success of your agency. That&rsquo;s why we offer comprehensive solutions tailored to meet your insurance agency&rsquo;s needs and help you thrive in the digital landscape.</p>
+        <p>At Archway Computer, we pride ourselves on delivering customized IT support and cybersecurity solutions for independent insurance agencies across the country. Our unbiased insurance technology consultants are here to assist you in making informed technology decisions, exploring software solutions, evaluating hardware options, and advising on infrastructure improvements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Archway -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="why-section fade-up">
+        <p class="section-label">Why Choose Us</p>
+        <h2>Over 30 Years of Supporting Independent Insurance&nbsp;Agencies</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>Insurance-Exclusive Focus</h3>
+            <p>Unlike other outsourced IT services, Archway works exclusively with independent insurance agencies and has a deep understanding of your unique industry challenges.</p>
+          </div>
+          <div class="why-card">
+            <h3>AMS &amp; Platform Expertise</h3>
+            <p>Our team is well versed in AMS-360, Epic, TAM, HawkSoft, EZLynx, and Partner XE. We understand the tools you use every day.</p>
+          </div>
+          <div class="why-card">
+            <h3>Customized Solutions</h3>
+            <p>We take a personalized approach to understand your unique agency&rsquo;s requirements. Our team works closely with you to design and implement solutions that align with your goals.</p>
+          </div>
+          <div class="why-card">
+            <h3>Proven Track Record</h3>
+            <p>Our team has successfully managed and supported over 5,000 desktops, ensuring smooth operations and minimizing downtime for our clients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="testimonials-section fade-up">
+        <p class="section-label">What Agencies Are Saying</p>
+        <h2>Trusted by 400+ Independent Insurance&nbsp;Agencies</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="#f48021" opacity="0.2"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-quote">A shout out to Brad and his team. In January of 2019 I told my management team that by the end of the year, I wanted everyone in our office to be able to work from home. Brad and his team were an integral part of our preparation. When Covid hit, we literally didn&rsquo;t miss a beat. After 40+ years in the insurance business myself, I couldn&rsquo;t recommend anyone more than Archway.</p>
+            <div class="testimonial-author">
+              <p class="author-name">Milo LeBaron III</p>
+              <p class="author-title">Owner, LeBaron &amp; Carroll</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="#f48021" opacity="0.2"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-quote">Start to finish has been a real pleasure working with Archway Computer. Their techs had the tedious task of connecting with all our users one by one to set them up with the AWS portal, which I know is not a small task. I want to applaud the Archway team effort. Really appreciate it.</p>
+            <div class="testimonial-author">
+              <p class="author-name">Matt Warsh, CLCS</p>
+              <p class="author-title">Korotkin Insurance Group</p>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="#f48021" opacity="0.2"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-quote">I&rsquo;ve been working with Brad Ruben and Archway Computer for several years. I&rsquo;ve referred them to many clients and I can enthusiastically endorse them. They are proactive and will respond quickly to your computer support needs at affordable monthly rates.</p>
+            <div class="testimonial-author">
+              <p class="author-name">Mary Eisenhart</p>
+              <p class="author-title">Eisenhart Consulting Group</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BottomCTA
+    heading="See You at HUG?"
+    subtext="Book a time now and we will have everything ready when you stop by Booth 28."
+    ctaText="Book My Time at HUG"
+    ctaHref="#hero-form"
+  />
+
+</ArchwayLayout>
+
+<style>
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+  }
+
+  #hs-hug-form {
+    width: 100%;
+  }
+
+  #hs-hug-form iframe {
+    width: 100% !important;
+    min-height: 400px;
+  }
+
+  /* Section Labels */
+  .section-label {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin-bottom: 12px;
+    text-align: center;
+    display: block;
+  }
+
+  .section-label::before {
+    display: none;
+  }
+
+  .about-section .section-label,
+  .why-section .section-label,
+  .testimonials-section .section-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  /* Services Grid */
+  .services-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .services-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(244, 128, 33, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Stats Bar */
+  .stats-bar {
+    background: var(--navy);
+    padding: 56px 24px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* About Section */
+  .about-section {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .about-section p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  /* Why Section */
+  .why-section {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .why-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .why-card {
+    background: var(--light-bg, #f8f9fb);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .why-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .why-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Testimonials */
+  .testimonials-section {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .testimonials-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-quote {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    flex: 1;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    border-top: 1px solid var(--card-border);
+    padding-top: 16px;
+  }
+
+  .author-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .author-title {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-header h2,
+    .about-section h2,
+    .why-section h2,
+    .testimonials-section h2 {
+      font-size: 26px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
