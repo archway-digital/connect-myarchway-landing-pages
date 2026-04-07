@@ -3,9 +3,10 @@ interface Props {
   headline: string;
   subhead: string;
   formId: string;
+  showFallback?: boolean;
 }
 
-const { headline, subhead, formId } = Astro.props;
+const { headline, subhead, formId, showFallback = true } = Astro.props;
 ---
 
 <section class="hero">
@@ -25,7 +26,7 @@ const { headline, subhead, formId } = Astro.props;
         <p>We will follow up within one business day.</p>
       </div>
       <div id="hs-compliance-form"></div>
-      <p class="form-fallback">Not ready to book yet? <a href="/april-2026-0401-weekly-compliance-ready">Download the free compliance checklist and start there.</a></p>
+      {showFallback && <p class="form-fallback">Not ready to book yet? <a href="/april-2026-0401-weekly-compliance-ready">Download the free compliance checklist and start there.</a></p>}
     </div>
   </div>
 </section>

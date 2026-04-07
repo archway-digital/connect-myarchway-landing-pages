@@ -1,0 +1,251 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import ServicesGrid from '../components/shared/ServicesGrid.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Does Your Agency Have a Compliance Gap? | Archway"
+  description="Book a 30-minute call and find out exactly where you stand before a carrier, a renewal conversation, or an incident does it for you."
+  ctaText="Request My Compliance Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    headline="Does Your Agency Have a <em>Compliance Gap?</em>"
+    subhead="Book a 30-minute call and find out exactly where you stand before a carrier, a renewal conversation, or an incident does it for you."
+    formId="PLACEHOLDER_FORM_ID_COMPLIANCE_REVIEW"
+    showFallback={false}
+  />
+
+  <!-- Problem Cards -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="problem-header fade-up">
+        <p class="section-label">What Agencies Get Wrong</p>
+        <h2>Most Agencies Have at Least One Gap They Do Not Know&nbsp;About</h2>
+      </div>
+      <div class="problem-grid fade-up">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>No Written Plan</h3>
+          <p>Most agencies do not have a documented incident response plan. When something goes wrong, they find out how expensive that is.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>Untested Backups</h3>
+          <p>Having backups is not the same as having validated backups. Most agencies have never confirmed a successful restore.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Unenforced MFA</h3>
+          <p>MFA enabled on most accounts is not MFA enforced. One uncovered admin account is all it takes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <ServicesGrid />
+  <AboutArchway />
+  <WhyChooseUs />
+
+  <!-- What We Cover -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="cover-header fade-up">
+        <p class="section-label">What We Cover in the Call</p>
+        <h2>30 Minutes. A Clear Picture of Where You&nbsp;Stand.</h2>
+      </div>
+      <div class="cover-grid fade-up">
+        <div class="cover-card">
+          <h3>Security Controls and MFA</h3>
+          <p>We review your MFA enforcement status across every user, admin account, and connected system.</p>
+        </div>
+        <div class="cover-card">
+          <h3>Backup and Recovery Posture</h3>
+          <p>We check whether your backups run automatically, are stored correctly, and have been successfully restored.</p>
+        </div>
+        <div class="cover-card">
+          <h3>Incident Response Documentation</h3>
+          <p>We review or help create your written incident response plan so you have something to show a carrier when they ask.</p>
+        </div>
+        <div class="cover-card">
+          <h3>NYDFS and Carrier Alignment</h3>
+          <p>We check your current posture against NYDFS requirements and your specific carrier cyber requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out Where You Stand?"
+    subtext="Book 30 minutes. We will walk through your current posture and tell you exactly what needs attention."
+    ctaText="Request My Compliance Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  .section-label {
+    text-align: center;
+    display: block;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .section-label::before {
+    display: none;
+  }
+
+  /* Problem Cards */
+  .problem-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .problem-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .problem-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+  }
+
+  .problem-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(244, 128, 33, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .problem-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .problem-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Coverage Cards */
+  .cover-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .cover-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .cover-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cover-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .cover-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .cover-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .problem-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cover-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .problem-header h2,
+    .cover-header h2 {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
