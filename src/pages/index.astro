@@ -1,0 +1,66 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+---
+
+<ArchwayLayout
+  title="Archway Computer | IT Support for Insurance Agencies"
+  description="Archway Computer provides IT support, cybersecurity, and compliance solutions built exclusively for independent insurance agencies."
+  ctaText="Visit Our Website"
+  ctaHref="https://www.myarchway.com"
+>
+  <section class="hero">
+    <div class="hero-inner index-hero">
+      <div class="hero-text index-text">
+        <h1>Looking for More Information on&nbsp;Archway?</h1>
+        <p class="hero-sub">Visit our website to learn more about our IT support, cybersecurity, and compliance solutions built exclusively for independent insurance&nbsp;agencies.</p>
+        <a href="https://www.myarchway.com" class="hero-cta">Visit myarchway.com</a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  .index-hero {
+    display: flex;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+
+  .index-text {
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .index-text h1 {
+    font-size: 44px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    text-wrap: balance;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 32px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--orange-dark);
+  }
+</style>
