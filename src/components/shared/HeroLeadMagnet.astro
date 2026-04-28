@@ -1,0 +1,128 @@
+---
+interface Props {
+  badge: string;
+  headline: string;
+  subhead: string;
+  body1: string;
+  body2: string;
+  formHeading: string;
+  formSubhead: string;
+  formId: string;
+  trustLine?: string;
+}
+
+const { badge, headline, subhead, body1, body2, formHeading, formSubhead, formId, trustLine } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        {badge}
+      </div>
+      <h1 set:html={headline} />
+      <p class="hero-sub">{subhead}</p>
+      <p class="hero-intro">{body1}</p>
+      <p class="hero-intro">{body2}</p>
+    </div>
+
+    <div class="hero-form-card" id="hero-form">
+      <div class="form-header">
+        <h2>{formHeading}</h2>
+        <p>{formSubhead}</p>
+      </div>
+      <div id="hs-leadmagnet-form"></div>
+      {trustLine && <p class="trust-line">{trustLine}</p>}
+    </div>
+  </div>
+</section>
+
+<script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+<script is:inline define:vars={{ formId }}>
+  hbspt.forms.create({
+    portalId: "6869933",
+    formId: formId,
+    region: "na2",
+    target: "#hs-leadmagnet-form",
+    css: "\
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+      \
+      .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .hs-form fieldset { max-width: 100% !important; }\
+      .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+      .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+      .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+      \
+      .hs-form-field { margin-bottom: 16px; }\
+      \
+      .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+      \
+      .hs-form-required { color: #ef4444; margin-left: 2px; }\
+      \
+      .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+      \
+      .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+      \
+      .hs-input::placeholder { color: #9ca3af; }\
+      \
+      select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+      \
+      .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+      \
+      .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+      .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+      \
+      .hs-submit { margin-top: 8px; }\
+      \
+      .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+      .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+      \
+      .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+      .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+      .hs-input.error { border-color: #ef4444 !important; }\
+      \
+      .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+      \
+      .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+      .legal-consent-container a { color: #f48021; }\
+      \
+      @media (max-width: 480px) {\
+        .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+      }\
+    "
+  });
+</script>
+
+<style>
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  #hs-leadmagnet-form {
+    width: 100%;
+  }
+
+  #hs-leadmagnet-form iframe {
+    width: 100% !important;
+    min-height: 400px;
+  }
+
+  .trust-line {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+    line-height: 1.5;
+  }
+</style>

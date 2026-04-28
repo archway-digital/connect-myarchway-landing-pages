@@ -1,0 +1,119 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="AI for Insurance Agencies: What Is Actually Working | Archway"
+  description="Download the free guide and get an honest picture of what AI is actually delivering results at independent insurance agencies right now, and what to ignore."
+  ctaText="Get the Free Guide"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="AI Without the Hype  ·  May 2026"
+    headline="Everyone Is Talking About AI. <em>Most of It Won&rsquo;t Work for Your&nbsp;Agency.</em>"
+    subhead="Download the free guide and find out exactly what is delivering results at independent insurance agencies right now, and what to skip."
+    body1="Most AI conversations in the insurance industry are driven by vendors trying to sell software. Conference sessions. Demo calls. Tools that look impressive until you try to connect them to how your agency actually works."
+    body2="This guide is different. It comes from what we have actually built for independent agencies, the workflows that delivered real results, the tools that underdelivered, and the four questions you should ask before spending a dollar on AI."
+    formHeading="Get Your Free Copy of the Guide"
+    formSubhead="We will send it to your inbox right away."
+    formId="PLACEHOLDER_FORM_ID_AI_HYPE"
+  />
+
+  <ProblemCardsThree
+    sectionLabel="Why Most AI Projects Fail"
+    heading="The Demo Looked Great. <br /><span class='hl'>The Implementation Did&nbsp;Not.</span>"
+    subhead="Independent insurance agencies are in a tough spot with AI. The tools are everywhere. The results are not."
+    cards={[
+      {
+        title: "The tools were not built for insurance",
+        body: "Most AI platforms are built for generic businesses. They do not know what an AMS is. They have not dealt with carrier requirements. The integration you need either does not exist or costs more than the tool."
+      },
+      {
+        title: "The demos do not show the hard part",
+        body: "Implementation looks simple in a demo because the vendor controls everything. Your data is messier. Your workflows are more specific. Your staff has questions nobody prepared answers for."
+      },
+      {
+        title: "Nobody knows where to start",
+        body: "The agencies that stall on AI are not short on interest. They are short on a clear first step that connects to a real problem. Without that, the project sits on a list for twelve months."
+      },
+      {
+        title: "No recurring monthly fee lock-in",
+        body: "Build your own tool, customizable to the needs of your agency, without being locked into steep recurring monthly fees."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="What the Guide Covers"
+    heading="Four Sections. Forty-Five Minutes. <br />A Clear Picture of Where to&nbsp;Start."
+    cards={[
+      {
+        title: "What is actually working right now",
+        body: "Eight AI implementations delivering real results at independent agencies today: internal chatbots, phone answering systems, SOP generators, document analysis, quote comparison, commission statement automation, call recording to AMS activity creation, and AI-powered reporting. All insurance-specific. All tested."
+      },
+      {
+        title: "What to ignore in 2026",
+        body: "The categories of AI tools that consistently overpromise and underdeliver for agencies your size. What the red flags look like in a demo. How to tell the difference between a product that works and a product that only works in a controlled environment."
+      },
+      {
+        title: "How to evaluate any AI tool before you buy",
+        body: "Four questions to ask every vendor before you commit time or money: Does it connect to the AMS you actually run? Who owns your data? What does implementation actually require? What does success look like in 90 days?"
+      },
+      {
+        title: "What a realistic first 90 days looks like",
+        body: "A plain-language plan for an agency of 5 to 50 staff. What to do in weeks 1 through 4, weeks 5 through 8, and weeks 9 through 12. No technical team required. No massive budget required."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Cut Through the Noise?"
+    subtext="Download the guide and find out exactly what AI is delivering for independent insurance agencies right now, and where to start."
+    ctaText="Get the Free Guide"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

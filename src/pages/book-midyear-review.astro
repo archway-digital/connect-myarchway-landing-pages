@@ -1,0 +1,116 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Book Your Mid-Year Technology Review | Archway"
+  description="Book 30 minutes with Archway. We will walk through your IT and security posture, marketing performance, and AI workflow efficiency, and tell you exactly what to address before Q3."
+  ctaText="Book My 30-Minute Review"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Mid-Year Technology Review  ·  May 2026"
+    headline="One Conversation. <em>A Clear Picture of Where Your Agency&nbsp;Stands.</em>"
+    subhead="Book 30 minutes with Archway and get an honest mid-year look at your IT and security posture, marketing performance, and AI and workflow efficiency."
+    body1="Most agencies go into Q3 with a few things they know need attention and no clear plan for when those things get addressed. A mid-year technology review changes that."
+    body2="We cover all three areas in one conversation. You leave with a clear picture of what is working, what is not, and a prioritized list of what to address before fall. One call. Archway only works with independent insurance agencies, we know the landscape."
+    formHeading="Book Your Mid-Year Review"
+    formSubhead="We will confirm your time within one business day."
+    formId="PLACEHOLDER_FORM_ID_MIDYEAR_BOOKING"
+    trustLine="Archway works exclusively with independent insurance agencies. No pitch. Just an honest look at where you stand."
+  />
+
+  <ProblemCardsThree
+    sectionLabel="Why Agencies Skip the Mid-Year Work"
+    heading="There Is No Deadline in June. <br /><span class='hl'>That Is the&nbsp;Problem.</span>"
+    subhead="The agencies that handle Q3 well do the work in May. The ones that struggle do it in October when it is too late."
+    cards={[
+      {
+        title: "Security gaps that grew while nobody was looking",
+        body: "Staff changes, system updates, and carrier requirement changes all happen throughout the year. The posture you had in January may not be the one you have today."
+      },
+      {
+        title: "Marketing that is not working at renewal time",
+        body: "Q3 is when renewal conversations peak. The agencies showing up in local search in August did the marketing work in May and June."
+      },
+      {
+        title: "AI and workflow projects that stalled",
+        body: "January goals that became Q1 goals that became back-burner items. The second half of the year goes faster than the first. Now is when it gets done or it does not."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="What We Cover in the Call"
+    heading="30 Minutes. All Three Verticals. <br />A Prioritized List of What to&nbsp;Address."
+    cards={[
+      {
+        title: "IT and security posture",
+        body: "Current MFA enforcement status, backup and recovery validation, incident response documentation, and alignment with NYDFS requirements and your specific carrier cyber requirements."
+      },
+      {
+        title: "Marketing and digital presence",
+        body: "Website performance and lead capture, local SEO and Google Business Profile status, email list engagement, and the three highest-impact things to address before Q3 renewal season."
+      },
+      {
+        title: "AI and workflow efficiency",
+        body: "Where staff time is still going that should be automated, which AMS workflows are underutilized, and what a realistic AI starting point looks like for your agency size and budget."
+      },
+      {
+        title: "A prioritized action list",
+        body: "At the end of the call you have a clear, sequenced list of what to address first, second, and third before Q3 starts. Not a generic recommendation, specific to your agency."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Go Into Q3 Knowing Where You Stand?"
+    subtext="Book 30 minutes and get a clear mid-year picture of your IT, marketing, and AI setup, and exactly what to address before fall."
+    ctaText="Book My 30-Minute Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

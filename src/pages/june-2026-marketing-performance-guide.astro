@@ -1,0 +1,116 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Marketing Performance Mid-Year Guide for Insurance Agencies | Archway"
+  description="Download the free guide and find out what your agency’s website, local search, and email outreach are actually doing at the halfway point of 2026."
+  ctaText="Get the Free Guide"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Marketing Performance  ·  June 2026"
+    headline="Is Your Marketing on Track for 2026? <em>Find Out at the Halfway&nbsp;Point.</em>"
+    subhead="Download the free guide and find out what your website, local search presence, and email outreach are actually doing, and what to fix before renewal season peaks."
+    body1="Most independent insurance agency owners set marketing goals at the start of the year and do not look at them again until Q4 when they are trying to explain why they were not hit."
+    body2="The halfway point is when checking actually matters. There is still time to fix what is not working before renewal season peaks in Q3. This guide shows you what to look at, what the numbers mean, and where to focus first."
+    formHeading="Get the Free Marketing Guide"
+    formSubhead="We will send it to your inbox right away."
+    formId="PLACEHOLDER_FORM_ID_MARKETING_PERF"
+    trustLine="No spam. No sales call unless you want one. Just the guide."
+  />
+
+  <ProblemCardsThree
+    sectionLabel="The Midyear Marketing Problem"
+    heading="Your Website Was Built to Exist. <br /><span class='hl'>Not to&nbsp;Work.</span>"
+    subhead="Most agency websites are not generating leads, showing up in local search, or converting visitors into calls. Most owners do not know because they have never looked."
+    cards={[
+      {
+        title: "Not showing up when someone searches for an agency nearby",
+        body: "Local SEO determines whether your agency appears when a prospect searches for insurance in your area. Most agencies have not set this up correctly and have no idea what they are missing."
+      },
+      {
+        title: "A website that loses visitors before they take action",
+        body: "Three-second load times lose half your visitors. No click-to-call on mobile. Contact form buried three pages deep. These are fixable problems that most agencies do not know exist."
+      },
+      {
+        title: "Email outreach that burns through the list",
+        body: "Open rates declining. Click rates at near zero. A list of contacts who have tuned out because every email says the same thing. This is fixable before the list is fully disengaged."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="What the Guide Covers"
+    heading="Four Sections. Plain Language. <br />Written for Agency Owners, Not&nbsp;Marketers."
+    cards={[
+      {
+        title: "Website traffic and leads",
+        body: "The three numbers that actually matter for an insurance agency in Google Analytics. What they mean. What to do if they are low. How to tell if your website is generating leads or just existing."
+      },
+      {
+        title: "Local search visibility",
+        body: "What local SEO means for an insurance agency, how to check whether you are showing up when someone searches for an agency nearby, and how to fix the most common gaps in under an hour."
+      },
+      {
+        title: "Email and outreach performance",
+        body: "What open rates and click rates are actually telling you. What counts as a good result for an insurance agency audience. How to know if your list is engaged or quietly burning out."
+      },
+      {
+        title: "Three priorities for Q3",
+        body: "The highest-impact marketing changes an agency can make in the next 30 days before renewal season peaks. Specific and actionable. Each one has a clear time estimate and expected outcome."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out What Your Marketing Is Actually Doing?"
+    subtext="Download the guide and get a clear picture of where your agency’s marketing stands, and what to fix before renewal season."
+    ctaText="Get the Free Guide"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

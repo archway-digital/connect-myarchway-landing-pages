@@ -1,0 +1,137 @@
+---
+interface Card {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  sectionLabel: string;
+  heading: string;
+  cards: Card[];
+}
+
+const { sectionLabel, heading, cards } = Astro.props;
+---
+
+<section class="section section-light">
+  <div class="section-inner">
+    <div class="numbered-header fade-up">
+      <p class="section-label">{sectionLabel}</p>
+      <h2 set:html={heading} />
+    </div>
+    <div class="numbered-list fade-up">
+      {cards.map((card, i) => (
+        <div class="numbered-card">
+          <div class="numbered-block">{i + 1}</div>
+          <div class="numbered-content">
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .numbered-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .numbered-header .section-label {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin-bottom: 12px;
+    text-align: center;
+    display: block;
+  }
+
+  .numbered-header .section-label::before {
+    display: none;
+  }
+
+  .numbered-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .numbered-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .numbered-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .numbered-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .numbered-block {
+    background: var(--navy);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .numbered-content {
+    padding: 24px 28px;
+    border-left: 4px solid var(--navy);
+  }
+
+  .numbered-content h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .numbered-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .numbered-card {
+      grid-template-columns: 60px 1fr;
+    }
+
+    .numbered-block {
+      font-size: 24px;
+    }
+
+    .numbered-content {
+      padding: 20px;
+    }
+
+    .numbered-header h2 {
+      font-size: 26px;
+    }
+  }
+</style>
