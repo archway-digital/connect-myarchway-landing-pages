@@ -148,8 +148,8 @@ const section3 = {
 <ArchwayLayout
   title="AI Without the Hype Checklist | Archway"
   description="Interactive AI readiness checklist for independent insurance agencies. Evaluate where you stand and find your best starting point."
-  ctaText="Save My Results"
-  ctaHref="#save-form"
+  ctaText="Take the Guide"
+  ctaHref="#section-01"
 >
   <!-- Hero -->
   <section class="checklist-hero">
@@ -159,6 +159,18 @@ const section3 = {
       <h1>AI Without the <em>Hype.</em><br />A practical checklist for independent insurance&nbsp;agencies.</h1>
       <p class="hero-sub">Evaluate your AI readiness and find your best starting point.</p>
       <p class="hero-intro">This checklist covers the areas where most agencies leave time and opportunity on the table. Work through each section, check the boxes that apply, and use the scoring guide at the end to identify your next step.</p>
+
+      <div class="hero-ctas">
+        <a href="#section-01" class="hero-cta-primary">
+          Take the Guide
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="/ai-without-the-hype-guide.pdf" class="hero-cta-secondary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          View the PDF Guide
+        </a>
+      </div>
+      <p class="hero-meta">10 minutes  ·  3 sections  ·  An honest score and a starting point</p>
     </div>
   </section>
 
@@ -397,6 +409,63 @@ const section3 = {
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.7);
     max-width: 780px;
+    margin-bottom: 36px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 18px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(244, 128, 33, 0.3);
+  }
+
+  .hero-cta-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(244, 128, 33, 0.4);
+  }
+
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: #ffffff;
+    padding: 18px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.2s;
+  }
+
+  .hero-cta-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+    font-style: italic;
   }
 
   /* HOW TO USE */
@@ -1130,6 +1199,17 @@ const section3 = {
 
     .hero-sub {
       font-size: 18px;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      width: 100%;
+      justify-content: center;
     }
 
     .how-steps {
