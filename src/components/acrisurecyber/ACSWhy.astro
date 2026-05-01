@@ -1,0 +1,150 @@
+---
+const differentiators = [
+  {
+    title: 'Predictable Costs',
+    desc: 'Transparent rates, no hidden fees, and pricing built around outcomes — not labor hours.',
+    num: '01',
+  },
+  {
+    title: 'Dedicated Expertise',
+    desc: 'Certified professionals with decades of experience across regulated industries.',
+    num: '02',
+  },
+  {
+    title: 'Collaborative Partnership',
+    desc: 'We work alongside your team to achieve your business goals — not just close tickets.',
+    num: '03',
+  },
+  {
+    title: 'Right-Sized, Right-Priced',
+    desc: 'Flexible, integrated solutions that scale with you and never force you into shelfware.',
+    num: '04',
+  },
+  {
+    title: 'Proactive Approach',
+    desc: 'We find and fix problems before they impact operations — measured by what doesn\'t happen.',
+    num: '05',
+  },
+  {
+    title: 'White-Glove Service',
+    desc: 'Friendly, fast support in plain English — so people actually call us when something\'s wrong.',
+    num: '06',
+  },
+];
+---
+
+<section class="acs-why">
+  <div class="why-inner">
+    <div class="section-head">
+      <span class="eyebrow">Why ACS</span>
+      <h2>Six reasons leadership teams pick &mdash; and stay with &mdash; Acrisure Cyber Services.</h2>
+    </div>
+
+    <div class="why-grid">
+      {differentiators.map((d) => (
+        <article class="why-card">
+          <span class="why-num">{d.num}</span>
+          <h3>{d.title}</h3>
+          <p>{d.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .acs-why {
+    background: #ffffff;
+    padding: 100px 32px;
+  }
+
+  .why-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    max-width: 760px;
+    margin-bottom: 56px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #0066cc;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-head h2 {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #0a0a0a;
+    margin: 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #ececec;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .why-card {
+    background: #ffffff;
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+
+  .why-card:hover {
+    background: #f7f8fa;
+  }
+
+  .why-num {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #0066cc;
+    margin-bottom: 16px;
+  }
+
+  .why-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin: 0 0 10px;
+  }
+
+  .why-card p {
+    font-size: 15px;
+    color: #4a5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .acs-why {
+      padding: 72px 24px;
+    }
+    .section-head h2 {
+      font-size: 30px;
+    }
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

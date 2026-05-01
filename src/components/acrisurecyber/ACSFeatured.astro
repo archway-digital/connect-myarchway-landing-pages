@@ -1,0 +1,83 @@
+---
+const outlets = ['Wall Street Journal', 'Crain\'s', 'TechCrunch', 'Forbes', 'CIO', 'CSO Online'];
+const brands = ['HomeField IT', 'Manhattan Tech Support', 'Exceed Digital', 'Catalyst TG', 'Kaytuso', 'Protos', 'ITS'];
+---
+
+<section class="acs-featured">
+  <div class="ft-inner">
+    <p class="ft-label">As featured in</p>
+    <div class="ft-row">
+      {outlets.map((o) => <span class="ft-item">{o}</span>)}
+    </div>
+
+    <div class="ft-divider"></div>
+
+    <p class="ft-label">Trusted brands operated by ACS</p>
+    <div class="ft-row brands">
+      {brands.map((b) => <span class="ft-item">{b}</span>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .acs-featured {
+    background: #ffffff;
+    padding: 72px 32px;
+    border-top: 1px solid #ececec;
+  }
+
+  .ft-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ft-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+  }
+
+  .ft-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .ft-item {
+    font-size: 18px;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: -0.3px;
+    transition: color 0.2s;
+    cursor: default;
+  }
+
+  .ft-item:hover {
+    color: #0a0a0a;
+  }
+
+  .ft-row.brands .ft-item {
+    font-size: 16px;
+  }
+
+  .ft-divider {
+    width: 60px;
+    height: 1px;
+    background: #ececec;
+    margin: 56px auto;
+  }
+
+  @media (max-width: 600px) {
+    .ft-row {
+      gap: 24px;
+    }
+    .ft-item {
+      font-size: 15px;
+    }
+  }
+</style>

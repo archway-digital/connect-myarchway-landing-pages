@@ -1,0 +1,342 @@
+---
+---
+
+<section class="acs-hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Managed IT • Cybersecurity • Risk Advisory</span>
+      <h1>We'll manage your IT and cybersecurity needs so you can focus on <em>what's next</em>.</h1>
+      <p>Whether you need complete managed IT, advanced cybersecurity, or strategic risk advisory — we deliver the expertise, support, and technology to help your organization operate and grow with confidence.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get a Zero Cost Risk Analysis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#solutions" class="btn btn-ghost">Explore Solutions</a>
+      </div>
+
+      <div class="hero-pills">
+        <a href="#solutions" class="pill">Technology Services</a>
+        <a href="#solutions" class="pill">Cybersecurity</a>
+        <a href="#solutions" class="pill">Risk Advisory</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="defense-card">
+        <div class="defense-header">
+          <div class="defense-status">
+            <span class="pulse"></span>
+            <span>24/7 Active Defense</span>
+          </div>
+          <span class="defense-time">LIVE</span>
+        </div>
+        <ul class="defense-list">
+          <li>
+            <span class="threat-name">Malware</span>
+            <span class="threat-status blocked">BLOCKED</span>
+          </li>
+          <li>
+            <span class="threat-name">Phishing</span>
+            <span class="threat-status blocked">BLOCKED</span>
+          </li>
+          <li>
+            <span class="threat-name">Ransomware</span>
+            <span class="threat-status blocked">BLOCKED</span>
+          </li>
+          <li>
+            <span class="threat-name">DDoS</span>
+            <span class="threat-status blocked">BLOCKED</span>
+          </li>
+        </ul>
+        <div class="defense-footer">
+          <div class="defense-metric">
+            <span class="metric-value">99.99%</span>
+            <span class="metric-label">Uptime SLA</span>
+          </div>
+          <div class="defense-metric">
+            <span class="metric-value">&lt; 5 min</span>
+            <span class="metric-label">Mean Response</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .acs-hero {
+    background: #ffffff;
+    padding: 80px 32px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .acs-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(1000px 500px at 80% 0%, rgba(0, 102, 204, 0.06), transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #0066cc;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-copy h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: #0a0a0a;
+    margin: 0 0 24px;
+  }
+
+  .hero-copy h1 em {
+    font-style: italic;
+    color: #0066cc;
+    font-weight: 700;
+  }
+
+  .hero-copy p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #4a5563;
+    margin: 0 0 32px;
+    max-width: 560px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: #0a0a0a;
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: #0066cc;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #0a0a0a;
+    border: 1px solid #d1d5db;
+  }
+
+  .btn-ghost:hover {
+    border-color: #0a0a0a;
+    background: #f7f8fa;
+  }
+
+  .hero-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #f5f6f8;
+    color: #4a5563;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid #ececec;
+    transition: all 0.2s;
+  }
+
+  .pill:hover {
+    background: #ffffff;
+    border-color: #0066cc;
+    color: #0066cc;
+  }
+
+  /* ── Defense Card ── */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .defense-card {
+    background: #0a0a0a;
+    color: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+    position: relative;
+  }
+
+  .defense-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(0, 200, 120, 0.4), transparent 50%, rgba(0, 102, 204, 0.4));
+    z-index: -1;
+  }
+
+  .defense-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 18px;
+  }
+
+  .defense-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .pulse {
+    width: 10px;
+    height: 10px;
+    background: #00c878;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 200, 120, 0.6);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 200, 120, 0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 200, 120, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 200, 120, 0); }
+  }
+
+  .defense-time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #00c878;
+    background: rgba(0, 200, 120, 0.12);
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .defense-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .defense-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .defense-list li:last-child {
+    border-bottom: none;
+  }
+
+  .threat-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .threat-status {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .threat-status.blocked {
+    background: rgba(0, 200, 120, 0.12);
+    color: #00c878;
+  }
+
+  .defense-footer {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .metric-value {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .hero-copy h1 {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .acs-hero {
+      padding: 56px 24px 72px;
+    }
+    .hero-copy h1 {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+    .hero-copy p {
+      font-size: 17px;
+    }
+  }
+</style>

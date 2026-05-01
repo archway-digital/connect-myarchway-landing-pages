@@ -1,0 +1,66 @@
+---
+import ACSNav from '../components/acrisurecyber/ACSNav.astro';
+import ACSHero from '../components/acrisurecyber/ACSHero.astro';
+import ACSStats from '../components/acrisurecyber/ACSStats.astro';
+import ACSSolutions from '../components/acrisurecyber/ACSSolutions.astro';
+import ACSIndustries from '../components/acrisurecyber/ACSIndustries.astro';
+import ACSWhy from '../components/acrisurecyber/ACSWhy.astro';
+import ACSCompare from '../components/acrisurecyber/ACSCompare.astro';
+import ACSFeatured from '../components/acrisurecyber/ACSFeatured.astro';
+import ACSCTA from '../components/acrisurecyber/ACSCTA.astro';
+import ACSFooter from '../components/acrisurecyber/ACSFooter.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acrisure Cyber Services — Managed IT, Cybersecurity & Risk Advisory</title>
+  <meta name="description" content="We'll manage your IT and cybersecurity needs so you can focus on what's next. Managed IT, advanced cybersecurity, and strategic risk advisory under one accountable team." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <ACSNav />
+  <main>
+    <ACSHero />
+    <ACSStats />
+    <ACSSolutions />
+    <ACSIndustries />
+    <ACSWhy />
+    <ACSCompare />
+    <ACSFeatured />
+    <ACSCTA />
+  </main>
+  <ACSFooter />
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #0a0a0a;
+    line-height: 1.6;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: #0066cc;
+    color: #fff;
+  }
+</style>

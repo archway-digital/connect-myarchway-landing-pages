@@ -1,0 +1,235 @@
+---
+const cols = [
+  {
+    heading: 'Services',
+    links: ['Managed IT', 'Cybersecurity', 'Cloud Services', 'Network Monitoring', 'Risk Advisory'],
+  },
+  {
+    heading: 'Company',
+    links: ['About Us', 'Careers', 'News & Insights', 'Contact'],
+  },
+  {
+    heading: 'Resources',
+    links: ['Free Assessment', 'Support Center', 'Knowledge Base', 'Case Studies'],
+  },
+];
+---
+
+<footer class="acs-footer">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo">
+        <span class="logo-mark">ACS</span>
+        <span class="logo-text">Acrisure <em>Cyber Services</em></span>
+      </div>
+      <p>Managed IT, advanced cybersecurity, and strategic risk advisory &mdash; under one accountable team.</p>
+      <div class="ft-contact">
+        <a href="mailto:hello@acrisurecyber.com">hello@acrisurecyber.com</a>
+      </div>
+      <div class="ft-social">
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+        <a href="#" aria-label="X">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    {cols.map((col) => (
+      <div class="ft-col">
+        <h4>{col.heading}</h4>
+        <ul>
+          {col.links.map((link) => <li><a href="#">{link}</a></li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="ft-bottom">
+    <p>&copy; 2026 Acrisure Cyber Services. All rights reserved.</p>
+    <div class="ft-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Accessibility Statement</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .acs-footer {
+    background: #0a0a0a;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 72px 32px 32px;
+  }
+
+  .ft-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .ft-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .logo-mark {
+    background: #fff;
+    color: #0a0a0a;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 4px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+    line-height: 1.1;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .logo-text em {
+    display: block;
+    font-style: normal;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .ft-brand p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 20px;
+    max-width: 320px;
+  }
+
+  .ft-contact a {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ft-contact a:hover {
+    color: #0066cc;
+  }
+
+  .ft-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .ft-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s;
+  }
+
+  .ft-social a:hover {
+    background: #0066cc;
+    color: #fff;
+  }
+
+  .ft-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 18px;
+  }
+
+  .ft-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ft-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .ft-col ul li a {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ft-col ul li a:hover {
+    color: #fff;
+  }
+
+  .ft-bottom {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .ft-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+  }
+
+  .ft-legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .ft-legal a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ft-legal a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .ft-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .ft-bottom {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ft-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

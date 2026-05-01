@@ -1,0 +1,181 @@
+---
+const rows = [
+  { criteria: 'Security', acs: 'Comprehensive, multi-layered defense aligned to your risk profile', market: 'Often fragmented and tool-focused' },
+  { criteria: 'IT Operations', acs: 'Tailored IT with security built in from day one', market: 'Separate IT and security teams with handoff gaps' },
+  { criteria: 'Setup & Support', acs: 'Hands-free, fully managed by ACS', market: 'Complex; requires in-house expertise' },
+  { criteria: 'Cost', acs: 'Transparent, predictable pricing', market: 'Variable by labor, tools, and overhead' },
+];
+---
+
+<section class="acs-compare">
+  <div class="cmp-inner">
+    <div class="section-head">
+      <span class="eyebrow">ACS vs. The Market</span>
+      <h2>One accountable partner replaces a fragmented stack.</h2>
+      <p>Most teams stitch together five vendors and a managed service provider. We replace that with one operating model &mdash; and one number to call.</p>
+    </div>
+
+    <div class="cmp-table">
+      <div class="cmp-row cmp-head">
+        <div class="cmp-cell">Criteria</div>
+        <div class="cmp-cell cmp-acs">ACS Approach</div>
+        <div class="cmp-cell">Common Market Model</div>
+      </div>
+      {rows.map((row) => (
+        <div class="cmp-row">
+          <div class="cmp-cell cmp-criteria">{row.criteria}</div>
+          <div class="cmp-cell cmp-acs">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>{row.acs}</span>
+          </div>
+          <div class="cmp-cell cmp-market">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>{row.market}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .acs-compare {
+    background: #f7f8fa;
+    padding: 100px 32px;
+  }
+
+  .cmp-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #0066cc;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-head h2 {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #0a0a0a;
+    margin: 0 0 16px;
+  }
+
+  .section-head p {
+    font-size: 18px;
+    color: #4a5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cmp-table {
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .cmp-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    border-top: 1px solid #ececec;
+  }
+
+  .cmp-row:first-child {
+    border-top: none;
+  }
+
+  .cmp-head {
+    background: #0a0a0a;
+    color: #fff;
+  }
+
+  .cmp-head .cmp-cell {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 18px 24px;
+  }
+
+  .cmp-cell {
+    padding: 22px 24px;
+    font-size: 15px;
+    color: #1f2937;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .cmp-criteria {
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+
+  .cmp-acs {
+    background: rgba(0, 102, 204, 0.04);
+    color: #0a0a0a;
+    font-weight: 500;
+  }
+
+  .cmp-acs svg {
+    color: #00a86b;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .cmp-market {
+    color: #6b7280;
+  }
+
+  .cmp-market svg {
+    color: #d1d5db;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 768px) {
+    .acs-compare {
+      padding: 72px 24px;
+    }
+    .section-head h2 {
+      font-size: 30px;
+    }
+    .cmp-row {
+      grid-template-columns: 1fr;
+    }
+    .cmp-row .cmp-cell {
+      border-top: 1px solid #ececec;
+    }
+    .cmp-row .cmp-cell:first-child {
+      border-top: none;
+      background: #f7f8fa;
+    }
+    .cmp-head {
+      display: none;
+    }
+    .cmp-acs::before {
+      content: 'ACS — ';
+      font-weight: 700;
+      color: #0066cc;
+    }
+    .cmp-market::before {
+      content: 'Market — ';
+      font-weight: 700;
+      color: #9ca3af;
+    }
+  }
+</style>
