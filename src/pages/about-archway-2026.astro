@@ -1,6 +1,5 @@
 ---
 import ArchwayLayout from '../layouts/ArchwayLayout.astro';
-import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
 import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
 import StatsBar from '../components/shared/StatsBar.astro';
 import ServicesGrid from '../components/shared/ServicesGrid.astro';
@@ -14,17 +13,31 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaText="Let's Talk"
   ctaHref="#hero-form"
 >
-  <HeroLeadMagnet
-    badge="Compliance Season 2026"
-    headline="Your Agency&rsquo;s Technology Should Be Working <em>For&nbsp;You.</em>"
-    subhead="Archway works exclusively with independent insurance agencies on IT and security, digital marketing, and AI and workflow automation. If any of those areas have gaps, we will find them."
-    body1="Most independent insurance agencies are running technology that was set up years ago, has not been formally reviewed since, and is carrying more risk than anyone realizes. Not because the people running the agency are careless. Because nobody has made it a priority to look."
-    body2="A conversation with Archway is where that changes. We look at your current setup across security, marketing, and operations. We tell you what is working, what is not, and what to address first. One conversation. No obligation. Just a clear picture of where you stand."
-    formHeading="Let's Talk About Your Agency"
-    formSubhead="We will follow up within one business day."
-    formId="PLACEHOLDER_FORM_ID_ABOUT_ARCHWAY_2026"
-    trustLine="No pitch. No pressure. Just an honest look at where your agency stands."
-  />
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          Compliance Season 2026
+        </div>
+        <h1>Your Agency&rsquo;s Technology Should Be Working <em>For&nbsp;You.</em></h1>
+        <p class="hero-sub">Archway works exclusively with independent insurance agencies on IT and security, digital marketing, and AI and workflow automation. If any of those areas have gaps, we will find them.</p>
+        <p class="hero-intro">Most independent insurance agencies are running technology that was set up years ago, has not been formally reviewed since, and is carrying more risk than anyone realizes. Not because the people running the agency are careless. Because nobody has made it a priority to look.</p>
+        <p class="hero-intro">A conversation with Archway is where that changes. We look at your current setup across security, marketing, and operations. We tell you what is working, what is not, and what to address first. One conversation. No obligation. Just a clear picture of where you stand.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Let&rsquo;s Talk About Your Agency</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+        <div class="hs-form-frame" data-region="na2" data-form-id="43daba0e-4fb5-40b8-b87d-ca7551ff4411" data-portal-id="6869933"></div>
+        <p class="trust-line">No pitch. No pressure. Just an honest look at where your agency stands.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="https://js-na2.hsforms.net/forms/embed/6869933.js" defer></script>
 
   <!-- Three Verticals -->
   <section class="section">
@@ -153,10 +166,31 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
     display: none;
   }
 
-  /* Hero h1 em color override (in case shared component does not handle it) */
+  /* Hero h1 em color override */
   :global(.hero h1 em) {
     font-style: normal;
     color: var(--orange);
+  }
+
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .hs-form-frame {
+    width: 100%;
+    min-height: 380px;
+  }
+
+  .trust-line {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+    line-height: 1.5;
   }
 
   /* Three Verticals */
