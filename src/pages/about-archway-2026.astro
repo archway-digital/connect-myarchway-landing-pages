@@ -1,0 +1,344 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import ServicesGrid from '../components/shared/ServicesGrid.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Technology for Independent Insurance Agencies | Archway Computer"
+  description="Archway works exclusively with independent insurance agencies on IT and security, digital marketing, and AI and workflow automation. Find out what that means for an agency like yours."
+  ctaText="Let's Talk"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Compliance Season 2026"
+    headline="Your Agency&rsquo;s Technology Should Be Working <em>For&nbsp;You.</em>"
+    subhead="Archway works exclusively with independent insurance agencies on IT and security, digital marketing, and AI and workflow automation. If any of those areas have gaps, we will find them."
+    body1="Most independent insurance agencies are running technology that was set up years ago, has not been formally reviewed since, and is carrying more risk than anyone realizes. Not because the people running the agency are careless. Because nobody has made it a priority to look."
+    body2="A conversation with Archway is where that changes. We look at your current setup across security, marketing, and operations. We tell you what is working, what is not, and what to address first. One conversation. No obligation. Just a clear picture of where you stand."
+    formHeading="Let's Talk About Your Agency"
+    formSubhead="We will follow up within one business day."
+    formId="PLACEHOLDER_FORM_ID_ABOUT_ARCHWAY_2026"
+    trustLine="No pitch. No pressure. Just an honest look at where your agency stands."
+  />
+
+  <!-- Three Verticals -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="verticals-header fade-up">
+        <p class="section-label">What We Cover</p>
+        <h2>One Conversation. All Three&nbsp;Verticals.</h2>
+        <p class="verticals-sub">Most agencies are working with separate vendors for IT, marketing, and AI. Archway covers all three and can identify where they intersect and where gaps between them are creating risk or cost.</p>
+      </div>
+      <div class="verticals-grid fade-up">
+        <div class="vertical-card">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <p class="vertical-eyebrow">IT and Security</p>
+          <h3>IT and Security</h3>
+          <p>Security posture, MFA enforcement, backup and recovery validation, incident response documentation, and alignment with carrier cyber standards. Most agencies have at least one gap they do not know about.</p>
+        </div>
+        <div class="vertical-card">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <p class="vertical-eyebrow">Marketing</p>
+          <h3>Marketing and Digital Presence</h3>
+          <p>Website performance, local search visibility, Google Business Profile status, and whether your digital presence is helping or hurting when a prospect searches for an agency in your area.</p>
+        </div>
+        <div class="vertical-card">
+          <div class="vertical-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <p class="vertical-eyebrow">AI</p>
+          <h3>AI and Workflow Automation</h3>
+          <p>Where staff time is going that could be automated. Which workflows are still manual that should not be. What a realistic AI starting point looks like without a technical team or a large budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbered Problems -->
+  <NumberedCardsList
+    sectionLabel="Why Agencies Call Archway"
+    heading="The Technology Problems Independent Agencies Face Are Not General IT&nbsp;Problems."
+    cards={[
+      {
+        title: "Security gaps that show up at the worst time",
+        body: "Carrier audits. Renewal conversations. A ransomware incident. These are the moments when a security gap becomes an expensive problem. The agencies that avoid this are not lucky. They reviewed their posture before it mattered. The ones that find out at renewal fix it expensively."
+      },
+      {
+        title: "A digital presence that is losing leads silently",
+        body: "Most agency websites were built to exist, not to work. They do not show up in local search. They do not convert visitors. They do not build trust with someone who has never heard of the agency before. This is fixable. Most agencies just have not looked at it honestly."
+      },
+      {
+        title: "Staff doing work that should be automated",
+        body: "Document generation. Commission statement entry. Call logging. Renewal follow-up. These are workflows that cost real staff hours every day and have automation solutions that work right now. The agencies that have implemented even one of them wish they had done it sooner."
+      }
+    ]}
+  />
+
+  <StatsBar />
+
+  <!-- About Archway (custom copy for this page) -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="about-section fade-up">
+        <p class="section-label">About Archway Computer</p>
+        <h2>We Are Not a General IT Company That Occasionally Works With Insurance&nbsp;Clients.</h2>
+        <p>Archway Computer works exclusively with independent insurance agencies. Every service we offer, every tool we evaluate, and every recommendation we make is designed for how insurance agencies actually operate. We know what carriers are asking for. We know what AMS platforms your team runs. We know what it costs when technology fails during a renewal conversation or a carrier audit.</p>
+        <p>That is not knowledge we adapted from a general IT playbook. It is knowledge we built over 30 years of working exclusively in this industry with over 400 independent agencies across the country. If something goes wrong with your technology, you call someone who has seen it before at an agency exactly like yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us (custom for this page) -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="why-section fade-up">
+        <p class="section-label">Why Choose Archway</p>
+        <h2>Over 30 Years of Supporting Independent Insurance&nbsp;Agencies</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <h3>Insurance-Exclusive Focus</h3>
+            <p>Unlike other IT providers, Archway works exclusively with independent insurance agencies. We understand the operational, compliance, and technology challenges specific to this industry because we have been solving them for over 30 years.</p>
+          </div>
+          <div class="why-card">
+            <h3>AMS and Platform Expertise</h3>
+            <p>Our team is versed in Applied Epic, HawkSoft, EZLynx, Vertafore, and Partner XE. We understand the tools your staff uses every day and how to connect technology improvements to how your agency actually operates.</p>
+          </div>
+          <div class="why-card">
+            <h3>All Three Verticals Under One Roof</h3>
+            <p>IT and security, digital marketing, and AI and automation. Most agencies work with separate vendors for each. Archway covers all three and identifies where they intersect and where gaps between them are creating risk or unnecessary cost.</p>
+          </div>
+          <div class="why-card">
+            <h3>Proven Track Record</h3>
+            <p>400 independent insurance agencies trust Archway with their technology. Our approach is consistent: honest assessment, clear priorities, practical implementation. We do not sell what agencies do not need.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesGrid />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out Where Your Agency Stands?"
+    subtext="One conversation. All three verticals. A clear picture of what is working, what is not, and what to address first."
+    ctaText="Start the Conversation"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  .section-label {
+    text-align: center;
+    display: block;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .section-label::before {
+    display: none;
+  }
+
+  /* Hero h1 em color override (in case shared component does not handle it) */
+  :global(.hero h1 em) {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  /* Three Verticals */
+  .verticals-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+  }
+
+  .verticals-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+    margin-bottom: 16px;
+  }
+
+  .verticals-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .verticals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .vertical-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .vertical-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .vertical-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(244, 128, 33, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .vertical-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+  }
+
+  .vertical-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .vertical-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* About Section */
+  .about-section {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .about-section p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+
+  /* Why Choose Us */
+  .why-section {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .why-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .why-card {
+    background: var(--light-bg, #f8f9fb);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .why-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .why-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .verticals-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .verticals-header h2,
+    .about-section h2,
+    .why-section h2 {
+      font-size: 26px;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
