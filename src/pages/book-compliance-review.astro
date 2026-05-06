@@ -1,6 +1,5 @@
 ---
 import ArchwayLayout from '../layouts/ArchwayLayout.astro';
-import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
 import StatsBar from '../components/shared/StatsBar.astro';
 import ServicesGrid from '../components/shared/ServicesGrid.astro';
 import AboutArchway from '../components/shared/AboutArchway.astro';
@@ -15,12 +14,29 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaText="Request My Compliance Review"
   ctaHref="#hero-form"
 >
-  <HeroComplianceBooking
-    headline="Does Your Agency Have a <em>Compliance Gap?</em>"
-    subhead="Book a 30-minute call and find out exactly where you stand before a carrier, a renewal conversation, or an incident does it for you."
-    formId="e1df9d70-184c-445b-81c0-8eafe4a62a63"
-    showFallback={false}
-  />
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          Compliance Season 2026
+        </div>
+        <h1>Does Your Agency Have a <em>Compliance Gap?</em></h1>
+        <p class="hero-sub">Book a 30-minute call and find out exactly where you stand before a carrier, a renewal conversation, or an incident does it for you.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Request Your Compliance Review</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+        <div class="hs-form-frame" data-region="na2" data-form-id="d6ac3fd0-283c-473c-b1e5-8015d95c2d69" data-portal-id="6869933"></div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="https://js-na2.hsforms.net/forms/embed/6869933.js" defer></script>
 
   <!-- Problem Cards -->
   <section class="section">
@@ -99,6 +115,16 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 </ArchwayLayout>
 
 <style>
+  :global(.hero h1 em) {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hs-form-frame {
+    width: 100%;
+    min-height: 380px;
+  }
+
   .section-label {
     text-align: center;
     display: block;
