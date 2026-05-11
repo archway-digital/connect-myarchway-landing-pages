@@ -12,7 +12,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaHref="#hero-form"
 >
   <HeroComplianceBooking
-    headline="Book Your <em>Annual Compliance Review</em>"
+    headline="Book Your <span class='hl'>Annual Compliance Review</span>"
     subhead="Already working with Archway? Make sure compliance is covered too."
     formId="PLACEHOLDER_FORM_ID_06"
   />
@@ -35,27 +35,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   />
 </ArchwayLayout>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

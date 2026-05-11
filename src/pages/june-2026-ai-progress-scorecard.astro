@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="AI Adoption Progress  ·  June 2026"
-    headline="Halfway Through 2026. <em>Where Does Your Agency’s AI Adoption Actually&nbsp;Stand?</em>"
+    headline="Halfway Through 2026. <span class='hl'>Where Does Your Agency’s AI Adoption Actually&nbsp;Stand?</span>"
     subhead="Download the free scorecard and get an honest picture of your AI progress, where you have stalled, and what the most realistic next step looks like."
     body1="Most agencies that planned to do something with AI this year are somewhere between started and stalled. Not because the goal was wrong. Because the starting point was too broad or the first tool did not connect to a real workflow problem."
     body2="This scorecard covers the four areas where independent insurance agencies get the most traction with AI. Ten minutes. An honest output. A clear recommendation for what to do next based on where you actually are."
@@ -90,27 +90,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

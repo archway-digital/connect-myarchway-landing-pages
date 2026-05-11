@@ -21,7 +21,7 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   <CredibilityGrader />
   <BottomCTA
     heading="Your Score Is Just the Start"
-    subtext="Schedule a quick call to walk through your results, or we'll email you the full report — whatever works best."
+    subtext="Schedule a quick call to walk through your results, or we'll email you the full report (whatever works best)."
     ctaText="Book a Free Review"
     ctaHref="https://meetings-na2.hubspot.com/hannah-ruben?uuid=15c419cf-bb54-42a5-99f2-6061da28dc99"
     ctaVariant="secondary"
@@ -40,29 +40,3 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  // Scroll-triggered fade animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

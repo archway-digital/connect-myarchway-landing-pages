@@ -8,8 +8,8 @@
         <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
         Website / Digital Presence
       </div>
-      <h1>Pull Out Your Phone. Search Your Agency. <em>What Do You See?</em></h1>
-      <p class="hero-sub">Most agency owners haven&rsquo;t looked at their website through a client&rsquo;s eyes in over a year. What shows up &mdash; on mobile, on Google, on the page itself &mdash; might be costing you more than you think.</p>
+      <h1>Pull Out Your Phone. Search Your Agency. <span class="hl">What Do You See?</span></h1>
+      <p class="hero-sub">Most agency owners haven&rsquo;t looked at their website through a client&rsquo;s eyes in over a year. What shows up on mobile, on Google, and on the page itself might be costing you more than you think.</p>
       <p class="hero-sub hero-sub-secondary">Find out exactly where you stand in under 60 seconds.</p>
     </div>
 
@@ -18,7 +18,7 @@
       <div id="grader-form-state">
         <div class="form-header">
           <h2>Get Your Free Website Grade</h2>
-          <p>Enter your website &mdash; we&rsquo;ll score it across 5 categories.</p>
+          <p>Enter your website. We&rsquo;ll score it across 5 categories.</p>
         </div>
         <div id="hs-grader-form"></div>
         <p class="form-privacy">No spam. No sales pressure. Just your honest score.</p>
@@ -52,7 +52,7 @@
         <div class="error-inner">
           <div class="error-icon">!</div>
           <h3>We couldn&rsquo;t reach that site</h3>
-          <p>No worries &mdash; we&rsquo;ll analyze it manually and email your results within 24 hours.</p>
+          <p>No worries. We&rsquo;ll analyze it manually and email your results within 24 hours.</p>
           <a href="#hero-form" class="results-cta">Back to top &rarr;</a>
         </div>
       </div>
@@ -425,7 +425,7 @@
       return lines.join('\n');
     }
 
-    // Post note and task to HubSpot contact record (silent — never blocks UI)
+    // Post note and task to HubSpot contact record (silent, never blocks UI)
     if (capturedEmail) {
       fetch('/api/hubspot-note', {
         method: 'POST',
@@ -471,7 +471,7 @@
     min-height: 400px;
   }
 
-  /* Loading state */
+  /* Loading state — sits inside white form card */
   #grader-loading-state {
     align-items: center;
     justify-content: center;
@@ -508,7 +508,7 @@
     color: var(--text-light);
   }
 
-  /* Results state */
+  /* Results state — sits inside white form card */
   .results-inner {
     text-align: center;
   }

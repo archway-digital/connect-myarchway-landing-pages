@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="Mid-Year Technology Checkpoint  ·  June 2026"
-    headline="Is Your Agency’s Technology Set Up <em>for a Strong Second&nbsp;Half?</em>"
+    headline="Is Your Agency’s Technology Set Up <span class='hl'>for a Strong Second&nbsp;Half?</span>"
     subhead="Download the free mid-year technology audit checklist and find out where your IT, marketing, and AI setup actually stands at the halfway point of 2026."
     body1="We are halfway through 2026 and most agencies have not stopped to ask whether their technology is working the way it should. Not whether it is working. Whether it is working the way it should."
     body2="This checklist covers all three areas in 15 minutes. Most agencies come out with at least two or three things worth addressing before Q3. The scoring guide at the end tells you where to focus first."
@@ -90,27 +90,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

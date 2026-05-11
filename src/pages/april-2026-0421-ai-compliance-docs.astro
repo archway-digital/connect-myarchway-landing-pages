@@ -12,7 +12,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaHref="#hero-form"
 >
   <HeroComplianceBooking
-    headline="Your Compliance Documents Should Live in SharePoint. <em>We Can Build That.</em>"
+    headline="Your Compliance Documents Should Live in SharePoint. <span class='hl'>We Can Build That.</span>"
     subhead="Book a compliance review and walk away with editable SOP and compliance documents that live where your team can actually find them."
     formId="PLACEHOLDER_FORM_ID_09"
   />
@@ -36,27 +36,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   />
 </ArchwayLayout>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

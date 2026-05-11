@@ -12,7 +12,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaHref="#hero-form"
 >
   <HeroComplianceDownload
-    headline="Is Your Agency Ready for <em>Compliance Season?</em>"
+    headline="Is Your Agency Ready for <span class='hl'>Compliance Season?</span>"
     subhead="Download the free checklist insurance agencies are using to close gaps before carrier conversations catch them off guard."
     formId="PLACEHOLDER_FORM_ID_01"
   />
@@ -34,27 +34,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   />
 </ArchwayLayout>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

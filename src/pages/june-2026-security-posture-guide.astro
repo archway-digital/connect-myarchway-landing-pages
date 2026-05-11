@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="Security Posture  ·  June 2026"
-    headline="Where Does Your Security Posture Stand <em>at the Midpoint of&nbsp;2026?</em>"
+    headline="Where Does Your Security Posture Stand <span class='hl'>at the Midpoint of&nbsp;2026?</span>"
     subhead="Download the free guide and find out what has changed since January, where the gaps are, and what to do about it before renewal season."
     body1="Carrier cyber requirements updated this year. Your systems changed. Your staff may have changed. The security posture you had in January is not necessarily the one you have today."
     body2="This guide covers the four areas carriers scrutinize most. For each one you will find a benchmark for where you should be at midyear and a clear action item if you are not there. Written for agency owners, not IT professionals."
@@ -90,27 +90,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

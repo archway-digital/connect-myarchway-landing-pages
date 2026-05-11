@@ -23,13 +23,43 @@ const { title, description, ctaText = 'Book a Meeting', ctaHref = '#hero-form' }
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
   <NavArchway ctaText={ctaText} ctaHref={ctaHref} />
-  <slot />
+  <main id="main">
+    <slot />
+  </main>
   <FooterArchway />
   <!-- HubSpot Tracking Code -->
   <script is:inline type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/6869933.js"></script>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = e.currentTarget.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+  </script>
 </body>
 </html>
 

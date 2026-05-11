@@ -20,7 +20,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
         <div class="hero-badge">
           Compliance Season 2026
         </div>
-        <h1>Your Agency&rsquo;s Technology Should Be Working <em>For&nbsp;You.</em></h1>
+        <h1>Your Agency&rsquo;s Technology Should Be Working <span class='hl'>For&nbsp;You.</span></h1>
         <p class="hero-sub">Archway works exclusively with independent insurance agencies on IT and security, digital marketing, and AI and workflow automation. If any of those areas have gaps, we will find them.</p>
         <p class="hero-intro">Most independent insurance agencies are running technology that was set up years ago, has not been formally reviewed since, and is carrying more risk than anyone realizes. Not because the people running the agency are careless. Because nobody has made it a priority to look.</p>
         <p class="hero-intro">A conversation with Archway is where that changes. We look at your current setup across security, marketing, and operations. We tell you what is working, what is not, and what to address first. One conversation. No obligation. Just a clear picture of where you stand.</p>
@@ -352,27 +352,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

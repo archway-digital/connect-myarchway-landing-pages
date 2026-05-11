@@ -12,7 +12,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   ctaHref="#hero-form"
 >
   <HeroComplianceBooking
-    headline="Q2 Starts Monday. <em>Do Not Head In Exposed.</em>"
+    headline="Q2 Starts Monday. <span class='hl'>Do Not Head In Exposed.</span>"
     subhead="Book your compliance review now while we still have April capacity. Most reviews are completed within two weeks of booking."
     formId="PLACEHOLDER_FORM_ID_11"
   />
@@ -36,27 +36,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   />
 </ArchwayLayout>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

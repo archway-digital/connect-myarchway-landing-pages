@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="AI Without the Hype  ·  May 2026"
-    headline="Everyone Is Talking About AI. <em>Most of It Won&rsquo;t Work for Your&nbsp;Agency.</em>"
+    headline="Everyone Is Talking About AI. <span class='hl'>Most of It Won&rsquo;t Work for Your&nbsp;Agency.</span>"
     subhead="Download the free checklist and evaluate where your agency stands on AI, and find your best starting point."
     body1="Most AI conversations in the insurance industry are driven by vendors trying to sell software. Conference sessions. Demo calls. Tools that look impressive until you try to connect them to how your agency actually works."
     body2="This checklist is different. It comes from what we have actually built for independent agencies, the workflows that delivered real results, the tools that underdelivered, and the four questions you should ask before spending a dollar on AI."
@@ -89,27 +89,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

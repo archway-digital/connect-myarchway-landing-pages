@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="Marketing Performance  ·  June 2026"
-    headline="Is Your Marketing on Track for 2026? <em>Find Out at the Halfway&nbsp;Point.</em>"
+    headline="Is Your Marketing on Track for 2026? <span class='hl'>Find Out at the Halfway&nbsp;Point.</span>"
     subhead="Download the free guide and find out what your website, local search presence, and email outreach are actually doing, and what to fix before renewal season peaks."
     body1="Most independent insurance agency owners set marketing goals at the start of the year and do not look at them again until Q4 when they are trying to explain why they were not hit."
     body2="The halfway point is when checking actually matters. There is still time to fix what is not working before renewal season peaks in Q3. This guide shows you what to look at, what the numbers mean, and where to focus first."
@@ -90,27 +90,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

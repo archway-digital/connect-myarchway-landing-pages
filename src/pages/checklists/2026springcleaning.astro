@@ -19,7 +19,7 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   <SocialProof />
   <BottomCTA
     heading="Already Know You Have Gaps?"
-    subtext="Some agencies download the guide and immediately recognize something that needs attention. If that's you, skip ahead — book a quick Security Assessment or System Review and we'll walk through your stack together."
+    subtext="Some agencies download the guide and immediately recognize something that needs attention. If that's you, skip ahead and book a quick Security Assessment or System Review. We'll walk through your stack together."
     ctaText="Book a Free Review"
     ctaHref="#hero-form"
     ctaVariant="secondary"
@@ -31,36 +31,10 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   .micro-copy {
     text-align: center;
     background: var(--navy);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 14px;
     padding: 0 24px 24px;
     margin-top: -56px;
   }
 </style>
 
-<script>
-  // Scroll-triggered fade animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

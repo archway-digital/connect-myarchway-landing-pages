@@ -22,7 +22,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
           <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
           Compliance Season 2026
         </div>
-        <h1>Does Your Agency Have a <em>Compliance Gap?</em></h1>
+        <h1>Does Your Agency Have a <span class='hl'>Compliance Gap?</span></h1>
         <p class="hero-sub">Book a 30-minute call and find out exactly where you stand before a carrier, a renewal conversation, or an incident does it for you.</p>
       </div>
 
@@ -251,27 +251,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

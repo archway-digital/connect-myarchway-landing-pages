@@ -18,7 +18,7 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
 >
   <HeroLeadMagnet
     badge="Mid-Year Technology Review  ·  May 2026"
-    headline="One Conversation. <em>A Clear Picture of Where Your Agency&nbsp;Stands.</em>"
+    headline="One Conversation. <span class='hl'>A Clear Picture of Where Your Agency&nbsp;Stands.</span>"
     subhead="Book 30 minutes with Archway and get an honest mid-year look at your IT and security posture, marketing performance, and AI and workflow efficiency."
     body1="Most agencies go into Q3 with a few things they know need attention and no clear plan for when those things get addressed. A mid-year technology review changes that."
     body2="We cover all three areas in one conversation. You leave with a clear picture of what is working, what is not, and a prioritized list of what to address before fall. One call. Archway only works with independent insurance agencies, we know the landscape."
@@ -90,27 +90,3 @@ import BottomCTA from '../components/shared/BottomCTA.astro';
   }
 </style>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>
