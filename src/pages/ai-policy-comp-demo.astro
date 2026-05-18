@@ -1,0 +1,1295 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+
+const HUBSPOT_PORTAL_ID = '6869933';
+const HUBSPOT_FORM_ID = '265fd6ee-818d-4b22-b5b9-22d9a5612975';
+---
+
+<ArchwayLayout
+  title="AI-Powered Policy Comparison for Independent Insurance Agencies | Archway"
+  description="Show clients exactly what changed between their current policy and a competing quote. Side by side. Plain language. Built by Archway exclusively for independent insurance agencies."
+  ctaText="See the Demo"
+  ctaHref="#hero-form"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">AI Without the Hype  ·  May 2026</div>
+        <h1>Your Client Got a Cheaper Quote.<br /><span class="hl">Here Is How You Keep Them.</span></h1>
+        <p class="hero-sub">Show them exactly what changed between their current policy and the competing quote. Side by side. Plain language. Built on insurance coverage logic, not adapted from a generic document tool.</p>
+        <a href="#hero-form" class="hero-cta-primary">
+          See the Demo Now
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="hero-trust">No pitch. No platform fee conversation. Just a tool built for insurance agencies.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Let&rsquo;s Talk About Your Agency</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+        <div id="hs-policy-comp-form"></div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ HUBSPOT_PORTAL_ID, HUBSPOT_FORM_ID }}>
+    function _createPolicyCompForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createPolicyCompForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: HUBSPOT_PORTAL_ID,
+        formId: HUBSPOT_FORM_ID,
+        region: 'na2',
+        target: '#hs-policy-comp-form',
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #ef4444; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #ffffff !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #d96d10 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #f48021; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createPolicyCompForm();
+  </script>
+
+  <!-- What the Tool Does -->
+  <section class="section">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">What the Tool Does</p>
+      <h2 class="section-h2 centered-h">Two Documents In. <span class="hl">One Clear Answer Out.</span></h2>
+
+      <div class="io-grid">
+        <article class="io-card io-card--in">
+          <p class="io-eyebrow">What Goes In</p>
+          <h3>The Current Policy and the Competing Quote</h3>
+          <p>An agency loads two documents: the client&rsquo;s current declarations page and the competing carrier&rsquo;s quote. The tool accepts homeowners ACORD forms, dwelling policies, commercial BOP declarations pages, and standard carrier quote documents. Personal lines, commercial lines, and rental property. The AI reads both documents and identifies every field that differs between them.</p>
+        </article>
+        <div class="io-arrow" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="6" y1="16" x2="26" y2="16"/>
+            <polyline points="18 8 26 16 18 24"/>
+          </svg>
+        </div>
+        <article class="io-card io-card--out">
+          <p class="io-eyebrow">What Comes Out</p>
+          <h3>A Side by Side Coverage Comparison</h3>
+          <p>A plain-language comparison showing exactly what changed between the two documents. Premium difference. Coverage limits side by side. Deductible changes. Exclusions that appeared or disappeared. Endorsements added or removed. Written in language a client can read and understand without an agent translating it. The agency controls the conversation because they have the data.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <NumberedCardsList
+    sectionLabel="How It Works"
+    heading="Load Two Documents. <br />Get a Complete Coverage&nbsp;Breakdown."
+    cards={[
+      {
+        title: "Agency loads the current policy and the competing quote",
+        body: "A client's current declarations page and the competing carrier's quote document. The tool accepts PDFs and standard carrier document formats. Personal homeowners, rental property, and commercial BOP in the demo right now."
+      },
+      {
+        title: "AI reads both documents and identifies every difference",
+        body: "The tool knows the difference between an HO-3 and a DP-1. It knows what dwelling replacement cost means versus actual cash value. It knows how to read a Hartford BOP schedule and a Chubb quote side by side. That coverage context was built in, not configured after the fact by a vendor who had to be taught what insurance documents contain."
+      },
+      {
+        title: "Ask the AI anything about the comparison",
+        body: "The producer asks questions in plain language. Why is the competing quote cheaper? What coverage did they drop? Is the liability limit right for this client? The AI answers using both documents and what it knows about the client. It flags gaps proactively, if the competing carrier dropped water backup and the client had a flood claim, the AI surfaces that before the producer sends anything. It drafts endorsements, explanations, and client-ready summaries on request."
+      }
+    ]}
+  />
+
+  <!-- The AI Producer Assistant -->
+  <section class="section">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">More Than a Comparison</p>
+      <h2 class="section-h2 centered-h">An AI Producer Assistant That <span class="hl">Thinks Through the Risk With You.</span></h2>
+
+      <div class="producer-grid">
+        <article class="producer-card producer-card--flag">
+          <p class="producer-eyebrow">What It Flags</p>
+          <h3>Coverage Gaps the Producer Might Miss</h3>
+          <p>The AI reads both documents against what it knows about the client. If the competing quote dropped water backup coverage and the client had a basement flood claim in 2021, it flags that before the producer sends anything. If the settlement basis changed from replacement cost to ACV, it explains what that means on a partial loss in plain language. It surfaces the things that matter, not just the things that changed.</p>
+        </article>
+        <article class="producer-card producer-card--draft">
+          <p class="producer-eyebrow">What It Drafts</p>
+          <h3>Endorsements, Explanations, and Client-Ready Summaries</h3>
+          <p>Ask the AI to draft an add-back endorsement for a dropped coverage. Ask it to explain why the competing quote is cheaper. Ask it whether the liability limit is appropriate for the client&rsquo;s situation. Ask it to explain replacement cost versus actual cash value in terms the client will understand. The producer asks the question. The AI does the research and drafts the response.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Can Ask -->
+  <section class="section section-light">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">Ask Anything About the Comparison</p>
+      <h2 class="section-h2 centered-h">The Producer Asks. <span class="hl">The AI Answers.</span></h2>
+
+      <div class="ask-grid">
+        <article class="ask-card">
+          <h3>Coverage and carrier questions</h3>
+          <p>Why is the competing quote cheaper? Is the liability limit appropriate for this client? What does the settlement basis change mean on a partial loss? What changed in the endorsements section that is not obvious from the premium difference?</p>
+        </article>
+        <article class="ask-card">
+          <h3>Gap and risk identification</h3>
+          <p>What coverages did the competing carrier drop? Does the client have any claims history that makes a dropped coverage a real risk? What would it cost to add back the coverage that was removed? Is there an endorsement that closes this gap?</p>
+        </article>
+        <article class="ask-card">
+          <h3>Client-ready drafts</h3>
+          <p>Draft an explanation of the coverage differences in language the client can understand. Draft an add-back endorsement recommendation. Draft a summary of why the agency recommends staying with the current carrier or moving to the new one. The AI produces the draft. The producer reviews and sends.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Scenarios -->
+  <section class="section">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">Try It Now</p>
+      <h2 class="section-h2 centered-h">Three Real Scenarios <span class="hl">Loaded and Ready.</span></h2>
+
+      <div class="scenarios-grid">
+        <article class="scenario-featured">
+          <div class="scenario-featured-meta">
+            <p class="scenario-tag">Featured · Personal Lines</p>
+            <span class="scenario-delta-pill scenario-delta-pill--savings">−$240 / yr</span>
+          </div>
+          <p class="scenario-matchup"><strong>State Farm</strong> <span class="scenario-vs">vs</span> <strong>Travelers</strong></p>
+          <p class="scenario-profile">Sarah Chen · Austin, TX · HO-3 dwelling</p>
+          <dl class="scenario-stats">
+            <div>
+              <dt>Current</dt>
+              <dd>$1,720 / yr</dd>
+            </div>
+            <div>
+              <dt>Competing</dt>
+              <dd>$1,480 / yr</dd>
+            </div>
+            <div>
+              <dt>Premium delta</dt>
+              <dd class="scenario-stats-delta">−$240</dd>
+            </div>
+          </dl>
+          <p class="scenario-blurb">The competing quote drops water backup, doubles the deductible, and switches the settlement basis to ACV. The $240 saving carries about $2,500 of out-of-pocket exposure.</p>
+          <a href="#comp-summary" class="scenario-link">See the full comparison below
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+          </a>
+        </article>
+
+        <div class="scenarios-side">
+          <article class="scenario-compact">
+            <div class="scenario-compact-head">
+              <p class="scenario-tag">Personal Lines</p>
+              <span class="scenario-delta-pill scenario-delta-pill--cost">+$160 / yr</span>
+            </div>
+            <p class="scenario-matchup scenario-matchup--small"><strong>Liberty Mutual</strong> <span class="scenario-vs">vs</span> <strong>Foremost</strong></p>
+            <p class="scenario-profile">Mike Johnson · Phoenix, AZ · DP-1 to DP-3</p>
+            <p class="scenario-compact-blurb">The DP-1 to DP-3 coverage shift matters more than the premium difference. The tool surfaces what the extra $160 actually buys.</p>
+          </article>
+          <article class="scenario-compact">
+            <div class="scenario-compact-head">
+              <p class="scenario-tag">Commercial Lines</p>
+              <span class="scenario-delta-pill scenario-delta-pill--savings">−$260 / yr</span>
+            </div>
+            <p class="scenario-matchup scenario-matchup--small"><strong>Hartford</strong> <span class="scenario-vs">vs</span> <strong>Chubb</strong></p>
+            <p class="scenario-profile">Acme LLC · 8-person contractor · Denver, CO</p>
+            <p class="scenario-compact-blurb">A BOP renewal saving $260 per year. The tool surfaces how that $260 maps to liability limits, property coverage, and endorsements.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- See Sarah's Comparison: product mockup section -->
+  <section class="section section-light">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">What the Output Looks Like</p>
+      <h2 class="section-h2 centered-h">See Sarah&rsquo;s Comparison. <span class="hl">Side by Side. Plain Language.</span></h2>
+      <p class="comp-intro">The first scenario above, rendered as the tool actually produces it. No interpretation needed. The numbers and the coverage shifts speak for themselves.</p>
+
+      <article class="comp-doc" aria-label="Side-by-side policy comparison for Sarah Chen">
+        <header class="comp-head">
+          <div class="comp-head-meta">
+            <p class="comp-head-eyebrow">Renewal Comparison · Personal Lines</p>
+            <p class="comp-head-applicant">Sarah Chen <span class="comp-head-divider">·</span> Austin, TX <span class="comp-head-divider">·</span> HO-3 Dwelling</p>
+          </div>
+          <div class="comp-head-carriers">
+            <div class="comp-carrier">
+              <p class="comp-carrier-label">Current</p>
+              <p class="comp-carrier-name">State Farm</p>
+            </div>
+            <span class="comp-vs" aria-hidden="true">vs</span>
+            <div class="comp-carrier">
+              <p class="comp-carrier-label">Competing Quote</p>
+              <p class="comp-carrier-name">Travelers</p>
+            </div>
+          </div>
+        </header>
+
+        <table class="comp-table" aria-describedby="comp-summary">
+          <thead>
+            <tr>
+              <th scope="col" class="comp-th-coverage">Coverage</th>
+              <th scope="col" class="comp-th-carrier">State Farm</th>
+              <th scope="col" class="comp-th-carrier">Travelers</th>
+              <th scope="col" class="comp-th-delta">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="comp-row comp-row--premium">
+              <th scope="row" class="comp-rowlabel">Annual premium</th>
+              <td class="comp-val" data-label="State Farm">$1,720</td>
+              <td class="comp-val" data-label="Travelers">$1,480</td>
+              <td class="comp-delta"><span class="comp-delta-pill comp-delta-pill--savings">−$240 / yr</span></td>
+            </tr>
+            <tr class="comp-row">
+              <th scope="row" class="comp-rowlabel">Dwelling (replacement cost)</th>
+              <td class="comp-val" data-label="State Farm">$310,000</td>
+              <td class="comp-val" data-label="Travelers">$310,000</td>
+              <td class="comp-delta comp-delta--same">Same</td>
+            </tr>
+            <tr class="comp-row comp-row--alert">
+              <th scope="row" class="comp-rowlabel">Deductible</th>
+              <td class="comp-val" data-label="State Farm">$1,000</td>
+              <td class="comp-val" data-label="Travelers">$2,500</td>
+              <td class="comp-delta comp-delta--alert">Doubled</td>
+            </tr>
+            <tr class="comp-row comp-row--alert">
+              <th scope="row" class="comp-rowlabel">Water backup</th>
+              <td class="comp-val" data-label="State Farm">$5,000 included</td>
+              <td class="comp-val" data-label="Travelers">Not included</td>
+              <td class="comp-delta comp-delta--alert">Dropped</td>
+            </tr>
+            <tr class="comp-row comp-row--alert">
+              <th scope="row" class="comp-rowlabel">Settlement basis</th>
+              <td class="comp-val" data-label="State Farm">Replacement cost</td>
+              <td class="comp-val" data-label="Travelers">Actual cash value</td>
+              <td class="comp-delta comp-delta--alert">Changed</td>
+            </tr>
+            <tr class="comp-row">
+              <th scope="row" class="comp-rowlabel">Liability</th>
+              <td class="comp-val" data-label="State Farm">$300,000</td>
+              <td class="comp-val" data-label="Travelers">$300,000</td>
+              <td class="comp-delta comp-delta--same">Same</td>
+            </tr>
+            <tr class="comp-row comp-row--alert">
+              <th scope="row" class="comp-rowlabel">Medical payments</th>
+              <td class="comp-val" data-label="State Farm">$5,000</td>
+              <td class="comp-val" data-label="Travelers">$1,000</td>
+              <td class="comp-delta comp-delta--alert">Reduced</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <footer class="comp-summary" id="comp-summary">
+          <p class="comp-summary-label">Plain-Language Summary</p>
+          <p class="comp-summary-body">Travelers saves <strong>$240 a year</strong>, but it doubles the deductible, drops water backup (Sarah filed a basement flood claim in 2022), and switches the settlement basis to actual cash value on partial losses. The $240 in annual savings carries roughly <strong>$2,500 in out-of-pocket exposure</strong> the first time a covered event happens.</p>
+          <p class="comp-summary-recommend">Recommended add-back: water backup endorsement, settlement-basis rider, deductible buy-down. Net cost to keep Travelers and match the original coverage profile: <strong>about $190 a year</strong>, not $240 in savings.</p>
+        </footer>
+      </article>
+
+      <p class="comp-aside">This is the actual output for one of the three scenarios. The other two render the same way: BOP coverage rows for Acme&rsquo;s Hartford vs Chubb comparison, rental-property DP-1 vs DP-3 fields for Mike&rsquo;s Liberty Mutual vs Foremost.</p>
+    </div>
+  </section>
+
+  <!-- Why This Is Not Another Platform Fee -->
+  <section class="section section-light">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">Why This Is Not Another Platform Fee</p>
+      <h2 class="section-h2 centered-h">Built on Insurance Coverage Logic. <br /><span class="hl">Not Adapted From a Generic Document Tool.</span></h2>
+
+      <div class="reasons-grid">
+        <article class="reason-card">
+          <h3>It knows insurance document formats</h3>
+          <p>HO-3, DP-1, DP-3, BOP schedules, ACORD forms, carrier quote documents. The tool was built to read the specific document types that independent agencies handle every day. A generic document comparison tool does not know what dwelling replacement cost means. This one does.</p>
+        </article>
+        <article class="reason-card">
+          <h3>It reads coverage terms, not just fields</h3>
+          <p>The comparison surfaces what actually matters: coverage limit changes, deductible differences, exclusions that appeared or disappeared, endorsements added or removed. Not just a field-by-field data extract. A coverage-aware comparison written in language a client can understand.</p>
+        </article>
+        <article class="reason-card">
+          <h3>Your agency owns the workflow</h3>
+          <p>No recurring per-comparison fee. No platform subscription attached to every renewal conversation. Archway builds the workflow custom for your agency. You own it. The tool connects to the coverage types and document formats your clients actually bring in.</p>
+        </article>
+        <article class="reason-card">
+          <h3>Exclusively for independent agencies</h3>
+          <p>Archway works exclusively with independent insurance agencies on IT, cybersecurity, marketing, and AI. This tool was not built for a general business and adapted for insurance. It was built for the renewal conversations, retention challenges, and coverage complexity that independent agencies deal with every day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <Testimonials />
+
+  <!-- Bottom CTA Band -->
+  <section class="cta-section bottom-cta-two">
+    <div class="bottom-cta-inner">
+      <h2>Ready to See It Working on <span class="hl">Real Policy Documents?</span></h2>
+      <p>Try the demo in two minutes. Or book 30 minutes with Sam and talk through what a custom build looks like for your agency&rsquo;s renewal workflow.</p>
+      <div class="cta-buttons">
+        <a href="#hero-form" class="cta-button">
+          See the Demo Now
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://meetings-na2.hubspot.com/sam-ruben/website-forms-discovery-call?uuid=b6de8e54-720e-4dec-8f7a-f3d75927d80d" class="cta-button-secondary" target="_blank" rel="noopener">Book 30 Minutes With Sam</a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* ── HERO ── */
+  :global(.hero .hero-kicker::before) {
+    display: none;
+  }
+
+  .hero-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 14px;
+    max-width: 58ch;
+  }
+
+  .hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 18px 32px;
+    border-radius: 8px;
+    margin-top: 12px;
+    min-height: 44px;
+    transition: background 0.2s ease;
+  }
+
+  .hero-cta-primary:hover {
+    background: var(--orange-dark);
+  }
+
+  .hero-trust {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    max-width: 52ch;
+  }
+
+  #hs-policy-comp-form {
+    width: 100%;
+  }
+
+  /* ── CENTERED SECTION UTILITIES ── */
+  .centered { text-align: center; }
+  .centered-label {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .centered-h {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: var(--charcoal);
+    margin-bottom: 48px;
+    text-wrap: balance;
+  }
+
+  /* ── WHAT THE TOOL DOES — input → output flow ── */
+  .io-grid {
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 24px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .io-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .io-card--in { background: var(--light-bg); }
+  .io-card--out { background: var(--white); }
+
+  .io-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .io-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .io-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .io-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+  }
+
+  /* ── AI PRODUCER ASSISTANT — two facets, no arrow ── */
+  .producer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .producer-card {
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .producer-card--flag {
+    background: linear-gradient(180deg, rgba(244, 128, 33, 0.05) 0%, rgba(244, 128, 33, 0.015) 100%);
+    border: 1px solid rgba(244, 128, 33, 0.22);
+  }
+
+  .producer-card--draft {
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  .producer-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+
+  .producer-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .producer-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ── WHAT YOU CAN ASK — 3 typography cards ── */
+  .ask-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .ask-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--orange);
+    border-radius: 12px;
+    padding: 30px 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .ask-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .ask-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ── THREE SCENARIOS ── asymmetric: featured (2fr) + 2 compact stacked (1fr) ── */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 24px;
+    text-align: left;
+    align-items: stretch;
+  }
+
+  /* ── Featured scenario (large, left column) ── */
+  .scenario-featured {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .scenario-featured-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+
+  .scenario-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  .scenario-delta-pill {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scenario-delta-pill--savings {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .scenario-delta-pill--cost {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .scenario-matchup {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 8px;
+  }
+
+  .scenario-matchup--small {
+    font-size: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .scenario-vs {
+    font-size: 0.6em;
+    font-weight: 500;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 6px;
+    vertical-align: 0.18em;
+  }
+
+  .scenario-profile {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0 0 24px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scenario-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 20px;
+  }
+
+  .scenario-stats > div {
+    padding: 14px 16px;
+    border-right: 1px solid var(--border);
+  }
+
+  .scenario-stats > div:last-child {
+    border-right: none;
+    background: var(--light-bg);
+  }
+
+  .scenario-stats dt {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin: 0 0 4px;
+  }
+
+  .scenario-stats dd {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.3px;
+  }
+
+  .scenario-stats-delta {
+    color: var(--orange) !important;
+  }
+
+  .scenario-blurb {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 20px;
+    flex: 1;
+  }
+
+  .scenario-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(244, 128, 33, 0.3);
+    padding-bottom: 4px;
+    align-self: flex-start;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .scenario-link:hover {
+    color: var(--orange-dark);
+    border-bottom-color: var(--orange-dark);
+  }
+
+  /* ── Compact scenarios (right column, stacked) ── */
+  .scenarios-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .scenario-compact {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scenario-compact-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .scenario-compact .scenario-profile {
+    margin-bottom: 14px;
+  }
+
+  .scenario-compact-blurb {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-light);
+    margin: 0;
+    flex: 1;
+  }
+
+  /* ── COMPARISON DOCUMENT ── document-style artifact, NOT a card */
+  .comp-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    max-width: 60ch;
+    margin: -32px auto 48px;
+    text-align: center;
+  }
+
+  .comp-doc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  }
+
+  .comp-head {
+    background: var(--navy);
+    color: var(--white);
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .comp-head-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 6px;
+  }
+
+  .comp-head-applicant {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    letter-spacing: -0.2px;
+  }
+
+  .comp-head-divider {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 6px;
+    font-weight: 400;
+  }
+
+  .comp-head-carriers {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .comp-carrier {
+    text-align: right;
+  }
+
+  .comp-carrier-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 2px;
+  }
+
+  .comp-carrier-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .comp-vs {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-table thead tr {
+    background: var(--light-bg);
+  }
+
+  .comp-table th {
+    padding: 12px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comp-th-carrier,
+  .comp-th-delta {
+    text-align: right;
+  }
+
+  .comp-th-coverage {
+    width: 32%;
+  }
+
+  .comp-th-carrier {
+    width: 22%;
+  }
+
+  .comp-th-delta {
+    width: 24%;
+  }
+
+  .comp-row {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+  }
+
+  .comp-row:last-child {
+    border-bottom: none;
+  }
+
+  .comp-row--alert {
+    background: rgba(244, 128, 33, 0.025);
+  }
+
+  .comp-row--premium {
+    background: var(--light-bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comp-rowlabel {
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: left;
+  }
+
+  .comp-row--premium .comp-rowlabel {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .comp-val {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--text);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-row--premium .comp-val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  .comp-delta {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .comp-delta--same {
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .comp-delta--alert {
+    color: var(--orange-dark);
+    font-weight: 700;
+  }
+
+  .comp-delta-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .comp-delta-pill--savings {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .comp-summary {
+    background: var(--white);
+    padding: 28px 32px;
+    border-top: 2px solid var(--navy);
+  }
+
+  .comp-summary-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--orange);
+    margin: 0 0 10px;
+  }
+
+  .comp-summary-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 14px;
+  }
+
+  .comp-summary-body strong {
+    color: var(--charcoal);
+    font-weight: 700;
+  }
+
+  .comp-summary-recommend {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    padding: 14px 16px;
+    background: var(--light-bg);
+    border-radius: 6px;
+    margin: 0;
+  }
+
+  .comp-summary-recommend strong {
+    color: var(--charcoal);
+    font-weight: 700;
+  }
+
+  .comp-aside {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-light);
+    text-align: center;
+    margin: 24px auto 0;
+    max-width: 56ch;
+    font-style: italic;
+  }
+
+  /* ── WHY NOT A PLATFORM FEE — 2x2 with corner numbers ── */
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .reason-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 32px 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+  }
+
+  .reason-card h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .reason-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ── BOTTOM CTA — two button variant ── */
+  .bottom-cta-two {
+    padding: 80px 24px;
+  }
+
+  .bottom-cta-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bottom-cta-two h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .bottom-cta-two p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 17px;
+    margin-bottom: 28px;
+  }
+
+  .cta-buttons {
+    display: inline-flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bottom-cta-two .cta-button,
+  .bottom-cta-two .cta-button-secondary {
+    min-height: 44px;
+  }
+
+  .bottom-cta-two .cta-button-secondary {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .scenarios-grid,
+    .ask-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scenarios-side {
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .comp-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 20px 22px;
+    }
+
+    .comp-head-carriers {
+      justify-content: flex-start;
+    }
+
+    .comp-carrier {
+      text-align: left;
+    }
+
+    .comp-th-coverage {
+      width: 40%;
+    }
+
+    .comp-th-carrier {
+      width: 22%;
+    }
+
+    .comp-th-delta {
+      width: 16%;
+    }
+
+    .comp-rowlabel,
+    .comp-val,
+    .comp-delta {
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .comp-summary {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .centered-h {
+      font-size: 28px;
+    }
+
+    .io-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .io-arrow svg {
+      transform: rotate(90deg);
+    }
+
+    .io-card,
+    .producer-card {
+      padding: 24px;
+    }
+
+    .io-card h3,
+    .producer-card h3 {
+      font-size: 20px;
+    }
+
+    .producer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ask-card {
+      padding: 24px;
+    }
+
+    .reasons-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .reason-card {
+      padding: 26px;
+    }
+
+    .scenario-featured {
+      padding: 24px;
+    }
+
+    .scenario-matchup {
+      font-size: 22px;
+    }
+
+    .scenario-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .scenario-stats > div {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scenario-stats > div:last-child {
+      border-bottom: none;
+    }
+
+    .scenarios-side {
+      grid-template-columns: 1fr;
+    }
+
+    .bottom-cta-two {
+      padding: 64px 24px;
+    }
+
+    .bottom-cta-two h2 {
+      font-size: 26px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .bottom-cta-two .cta-button,
+    .bottom-cta-two .cta-button-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .comp-table thead {
+      display: none;
+    }
+
+    .comp-table,
+    .comp-table tbody,
+    .comp-row,
+    .comp-rowlabel,
+    .comp-val,
+    .comp-delta {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
+    .comp-row {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comp-rowlabel {
+      padding: 0 0 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .comp-row--premium .comp-rowlabel {
+      color: var(--orange);
+    }
+
+    .comp-val {
+      padding: 2px 0;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comp-val::before {
+      content: attr(data-label);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .comp-delta {
+      padding: 8px 0 0;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-cta-primary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
