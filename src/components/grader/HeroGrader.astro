@@ -1,4 +1,8 @@
 ---
+interface Props {
+  formId?: string;
+}
+const { formId = 'cd1969af-ef3a-42ef-93c1-1e5b04913a92' } = Astro.props;
 ---
 
 <section class="hero">
@@ -61,7 +65,7 @@
 </section>
 
 <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
-<script is:inline>
+<script is:inline define:vars={{ formId }}>
   var graderSubmittedUrl = '';
   var capturedEmail = '';
 
@@ -85,7 +89,7 @@
 
   hbspt.forms.create({
     portalId: "6869933",
-    formId: "cd1969af-ef3a-42ef-93c1-1e5b04913a92",
+    formId: formId,
     region: "na2",
     target: "#hs-grader-form",
     onFormSubmitted: function() {

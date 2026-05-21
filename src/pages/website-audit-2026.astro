@@ -1,12 +1,11 @@
 ---
-import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
-import HeroGrader from '../../components/grader/HeroGrader.astro';
-import ProblemFraming from '../../components/grader/ProblemFraming.astro';
-import WhatWeGrade from '../../components/grader/WhatWeGrade.astro';
-import GeoContentSection from '../../components/grader/GeoContentSection.astro';
-import TimingSection from '../../components/grader/TimingSection.astro';
-import CredibilityGrader from '../../components/grader/CredibilityGrader.astro';
-import BottomCTA from '../../components/shared/BottomCTA.astro';
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroGrader from '../components/grader/HeroGrader.astro';
+import ProblemFraming from '../components/grader/ProblemFraming.astro';
+import WhatWeGrade from '../components/grader/WhatWeGrade.astro';
+import TimingSection from '../components/grader/TimingSection.astro';
+import CredibilityGrader from '../components/grader/CredibilityGrader.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
 ---
 
 <ArchwayLayout
@@ -15,10 +14,9 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
   ctaText="Grade My Website"
   ctaHref="#hero-form"
 >
-  <HeroGrader />
+  <HeroGrader formId="82075b71-f658-4ed0-806a-d89d1dec1f31" />
   <ProblemFraming />
   <WhatWeGrade />
-  <GeoContentSection />
   <TimingSection />
   <CredibilityGrader />
   <BottomCTA
@@ -41,4 +39,3 @@ import BottomCTA from '../../components/shared/BottomCTA.astro';
     margin-top: -56px;
   }
 </style>
-
