@@ -24,7 +24,7 @@ const { formId = 'cd1969af-ef3a-42ef-93c1-1e5b04913a92' } = Astro.props;
           <h2>Get Your Free Website Grade</h2>
           <p>Enter your website. We&rsquo;ll score it across 5 categories.</p>
         </div>
-        <div id="hs-grader-form"></div>
+        <div id="hs-grader-form" data-form-id={formId}></div>
         <p class="form-privacy">No spam. No sales pressure. Just your honest score.</p>
       </div>
 
@@ -47,7 +47,7 @@ const { formId = 'cd1969af-ef3a-42ef-93c1-1e5b04913a92' } = Astro.props;
           <div class="results-url" id="results-url"></div>
           <div class="score-rows" id="score-rows"></div>
           <div id="grader-narrative"></div>
-          <a href="#hero-form" class="results-cta" id="results-cta">Want to talk about your score? Book a free review &rarr;</a>
+          <a href="https://meetings-na2.hubspot.com/hannah-ruben/website-forms-discovery-call" class="results-cta" id="results-cta" target="_blank" rel="noopener">Want to talk about your score? Book a free review &rarr;</a>
         </div>
       </div>
 
@@ -65,9 +65,11 @@ const { formId = 'cd1969af-ef3a-42ef-93c1-1e5b04913a92' } = Astro.props;
 </section>
 
 <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
-<script is:inline define:vars={{ formId }}>
+<script is:inline>
   var graderSubmittedUrl = '';
   var capturedEmail = '';
+  var graderFormEl = document.getElementById('hs-grader-form');
+  var formId = (graderFormEl && graderFormEl.getAttribute('data-form-id')) || 'cd1969af-ef3a-42ef-93c1-1e5b04913a92';
 
   // Poll for the website and email inputs and attach listeners as soon as they appear
   var formWatcher = setInterval(function() {
