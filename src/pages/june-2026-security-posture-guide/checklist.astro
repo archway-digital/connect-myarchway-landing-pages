@@ -1,0 +1,1544 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+const HUBSPOT_PORTAL_ID = '6869933';
+const HUBSPOT_FORM_ID = '37e242b1-e97b-45d8-878d-f6a0b3a0a0a0';
+
+const section1 = {
+  number: '01',
+  title: 'MFA Enforcement',
+  subtitle: 'Enabled and enforced are not the same thing.',
+  intro: 'Most agencies have MFA turned on. Most carriers require MFA enforced. Those are not the same thing. Enforced means MFA is required on every account, no login is possible without it, and admin, service, shared, and vendor accounts are all included.',
+  countLabel: 'unchecked',
+  items: [
+    {
+      key: 's1q1',
+      title: 'MFA enforced on every staff account',
+      body: 'Every active user account, including office staff and producers, requires multi-factor authentication on every login.'
+    },
+    {
+      key: 's1q2',
+      title: 'MFA enforced on admin accounts',
+      body: 'Administrator accounts in Microsoft 365, AMS, and any other agency system require MFA. One uncovered admin account is all it takes for a cyber claim to get complicated.'
+    },
+    {
+      key: 's1q3',
+      title: 'MFA enforced on shared and service accounts',
+      body: 'Shared mailbox logins, service accounts, and automation accounts require MFA or have been documented as exceptions with mitigation in place.'
+    },
+    {
+      key: 's1q4',
+      title: 'MFA enforced on vendor and remote access',
+      body: 'Carrier portals, vendor logins, and any remote access tools require MFA. This includes consultant access and any third-party tool with login credentials.'
+    },
+    {
+      key: 's1q5',
+      title: 'MFA documented',
+      body: 'You can produce a list of all accounts with current MFA status within 24 hours of a carrier request. The documentation exists somewhere a person can find it.'
+    }
+  ],
+  bands: [
+    { range: '0–1 unchecked', title: 'MFA posture is strong', body: 'Move on to Section 2.' },
+    { range: '2–3 unchecked', title: 'Gaps to close before renewal', body: 'Document each uncovered account and put MFA in place.' },
+    { range: '4+ unchecked', title: 'Run an MFA audit', body: 'List every account and confirm enforcement, not just availability.' }
+  ]
+};
+
+const section2 = {
+  number: '02',
+  title: 'Backup, Restore, and Incident Response',
+  subtitle: 'Documented backups and a current IR plan.',
+  intro: 'Having backups is not the same as having validated backups. And a written incident response plan that reflects your current setup is what carriers want to see, not a vague verbal answer about who you call.',
+  countLabel: 'unchecked',
+  items: [
+    {
+      key: 's2q1',
+      title: 'Backups run on a defined schedule',
+      body: 'Daily or more frequent backups run automatically for all critical systems including AMS data, client files, and email.'
+    },
+    {
+      key: 's2q2',
+      title: 'A restore test was completed in the last 90 days',
+      body: 'A successful restore was tested. The test was actually performed, not just planned.'
+    },
+    {
+      key: 's2q3',
+      title: 'The restore test result is documented',
+      body: 'The date, what was tested, and the outcome are written down somewhere a carrier could see.'
+    },
+    {
+      key: 's2q4',
+      title: 'A written incident response plan exists',
+      body: 'The plan covers who is responsible, how an incident is detected and confirmed, how it is contained, who is notified, and how recovery happens.'
+    },
+    {
+      key: 's2q5',
+      title: 'The IR plan reflects current systems and staff',
+      body: 'The plan was reviewed in the last 12 months. It references the AMS platform, IT setup, and staff your agency actually has today.'
+    },
+    {
+      key: 's2q6',
+      title: 'The IR plan is accessible',
+      body: 'The right people can find it during an incident. It is not buried in someone’s personal inbox or on an old shared drive.'
+    }
+  ],
+  bands: [
+    { range: '0–1 unchecked', title: 'Recovery posture is strong', body: 'Move on to Section 3.' },
+    { range: '2–3 unchecked', title: 'Document the gaps', body: 'Run a restore test or refresh the IR plan before renewal.' },
+    { range: '4+ unchecked', title: 'Book a compliance review', body: 'These gaps represent real carrier and E&O risk.' }
+  ]
+};
+
+const section3 = {
+  number: '03',
+  title: 'Carrier Requirement Alignment',
+  subtitle: 'What changed in 2026 and whether you meet it now.',
+  intro: 'Carrier cyber requirements updated in 2026. An agency that met requirements at last renewal may not meet them today. Check every item your agency can currently confirm. Unchecked items are the ones to close before your next conversation with the carrier.',
+  countLabel: 'unchecked',
+  items: [
+    {
+      key: 's3q1',
+      title: 'Cyber policy requirements reviewed in last 6 months',
+      body: 'Pulled the policy. Read the requirements section. Compared each requirement against the current setup.'
+    },
+    {
+      key: 's3q2',
+      title: 'Endpoint detection and response in place',
+      body: 'Every device used for agency work runs EDR software, not just traditional antivirus. Carriers updated requirements around this in 2026.'
+    },
+    {
+      key: 's3q3',
+      title: 'Incident response documentation matches new requirements',
+      body: 'The written plan now reflects the specificity carriers ask for: who does what, what systems are critical, how communication happens.'
+    },
+    {
+      key: 's3q4',
+      title: 'Employee security training current',
+      body: 'Staff completed security training in the last 12 months covering phishing, password hygiene, and device safety. Frequency requirements tightened in 2026.'
+    },
+    {
+      key: 's3q5',
+      title: 'MFA enforcement documented',
+      body: 'Most carriers now want documentation of enforcement, not just confirmation. The documentation exists.'
+    },
+    {
+      key: 's3q6',
+      title: 'Gaps have a documented remediation plan',
+      body: 'Any item not yet in place has a written plan with a completion date the agency can hand to the carrier.'
+    }
+  ],
+  bands: [
+    { range: '0–1 unchecked', title: 'Aligned with 2026 carrier requirements', body: 'Move to the result section.' },
+    { range: '2–3 unchecked', title: 'A few items to close', body: 'Address before your next cyber renewal conversation.' },
+    { range: '4+ unchecked', title: 'Book a compliance review', body: 'Carrier alignment gaps are the ones that delay renewals.' }
+  ]
+};
+---
+
+<ArchwayLayout
+  title="Security Posture Mid-Year Guide | Archway"
+  description="Interactive security posture self-assessment for independent insurance agencies. MFA, backup, incident response, carrier alignment."
+  ctaText="Start the Guide"
+  ctaHref="#section-01"
+>
+  <!-- Hero -->
+  <section class="checklist-hero">
+    <div class="checklist-hero-inner">
+      <div class="hero-badge">Security Posture  ·  June 2026</div>
+      <p class="kicker">A Practical Guide  ·  For Independent Agencies</p>
+      <h1>Security Posture <span class='hl'>Mid-Year Guide.</span><br />For independent insurance&nbsp;agencies.</h1>
+      <p class="hero-sub">Four areas carriers scrutinize. A benchmark for each. A specific action item if you are not there.</p>
+      <p class="hero-intro">Carrier cyber requirements updated in 2026. Your systems changed. Your staff may have changed. The security posture you had in January is not necessarily the one you have today. This guide covers the areas carriers look at most closely at renewal and tells you exactly what they want to see.</p>
+
+      <div class="hero-ctas">
+        <a href="#section-01" class="hero-cta-primary">
+          Start the Guide
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <p class="hero-meta">10 minutes  ·  3 sections  ·  A clear picture of where you stand before renewal</p>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="how-to-use">
+    <div class="how-to-inner">
+      <p class="how-label">How to Use This Guide</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-text">
+            <strong>Work through all three sections.</strong>
+            <p>MFA enforcement, backup and IR, and carrier requirement alignment.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-text">
+            <strong>Check the box if your agency can confirm it today.</strong>
+            <p>Leave it unchecked if you cannot, or you are unsure.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-text">
+            <strong>Count your unchecked items per section.</strong>
+            <p>The result band tells you what to address before your next renewal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {[section1, section2, section3].map((section) => (
+    <section id={`section-${section.number}`} class={`checklist-section section-${section.number}`} data-section={section.number} data-count-label={section.countLabel}>
+      <div class="checklist-inner">
+        <div class="section-header">
+          <span class="section-pill">Section {section.number}</span>
+          <h2>{section.title}</h2>
+          <p class="section-sub">{section.subtitle}</p>
+          <p class="section-intro">{section.intro}</p>
+        </div>
+
+        <div class="checklist-items">
+          {section.items.map((item, i) => (
+            <label class="check-item" for={item.key}>
+              <input type="checkbox" id={item.key} data-section={section.number} data-title={item.title} />
+              <span class="check-box" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 4"/></svg>
+              </span>
+              <div class="check-content">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+              <div class="check-num">{String(i + 1).padStart(2, '0')}</div>
+            </label>
+          ))}
+        </div>
+
+        <div class="scoring-block" data-section-score={section.number}>
+          <p class="scoring-label">Section {parseInt(section.number)} Scoring Guide  ·  Count {section.countLabel} items</p>
+          <div class="scoring-bands">
+            {section.bands.map((band, i) => (
+              <div class="scoring-band" data-band-index={i}>
+                <div class="band-num">{i + 1}</div>
+                <div class="band-content">
+                  <p class="band-range">{band.range}  ·  <strong>{band.title}</strong></p>
+                  <p class="band-body">{band.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="live-tally">
+            <span class="live-tally-label">Your section score:</span>
+            <span class="live-tally-num" data-tally={section.number}>0</span>
+            <span class="live-tally-suffix">{section.countLabel}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Final Result -->
+  <section class="result-section">
+    <div class="result-inner">
+      <p class="result-label">Your Result  ·  Scoring Guide</p>
+      <h2>Count your unchecked items across <span class='hl'>all three sections.</span></h2>
+      <p class="result-sub">That is your gap count. Find your band below, it tells you what to address before your next renewal conversation.</p>
+
+      <div class="result-card">
+        <div class="result-tally">
+          <p class="result-tally-label">Total Unchecked</p>
+          <div class="result-tally-num"><span data-final-tally>0</span><span class="tally-divider">/17</span></div>
+          <p class="result-tally-sub">Sections 1 + 2 + 3 combined</p>
+        </div>
+        <div class="result-formula">
+          <p class="result-formula-label">Tally Your Score</p>
+          <div class="formula-row">
+            <span class="formula-num" data-section-tally="01">0</span>
+            <span class="formula-op">+</span>
+            <span class="formula-num" data-section-tally="02">0</span>
+            <span class="formula-op">+</span>
+            <span class="formula-num" data-section-tally="03">0</span>
+            <span class="formula-op">=</span>
+            <span class="formula-num" data-final-tally>0</span>
+          </div>
+          <p class="result-formula-sub">MFA + Backup/IR + Carrier Alignment = Total. The active band below is the one you fall into.</p>
+        </div>
+      </div>
+
+      <div class="result-bands">
+        <div class="result-band" data-band="0-3">
+          <p class="result-band-range">0–3 Unchecked</p>
+          <h3>Strong Security Posture</h3>
+          <p>Your agency is aligned to where carriers want to see you at midyear. A few items may still be worth tightening, but renewal conversations should go smoothly.</p>
+          <p class="result-band-action">Address remaining items and document them before <strong>your next renewal</strong>.</p>
+        </div>
+        <div class="result-band" data-band="4-9">
+          <p class="result-band-range">4–9 Unchecked</p>
+          <h3>Gaps to Close Before Renewal</h3>
+          <p>Your agency has gaps in at least one area that carriers will ask about. The good news: most are fixable in one or two focused work sessions before your next renewal conversation.</p>
+          <p class="result-band-action">Focus on the section with the most unchecked items first. Book a <strong>compliance review</strong> if you want help.</p>
+        </div>
+        <div class="result-band" data-band="10+">
+          <p class="result-band-range">10 or More Unchecked</p>
+          <h3>Book a Compliance Review</h3>
+          <p>Your agency has significant gaps that represent real carrier and E&O risk. The right move is a structured compliance review before your next renewal conversation.</p>
+          <p class="result-band-action">Archway can tell you specifically what to address first, second, and third.</p>
+        </div>
+      </div>
+
+      <div class="section3-callout">
+        <p class="section3-callout-label">Your Carrier Alignment Results</p>
+        <h3>Section 3 is what carriers <span class='hl'>actually ask about.</span></h3>
+        <p>Sections 1 and 2 are the security work. Section 3 is what shows up in the carrier conversation. An agency with clean MFA and tested backups but missing documentation still has to explain itself at renewal. Unchecked items in Section 3 are the ones that delay renewals or trigger questions.</p>
+        <p>Sam Ruben and the Archway IT team work exclusively with independent insurance agencies on compliance and carrier alignment. They have walked agencies through hundreds of renewal conversations and know exactly what carriers want documented.</p>
+        <p><strong>If you have two or more unchecked items in Section 3, a 30-minute compliance review is worth your time.</strong> Archway will walk through what you have, what is missing, and what to address before the renewal conversation starts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Save Form -->
+  <section class="save-section" id="save-form">
+    <div class="save-inner">
+      <div class="save-header">
+        <p class="save-label">Save Your Results</p>
+        <h2>Send your checklist to your inbox and to&nbsp;Sam.</h2>
+        <p class="save-sub">Get a copy of your results plus a personalized recommendation based on what you checked. No pitch, just an honest look at where to start.</p>
+      </div>
+
+      <div class="save-form-card">
+        <div id="hs-checklist-form"></div>
+        <p class="save-trust">Archway works exclusively with independent insurance agencies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pass form config to client script -->
+  <script is:inline define:vars={{ HUBSPOT_PORTAL_ID, HUBSPOT_FORM_ID }}>
+    window.__HS_CHECKLIST_CONFIG__ = { portalId: HUBSPOT_PORTAL_ID, formId: HUBSPOT_FORM_ID };
+  </script>
+</ArchwayLayout>
+
+<style>
+  /* HERO */
+  .checklist-hero {
+    background-color: #1e3350;
+    background-image: url('/images/dark-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+
+  .checklist-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(29, 50, 70, 0.88);
+    z-index: 0;
+  }
+
+  .checklist-hero-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .kicker {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .checklist-hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .checklist-hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 780px;
+    margin-bottom: 36px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 18px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.2s;
+  }
+
+  .hero-cta-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: #ffffff;
+    padding: 18px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.2s;
+  }
+
+  .hero-cta-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* HOW TO USE */
+  .how-to-use {
+    background: #ffffff;
+    padding: 56px 24px;
+  }
+
+  .how-to-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid rgba(244, 128, 33, 0.25);
+    border-radius: 12px;
+    padding: 28px 32px;
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .how-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .how-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--orange);
+    color: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .how-text strong {
+    display: block;
+    font-size: 15px;
+    color: var(--charcoal);
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .how-text p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* CHECKLIST SECTION */
+  .checklist-section {
+    background: #ffffff;
+    padding: 48px 24px;
+  }
+
+  .checklist-section.section-02 {
+    background: var(--light-bg);
+  }
+
+  .checklist-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-pill {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .section-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 24px;
+    margin: 0;
+  }
+
+  /* CHECK ITEMS */
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .check-item {
+    display: grid;
+    grid-template-columns: 24px 1fr 36px;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    position: relative;
+  }
+
+  .checklist-section.section-02 .check-item {
+    background: #ffffff;
+  }
+
+  .check-item:hover {
+    border-color: rgba(244, 128, 33, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .check-item input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .check-box {
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .check-item:has(input:checked) {
+    border-color: var(--orange);
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .check-item:has(input:checked) .check-box {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #ffffff;
+  }
+
+  .check-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+
+  .check-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .check-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: #cbd5e1;
+    text-align: right;
+    line-height: 1.4;
+    align-self: flex-start;
+  }
+
+  /* SCORING BLOCK */
+  .scoring-block {
+    border: 1px solid rgba(244, 128, 33, 0.25);
+    border-radius: 12px;
+    padding: 24px 28px;
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .scoring-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+  }
+
+  .scoring-bands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .scoring-band {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    transition: all 0.2s;
+  }
+
+  .scoring-band[data-band-index="0"] .band-num {
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+  }
+
+  .scoring-band[data-band-index="1"] .band-num {
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+  }
+
+  .scoring-band[data-band-index="2"] .band-num {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+  }
+
+  .scoring-band.active {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.15);
+  }
+
+  .band-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .band-range {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+
+  .band-range strong {
+    color: var(--charcoal);
+  }
+
+  .band-body {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .live-tally {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    background: var(--charcoal);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+  }
+
+  .live-tally-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .live-tally-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  .live-tally-suffix {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* RESULT SECTION */
+  .result-section {
+    background: #ffffff;
+    padding: 80px 24px;
+  }
+
+  .result-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .result-section h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .result-section h2 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .result-sub {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result-card {
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .result-tally-label,
+  .result-formula-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 12px;
+  }
+
+  .result-formula-label {
+    color: var(--orange);
+  }
+
+  .result-tally-num {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .tally-divider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 32px;
+  }
+
+  .result-tally-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .result-formula {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 36px;
+  }
+
+  .formula-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .formula-num {
+    min-width: 60px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .formula-op {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+  }
+
+  .result-formula-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .result-bands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .result-band {
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+    transition: all 0.25s;
+  }
+
+  .result-band.active {
+    border-color: var(--orange);
+    border-width: 2px;
+    box-shadow: 0 8px 24px rgba(244, 128, 33, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .result-band-range {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .result-band-range::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: inline-block;
+  }
+
+  .result-band h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .result-band p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0 0 12px;
+  }
+
+  .result-band-action {
+    border-top: 1px dashed var(--card-border);
+    padding-top: 12px;
+    font-size: 13px !important;
+    color: var(--text-light);
+  }
+
+  .result-band-action strong {
+    color: var(--orange);
+  }
+
+  /* SECTION 3 CALLOUT */
+  .section3-callout {
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 40px;
+  }
+
+  .section3-callout-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .section3-callout h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .section3-callout h3 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .section3-callout p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 14px;
+  }
+
+  /* SAVE FORM SECTION */
+  .save-section {
+    background: var(--light-bg);
+    padding: 80px 24px;
+  }
+
+  .save-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .save-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .save-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .save-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .save-sub {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .save-form-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .save-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .save-form .form-field {
+    margin-bottom: 16px;
+  }
+
+  .save-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .save-form input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    color: var(--charcoal);
+    font-size: 16px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .save-form input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1);
+  }
+
+  .save-form input.error {
+    border-color: #ef4444;
+  }
+
+  .save-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .save-submit:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+  }
+
+  .save-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .save-trust {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .save-success {
+    text-align: center;
+  }
+
+  .save-success svg {
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  .save-success h3 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .save-success p {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .save-cta-secondary {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background 0.2s;
+  }
+
+  .save-cta-secondary:hover {
+    background: var(--orange-dark);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .checklist-hero h1 {
+      font-size: 36px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .how-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: 30px;
+    }
+
+    .scoring-bands {
+      grid-template-columns: 1fr;
+    }
+
+    .check-item {
+      grid-template-columns: 24px 1fr;
+    }
+
+    .check-num {
+      display: none;
+    }
+
+    .result-section h2 {
+      font-size: 28px;
+    }
+
+    .result-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .result-formula {
+      border-left: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 0;
+      padding-top: 24px;
+    }
+
+    .result-bands {
+      grid-template-columns: 1fr;
+    }
+
+    .section3-callout {
+      padding: 24px;
+    }
+
+    .section3-callout h3 {
+      font-size: 22px;
+    }
+
+    .save-form-card {
+      padding: 24px;
+    }
+
+    .save-form .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .save-header h2 {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const config = window.__HS_CHECKLIST_CONFIG__ || {};
+
+    // HubSpot form: keep the standard `message` field synchronized with the live checklist response.
+    // Declared up-front so updateMessageField (called from recalcAll) does not trigger a TDZ error.
+    var messageField = null;
+
+    function countSection(sectionNum) {
+      return document.querySelectorAll(`input[data-section="${sectionNum}"]:checked`).length;
+    }
+
+    function totalItemsInSection(sectionNum) {
+      return document.querySelectorAll(`input[data-section="${sectionNum}"]`).length;
+    }
+
+    function getSectionUnchecked(sectionNum) {
+      return totalItemsInSection(sectionNum) - countSection(sectionNum);
+    }
+
+    function activateBand(scoreBlock, bandIndex) {
+      scoreBlock.querySelectorAll('.scoring-band').forEach((b, i) => {
+        b.classList.toggle('active', i === bandIndex);
+      });
+    }
+
+    function updateSectionScore(sectionNum, countLabel) {
+      const checked = countSection(sectionNum);
+      const unchecked = getSectionUnchecked(sectionNum);
+      const value = countLabel === 'checked' ? checked : unchecked;
+
+      const tallyEl = document.querySelector(`[data-tally="${sectionNum}"]`);
+      if (tallyEl) tallyEl.textContent = String(value);
+
+      const scoreBlock = document.querySelector(`[data-section-score="${sectionNum}"]`);
+      if (!scoreBlock) return;
+
+      let bandIndex = 0;
+      if (countLabel === 'checked') {
+        // section 3: 1-2 / 3-4 / 5+
+        if (value >= 5) bandIndex = 2;
+        else if (value >= 3) bandIndex = 1;
+        else if (value >= 1) bandIndex = 0;
+        else bandIndex = -1;
+      } else {
+        // sections 1 & 2: 0-1 / 2-3 / 4+
+        if (value >= 4) bandIndex = 2;
+        else if (value >= 2) bandIndex = 1;
+        else bandIndex = 0;
+      }
+      activateBand(scoreBlock, bandIndex);
+    }
+
+    function updateFinalScore() {
+      const s1 = getSectionUnchecked('01');
+      const s2 = getSectionUnchecked('02');
+      const s3 = getSectionUnchecked('03');
+      const total = s1 + s2 + s3;
+
+      document.querySelectorAll('[data-section-tally="01"]').forEach(el => el.textContent = String(s1));
+      document.querySelectorAll('[data-section-tally="02"]').forEach(el => el.textContent = String(s2));
+      document.querySelectorAll('[data-section-tally="03"]').forEach(el => el.textContent = String(s3));
+      document.querySelectorAll('[data-final-tally]').forEach(el => el.textContent = String(total));
+
+      const bands = document.querySelectorAll('.result-band');
+      bands.forEach(b => b.classList.remove('active'));
+      let activeBand;
+      if (total <= 3) activeBand = document.querySelector('[data-band="0-3"]');
+      else if (total <= 9) activeBand = document.querySelector('[data-band="4-9"]');
+      else activeBand = document.querySelector('[data-band="10+"]');
+      if (activeBand) activeBand.classList.add('active');
+    }
+
+    function recalcAll() {
+      document.querySelectorAll('[data-section]').forEach(section => {
+        const num = section.getAttribute('data-section');
+        const label = section.getAttribute('data-count-label');
+        if (num && label) updateSectionScore(num, label);
+      });
+      updateFinalScore();
+      // Keep the HubSpot message field in sync once the form has rendered.
+      if (typeof updateMessageField === 'function') updateMessageField();
+    }
+
+    document.querySelectorAll('input[type="checkbox"][data-section]').forEach(cb => {
+      cb.addEventListener('change', recalcAll);
+    });
+
+    recalcAll();
+
+    // Build the checklist response text for HubSpot
+    function buildChecklistText() {
+      const sections = ['01', '02', '03'];
+      const sectionTitles = {
+        '01': 'MFA Enforcement',
+        '02': 'Backup, Restore, and Incident Response',
+        '03': 'Carrier Requirement Alignment'
+      };
+      const lines = ['Security Posture Mid-Year Guide - Submitted Results', ''];
+
+      sections.forEach(num => {
+        lines.push(`SECTION ${num}: ${sectionTitles[num]}`);
+        const inputs = document.querySelectorAll(`input[data-section="${num}"]`);
+        inputs.forEach((input, i) => {
+          const mark = input.checked ? '[x]' : '[ ]';
+          const title = input.getAttribute('data-title') || '';
+          lines.push(`${mark} ${i + 1}. ${title}`);
+        });
+        lines.push('');
+      });
+
+      const s1u = getSectionUnchecked('01');
+      const s2u = getSectionUnchecked('02');
+      const s3u = getSectionUnchecked('03');
+      const total = s1u + s2u + s3u;
+
+      let band = '';
+      if (total <= 3) band = 'Strong Security Posture';
+      else if (total <= 9) band = 'Gaps to Close Before Renewal';
+      else band = 'Book a Compliance Review';
+
+      lines.push('SCORING SUMMARY');
+      lines.push(`Section 1 (MFA) unchecked: ${s1u}/5`);
+      lines.push(`Section 2 (Backup + IR) unchecked: ${s2u}/6`);
+      lines.push(`Section 3 (Carrier Alignment) unchecked: ${s3u}/6`);
+      lines.push(`Total unchecked: ${total}/17`);
+      lines.push(`Result band: ${band}`);
+
+      return lines.join('\n');
+    }
+
+    function findMessageField(formEl) {
+      if (!formEl || !formEl.querySelector) return null;
+      return formEl.querySelector('textarea[name="message"], input[name="message"]');
+    }
+
+    function getCurrentMessageField() {
+      // Always look up fresh; HubSpot may re-render or replace the field after onFormReady fires.
+      const formEl = document.querySelector('#hs-checklist-form form');
+      const fresh = findMessageField(formEl);
+      if (fresh) messageField = fresh;
+      return messageField;
+    }
+
+    function updateMessageField() {
+      const m = getCurrentMessageField();
+      if (!m) return;
+      m.value = buildChecklistText();
+      m.dispatchEvent(new Event('input', { bubbles: true }));
+      m.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    function loadHubSpotEmbed() {
+      const HS_CSS = "\
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+        \
+        .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .hs-form fieldset { max-width: 100% !important; }\
+        .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+        .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+        \
+        .hs-form-field { margin-bottom: 16px; }\
+        .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+        .hs-form-required { color: #ef4444; margin-left: 2px; }\
+        \
+        .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+        .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+        .hs-input::placeholder { color: #9ca3af; }\
+        \
+        select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+        \
+        textarea.hs-input { min-height: 120px !important; resize: vertical !important; line-height: 1.6 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; }\
+        \
+        .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+        .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+        .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+        \
+        .hs-submit { margin-top: 8px; }\
+        .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+        .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+        \
+        .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+        .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+        .hs-input.error { border-color: #ef4444 !important; }\
+        \
+        .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+        .legal-consent-container a { color: #f48021; }\
+        \
+        @media (max-width: 480px) {\
+          .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+        }\
+      ";
+
+      function createForm() {
+        if (!window.hbspt || !window.hbspt.forms) {
+          setTimeout(createForm, 100);
+          return;
+        }
+        window.hbspt.forms.create({
+          portalId: config.portalId,
+          formId: config.formId,
+          region: 'na2',
+          target: '#hs-checklist-form',
+          css: HS_CSS,
+          onFormReady: function (formInstance) {
+            // formInstance can be the jQuery-wrapped element or the raw element depending on version
+            const formEl = (formInstance && formInstance[0]) || formInstance || document.querySelector('#hs-checklist-form form');
+            if (!formEl || !formEl.querySelector) return;
+            messageField = findMessageField(formEl);
+            // Optionally hide the message field visually so the user does not see the long text.
+            // (Field still submits because HubSpot reads value at submit time.)
+            if (messageField) {
+              const wrapper = messageField.closest('.hs-form-field');
+              if (wrapper) wrapper.style.display = 'none';
+              updateMessageField();
+            }
+          },
+          onFormSubmit: function (formInstance) {
+            // Fires just before the data is sent. Make sure the latest checklist text is in the message field.
+            const formEl = (formInstance && formInstance[0]) || formInstance || document.querySelector('#hs-checklist-form form');
+            if (formEl && formEl.querySelector) {
+              const m = findMessageField(formEl);
+              if (m) {
+                m.value = buildChecklistText();
+              }
+            }
+          }
+        });
+      }
+
+      // Inject HubSpot embed script if not already present
+      if (!document.querySelector('script[src*="js-na2.hsforms.net/forms/embed/v2.js"]')) {
+        const s = document.createElement('script');
+        s.src = '//js-na2.hsforms.net/forms/embed/v2.js';
+        s.charset = 'utf-8';
+        s.type = 'text/javascript';
+        s.onload = createForm;
+        document.head.appendChild(s);
+      } else {
+        createForm();
+      }
+    }
+
+    loadHubSpotEmbed();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const target = href ? document.querySelector(href) : null;
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Auto-scroll to hash on page load (e.g. arriving from primary CTA on /may-2026-ai-without-hype-guide)
+    function scrollToHashTarget() {
+      if (!window.location.hash) return;
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+    function tryScrollToHash() {
+      if (!window.location.hash) return;
+      // Re-attempt at a few intervals to absorb any late layout shifts
+      [50, 300, 800].forEach((delay) => setTimeout(scrollToHashTarget, delay));
+    }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      tryScrollToHash();
+    } else {
+      document.addEventListener('DOMContentLoaded', tryScrollToHash);
+    }
+    window.addEventListener('hashchange', scrollToHashTarget);
+  })();
+</script>

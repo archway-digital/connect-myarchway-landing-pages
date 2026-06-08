@@ -1,0 +1,1530 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+const HUBSPOT_PORTAL_ID = '6869933';
+const HUBSPOT_FORM_ID = '37e242b1-e97b-45d8-878d-f6a0b3a0a0a0';
+
+const section1 = {
+  number: '01',
+  title: 'Website Traffic and Leads',
+  subtitle: 'Three numbers that tell you whether the site works.',
+  intro: 'Your website either generates leads or it does not. Most agency owners do not know which because they have never looked at the data. Three numbers tell you everything you need to know. Check every metric your agency is currently in the good benchmark range on.',
+  countLabel: 'unchecked',
+  items: [
+    {
+      key: 's1q1',
+      title: 'Organic search traffic is steady or growing',
+      body: 'Visits from Google are flat or growing month over month. At minimum 100 to 200 organic visits per month for a local market agency.'
+    },
+    {
+      key: 's1q2',
+      title: 'Bounce rate is under 60 percent',
+      body: 'Most visitors look at more than one page before they leave. If bounce rate is above 75 percent, visitors are leaving before engaging with anything.'
+    },
+    {
+      key: 's1q3',
+      title: 'Contact form or phone clicks convert at 2 percent or higher',
+      body: 'At least 2 to 5 percent of visitors take an action to contact the agency. Under 1 percent means the site gets traffic but generates no leads.'
+    },
+    {
+      key: 's1q4',
+      title: 'Google Search Console is set up',
+      body: 'The agency has access to Search Console and can see what searches bring people to the site. If this is not set up, set it up today. It is free.'
+    },
+    {
+      key: 's1q5',
+      title: 'Site loads in under 3 seconds on mobile',
+      body: 'Tested on a phone, not a desktop. If it loads slower, half the mobile visitors leave before they read a word.'
+    }
+  ],
+  bands: [
+    { range: '0–1 unchecked', title: 'Site is doing its job', body: 'Move on to Section 2.' },
+    { range: '2–3 unchecked', title: 'A few diagnostics to run', body: 'Address before renewal season peaks in Q3.' },
+    { range: '4+ unchecked', title: 'Run the website grader', body: 'Get the full diagnostic in 60 seconds.' }
+  ]
+};
+
+const section2 = {
+  number: '02',
+  title: 'Local Search and Email Performance',
+  subtitle: 'Where prospects find you and whether your list still listens.',
+  intro: 'When someone searches "insurance agency near me," whether your agency appears depends on your Google Business Profile and how active it is. Your email list is either an asset or a list of people who have stopped reading. Check every item your agency can currently confirm.',
+  countLabel: 'unchecked',
+  items: [
+    {
+      key: 's2q1',
+      title: 'Google Business Profile appears in local map results',
+      body: 'Search "insurance agency [your city]." Your agency appears in the map pack. If it does not, the profile needs work.'
+    },
+    {
+      key: 's2q2',
+      title: 'Google Business Profile posted to in last 30 days',
+      body: 'Google rewards active profiles. A profile with no posts in 90 days is treated as inactive. A short post counts.'
+    },
+    {
+      key: 's2q3',
+      title: 'Photos and contact info are current',
+      body: 'Hours, phone number, website URL, and at least three recent photos are present and accurate. Inconsistent info across listings hurts ranking.'
+    },
+    {
+      key: 's2q4',
+      title: 'Every recent review has a response',
+      body: 'All Google reviews from the last 90 days have a response from the agency. Response rate is a signal Google measures.'
+    },
+    {
+      key: 's2q5',
+      title: 'Email open rate is above 25 percent',
+      body: 'Open rate for an opted-in insurance audience should be 25 percent or higher. Below 15 percent and declining means the list is tuning out.'
+    },
+    {
+      key: 's2q6',
+      title: 'Email click rate is above 3 percent',
+      body: 'At least 3 to 5 percent of recipients click a link. Under 1 percent consistently means recipients open but no action is being taken.'
+    },
+    {
+      key: 's2q7',
+      title: 'Email unsubscribe rate is below 0.3 percent per send',
+      body: 'Above 0.5 percent means recipients are actively choosing to stop hearing from you. Often a sign emails are too frequent or too generic.'
+    }
+  ],
+  bands: [
+    { range: '0–1 unchecked', title: 'Local and email posture is strong', body: 'Move on to Section 3.' },
+    { range: '2–3 unchecked', title: 'Specific items to address', body: 'A focused afternoon on the unchecked items will close most gaps.' },
+    { range: '4+ unchecked', title: 'Book a marketing review', body: 'Your digital presence is leaking leads before anyone calls.' }
+  ]
+};
+
+const section3 = {
+  number: '03',
+  title: 'Three Q3 Priorities',
+  subtitle: 'What to commit to in the next 30 days.',
+  intro: 'Q3 renewal season starts in August for most independent agencies. The agencies that win the most renewal and new business conversations in Q3 do these three things in June. Check every priority you can commit to before July.',
+  countLabel: 'checked',
+  items: [
+    {
+      key: 's3q1',
+      title: 'Update Google Business Profile this week',
+      body: 'Add a post. Upload three recent photos. Respond to any unanswered reviews. Confirm hours and contact info are current. About 45 minutes total.'
+    },
+    {
+      key: 's3q2',
+      title: 'Fix the mobile experience on the website',
+      body: 'Load the site on a phone. Confirm it loads in under three seconds, the phone number is a tap-to-call link, the contact form is visible without scrolling, and the text is readable without zooming. One afternoon with a developer.'
+    },
+    {
+      key: 's3q3',
+      title: 'Send one email with one clear CTA',
+      body: 'Not a newsletter. Not a company update. One email to your client list with one observation that is relevant right now and one thing to do about it. 30 minutes to write.'
+    }
+  ],
+  bands: [
+    { range: '1 checked', title: 'Start with the one you committed to', body: 'Pick the priority that has the most leverage and do it this week.' },
+    { range: '2 checked', title: 'Two committed', body: 'Sequence them by impact and do the first one before next week.' },
+    { range: '3 checked', title: 'All three by July', body: 'These compound. The agencies that win Q3 do all three in June.' }
+  ]
+};
+---
+
+<ArchwayLayout
+  title="Marketing Performance Mid-Year Guide | Archway"
+  description="Interactive marketing performance self-assessment for independent insurance agencies. Website, local search, email, and Q3 priorities."
+  ctaText="Start the Guide"
+  ctaHref="#section-01"
+>
+  <!-- Hero -->
+  <section class="checklist-hero">
+    <div class="checklist-hero-inner">
+      <div class="hero-badge">Marketing Performance  ·  June 2026</div>
+      <p class="kicker">A Practical Guide  ·  For Independent Agencies</p>
+      <h1>Marketing Performance <span class='hl'>Mid-Year Guide.</span><br />For independent insurance&nbsp;agencies.</h1>
+      <p class="hero-sub">Find out what your website, local search presence, and email outreach are actually doing, and what to fix before Q3 renewal season peaks.</p>
+      <p class="hero-intro">Most independent agency owners set marketing goals at the start of the year and do not look at them again until Q4. The halfway point is when checking actually matters. There is still time to fix what is not working before renewal season peaks. This guide covers four areas in plain language: what to look at, what the numbers mean, and where to focus first.</p>
+
+      <div class="hero-ctas">
+        <a href="#section-01" class="hero-cta-primary">
+          Start the Guide
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <p class="hero-meta">10 minutes  ·  3 sections  ·  Three priorities for Q3 and a recommended next step</p>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="how-to-use">
+    <div class="how-to-inner">
+      <p class="how-label">How to Use This Guide</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-text">
+            <strong>Work through all three sections.</strong>
+            <p>Website traffic, local search and email, and Q3 priorities.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-text">
+            <strong>Check the box if your agency is in the good benchmark range.</strong>
+            <p>Leave it unchecked if you are not sure or the number is below the benchmark.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-text">
+            <strong>Check every Q3 priority you can commit to.</strong>
+            <p>Section 3 is action-oriented. The result band tells you what to focus on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {[section1, section2, section3].map((section) => (
+    <section id={`section-${section.number}`} class={`checklist-section section-${section.number}`} data-section={section.number} data-count-label={section.countLabel}>
+      <div class="checklist-inner">
+        <div class="section-header">
+          <span class="section-pill">Section {section.number}</span>
+          <h2>{section.title}</h2>
+          <p class="section-sub">{section.subtitle}</p>
+          <p class="section-intro">{section.intro}</p>
+        </div>
+
+        <div class="checklist-items">
+          {section.items.map((item, i) => (
+            <label class="check-item" for={item.key}>
+              <input type="checkbox" id={item.key} data-section={section.number} data-title={item.title} />
+              <span class="check-box" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 4"/></svg>
+              </span>
+              <div class="check-content">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+              <div class="check-num">{String(i + 1).padStart(2, '0')}</div>
+            </label>
+          ))}
+        </div>
+
+        <div class="scoring-block" data-section-score={section.number}>
+          <p class="scoring-label">Section {parseInt(section.number)} Scoring Guide  ·  Count {section.countLabel} items</p>
+          <div class="scoring-bands">
+            {section.bands.map((band, i) => (
+              <div class="scoring-band" data-band-index={i}>
+                <div class="band-num">{i + 1}</div>
+                <div class="band-content">
+                  <p class="band-range">{band.range}  ·  <strong>{band.title}</strong></p>
+                  <p class="band-body">{band.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="live-tally">
+            <span class="live-tally-label">Your section score:</span>
+            <span class="live-tally-num" data-tally={section.number}>0</span>
+            <span class="live-tally-suffix">{section.countLabel}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Final Result -->
+  <section class="result-section">
+    <div class="result-inner">
+      <p class="result-label">Your Result  ·  Scoring Guide</p>
+      <h2>Count your unchecked items across <span class='hl'>Sections 1 &amp; 2.</span></h2>
+      <p class="result-sub">That is your diagnostic score. Find your band below, it tells you what to fix before renewal season peaks in Q3.</p>
+
+      <div class="result-card">
+        <div class="result-tally">
+          <p class="result-tally-label">Total Unchecked</p>
+          <div class="result-tally-num"><span data-final-tally>0</span><span class="tally-divider">/12</span></div>
+          <p class="result-tally-sub">Sections 1 (Traffic) + 2 (Local + Email)</p>
+        </div>
+        <div class="result-formula">
+          <p class="result-formula-label">Tally Your Score</p>
+          <div class="formula-row">
+            <span class="formula-num" data-section-tally="01">0</span>
+            <span class="formula-op">+</span>
+            <span class="formula-num" data-section-tally="02">0</span>
+            <span class="formula-op">=</span>
+            <span class="formula-num" data-final-tally>0</span>
+          </div>
+          <p class="result-formula-sub">Section 1 unchecked + Section 2 unchecked = Total. The active band below is the one you fall into.</p>
+        </div>
+      </div>
+
+      <div class="result-bands">
+        <div class="result-band" data-band="0-3">
+          <p class="result-band-range">0–3 Unchecked</p>
+          <h3>Marketing Is Working</h3>
+          <p>Your digital presence is in good shape across traffic, local search, and email. The Q3 priorities in Section 3 are about pushing what is already working.</p>
+          <p class="result-band-action">Focus on the priorities in <strong>Section 3</strong> to build on what is working before Q3.</p>
+        </div>
+        <div class="result-band" data-band="4-9">
+          <p class="result-band-range">4–9 Unchecked</p>
+          <h3>Specific Items to Fix</h3>
+          <p>You have meaningful gaps in either traffic, local search, email, or all three. Most are fixable before Q3 with focused effort on the right items.</p>
+          <p class="result-band-action">Run the <strong>website grader</strong> to get the technical diagnostic, then act on Section 3 priorities.</p>
+        </div>
+        <div class="result-band" data-band="10+">
+          <p class="result-band-range">10 or More Unchecked</p>
+          <h3>Book a Marketing Review</h3>
+          <p>Your digital presence has significant gaps and your agency is leaking leads before anyone calls. The right move is a structured marketing review before Q3 starts.</p>
+          <p class="result-band-action">Archway can tell you specifically what is leaking leads and where to focus first.</p>
+        </div>
+      </div>
+
+      <div class="section3-callout">
+        <p class="section3-callout-label">Your Q3 Priorities</p>
+        <h3>What you committed to in <span class='hl'>Section 3</span> is what wins Q3.</h3>
+        <p>Q3 renewal season starts in August. The agencies that win the most renewal and new business conversations did the three Section 3 priorities in June: updated their Google Business Profile, fixed the mobile experience, and sent one email with a clear CTA.</p>
+        <p>Hannah Ruben leads digital marketing at Archway and works exclusively with independent insurance agencies. She has seen which combination of these three priorities moves the needle for an agency your size.</p>
+        <p><strong>If you want help with any of the three priorities or want a real audit of where your site actually stands, run the website grader.</strong> It is built specifically for insurance agencies and gives you a personalized score in 60 seconds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Save Form -->
+  <section class="save-section" id="save-form">
+    <div class="save-inner">
+      <div class="save-header">
+        <p class="save-label">Save Your Results</p>
+        <h2>Send your checklist to your inbox and to&nbsp;Sam.</h2>
+        <p class="save-sub">Get a copy of your results plus a personalized recommendation based on what you checked. No pitch, just an honest look at where to start.</p>
+      </div>
+
+      <div class="save-form-card">
+        <div id="hs-checklist-form"></div>
+        <p class="save-trust">Archway works exclusively with independent insurance agencies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pass form config to client script -->
+  <script is:inline define:vars={{ HUBSPOT_PORTAL_ID, HUBSPOT_FORM_ID }}>
+    window.__HS_CHECKLIST_CONFIG__ = { portalId: HUBSPOT_PORTAL_ID, formId: HUBSPOT_FORM_ID };
+  </script>
+</ArchwayLayout>
+
+<style>
+  /* HERO */
+  .checklist-hero {
+    background-color: #1e3350;
+    background-image: url('/images/dark-bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+
+  .checklist-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(29, 50, 70, 0.88);
+    z-index: 0;
+  }
+
+  .checklist-hero-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .kicker {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .checklist-hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .checklist-hero h1 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .hero-sub {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 780px;
+    margin-bottom: 36px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 18px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.2s;
+  }
+
+  .hero-cta-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: #ffffff;
+    padding: 18px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.2s;
+  }
+
+  .hero-cta-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* HOW TO USE */
+  .how-to-use {
+    background: #ffffff;
+    padding: 56px 24px;
+  }
+
+  .how-to-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid rgba(244, 128, 33, 0.25);
+    border-radius: 12px;
+    padding: 28px 32px;
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .how-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .how-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--orange);
+    color: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .how-text strong {
+    display: block;
+    font-size: 15px;
+    color: var(--charcoal);
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .how-text p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* CHECKLIST SECTION */
+  .checklist-section {
+    background: #ffffff;
+    padding: 48px 24px;
+  }
+
+  .checklist-section.section-02 {
+    background: var(--light-bg);
+  }
+
+  .checklist-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-pill {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .section-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 24px;
+    margin: 0;
+  }
+
+  /* CHECK ITEMS */
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .check-item {
+    display: grid;
+    grid-template-columns: 24px 1fr 36px;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    position: relative;
+  }
+
+  .checklist-section.section-02 .check-item {
+    background: #ffffff;
+  }
+
+  .check-item:hover {
+    border-color: rgba(244, 128, 33, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .check-item input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .check-box {
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .check-item:has(input:checked) {
+    border-color: var(--orange);
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .check-item:has(input:checked) .check-box {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #ffffff;
+  }
+
+  .check-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+
+  .check-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .check-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: #cbd5e1;
+    text-align: right;
+    line-height: 1.4;
+    align-self: flex-start;
+  }
+
+  /* SCORING BLOCK */
+  .scoring-block {
+    border: 1px solid rgba(244, 128, 33, 0.25);
+    border-radius: 12px;
+    padding: 24px 28px;
+    background: rgba(244, 128, 33, 0.04);
+  }
+
+  .scoring-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+  }
+
+  .scoring-bands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .scoring-band {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    transition: all 0.2s;
+  }
+
+  .scoring-band[data-band-index="0"] .band-num {
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+  }
+
+  .scoring-band[data-band-index="1"] .band-num {
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+  }
+
+  .scoring-band[data-band-index="2"] .band-num {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+  }
+
+  .scoring-band.active {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.15);
+  }
+
+  .band-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .band-range {
+    font-size: 13px;
+    color: var(--text-light);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+
+  .band-range strong {
+    color: var(--charcoal);
+  }
+
+  .band-body {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .live-tally {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    background: var(--charcoal);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+  }
+
+  .live-tally-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .live-tally-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--orange);
+  }
+
+  .live-tally-suffix {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* RESULT SECTION */
+  .result-section {
+    background: #ffffff;
+    padding: 80px 24px;
+  }
+
+  .result-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .result-section h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .result-section h2 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .result-sub {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result-card {
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .result-tally-label,
+  .result-formula-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 12px;
+  }
+
+  .result-formula-label {
+    color: var(--orange);
+  }
+
+  .result-tally-num {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .tally-divider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 32px;
+  }
+
+  .result-tally-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .result-formula {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 36px;
+  }
+
+  .formula-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .formula-num {
+    min-width: 60px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .formula-op {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+  }
+
+  .result-formula-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .result-bands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .result-band {
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px 24px 20px;
+    transition: all 0.25s;
+  }
+
+  .result-band.active {
+    border-color: var(--orange);
+    border-width: 2px;
+    box-shadow: 0 8px 24px rgba(244, 128, 33, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .result-band-range {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .result-band-range::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: inline-block;
+  }
+
+  .result-band h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .result-band p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0 0 12px;
+  }
+
+  .result-band-action {
+    border-top: 1px dashed var(--card-border);
+    padding-top: 12px;
+    font-size: 13px !important;
+    color: var(--text-light);
+  }
+
+  .result-band-action strong {
+    color: var(--orange);
+  }
+
+  /* SECTION 3 CALLOUT */
+  .section3-callout {
+    background: var(--navy);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 40px;
+  }
+
+  .section3-callout-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .section3-callout h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .section3-callout h3 em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .section3-callout p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 14px;
+  }
+
+  /* SAVE FORM SECTION */
+  .save-section {
+    background: var(--light-bg);
+    padding: 80px 24px;
+  }
+
+  .save-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .save-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .save-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .save-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .save-sub {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .save-form-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .save-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .save-form .form-field {
+    margin-bottom: 16px;
+  }
+
+  .save-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .save-form input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    color: var(--charcoal);
+    font-size: 16px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .save-form input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1);
+  }
+
+  .save-form input.error {
+    border-color: #ef4444;
+  }
+
+  .save-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+
+  .save-submit:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+  }
+
+  .save-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .save-trust {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .save-success {
+    text-align: center;
+  }
+
+  .save-success svg {
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  .save-success h3 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .save-success p {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .save-cta-secondary {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background 0.2s;
+  }
+
+  .save-cta-secondary:hover {
+    background: var(--orange-dark);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .checklist-hero h1 {
+      font-size: 36px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .how-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: 30px;
+    }
+
+    .scoring-bands {
+      grid-template-columns: 1fr;
+    }
+
+    .check-item {
+      grid-template-columns: 24px 1fr;
+    }
+
+    .check-num {
+      display: none;
+    }
+
+    .result-section h2 {
+      font-size: 28px;
+    }
+
+    .result-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .result-formula {
+      border-left: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 0;
+      padding-top: 24px;
+    }
+
+    .result-bands {
+      grid-template-columns: 1fr;
+    }
+
+    .section3-callout {
+      padding: 24px;
+    }
+
+    .section3-callout h3 {
+      font-size: 22px;
+    }
+
+    .save-form-card {
+      padding: 24px;
+    }
+
+    .save-form .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .save-header h2 {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const config = window.__HS_CHECKLIST_CONFIG__ || {};
+
+    // HubSpot form: keep the standard `message` field synchronized with the live checklist response.
+    // Declared up-front so updateMessageField (called from recalcAll) does not trigger a TDZ error.
+    var messageField = null;
+
+    function countSection(sectionNum) {
+      return document.querySelectorAll(`input[data-section="${sectionNum}"]:checked`).length;
+    }
+
+    function totalItemsInSection(sectionNum) {
+      return document.querySelectorAll(`input[data-section="${sectionNum}"]`).length;
+    }
+
+    function getSectionUnchecked(sectionNum) {
+      return totalItemsInSection(sectionNum) - countSection(sectionNum);
+    }
+
+    function activateBand(scoreBlock, bandIndex) {
+      scoreBlock.querySelectorAll('.scoring-band').forEach((b, i) => {
+        b.classList.toggle('active', i === bandIndex);
+      });
+    }
+
+    function updateSectionScore(sectionNum, countLabel) {
+      const checked = countSection(sectionNum);
+      const unchecked = getSectionUnchecked(sectionNum);
+      const value = countLabel === 'checked' ? checked : unchecked;
+
+      const tallyEl = document.querySelector(`[data-tally="${sectionNum}"]`);
+      if (tallyEl) tallyEl.textContent = String(value);
+
+      const scoreBlock = document.querySelector(`[data-section-score="${sectionNum}"]`);
+      if (!scoreBlock) return;
+
+      let bandIndex = 0;
+      if (countLabel === 'checked') {
+        // section 3: 1-2 / 3-4 / 5+
+        if (value >= 5) bandIndex = 2;
+        else if (value >= 3) bandIndex = 1;
+        else if (value >= 1) bandIndex = 0;
+        else bandIndex = -1;
+      } else {
+        // sections 1 & 2: 0-1 / 2-3 / 4+
+        if (value >= 4) bandIndex = 2;
+        else if (value >= 2) bandIndex = 1;
+        else bandIndex = 0;
+      }
+      activateBand(scoreBlock, bandIndex);
+    }
+
+    function updateFinalScore() {
+      const s1 = getSectionUnchecked('01');
+      const s2 = getSectionUnchecked('02');
+      const total = s1 + s2;
+
+      document.querySelectorAll('[data-section-tally="01"]').forEach(el => el.textContent = String(s1));
+      document.querySelectorAll('[data-section-tally="02"]').forEach(el => el.textContent = String(s2));
+      document.querySelectorAll('[data-final-tally]').forEach(el => el.textContent = String(total));
+
+      const bands = document.querySelectorAll('.result-band');
+      bands.forEach(b => b.classList.remove('active'));
+      let activeBand;
+      if (total <= 3) activeBand = document.querySelector('[data-band="0-3"]');
+      else if (total <= 9) activeBand = document.querySelector('[data-band="4-9"]');
+      else activeBand = document.querySelector('[data-band="10+"]');
+      if (activeBand) activeBand.classList.add('active');
+    }
+
+    function recalcAll() {
+      document.querySelectorAll('[data-section]').forEach(section => {
+        const num = section.getAttribute('data-section');
+        const label = section.getAttribute('data-count-label');
+        if (num && label) updateSectionScore(num, label);
+      });
+      updateFinalScore();
+      // Keep the HubSpot message field in sync once the form has rendered.
+      if (typeof updateMessageField === 'function') updateMessageField();
+    }
+
+    document.querySelectorAll('input[type="checkbox"][data-section]').forEach(cb => {
+      cb.addEventListener('change', recalcAll);
+    });
+
+    recalcAll();
+
+    // Build the checklist response text for HubSpot
+    function buildChecklistText() {
+      const sections = ['01', '02', '03'];
+      const sectionTitles = {
+        '01': 'Website Traffic and Leads',
+        '02': 'Local Search and Email Performance',
+        '03': 'Three Q3 Priorities'
+      };
+      const lines = ['Marketing Performance Mid-Year Guide - Submitted Results', ''];
+
+      sections.forEach(num => {
+        lines.push(`SECTION ${num}: ${sectionTitles[num]}`);
+        const inputs = document.querySelectorAll(`input[data-section="${num}"]`);
+        inputs.forEach((input, i) => {
+          const mark = input.checked ? '[x]' : '[ ]';
+          const title = input.getAttribute('data-title') || '';
+          lines.push(`${mark} ${i + 1}. ${title}`);
+        });
+        lines.push('');
+      });
+
+      const s1u = getSectionUnchecked('01');
+      const s2u = getSectionUnchecked('02');
+      const s3c = countSection('03');
+      const total = s1u + s2u;
+
+      let band = '';
+      if (total <= 3) band = 'Marketing Is Working';
+      else if (total <= 9) band = 'Specific Items to Fix';
+      else band = 'Book a Marketing Review';
+
+      lines.push('SCORING SUMMARY');
+      lines.push(`Section 1 (Traffic) unchecked: ${s1u}/5`);
+      lines.push(`Section 2 (Local + Email) unchecked: ${s2u}/7`);
+      lines.push(`Section 3 Q3 priorities committed: ${s3c}/3`);
+      lines.push(`Diagnostic total (S1+S2 unchecked): ${total}/12`);
+      lines.push(`Result band: ${band}`);
+
+      return lines.join('\n');
+    }
+
+    function findMessageField(formEl) {
+      if (!formEl || !formEl.querySelector) return null;
+      return formEl.querySelector('textarea[name="message"], input[name="message"]');
+    }
+
+    function getCurrentMessageField() {
+      // Always look up fresh; HubSpot may re-render or replace the field after onFormReady fires.
+      const formEl = document.querySelector('#hs-checklist-form form');
+      const fresh = findMessageField(formEl);
+      if (fresh) messageField = fresh;
+      return messageField;
+    }
+
+    function updateMessageField() {
+      const m = getCurrentMessageField();
+      if (!m) return;
+      m.value = buildChecklistText();
+      m.dispatchEvent(new Event('input', { bubbles: true }));
+      m.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    function loadHubSpotEmbed() {
+      const HS_CSS = "\
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+        \
+        .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .hs-form fieldset { max-width: 100% !important; }\
+        .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+        .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+        \
+        .hs-form-field { margin-bottom: 16px; }\
+        .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+        .hs-form-required { color: #ef4444; margin-left: 2px; }\
+        \
+        .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+        .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.1) !important; }\
+        .hs-input::placeholder { color: #9ca3af; }\
+        \
+        select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+        \
+        textarea.hs-input { min-height: 120px !important; resize: vertical !important; line-height: 1.6 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; }\
+        \
+        .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+        .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+        .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+        \
+        .hs-submit { margin-top: 8px; }\
+        .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 18px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; }\
+        .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+        \
+        .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+        .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+        .hs-input.error { border-color: #ef4444 !important; }\
+        \
+        .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+        .legal-consent-container a { color: #f48021; }\
+        \
+        @media (max-width: 480px) {\
+          .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+        }\
+      ";
+
+      function createForm() {
+        if (!window.hbspt || !window.hbspt.forms) {
+          setTimeout(createForm, 100);
+          return;
+        }
+        window.hbspt.forms.create({
+          portalId: config.portalId,
+          formId: config.formId,
+          region: 'na2',
+          target: '#hs-checklist-form',
+          css: HS_CSS,
+          onFormReady: function (formInstance) {
+            // formInstance can be the jQuery-wrapped element or the raw element depending on version
+            const formEl = (formInstance && formInstance[0]) || formInstance || document.querySelector('#hs-checklist-form form');
+            if (!formEl || !formEl.querySelector) return;
+            messageField = findMessageField(formEl);
+            // Optionally hide the message field visually so the user does not see the long text.
+            // (Field still submits because HubSpot reads value at submit time.)
+            if (messageField) {
+              const wrapper = messageField.closest('.hs-form-field');
+              if (wrapper) wrapper.style.display = 'none';
+              updateMessageField();
+            }
+          },
+          onFormSubmit: function (formInstance) {
+            // Fires just before the data is sent. Make sure the latest checklist text is in the message field.
+            const formEl = (formInstance && formInstance[0]) || formInstance || document.querySelector('#hs-checklist-form form');
+            if (formEl && formEl.querySelector) {
+              const m = findMessageField(formEl);
+              if (m) {
+                m.value = buildChecklistText();
+              }
+            }
+          }
+        });
+      }
+
+      // Inject HubSpot embed script if not already present
+      if (!document.querySelector('script[src*="js-na2.hsforms.net/forms/embed/v2.js"]')) {
+        const s = document.createElement('script');
+        s.src = '//js-na2.hsforms.net/forms/embed/v2.js';
+        s.charset = 'utf-8';
+        s.type = 'text/javascript';
+        s.onload = createForm;
+        document.head.appendChild(s);
+      } else {
+        createForm();
+      }
+    }
+
+    loadHubSpotEmbed();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const target = href ? document.querySelector(href) : null;
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Auto-scroll to hash on page load (e.g. arriving from primary CTA on /may-2026-ai-without-hype-guide)
+    function scrollToHashTarget() {
+      if (!window.location.hash) return;
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+    function tryScrollToHash() {
+      if (!window.location.hash) return;
+      // Re-attempt at a few intervals to absorb any late layout shifts
+      [50, 300, 800].forEach((delay) => setTimeout(scrollToHashTarget, delay));
+    }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      tryScrollToHash();
+    } else {
+      document.addEventListener('DOMContentLoaded', tryScrollToHash);
+    }
+    window.addEventListener('hashchange', scrollToHashTarget);
+  })();
+</script>

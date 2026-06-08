@@ -1,0 +1,87 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Free Mid-Year Technology Audit Checklist for Independent Insurance Agencies | Archway"
+  description="Download the free mid-year technology audit checklist. Three sections: IT and security, marketing and digital presence, AI and workflow efficiency. Independent insurance agencies only."
+  ctaText="Get the Free Checklist"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Mid-Year Technology Checkpoint  ·  June 2026"
+    headline="Is Your Agency&rsquo;s Technology Set Up <span class='hl'>for a Strong Second&nbsp;Half?</span>"
+    subhead="Download the free mid-year technology audit checklist. Three sections. Fifteen minutes. Most agencies find at least two or three things worth addressing before Q3."
+    body1="We are halfway through 2026 and most agencies have not stopped to ask whether their technology is working the way it should. Not whether it is running. Whether it is working the way it should, for carrier renewals, for new business conversations, and for the staff time that keeps getting absorbed by workflows that should be automated."
+    body2="This checklist covers all three areas in fifteen minutes. IT and security, marketing and digital presence, and AI and workflow efficiency. The scoring guide at the end routes you to the right next step based on which section has the most gaps."
+    formHeading="Get Your Free Checklist"
+    formSubhead="We will send it to your inbox right away."
+    formId="37e242b1-e97b-45d8-878d-f6a0b3a0a0a0"
+    trustLine="No spam. No sales call unless you want one. Just the checklist."
+  />
+
+  <ProblemCardsThree
+    sectionLabel="Where Most Agencies Find Gaps"
+    heading="Three Areas. <br /><span class='hl'>Most Agencies Have at Least One Gap in&nbsp;Each.</span>"
+    subhead="The agencies that go into Q3 prepared did the audit in June. The ones that struggle discover the gaps in October when there is no time to fix anything."
+    cards={[
+      {
+        title: "IT and Security",
+        body: "MFA that is enabled but not enforced. Backups that run but have never been tested. An incident response plan that has not been updated since the last IT change. Carrier requirements that changed in 2026 and have not been reviewed."
+      },
+      {
+        title: "Marketing and Digital Presence",
+        body: "A website that does not show up in local search. A Google Business Profile that has not been updated in months. A contact form that goes to a general inbox nobody checks consistently. A digital presence that does not reflect the agency as it exists today."
+      },
+      {
+        title: "AI and Workflow Efficiency",
+        body: "Manual workflows that should be automated. AI goals from January that are still on the list. An AMS that is being used as a database rather than an automation engine. Staff time going to work that a configured system should be handling."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="What the Checklist Covers"
+    heading="Three Sections. Fifteen Minutes. <br />A Clear Picture of Where You&nbsp;Stand."
+    cards={[
+      {
+        title: "IT and Security",
+        body: "Eight items covering MFA enforcement, backup validation, incident response documentation, offboarding process, endpoint protection, carrier requirement alignment, vulnerability scanning, and security training. Score your unchecked items at the end of the section."
+      },
+      {
+        title: "Marketing and Digital Presence",
+        body: "Eight items covering website load speed on mobile, Google Business Profile currency, local SEO configuration, contact form routing, review responses, social media activity, email engagement, and content publishing. Score your unchecked items at the end of the section."
+      },
+      {
+        title: "AI and Workflow Efficiency",
+        body: "Eight items identifying the workflows at your agency that are still manual and are ready for automation. Call logging, commission statements, certificate generation, renewal follow-up, reporting, new business intake, COI compliance review, and SOP documentation. The items you check in this section are your highest-priority automation starting points."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out Where Your Agency Actually Stands?"
+    subtext="Download the free mid-year technology audit checklist and get a clear picture of your IT, marketing, and AI setup at the halfway point of 2026."
+    ctaText="Get the Free Checklist"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>

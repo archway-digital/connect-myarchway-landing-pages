@@ -1,0 +1,91 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Free Security Posture Mid-Year Guide for Independent Insurance Agencies | Archway"
+  description="Download the free security posture mid-year guide. Four sections: MFA enforcement, backup validation, incident response documentation, carrier requirement alignment. Written for agency owners."
+  ctaText="Get the Free Guide"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Security Posture  ·  June 2026"
+    headline="Where Does Your Security Posture Stand <span class='hl'>at the Midpoint of&nbsp;2026?</span>"
+    subhead="Download the free guide and find out what has changed, where the gaps are, and what to do about it before renewal season."
+    body1="Carrier cyber requirements updated this year. Your systems changed. Your staff may have changed. The security posture you had in January is not necessarily the one you have today. Most agencies have made incremental improvements but have not stopped to verify the full picture."
+    body2="This guide covers the four areas carriers scrutinize most at renewal. For each one you will find a plain-language explanation, a benchmark for where you should be at midyear, and a specific action item if you are not there. Written for agency owners, not IT professionals."
+    formHeading="Get Your Free Security Guide"
+    formSubhead="We will send it to your inbox right away."
+    formId="37e242b1-e97b-45d8-878d-f6a0b3a0a0a0"
+    trustLine="No spam. No sales call unless you want one. Just the guide."
+  />
+
+  <ProblemCardsThree
+    sectionLabel="Where Most Agencies Have Gaps"
+    heading="Three Security Gaps <br /><span class='hl'>That Surface Every Renewal&nbsp;Season.</span>"
+    subhead="Things change throughout the year. Most agencies do not find out what changed until a carrier asks at renewal."
+    cards={[
+      {
+        title: "MFA That Is Enabled, Not Enforced",
+        body: "Carriers want MFA enforced on every account, including admin, shared, and vendor access. Most agencies have it turned on for most users. That is not the same as enforced on all accounts, and the difference matters when a carrier asks for documentation."
+      },
+      {
+        title: "Backups That Have Never Been Tested",
+        body: "A backup that runs every night is not the same as a backup you can recover from. Most agencies have never tested a successful restore. Carriers are asking whether backups have been validated. Most agencies do not have documentation that they have."
+      },
+      {
+        title: "An Incident Response Plan That Does Not Exist",
+        body: "When a carrier asks for the incident response plan, the answer cannot be ‘we call our IT person.’ A written plan that reflects the current setup is a requirement on most cyber endorsements. Most agency owners have not seen theirs in two years."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="What the Guide Covers"
+    heading="Four Areas. A Benchmark for Each. <br />A Specific Action Item If You Are Not&nbsp;There."
+    cards={[
+      {
+        title: "MFA Enforcement",
+        body: "What fully enforced actually means, how to check every account including admin and service accounts, and what to fix if there are gaps. Includes a checklist of every account type that needs to be verified."
+      },
+      {
+        title: "Backup and Recovery",
+        body: "The difference between having backups and having validated backups. What a successful restore test looks like, how long it takes, and how to document the result for carrier verification."
+      },
+      {
+        title: "Incident Response Documentation",
+        body: "What carriers want to see on file, the five elements every incident response plan needs, and how to get a current plan in place without starting from scratch. Includes a template outline."
+      },
+      {
+        title: "Carrier Requirement Alignment",
+        body: "What changed in 2026, which requirements are now standard across most carrier cyber endorsements, how to confirm your agency meets them today, and how to document compliance before renewal."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out Where Your Security Posture Actually Stands?"
+    subtext="Download the free guide and get a clear mid-year picture of your security posture with a specific action item for anything that needs attention before renewal season."
+    ctaText="Get the Free Guide"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import NumberedCardsList from '../components/shared/NumberedCardsList.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Free AI Adoption Progress Scorecard for Independent Insurance Agencies | Archway"
+  description="Download the free AI adoption scorecard. Four sections scored out of 80. See where your agency stands on document generation, workflow automation, client communication, and AMS efficiency."
+  ctaText="Get the Free Scorecard"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="AI Adoption Progress  ·  June 2026"
+    headline="Halfway Through 2026. <span class='hl'>Where Does Your Agency&rsquo;s AI Adoption Actually&nbsp;Stand?</span>"
+    subhead="Download the free scorecard and get an honest picture of your AI progress, where you have stalled, and what the most realistic next step looks like."
+    body1="Most agencies that planned to do something with AI this year are somewhere between started and stalled. Not because the goal was wrong. Because the starting point was too broad or the first tool did not connect to a real workflow problem. The difference between agencies that are making progress and agencies that are not is almost never about the technology."
+    body2="This scorecard covers the four areas where independent agencies get the most traction with AI. Ten minutes to complete. A scored output that places your agency in one of three bands. A specific recommended next step based on where you actually are."
+    formHeading="Get Your Free AI Scorecard"
+    formSubhead="We will send it to your inbox right away."
+    formId="37e242b1-e97b-45d8-878d-f6a0b3a0a0a0"
+    trustLine="No spam. No sales call unless you want one. Just the scorecard."
+  />
+
+  <ProblemCardsThree
+    sectionLabel="Why Most Agencies Stall"
+    heading="Three Reasons <br /><span class='hl'>AI Projects Do Not Move&nbsp;Forward.</span>"
+    subhead="It is almost never about the technology. The agencies that are making progress started with a smaller, more specific problem than the agencies that stalled."
+    cards={[
+      {
+        title: "Goals That Were Too Broad",
+        body: "‘We are going to use AI this year’ is not a plan. It does not say which workflow, which problem, or what success looks like in 90 days. Broad goals stall at the planning stage because there is no specific starting point to act on."
+      },
+      {
+        title: "Tools That Did Not Connect to the AMS",
+        body: "The demo was convincing. The implementation required IT resources nobody had. The tool never connected to how the agency actually works. Most AI tools sold to insurance agencies were not built for insurance agencies, and that gap becomes obvious after the purchase."
+      },
+      {
+        title: "No Benchmark for What Good Looks Like",
+        body: "Without a clear picture of where other agencies are, it is impossible to know if you are behind, on track, or further along than you think. Most agencies underestimate their own progress and overestimate the gap they need to close."
+      }
+    ]}
+  />
+
+  <NumberedCardsList
+    sectionLabel="Four Sections. Scored Out of 80."
+    heading="An Honest Picture of <br /><span class='hl'>Where Your Agency&nbsp;Stands.</span>"
+    cards={[
+      {
+        title: "Document Generation (20 points)",
+        body: "Are you producing documents manually that could be automated? Certificates, renewal letters, policy summaries, client communication templates, and standard operating procedures. Each item scored 0, 1, or 2 based on whether it is manual, in progress, or fully automated."
+      },
+      {
+        title: "Workflow Automation (20 points)",
+        body: "Where is staff time still going that should be automated? Call logging to AMS, commission statement processing, renewal follow-up sequences, reporting, and new business intake. Scored the same way."
+      },
+      {
+        title: "Client Communication (20 points)",
+        body: "How much inbound is still handled manually? Inquiry routing, FAQ handling, renewal communication, certificate requests, and COI compliance review. Each one scored 0, 1, or 2."
+      },
+      {
+        title: "AMS Efficiency (20 points)",
+        body: "Is your AMS connected to how you actually work? Workflow automation configuration, data quality, reporting, third-party integrations, and staff adoption. Agencies running Applied Epic, AMS360, HawkSoft, EZLynx, or Vertafore will recognize every item on this section."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to Find Out Where Your Agency's AI Adoption Actually Stands?"
+    subtext="Download the free scorecard and get a specific recommended next step based on where you actually are."
+    ctaText="Get the Free Scorecard"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) {
+    color: var(--orange);
+  }
+</style>
