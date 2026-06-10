@@ -1,0 +1,652 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+
+const formId = '15badee2-0d49-405b-b1e7-e43f52798070';
+const MEETING_URL = 'https://meetings-na2.hubspot.com/sam-ruben/website-forms-discovery-call';
+---
+
+<ArchwayLayout
+  title="Certificate Desk — Meet Quill, Your AI Cert Manager | Archway"
+  description="Quill reads incoming certificates of insurance, checks them against what the contract actually requires — limits, coverage, and the exact ISO endorsement forms — and catches the near-miss before it ships. An interactive demo from Archway."
+  ctaText="See the Demo"
+  ctaHref="#hero-form"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-kicker">ACORD 25  ·  CG 20 37  ·  ISO Endorsements  ·  Your AMS</p>
+        <div class="hero-badge">Certificate Desk  ·  Interactive Demo</div>
+        <h1>Meet Quill, Your AI Cert Manager.<br /><span class="hl">It Catches the Cert That Looks Compliant — But Isn't.</span></h1>
+        <p class="hero-sub">Hand Quill a contract. It reads the incoming certificate of insurance, checks it against what the contract actually requires, and validates the endorsements the way a senior cert tech would — in seconds.</p>
+        <p class="hero-body">The costliest mistakes in COI management are the ones nobody noticed: a certificate that looks clean but is missing the exact ISO endorsement the contract demands. It passes the eye test, gets filed, and surfaces only after a claim is denied — when it's an E&amp;O problem, not a paperwork problem.</p>
+        <p class="hero-body">Quill interrupts before that cert ships. It names the specific endorsement gap, quantifies the dollar exposure, and drafts the fix — a corrected ACORD 25, the underwriter email, and the client note — ready to send. Real form numbers and policy IDs, not "AI magic." Try it before you talk to anyone.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>See the Demo Now</h2>
+          <p>Fill this out and we'll take you straight to the live Quill demo.</p>
+        </div>
+        <div id="hs-cert-desk-form"></div>
+        <p class="form-privacy">No pitch. Sample data only — nothing connects to live systems. Just see how Quill works.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ formId }}>
+    hbspt.forms.create({
+      portalId: "6869933",
+      formId: formId,
+      region: "na2",
+      target: "#hs-cert-desk-form",
+      css: "\
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+        \
+        .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .hs-form fieldset { max-width: 100% !important; }\
+        .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+        .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+        .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+        \
+        .hs-form-field { margin-bottom: 16px; }\
+        .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+        .hs-form-required { color: #ef4444; margin-left: 2px; }\
+        \
+        .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }\
+        .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+        .hs-input::placeholder { color: #9ca3af; }\
+        \
+        select.hs-input { background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; padding-right: 40px !important; cursor: pointer; }\
+        \
+        .inputs-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }\
+        .hs-form-checkbox label, .hs-form-radio label { font-size: 14px; color: #333333; font-weight: 400; display: flex; align-items: center; gap: 8px; cursor: pointer; }\
+        .hs-form-checkbox input, .hs-form-radio input { accent-color: #f48021; width: 18px; height: 18px; }\
+        \
+        .hs-submit { margin-top: 8px; }\
+        .hs-button { width: 100% !important; padding: 18px !important; background: #f48021 !important; color: #ffffff !important; font-size: 17px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+        .hs-button:hover { background: #d96d10 !important; transform: translateY(-1px); }\
+        \
+        .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+        .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+        .hs-input.error { border-color: #ef4444 !important; }\
+        \
+        .submitted-message { text-align: center; padding: 40px 20px; font-size: 18px; line-height: 1.6; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+        \
+        .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+        .legal-consent-container a { color: #f48021; }\
+        \
+        @media (max-width: 480px) {\
+          .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; }\
+        }\
+      "
+    });
+  </script>
+
+  <!-- What Quill Does -->
+  <section class="section">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">What Quill Does</p>
+      <h2 class="section-h2 centered-h">Not a Document Scanner. <span class="hl">A Cert Tech That Reads the Contract First.</span></h2>
+      <p class="centered-sub">Quill doesn't just OCR a certificate. It cross-checks every incoming COI against the limits, coverage types, and exact endorsement forms the contract requires — then acts on what it finds.</p>
+
+      <div class="ai-grid">
+        <article class="ai-card">
+          <div class="ai-card-head">
+            <p class="ai-card-eyebrow">Reads &amp; Validates</p>
+          </div>
+          <h3>Checks the cert against what the contract actually requires</h3>
+          <p>Quill reads the incoming certificate of insurance and validates it line by line against the contract: policy limits, coverage types, additional insured status, and the exact ISO endorsement forms the agreement demands — down to the specific form number, like CG 20 37.</p>
+          <p>It's the line-by-line cross-check a senior cert tech does by hand against the contract — done in seconds, every time, without skipping a step under deadline pressure.</p>
+        </article>
+        <article class="ai-card">
+          <div class="ai-card-head">
+            <p class="ai-card-eyebrow">Catches the Near-Miss</p>
+          </div>
+          <h3>Interrupts before the wrong cert ships</h3>
+          <p>This is the cert that looks compliant but isn't. Quill stops it before it goes out: <em>"Hold on. This certificate is wrong,"</em> and names the specific endorsement gap — the silent miss that a quick visual review waves through.</p>
+          <p>Then it quantifies the exposure, translating the gap into real-dollar E&amp;O risk so the stakes are concrete, not abstract — and tied to a real policy ID, not a vague warning.</p>
+        </article>
+      </div>
+
+      <div class="standard-strip">
+        <p class="standard-strip-label">And then it closes the loop — automatically</p>
+        <div class="standard-grid">
+          <article class="standard-card">
+            <p class="standard-eyebrow standard-eyebrow--personal">Drafts the Fix</p>
+            <h3>A corrected ACORD 25, ready to send</h3>
+            <p>Quill drafts the corrected ACORD 25, the underwriter email requesting the missing endorsement, and the client note explaining the gap — all queued and ready to send, so the fix takes minutes instead of a morning.</p>
+          </article>
+          <article class="standard-card">
+            <p class="standard-eyebrow standard-eyebrow--commercial">Self-Chases the Book</p>
+            <h3>Renewals that pursue themselves</h3>
+            <p>A tracking view where renewals and expiring certificates chase themselves instead of sitting in someone's inbox — closing the gap where lapses usually happen, before anyone has to remember to look.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Scenarios -->
+  <section class="section section-light">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">Three Certs Quill Catches in the Demo</p>
+      <h2 class="section-h2 centered-h">Real Form Numbers. Real Policy IDs. <span class="hl">The Kind of Miss That Costs You Later.</span></h2>
+      <p class="centered-sub">Each one passes a quick visual review. Each one is wrong in a way that only surfaces after a claim. Quill names which — and why.</p>
+
+      <div class="scenario-grid">
+        <article class="scenario-card">
+          <div class="scenario-flag">Missing Endorsement</div>
+          <h3>Construction Subcontractor</h3>
+          <p class="scenario-meta">Beacon · Policy GL-4471</p>
+          <p>The GC won't let your insured on site without a cert. It looks complete — but the contract requires the ongoing-and-completed-operations additional insured endorsement, and the form on the cert doesn't match. Quill flags the exact gap before it ships.</p>
+        </article>
+        <article class="scenario-card">
+          <div class="scenario-flag">Illusory Limit</div>
+          <h3>Commercial Lease</h3>
+          <p class="scenario-meta">Olive · Policy GL-8820</p>
+          <p>A restaurant tenant needs a cert for the landlord. The limit on the certificate reads as compliant — but it's been eroded or capped in a way that makes the protection illusory. Quill catches what the number alone hides.</p>
+        </article>
+        <article class="scenario-card">
+          <div class="scenario-flag">Wrong Coverage Type</div>
+          <h3>Vendor / MSA</h3>
+          <p class="scenario-meta">Northwind · Policy PL-2290</p>
+          <p>A SaaS vendor has to clear the client's MSA to onboard. The cert shows coverage — just not the coverage type the MSA actually requires. Quill identifies the mismatch instead of passing it through on a deadline.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="section">
+    <div class="section-inner centered">
+      <p class="section-label centered-label">Why Agencies Trust It</p>
+      <h2 class="section-h2 centered-h">The Costliest COI Mistakes Are the Ones Nobody Noticed. <span class="hl">Quill Names Them First.</span></h2>
+
+      <ol class="manifesto">
+        <li class="manifesto-item">
+          <div class="manifesto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="12"/><line x1="11" y1="14.5" x2="11" y2="14.5"/></svg>
+          </div>
+          <div class="manifesto-body">
+            <h3>Catches what a cert tech misses</h3>
+            <p>The silent endorsement gaps that surface only after a claim is denied are exactly the ones a fast visual review waves through. Quill checks the form number against the contract every time, so the miss gets named before the cert ships — not after the loss.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
+          </div>
+          <div class="manifesto-body">
+            <h3>Turns hours of review into seconds</h3>
+            <p>No more line-by-line cross-checking of certs against contracts by hand. Quill does the full comparison instantly, so your team spends time on the exceptions that need judgment instead of the rote validation that doesn't.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><polyline points="9 12 11 14 15 9.5"/></svg>
+          </div>
+          <div class="manifesto-body">
+            <h3>Reduces E&amp;O liability</h3>
+            <p>The most expensive mistakes in COI management are the ones nobody saw. Quill quantifies each gap as concrete dollar exposure and names it before it ships — turning a future E&amp;O claim into a five-minute fix today.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+          </div>
+          <div class="manifesto-body">
+            <h3>Credibility through specificity</h3>
+            <p>Real form numbers and policy IDs — CG 20 37, GL-4471 — not "AI magic." It reads as a tool a senior tech would actually trust, because it speaks the language of the desk instead of around it.</p>
+          </div>
+        </li>
+        <li class="manifesto-item">
+          <div class="manifesto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 4 21 10 15 10"/><path d="M20 14a8 8 0 1 1-2-7l3 3"/></svg>
+          </div>
+          <div class="manifesto-body">
+            <h3>Renewals don't slip</h3>
+            <p>The book tracks and chases itself. Expiring and renewing certs pursue themselves instead of waiting in an inbox, closing the lapse gap where coverage quietly falls off without anyone noticing.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <StatsBar />
+  <Testimonials />
+
+  <!-- Bottom CTA Band (two buttons) -->
+  <section class="cta-section bottom-cta-two">
+    <div class="bottom-cta-inner">
+      <h2>See Quill Catch a Bad Cert <span class="hl">Live.</span></h2>
+      <p>Run the interactive demo in two minutes — sample data, nothing connects to live systems. Or book 30 minutes with Sam to talk through what Certificate Desk looks like on your book and your AMS.</p>
+      <div class="cta-buttons">
+        <a href="#hero-form" class="cta-button">
+          See the Demo Now
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href={MEETING_URL} class="cta-button-secondary" target="_blank" rel="noopener">Book 30 Minutes With Sam</a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* ── HERO BODY PARAGRAPHS ── */
+  .hero-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 14px;
+    max-width: 56ch;
+  }
+
+  /* ── HERO FORM CARD targeting overrides ── */
+  #hs-cert-desk-form {
+    width: 100%;
+  }
+
+  #hs-cert-desk-form iframe {
+    width: 100% !important;
+    min-height: 400px;
+  }
+
+  /* ── CENTERED SECTION UTILITIES ── */
+  .centered {
+    text-align: center;
+  }
+
+  .centered-label {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .centered-h {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .centered-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0 auto 48px;
+    max-width: 720px;
+  }
+
+  /* ── WHAT QUILL DOES — 2 prominent cards on top ── */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+
+  .ai-card {
+    background: linear-gradient(180deg, rgba(244, 128, 33, 0.06) 0%, rgba(244, 128, 33, 0.02) 100%);
+    border: 1px solid rgba(244, 128, 33, 0.22);
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: var(--orange);
+  }
+
+  .ai-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .ai-card-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--orange);
+    color: var(--white);
+    margin: 0;
+  }
+
+  .ai-card-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: rgba(244, 128, 33, 0.2);
+    letter-spacing: -1px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ai-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .ai-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0 0 12px;
+  }
+
+  .ai-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── STANDARD STRIP — secondary 2-tile band beneath cards ── */
+  .standard-strip {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+  }
+
+  .standard-strip-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: center;
+    margin: 0 0 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .standard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .standard-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 26px;
+  }
+
+  .standard-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .standard-eyebrow--personal {
+    color: var(--navy);
+  }
+
+  .standard-eyebrow--commercial {
+    color: var(--text-light);
+  }
+
+  .standard-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .standard-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ── THREE SCENARIOS ── */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .scenario-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 26px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scenario-flag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 5px 11px;
+    border-radius: 6px;
+    background: rgba(244, 128, 33, 0.12);
+    color: #c9610f;
+    margin-bottom: 14px;
+  }
+
+  .scenario-card h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .scenario-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+    margin: 0 0 12px;
+  }
+
+  .scenario-card > p:last-child {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ── WHY IT MATTERS — vertical numbered manifesto ── */
+  .manifesto {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 880px;
+    text-align: left;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .manifesto-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 32px 36px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .manifesto-item:last-child {
+    border-bottom: none;
+  }
+
+  .manifesto-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: rgba(244, 128, 33, 0.1);
+    color: var(--orange);
+  }
+
+  .manifesto-body h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--charcoal);
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .manifesto-body p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* ── BOTTOM CTA (two-button variant) ── */
+  .bottom-cta-two {
+    padding: 80px 24px;
+  }
+
+  .bottom-cta-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bottom-cta-two h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .bottom-cta-two p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 17px;
+    margin-bottom: 28px;
+  }
+
+  .cta-buttons {
+    display: inline-flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bottom-cta-two .cta-button,
+  .bottom-cta-two .cta-button-secondary {
+    min-height: 44px;
+  }
+
+  .bottom-cta-two .cta-button-secondary {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .centered-h {
+      font-size: 28px;
+    }
+
+    .centered-sub {
+      margin-bottom: 36px;
+    }
+
+    .ai-grid,
+    .standard-grid,
+    .scenario-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-card {
+      padding: 24px;
+    }
+
+    .ai-card h3 {
+      font-size: 20px;
+    }
+
+    .ai-card-number {
+      font-size: 28px;
+    }
+
+    .standard-card {
+      padding: 20px 22px;
+    }
+
+    .manifesto-item {
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      padding: 22px 22px;
+    }
+
+    .manifesto-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+    }
+
+    .manifesto-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .manifesto-body h3 {
+      font-size: 18px;
+    }
+
+    .bottom-cta-two {
+      padding: 64px 24px;
+    }
+
+    .bottom-cta-two h2 {
+      font-size: 26px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .bottom-cta-two .cta-button,
+    .bottom-cta-two .cta-button-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
