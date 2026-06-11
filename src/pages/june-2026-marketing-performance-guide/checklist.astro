@@ -2,7 +2,7 @@
 import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 
 const HUBSPOT_PORTAL_ID = '6869933';
-const HUBSPOT_FORM_ID = '37e242b1-e97b-45d8-878d-f6a0b3a0a0a0';
+const HUBSPOT_FORM_ID = 'dbdbcd51-2cae-4c30-9adc-e6ac249305ed';
 
 const section1 = {
   number: '01',
@@ -291,8 +291,8 @@ const section3 = {
     <div class="save-inner">
       <div class="save-header">
         <p class="save-label">Save Your Results</p>
-        <h2>Send your checklist to your inbox and to&nbsp;Sam.</h2>
-        <p class="save-sub">Get a copy of your results plus a personalized recommendation based on what you checked. No pitch, just an honest look at where to start.</p>
+        <h2>Send Your Results to Hannah for a&nbsp;Review.</h2>
+        <p class="save-sub">Get a copy of your results plus a personalized recommendation from Hannah based on what you checked. No pitch, just an honest look at where to start.</p>
       </div>
 
       <div class="save-form-card">
@@ -1379,7 +1379,8 @@ const section3 = {
 
     function findMessageField(formEl) {
       if (!formEl || !formEl.querySelector) return null;
-      return formEl.querySelector('textarea[name="message"], input[name="message"]');
+      // The HubSpot form captures the checklist results in the "additional_information" notes field.
+      return formEl.querySelector('textarea[name="additional_information"], input[name="additional_information"], textarea[name="message"], input[name="message"]');
     }
 
     function getCurrentMessageField() {
@@ -1467,6 +1468,18 @@ const section3 = {
               if (wrapper) wrapper.style.display = 'none';
               updateMessageField();
             }
+            // Override the HubSpot submit button label. Query the live container by id
+            // (not the captured formEl, which HubSpot may replace), and retry until the
+            // button appears in the DOM.
+            (function setSubmitLabel(attempt) {
+              const submitBtn = document.querySelector('#hs-checklist-form input[type="submit"].hs-button, #hs-checklist-form .hs-button');
+              if (submitBtn) {
+                if (submitBtn.tagName === 'INPUT') submitBtn.value = 'Submit Your Results';
+                else submitBtn.textContent = 'Submit Your Results';
+              } else if (attempt < 30) {
+                setTimeout(() => setSubmitLabel(attempt + 1), 100);
+              }
+            })(0);
           },
           onFormSubmit: function (formInstance) {
             // Fires just before the data is sent. Make sure the latest checklist text is in the message field.
