@@ -1,0 +1,118 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroGatedReveal from '../components/shared/HeroGatedReveal.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this page's own HubSpot form ID before launch
+---
+
+<ArchwayLayout
+  title="Free Marketing Proof Guide for Independent Insurance Agencies | Archway"
+  description="Download the free marketing proof guide. What to measure, what the numbers mean, and the three highest-impact things to track before Q3. Written for agency owners."
+  ctaText="Get the Free Guide"
+  ctaHref="#hero-form"
+>
+  <HeroGatedReveal
+    badge="For Agency Owners"
+    headline="Can you prove your marketing is working? <span class='hl'>Most agencies&nbsp;cannot.</span>"
+    subhead="Where did your last five new clients actually come from? If the answer is a shrug, this is for you."
+    formHeading="Get the Free Guide"
+    formSubhead="Fill this out and the guide opens right here on the page."
+    formId={FORM_ID}
+    trustLine="Written for independent insurance agencies."
+    revealHeading="Your guide is unlocked"
+  >
+    <h2 class="g-title">The Three Things to Measure Before Q3</h2>
+    <p class="g-lead">Written for owners, not marketers.</p>
+    <h3 class="g-sub">Start with one honest question</h3>
+    <p>Think about the last five new clients your agency wrote. Where did each one come from? For most agencies the answer is a shrug, because nothing is set up to track it. That is the gap. When you cannot see where business comes from, you cannot tell which marketing is working, so you either keep paying for everything or cut the wrong thing.</p>
+    <h3 class="g-sub">1. What your website is actually generating</h3>
+    <p>Not visits. Conversations. Put form tracking on every contact point on the site so you can see whether the website produces quote requests and calls, or just sits there looking fine.</p>
+    <h3 class="g-sub">2. Where your search traffic comes from</h3>
+    <p>Your Google Business Profile and local search drive more agency business than most owners realize. Call tracking on the numbers you advertise connects a click to a real conversation instead of a guess.</p>
+    <h3 class="g-sub">3. Connecting a lead source to a bound policy</h3>
+    <p>The piece that ends the guessing. A simple link between where a lead came from and the policy it became, so you can finally say which marketing pays for itself.</p>
+    <div class="g-cta">
+      <h3>Want to stop guessing where your business comes from?</h3>
+      <p>We will help you put these three measurements in place before Q3 referral season picks up.</p>
+      <a class="g-cta-btn" href="/book-compliance-review">Request a call</a>
+    </div>
+  </HeroGatedReveal>
+
+  <section class="context-section">
+    <div class="context-inner fade-up">
+      <div class="context-aside">
+        <span class="context-eyebrow">Why this matters</span>
+        <h2 class="context-lead">Most agencies cannot say what their marketing actually&nbsp;returns.</h2>
+      </div>
+      <div class="context-body">
+        <p>Most independent agencies spend on marketing every month and <strong>cannot say what it returned.</strong> Not impressions. New business conversations, quotes, and policies. The problem is usually not the marketing. It is that nothing is set up to measure it.</p>
+        <p>This guide walks through what to measure, what the numbers mean, and the three highest-impact things to put in place before Q3 referral season picks up. Written for owners, not marketers.</p>
+      </div>
+    </div>
+  </section>
+
+  <ProblemCardsThree
+    sectionLabel="What the Guide Covers"
+    heading="Three Things to Measure <br /><span class='hl'>Before Q3 Referral&nbsp;Season.</span>"
+    subhead="Stop funding what does not work. Start with what you can actually see."
+    cards={[
+      {
+        title: "What your website is actually generating",
+        body: "How to tell whether your site produces new business conversations or just sits there, and what to track to know the difference."
+      },
+      {
+        title: "Where your search traffic comes from",
+        body: "Local search and Google Business Profile, and how to connect a click to a real lead instead of guessing."
+      },
+      {
+        title: "Whether your spend is returning anything",
+        body: "The attribution basics. Form tracking, call tracking, and connecting a lead source to a bound policy so you stop funding what does not work."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Want to Stop Guessing Where Your Business Comes From?"
+    subtext="Download the free guide and put the three measurements in place before Q3."
+    ctaText="Get the Free Guide"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) { color: var(--orange); }
+  .context-section { background: var(--light-bg); padding: 72px 24px; }
+  .context-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start; }
+  .context-aside { border-left: 3px solid var(--orange); padding-left: 24px; }
+  .context-eyebrow { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); margin-bottom: 16px; }
+  .context-lead { font-size: 27px; font-weight: 800; color: var(--charcoal); line-height: 1.25; letter-spacing: -0.5px; margin: 0; }
+  .context-body p { font-size: 17px; line-height: 1.8; color: var(--text-light); margin: 0 0 18px; }
+  .context-body p strong { color: var(--charcoal); font-weight: 700; }
+  .context-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 860px) {
+    .context-inner { grid-template-columns: 1fr; gap: 24px; }
+    .context-aside { border-left: none; padding-left: 0; border-top: 3px solid var(--orange); padding-top: 20px; }
+    .context-lead { font-size: 23px; }
+  }
+  .g-title { font-size: 30px; font-weight: 800; color: var(--charcoal); line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
+  .g-sub { font-size: 20px; font-weight: 800; color: var(--charcoal); margin: 28px 0 8px; line-height: 1.3; }
+  .gated-inner p:not(.g-lead) { font-size: 16px; line-height: 1.7; color: var(--text-light); margin-bottom: 14px; }
+  .g-cta { background: var(--navy); border-radius: 14px; padding: 32px 36px; margin-top: 36px; }
+  .g-cta h3 { font-size: 24px; font-weight: 800; color: #ffffff; margin-bottom: 10px; line-height: 1.3; }
+  .g-cta p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8) !important; margin-bottom: 20px; }
+  .g-cta-btn { display: inline-block; background: var(--orange); color: #ffffff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: background 0.2s; }
+  .g-cta-btn:hover { background: var(--orange-dark); }
+  @media (max-width: 768px) { .g-title { font-size: 25px; } }
+</style>

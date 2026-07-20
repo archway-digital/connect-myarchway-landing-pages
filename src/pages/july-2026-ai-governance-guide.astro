@@ -1,0 +1,166 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroGatedReveal from '../components/shared/HeroGatedReveal.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this page's own HubSpot form ID before launch
+---
+
+<ArchwayLayout
+  title="Free AI Usage and Governance Starter for Independent Insurance Agencies | Archway"
+  description="Download the free AI governance starter for agencies. A one-page policy template, approved-tool guidance, and rules for keeping client data out of the wrong AI tools."
+  ctaText="Get the Free Starter"
+  ctaHref="#hero-form"
+>
+  <HeroGatedReveal
+    badge="For Agency Owners and Operations Leads"
+    headline="Your staff are already using AI. <span class='hl'>Do you have a&nbsp;policy?</span>"
+    subhead="The tools are in the building. The governance usually is not. Here is the one page that fixes it."
+    formHeading="Get the Free Starter"
+    formSubhead="Fill this out and the starter — including the policy template — opens right here on the page."
+    formId={FORM_ID}
+    trustLine="Written for independent insurance agencies."
+    revealHeading="Your starter is unlocked"
+  >
+    <h2 class="g-title">Your Agency's AI Starting Point</h2>
+    <p class="g-lead">The thinking, then a copy-paste policy template you can adapt in an afternoon.</p>
+
+    <h3 class="g-sub">Why a policy beats a ban</h3>
+    <p>Your staff are already using AI. Banning it does not stop the use, it just removes your visibility into it. A short written policy keeps your team productive and gives you something to show a carrier or client who asks how you govern AI.</p>
+
+    <h3 class="g-sub">The client-data rule</h3>
+    <p>Most AI risk comes down to one question: what client information goes into the tool? A clear rule on what is allowed and what is never allowed prevents the large majority of problems. Free AI tools often train on what you put in, so client records should never go into an unapproved tool.</p>
+
+    <h3 class="g-sub">Where AI helps safely</h3>
+    <p>Quoting and intake, service triage, and documentation all benefit from AI doing the repetitive first pass while a person reviews and owns the result. That human-in-the-loop step is where the time savings are real and the risk stays low.</p>
+
+    <h3 class="g-sub">The one-page policy template</h3>
+    <p>Copy the template below into your own document and adapt it: approved tools, the client-data rule, the human-review requirement, and the single owner who keeps it current.</p>
+
+    <div class="g-template">
+      <div class="g-template-head">
+        <span class="g-template-label">Copy-Paste Policy Template</span>
+        <button type="button" class="g-copy-btn" id="copy-policy">Copy</button>
+      </div>
+      <div class="g-template-body" id="policy-text">
+        <p><strong>[Agency Name] — AI Usage Policy</strong></p>
+        <p><strong>1. Approved tools.</strong> Staff may use only agency-approved AI tools for work tasks. The current approved list is maintained by the policy owner named below. Any tool not on the list must be approved before use.</p>
+        <p><strong>2. The client-data rule.</strong> No client personal, policy, or financial information may be entered into any AI tool that is not on the approved list. When in doubt, do not paste it. Approved tools may be used with client information only where the agreement confirms the data is not used for training.</p>
+        <p><strong>3. Human review.</strong> Anything an AI tool produces that reaches a client, carrier, or underwriter must be reviewed and owned by a person before it is sent. AI drafts the first pass; a person is accountable for the result.</p>
+        <p><strong>4. Owner.</strong> [Name / Role] owns this policy, keeps the approved-tool list current, and answers questions about it. Reviewed [date]; next review [date].</p>
+      </div>
+    </div>
+
+    <div class="g-cta">
+      <h3>Want AI in your agency without the exposure?</h3>
+      <p>We will help you set the rule, pick the safe tools, and put the policy in place.</p>
+      <a class="g-cta-btn" href="/book-compliance-review">Request a call</a>
+    </div>
+  </HeroGatedReveal>
+
+  <section class="context-section">
+    <div class="context-inner fade-up">
+      <div class="context-aside">
+        <span class="context-eyebrow">Why this matters</span>
+        <h2 class="context-lead">The tools are already in the building. The governance usually is&nbsp;not.</h2>
+      </div>
+      <div class="context-body">
+        <p>Somewhere in your agency right now, someone is <strong>pasting client information into a free AI tool</strong> to summarize or reword it, maybe straight out of Applied Epic or AMS360. None of it malicious. All of it happening without anyone deciding whether it should.</p>
+        <p>This starter gives you a one-page usage policy template, a short list of tools that handle data responsibly, and clear rules on what client information can and cannot go into any AI tool. Banning AI does not work. Deciding on purpose does.</p>
+      </div>
+    </div>
+  </section>
+
+  <ProblemCardsThree
+    sectionLabel="What the Starter Includes"
+    heading="A Policy, the Tools, and the One Rule <br /><span class='hl'>That Prevents Most&nbsp;Problems.</span>"
+    subhead="Everything you need to govern AI on purpose instead of pretending it is not happening."
+    cards={[
+      {
+        title: "A one-page policy template",
+        body: "Fill-in-the-blank language an agency can adopt in an afternoon. What is allowed, what is not, and who owns it."
+      },
+      {
+        title: "Approved-tool guidance",
+        body: "Which AI tools handle data responsibly and which should never see client information."
+      },
+      {
+        title: "The client-data rule",
+        body: "A clear line on what can and cannot go into any AI tool, and where output needs a human review before it reaches a client or carrier."
+      },
+      {
+        title: "Why a policy beats a ban",
+        body: "What happens when you ban a useful tool, and why the written policy is the thing you can show a carrier or client who asks."
+      }
+    ]}
+  />
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+  <Testimonials />
+
+  <BottomCTA
+    heading="Want AI in Your Agency Without the Exposure?"
+    subtext="Download the starter and have a written policy in place before anyone asks for one."
+    ctaText="Get the Free Starter"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.problem-header h2 .hl) { color: var(--orange); }
+  .g-title { font-size: 30px; font-weight: 800; color: var(--charcoal); line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
+  .g-sub { font-size: 20px; font-weight: 800; color: var(--charcoal); margin: 28px 0 8px; line-height: 1.3; }
+  .gated-inner > p { font-size: 16px; line-height: 1.7; color: var(--text-light); margin-bottom: 14px; }
+  .gated-inner > p.g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
+  .g-template { background: var(--light-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--orange); border-radius: 10px; padding: 8px 0 20px; margin: 16px 0 8px; }
+  .g-template-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; border-bottom: 1px solid var(--card-border); }
+  .g-template-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); }
+  .g-copy-btn { background: var(--navy); color: #ffffff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 13px; font-weight: 700; font-family: 'Inter', Arial, sans-serif; cursor: pointer; transition: background 0.2s; }
+  .g-copy-btn:hover { background: var(--orange); }
+  .g-template-body { padding: 18px 24px 0; }
+  .g-template-body p { font-size: 15px; line-height: 1.7; color: var(--charcoal); margin: 0 0 14px; }
+  .g-cta { background: var(--navy); border-radius: 14px; padding: 32px 36px; margin-top: 36px; }
+  .g-cta h3 { font-size: 24px; font-weight: 800; color: #ffffff; margin-bottom: 10px; line-height: 1.3; }
+  .g-cta p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8) !important; margin-bottom: 20px; }
+  .g-cta-btn { display: inline-block; background: var(--orange); color: #ffffff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: background 0.2s; }
+  .g-cta-btn:hover { background: var(--orange-dark); }
+  @media (max-width: 768px) { .g-title { font-size: 25px; } }
+  .context-section { background: var(--light-bg); padding: 72px 24px; }
+  .context-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start; }
+  .context-aside { border-left: 3px solid var(--orange); padding-left: 24px; }
+  .context-eyebrow { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); margin-bottom: 16px; }
+  .context-lead { font-size: 27px; font-weight: 800; color: var(--charcoal); line-height: 1.25; letter-spacing: -0.5px; margin: 0; }
+  .context-body p { font-size: 17px; line-height: 1.8; color: var(--text-light); margin: 0 0 18px; }
+  .context-body p strong { color: var(--charcoal); font-weight: 700; }
+  .context-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 860px) {
+    .context-inner { grid-template-columns: 1fr; gap: 24px; }
+    .context-aside { border-left: none; padding-left: 0; border-top: 3px solid var(--orange); padding-top: 20px; }
+    .context-lead { font-size: 23px; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('copy-policy');
+    var src = document.getElementById('policy-text');
+    if (!btn || !src) return;
+    btn.addEventListener('click', function () {
+      var text = src.innerText;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+        });
+      }
+    });
+  })();
+</script>
