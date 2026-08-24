@@ -1,0 +1,495 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+// BLOCKER: this page must not publish until both Acrisure answers are in writing.
+//   1. Compensation structure (flat referral fee vs. commission share). Owner: Brad.
+//   2. Written approval to market the program, plus their required disclosure
+//      language, which replaces the LEGAL NOTICE block at the foot of this page.
+//
+// BLOCKER: this page needs its own HubSpot form. The placeholder below is the shared
+// July form ID and collects none of the right fields.
+//
+// The form is sales intent, not a guide download. Do NOT use the `LeadGen -` prefix:
+// under the current inbound form SOP that prefix routes to nurture, which is wrong
+// here. Naming and routing carve-out owner: Alexandra.
+//
+// Required fields, in order (see ARCHWAY_CYBER_INSURANCE_LANDING_PAGE.md):
+//   Agency name (text, req, maps to Company)   First name (text, req)
+//   Last name (text, req)                      Business email (email, req)
+//   Phone (phone, req)                         Mailing address (text, req)
+//   City (text, req)                           State (dropdown, req)
+//   ZIP (text, req)                            Industry class (dropdown, req:
+//     retail agency / wholesale-MGA / other)
+//   Annual revenue (banded dropdown, req)      Current cyber carrier (text, opt)
+//   Current policy renewal date (date, opt)    Huntress currently deployed
+//     (radio, req: Yes / No / Not sure)        Consent checkbox (req)
+//   Consent language: "I understand my information will be shared with Acrisure for
+//   cyber insurance eligibility review."
+//   Submit button: "Check Eligibility". Post-submit: on-page message, NO redirect.
+//
+// Workflow on submit (HubSpot, owner: Alexandra). Email-only delivery is not
+// acceptable; without a record there is no attribution and nothing reaches the
+// Sales Overview build:
+//   1. Create or update Contact, associate to Company
+//   2. Set cyber_insurance_eligibility_requested = true
+//   3. Set cyber_policy_renewal_date from the form field
+//   4. Notify huntresscyber@acrisure.com with all fields
+//   5. Task to the Company account owner (Walter carve-out, Brad by default), due 2 business days
+//   6. Branch: Huntress deployed = No or Not sure, second task to Walter tagged as a
+//      Huntress deployment opportunity
+//   7. Associate to the Cyber Insurance Program campaign object
+//   Do NOT create a Deal in the Sales Pipeline until the compensation structure is
+//   confirmed. An untagged referral deal corrupts Sales Overview reporting.
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d';
+
+const coverage = [
+  {
+    title: 'Incident Response',
+    body: 'Breach response costs when an event occurs. Forensics, legal counsel, and the client notification obligations that follow.',
+  },
+  {
+    title: 'Ransomware and Cyber Extortion',
+    body: 'Extortion events, including response, negotiation, and the cost of recovering systems.',
+  },
+  {
+    title: 'Business Interruption',
+    body: 'Lost income and the additional expense of operating while systems are down after a cyber incident.',
+  },
+  {
+    title: 'Funds Transfer Fraud',
+    body: 'Direct financial loss when an attacker redirects or initiates an unauthorized transfer.',
+  },
+  {
+    title: 'Social Engineering',
+    body: 'Loss caused by phishing, impersonation, and other deception aimed at agency staff.',
+  },
+  {
+    title: 'Third-Party Liability',
+    body: 'Claims brought by clients or partners affected by an incident on your systems.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Confirm the stack',
+    body: 'As an Archway-managed agency, Huntress Managed EDR and ITDR is most likely already deployed. Archway confirms it is active across the environment, and deploys it if it is not.',
+  },
+  {
+    title: 'Check eligibility',
+    body: 'Provide basic business details. Agency name, address, industry class, and annual revenue. Acrisure reviews eligibility against carrier underwriting requirements.',
+  },
+  {
+    title: 'Review program options',
+    body: 'Eligible agencies receive program options to review, including any available deductible advantages.',
+  },
+];
+---
+
+<ArchwayLayout
+  title="Cyber Insurance Program for Independent Insurance Agencies | Archway"
+  description="Agencies running Huntress Managed EDR and ITDR may qualify for a cyber insurance program underwritten from a verified security posture. Check eligibility."
+  ctaText="Check Eligibility"
+  ctaHref="#hero-form"
+>
+  <HeroLeadMagnet
+    badge="Cyber Insurance Program"
+    headline="Your security posture is now <span class='hl'>underwriting&nbsp;evidence.</span>"
+    subhead="Agencies running Huntress Managed EDR and ITDR may qualify for a cyber insurance program built around the protections already in place on their network."
+    body1="Most cyber insurance underwriting starts with a questionnaire. An agency answers a list of security questions, submits the form, and waits to learn what the carrier concluded. The answers are self-reported. Nothing on the network is verified."
+    body2="This program starts somewhere different. Huntress Managed EDR and ITDR produces continuous evidence of managed detection across endpoints and identities. That evidence is what underwriters review. Prevention and coverage are evaluated together rather than separately."
+    formHeading="Check your eligibility"
+    formSubhead="Complete the form and your details are sent to Acrisure for eligibility review. Archway does not issue policies or set coverage terms."
+    formId={FORM_ID}
+    trustLine="Archway works exclusively with independent insurance agencies."
+  />
+
+  <!-- What the coverage addresses -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="cov-header fade-up">
+        <p class="section-label">Coverage</p>
+        <h2>What the coverage addresses</h2>
+        <p class="cov-intro">The program is structured around the incidents that put agencies out of business. Coverage options include the following.</p>
+      </div>
+      <div class="cov-grid fade-up">
+        {coverage.map((item, i) => (
+          <div class="cov-card">
+            <span class="cov-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why security-first underwriting works -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="why-inner fade-up">
+        <div class="why-aside">
+          <span class="why-eyebrow">The argument</span>
+          <h2 class="why-lead">Why security-first underwriting&nbsp;works</h2>
+        </div>
+        <div class="why-body">
+          <p>Traditional cyber underwriting asks an agency to describe its own security and then prices the risk against that description. The carrier cannot confirm what is actually running. The agency cannot prove it.</p>
+          <p>Huntress Managed EDR and ITDR changes what is available to review. The deployment produces continuous evidence of managed detection across endpoints and identities, which means the security posture presented to an underwriter is observed rather than asserted.</p>
+          <p>A provable posture supports better program access. It is also the same documentation a carrier, a regulator, or an errors and omissions underwriter will ask for at renewal, which means the work does more than one job.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="steps-header fade-up">
+        <p class="section-label">Process</p>
+        <h2>How it works</h2>
+      </div>
+      <div class="steps-grid fade-up">
+        {steps.map((step, i) => (
+          <div class="step-card">
+            <span class="step-num">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who does what: trust asset, not fine print. Do not bury it. -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="who-card fade-up">
+        <p class="section-label">Roles</p>
+        <h2>Who does what</h2>
+        <p>Archway deploys and manages the security. Huntress Managed EDR and ITDR is the platform Archway uses to defend independent agencies against ransomware, account takeover, and identity-based attacks. That deployment is what makes an agency eligible.</p>
+        <p>Coverage is placed through Acrisure, a licensed insurance broker. Acrisure handles eligibility review, quoting, and policy placement. All underwriting and coverage decisions are made by the carrier.</p>
+        <p class="who-emphasis">Archway does not issue policies, set coverage terms, or make underwriting decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <Testimonials />
+  <AboutArchway />
+
+  <BottomCTA
+    heading="Find out whether your agency qualifies"
+    subtext="Eligibility review takes basic business information and a confirmed Huntress deployment. Most Archway-managed agencies already meet the core requirement."
+    ctaText="Check Eligibility"
+    ctaHref="#hero-form"
+  />
+
+  <!--
+    LEGAL NOTICE
+    PLACEHOLDER. The build spec requires the disclosure block from the Acrisure
+    program PDF reproduced verbatim and in full. That PDF text was not supplied, so
+    the paragraph below is drafted from the enumerated coverage points only and is
+    NOT approved legal language. Replace it wholesale with the Acrisure-supplied text
+    before this page publishes. Owner: Brad.
+  -->
+  <section class="legal">
+    <div class="legal-inner">
+      <p class="legal-label">Important disclosures</p>
+      <p>Coverage is placed through licensed insurance producers. Policies under this program may be issued by a nonadmitted surplus lines carrier. Surplus lines carriers are not licensed or regulated by the state in which the coverage may be placed and are not protected by any state insurance guaranty association.</p>
+      <p>Huntress Labs is not a carrier, broker, or agent. Use of Huntress products does not guarantee eligibility for this program or any specific policy terms. Program availability varies by jurisdiction. All eligibility, underwriting, and coverage decisions are made by the carrier. Refer to the actual policy for complete terms, conditions, limits, and exclusions.</p>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* Coverage cards */
+  .cov-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .cov-header .section-label {
+    text-align: center;
+    display: block;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .cov-header .section-label::before { display: none; }
+
+  .cov-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+    margin-bottom: 14px;
+  }
+
+  .cov-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .cov-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  .cov-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cov-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .cov-num {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .cov-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .cov-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Why security-first underwriting works */
+  .why-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .why-aside {
+    border-left: 3px solid var(--orange);
+    padding-left: 24px;
+  }
+
+  .why-eyebrow {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .why-lead {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .why-body p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin: 0 0 18px;
+  }
+
+  .why-body p:last-child { margin-bottom: 0; }
+
+  /* How it works */
+  .steps-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .steps-header .section-label {
+    text-align: center;
+    display: block;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .steps-header .section-label::before { display: none; }
+
+  .steps-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--orange);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .step-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .step-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Who does what */
+  .who-card {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--orange);
+    border-radius: 12px;
+    padding: 40px;
+  }
+
+  .who-card .section-label {
+    display: block;
+    text-align: left;
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .who-card .section-label::before { display: none; }
+
+  .who-card h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-align: left;
+    margin-bottom: 18px;
+  }
+
+  .who-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-light);
+    text-align: left;
+    margin: 0 0 16px;
+  }
+
+  .who-emphasis {
+    font-weight: 700;
+    color: var(--charcoal) !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Legal notice */
+  .legal {
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+    padding: 40px 24px 48px;
+  }
+
+  .legal-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .legal-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-light);
+    margin: 0 0 12px;
+  }
+
+  .legal p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0 0 12px;
+  }
+
+  .legal p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 900px) {
+    .why-inner { grid-template-columns: 1fr; gap: 24px; }
+    .why-aside { border-left: none; padding-left: 0; border-top: 3px solid var(--orange); padding-top: 20px; }
+    .why-lead { font-size: 23px; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .cov-grid { grid-template-columns: 1fr; }
+    .cov-header h2, .steps-header h2 { font-size: 26px; }
+    .who-card { padding: 28px 24px; }
+    .who-card h2 { font-size: 23px; }
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroLeadMagnet from '../components/shared/HeroLeadMagnet.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+// BLOCKER: this page still carries the shared July placeholder form ID.
+// It needs its own HubSpot form, and that form must be configured to REDIRECT to
+// /pen-test-readiness-checklist on submit. The checklist lives on its own URL so it
+// stays indexable, which is the whole reason pages 2 and 3 are a pair.
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d';
+
+// BLOCKER: the build outline routes the secondary CTA to the BDR call request form,
+// not a calendar link. That form URL does not exist yet. Owner: Walter Harry.
+const SCOPING_CALL_HREF = '/book-compliance-review';
+---
+
+<ArchwayLayout
+  title="Free Pen Test Readiness Checklist for Independent Insurance Agencies | Archway"
+  description="Run the free pen test readiness checklist for agency owners. 17 items, self-scored, to see where your agency stands before your next cyber liability renewal."
+  ctaText="Book a Compliance Review"
+  ctaHref="/book-compliance-review"
+>
+  <HeroLeadMagnet
+    badge="For Independent Insurance Agencies"
+    headline="Your carrier is going to ask if you have been&nbsp;tested.<br /><span class='hl'>This 10-minute checklist tells you if you could prove&nbsp;it.</span>"
+    subhead="A 17-item self-audit for agency owners. Check what is true for your agency and see where you stand. No IT background required."
+    body1="More cyber liability applications ask the same question every year: has your network been penetration tested in the last 12 months? Agencies confuse the term with vulnerability scans and general security, so the answer that goes on the application is not always the honest one."
+    body2="This checklist clears it up. Seventeen items across four areas, each with a one-line reason it matters. Check Yes, No, or Not sure for your agency, count your gaps, and see whether you could answer that renewal question with documentation today."
+    formHeading="Get the Free Checklist"
+    formSubhead="Fill this out and the checklist opens on the next page."
+    formId={FORM_ID}
+    trustLine="Written for independent insurance agencies running Applied Epic, AMS360, HawkSoft, or EZLynx. We work with one kind of business, and only that."
+  />
+
+  <StatsBar />
+  <Testimonials />
+  <AboutArchway />
+
+  <section class="scoping-strip">
+    <div class="scoping-inner">
+      <p>Prefer to have a real test scoped for your agency size? We will scope it to your environment and tell you what it covers.</p>
+      <a href={SCOPING_CALL_HREF}>Request a scoping call</a>
+    </div>
+  </section>
+
+  <BottomCTA
+    heading="Want to Know Where You Stand Before Renewal?"
+    subtext="Run the checklist, then book a scoping call if you want a real test scoped for your agency size."
+    ctaText="Get the Free Checklist"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  .scoping-strip {
+    background: var(--light-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 24px;
+  }
+
+  .scoping-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .scoping-inner p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .scoping-inner a {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .scoping-inner a:hover {
+    border-bottom-color: var(--orange);
+  }
+</style>

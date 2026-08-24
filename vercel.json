@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/july-2026-pen-test-guide",
+      "destination": "/pen-test-readiness-guide",
+      "permanent": true
+    },
+    {
+      "source": "/july-2026-ai-governance-guide",
+      "destination": "/ai-governance-starter",
+      "permanent": true
+    },
+    {
+      "source": "/july-2026-secure-score-guide",
+      "destination": "/book-compliance-review",
+      "permanent": true
+    },
+    {
+      "source": "/july-2026-marketing-proof-guide",
+      "destination": "/june-2026-marketing-performance-guide",
+      "permanent": true
+    }
+  ]
+}

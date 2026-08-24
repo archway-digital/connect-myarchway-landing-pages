@@ -1,31 +1,40 @@
 ---
 import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 import HeroGatedReveal from '../components/shared/HeroGatedReveal.astro';
-import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
 import StatsBar from '../components/shared/StatsBar.astro';
-import AboutArchway from '../components/shared/AboutArchway.astro';
-import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
 import Testimonials from '../components/shared/Testimonials.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
 import BottomCTA from '../components/shared/BottomCTA.astro';
 
-const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this page's own HubSpot form ID before launch
+// Single page by design. The July build split this across a gated landing page and a
+// separate content page; August collapses it so the governance content and the policy
+// template render inline after submit. No redirect.
+
+// BLOCKER: this page still carries the shared July placeholder form ID.
+// It needs its own HubSpot form, configured for an inline (no redirect) submit.
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d';
+
+// AI scoping owner: Sam Ruben.
+const SAM_BOOKING = 'https://meetings-na2.hubspot.com/sam-ruben/website-forms-discovery-call';
 ---
 
 <ArchwayLayout
   title="Free AI Usage and Governance Starter for Independent Insurance Agencies | Archway"
   description="Download the free AI governance starter for agencies. A one-page policy template, approved-tool guidance, and rules for keeping client data out of the wrong AI tools."
-  ctaText="Get the Free Starter"
-  ctaHref="#hero-form"
+  ctaText="Book a Compliance Review"
+  ctaHref="/book-compliance-review"
 >
   <HeroGatedReveal
     badge="For Agency Owners and Operations Leads"
-    headline="Your staff are already using AI. <span class='hl'>Do you have a&nbsp;policy?</span>"
+    headline="Your staff are already using&nbsp;AI.<br /><span class='hl'>This gives you a policy before you need&nbsp;one.</span>"
     subhead="The tools are in the building. The governance usually is not. Here is the one page that fixes it."
+    body1="Somewhere in your agency right now, someone is pasting client information into a free AI tool to summarize or reword it, maybe straight out of Applied Epic or AMS360. None of it malicious. All of it happening without anyone deciding whether it should."
+    body2="This starter gives you a one-page usage policy template, a short list of tools that handle data responsibly, and clear rules on what client information can and cannot go into any AI tool. Banning AI does not work. Deciding on purpose does."
     formHeading="Get the Free Starter"
-    formSubhead="Fill this out and the starter — including the policy template — opens right here on the page."
+    formSubhead="Fill this out and the starter, including the policy template, opens right here on the page."
     formId={FORM_ID}
     trustLine="Written for independent insurance agencies."
-    revealHeading="Your starter is unlocked"
+    revealHeading="Your starter is ready"
   >
     <h2 class="g-title">Your Agency's AI Starting Point</h2>
     <p class="g-lead">The thinking, then a copy-paste policy template you can adapt in an afternoon.</p>
@@ -48,7 +57,7 @@ const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this p
         <button type="button" class="g-copy-btn" id="copy-policy">Copy</button>
       </div>
       <div class="g-template-body" id="policy-text">
-        <p><strong>[Agency Name] — AI Usage Policy</strong></p>
+        <p><strong>[Agency Name] AI Usage Policy</strong></p>
         <p><strong>1. Approved tools.</strong> Staff may use only agency-approved AI tools for work tasks. The current approved list is maintained by the policy owner named below. Any tool not on the list must be approved before use.</p>
         <p><strong>2. The client-data rule.</strong> No client personal, policy, or financial information may be entered into any AI tool that is not on the approved list. When in doubt, do not paste it. Approved tools may be used with client information only where the agreement confirms the data is not used for training.</p>
         <p><strong>3. Human review.</strong> Anything an AI tool produces that reaches a client, carrier, or underwriter must be reviewed and owned by a person before it is sent. AI drafts the first pass; a person is accountable for the result.</p>
@@ -58,52 +67,14 @@ const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this p
 
     <div class="g-cta">
       <h3>Want AI in your agency without the exposure?</h3>
-      <p>We will help you set the rule, pick the safe tools, and put the policy in place.</p>
-      <a class="g-cta-btn" href="/book-compliance-review">Request a call</a>
+      <p>We will help you set the rule, pick the safe tools, and put the policy in place. Twenty minutes, specific to how your agency actually works.</p>
+      <a class="g-cta-btn" href={SAM_BOOKING}>Request a call</a>
     </div>
   </HeroGatedReveal>
 
-  <section class="context-section">
-    <div class="context-inner fade-up">
-      <div class="context-aside">
-        <span class="context-eyebrow">Why this matters</span>
-        <h2 class="context-lead">The tools are already in the building. The governance usually is&nbsp;not.</h2>
-      </div>
-      <div class="context-body">
-        <p>Somewhere in your agency right now, someone is <strong>pasting client information into a free AI tool</strong> to summarize or reword it, maybe straight out of Applied Epic or AMS360. None of it malicious. All of it happening without anyone deciding whether it should.</p>
-        <p>This starter gives you a one-page usage policy template, a short list of tools that handle data responsibly, and clear rules on what client information can and cannot go into any AI tool. Banning AI does not work. Deciding on purpose does.</p>
-      </div>
-    </div>
-  </section>
-
-  <ProblemCardsThree
-    sectionLabel="What the Starter Includes"
-    heading="A Policy, the Tools, and the One Rule <br /><span class='hl'>That Prevents Most&nbsp;Problems.</span>"
-    subhead="Everything you need to govern AI on purpose instead of pretending it is not happening."
-    cards={[
-      {
-        title: "A one-page policy template",
-        body: "Fill-in-the-blank language an agency can adopt in an afternoon. What is allowed, what is not, and who owns it."
-      },
-      {
-        title: "Approved-tool guidance",
-        body: "Which AI tools handle data responsibly and which should never see client information."
-      },
-      {
-        title: "The client-data rule",
-        body: "A clear line on what can and cannot go into any AI tool, and where output needs a human review before it reaches a client or carrier."
-      },
-      {
-        title: "Why a policy beats a ban",
-        body: "What happens when you ban a useful tool, and why the written policy is the thing you can show a carrier or client who asks."
-      }
-    ]}
-  />
-
   <StatsBar />
-  <AboutArchway />
-  <WhyChooseUs />
   <Testimonials />
+  <AboutArchway />
 
   <BottomCTA
     heading="Want AI in Your Agency Without the Exposure?"
@@ -114,12 +85,11 @@ const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this p
 </ArchwayLayout>
 
 <style>
-  :global(.problem-header h2 .hl) { color: var(--orange); }
   .g-title { font-size: 30px; font-weight: 800; color: var(--charcoal); line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.5px; }
   .g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
   .g-sub { font-size: 20px; font-weight: 800; color: var(--charcoal); margin: 28px 0 8px; line-height: 1.3; }
-  .gated-inner > p { font-size: 16px; line-height: 1.7; color: var(--text-light); margin-bottom: 14px; }
-  .gated-inner > p.g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
+  :global(.gated-inner) > p { font-size: 16px; line-height: 1.7; color: var(--text-light); margin-bottom: 14px; }
+  :global(.gated-inner) > p.g-lead { font-size: 18px; line-height: 1.6; color: var(--text-light); margin-bottom: 24px; }
   .g-template { background: var(--light-bg); border: 1px solid var(--card-border); border-left: 4px solid var(--orange); border-radius: 10px; padding: 8px 0 20px; margin: 16px 0 8px; }
   .g-template-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; border-bottom: 1px solid var(--card-border); }
   .g-template-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); }
@@ -133,19 +103,6 @@ const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d'; // TODO: swap for this p
   .g-cta-btn { display: inline-block; background: var(--orange); color: #ffffff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: background 0.2s; }
   .g-cta-btn:hover { background: var(--orange-dark); }
   @media (max-width: 768px) { .g-title { font-size: 25px; } }
-  .context-section { background: var(--light-bg); padding: 72px 24px; }
-  .context-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start; }
-  .context-aside { border-left: 3px solid var(--orange); padding-left: 24px; }
-  .context-eyebrow { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--orange); margin-bottom: 16px; }
-  .context-lead { font-size: 27px; font-weight: 800; color: var(--charcoal); line-height: 1.25; letter-spacing: -0.5px; margin: 0; }
-  .context-body p { font-size: 17px; line-height: 1.8; color: var(--text-light); margin: 0 0 18px; }
-  .context-body p strong { color: var(--charcoal); font-weight: 700; }
-  .context-body p:last-child { margin-bottom: 0; }
-  @media (max-width: 860px) {
-    .context-inner { grid-template-columns: 1fr; gap: 24px; }
-    .context-aside { border-left: none; padding-left: 0; border-top: 3px solid var(--orange); padding-top: 20px; }
-    .context-lead { font-size: 23px; }
-  }
 </style>
 
 <script is:inline>

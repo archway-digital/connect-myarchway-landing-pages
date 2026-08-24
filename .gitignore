@@ -14,5 +14,8 @@ dist/
 
 # astro
 .astro/
+
+# internal email content (do not publish — public repo)
 EMAIL-EXAMPLES.md
 LANDING-PAGES.md
+hubspot-emails/

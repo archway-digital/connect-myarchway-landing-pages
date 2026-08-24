@@ -1,0 +1,235 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+// Reached by form submit on /pen-test-readiness-guide. Kept on its own URL and left
+// indexable on purpose: this is the only asset in the August build with standalone
+// organic value, so it does not get collapsed behind the form.
+
+// BLOCKER: the build outline routes the secondary CTA to the BDR call request form,
+// not a calendar link. That form URL does not exist yet. Owner: Walter Harry.
+const SCOPING_CALL_HREF = '/book-compliance-review';
+---
+
+<ArchwayLayout
+  title="Your Pen Test Readiness Checklist | Archway"
+  description="The full 17-item pen test readiness checklist for independent insurance agency owners. Four areas, each item with a one-line reason it matters."
+  ctaText="Book a Compliance Review"
+  ctaHref="/book-compliance-review"
+>
+  <section class="checklist-head">
+    <div class="checklist-head-inner">
+      <div class="checklist-badge">For Independent Insurance Agencies</div>
+      <h1>Your Pen Test Readiness Checklist</h1>
+      <p class="checklist-sub">Seventeen items across four areas. Check what is true for your agency, count what you cannot confirm, and you will know whether you could answer the renewal question with documentation today.</p>
+    </div>
+  </section>
+
+  <section class="checklist-body">
+    <div class="checklist-inner">
+      <p class="c-note">This is the read-only checklist. Interactive scoring that posts your result to Archway is coming in Q3.</p>
+
+      <h2 class="c-area">1. Do You Need a Test, and Could You Prove It?</h2>
+      <div class="c-list">
+        <div class="c-item"><span class="c-box"></span><div><h3>Your last cyber liability application asked whether you were penetration tested in the last 12 months</h3><p>If the question is on the form, your answer is on the record. Knowing it was asked is the first step to answering it honestly.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You can explain the difference between a vulnerability scan and a penetration test</h3><p>A scan flags known weaknesses automatically. A test is a person trying to break in. Carriers mean the second one, and the two are not interchangeable on an application.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You know whether NYDFS or an equivalent state regulation applies to your agency</h3><p>If you write in a regulated state, testing may not be optional. Knowing your exposure tells you whether this is a nice-to-have or a requirement.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>A "yes" to the testing question would be defensible if a carrier asked for proof today</h3><p>Answering yes is easy. Backing it up with a dated report is what actually matters when a claim or audit lands.</p></div></div>
+      </div>
+
+      <h2 class="c-area">2. The Controls a Pen Test Checks</h2>
+      <div class="c-list">
+        <div class="c-item"><span class="c-box"></span><div><h3>MFA is enforced on every account, not just enabled and available</h3><p>An optional MFA setting that staff can skip is the same as no MFA to a tester. Enforcement is what closes the door.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>Your backups have been tested by actually restoring from them</h3><p>A backup you have never restored is a guess. A test proves it works before ransomware forces the question.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You have a written incident response plan reviewed in the last 12 months</h3><p>When something goes wrong, you do not want to be writing the plan at the same time. A current, written plan is what carriers expect to see.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>Endpoint detection and response is installed on every workstation and server</h3><p>One unprotected machine is the way in. Coverage everywhere, not just on the owner's laptop, is what a test looks for.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>Accounts are removed promptly when someone leaves the agency</h3><p>A former producer's still-active login is an open door nobody is watching. Prompt removal is a control a tester will probe.</p></div></div>
+      </div>
+
+      <h2 class="c-area">3. Proof You Can Produce</h2>
+      <div class="c-list">
+        <div class="c-item"><span class="c-box"></span><div><h3>You can produce a current pen test report within 24 hours of a carrier request</h3><p>Having been tested is not the same as being able to prove it fast. Carriers and claims adjusters work on deadlines.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>Your security controls are documented in writing, not just described from memory</h3><p>"We have MFA" is a description. A written policy with screenshots is evidence. Only one of them holds up under scrutiny.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>The answers on your cyber application match what is actually in place today</h3><p>An application that overstates your controls is a problem waiting for a claim. The form and the reality need to agree.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You know where your security documentation lives and can find it without asking IT</h3><p>Documentation you cannot locate is documentation you do not have when it counts. The owner should be able to put hands on it.</p></div></div>
+      </div>
+
+      <h2 class="c-area">4. Your Environment</h2>
+      <div class="c-list">
+        <div class="c-item"><span class="c-box"></span><div><h3>You know whether your AMS is cloud-hosted or running on a local server</h3><p>Where your management system lives changes what a test needs to cover. A local server in the back office is a different risk profile than a hosted platform.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You know what parts of your network are exposed to the internet</h3><p>Anything reachable from outside is something an attacker can reach too. Knowing what is exposed is the start of defending it.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>You know exactly who holds administrator access across your systems</h3><p>Admin access is the keys to the building. If the list surprises you, that is itself a finding a test would flag.</p></div></div>
+        <div class="c-item"><span class="c-box"></span><div><h3>It has been less than 12 months since your last security assessment</h3><p>Environments drift. A test from two years ago does not describe the network you run today, and carriers know it.</p></div></div>
+      </div>
+
+      <div class="c-cta">
+        <h2>Want a real test scoped for your agency?</h2>
+        <p>You have the checklist. If you want a penetration test scoped to your agency size and your environment, request a scoping call and we will walk through what it would cover.</p>
+        <a class="c-cta-btn" href={SCOPING_CALL_HREF}>Request a scoping call</a>
+      </div>
+    </div>
+  </section>
+
+  <BottomCTA
+    heading="Would You Rather Talk It Through First?"
+    subtext="Thirty minutes on what your agency could document today and what it could not, before an application is in front of you."
+    ctaText="Book a Compliance Review"
+    ctaHref="/book-compliance-review"
+  />
+</ArchwayLayout>
+
+<style>
+  .checklist-head {
+    background: var(--hero-bg);
+    padding: 64px 24px 56px;
+  }
+
+  .checklist-head-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .checklist-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .checklist-head h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+
+  .checklist-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    max-width: 720px;
+  }
+
+  .checklist-body {
+    background: #ffffff;
+    padding: 56px 24px 72px;
+  }
+
+  .checklist-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .c-note {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    margin: 0 0 28px;
+  }
+
+  .c-area {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin: 36px 0 12px;
+  }
+
+  .c-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .c-item {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+  }
+
+  .c-box {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .c-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 0 3px;
+    line-height: 1.4;
+  }
+
+  .c-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .c-cta {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-top: 44px;
+  }
+
+  .c-cta h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .c-cta p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 20px;
+  }
+
+  .c-cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+
+  .c-cta-btn:hover {
+    background: var(--orange-dark);
+  }
+
+  @media (max-width: 768px) {
+    .checklist-head { padding: 48px 20px 40px; }
+    .checklist-head h1 { font-size: 30px; }
+    .checklist-sub { font-size: 16px; }
+    .checklist-body { padding: 40px 20px 56px; }
+    .c-cta { padding: 28px 24px; }
+    .c-cta h2 { font-size: 21px; }
+  }
+</style>

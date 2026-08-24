@@ -1,0 +1,268 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import StatsBar from '../components/shared/StatsBar.astro';
+import AboutArchway from '../components/shared/AboutArchway.astro';
+import WhyChooseUs from '../components/shared/WhyChooseUs.astro';
+import Testimonials from '../components/shared/Testimonials.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+
+// BLOCKER: this page needs its own HubSpot form. The ID below is the compliance
+// review form and is a stand-in only. Routing owner for the marketing thread:
+// Hannah Ruben. Needed live before send 0827 on Thursday, August 27.
+const FORM_ID = '1b1111a8-5676-4e36-abaa-526149652cfa';
+---
+
+<ArchwayLayout
+  title="Can You Prove Your Marketing Is Working? | Archway"
+  description="Book a 20-minute marketing review and find out what your agency marketing actually produced before you set next year's budget."
+  ctaText="Request My Marketing Review"
+  ctaHref="#hero-form"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Q4 Planning 2026
+        </div>
+        <h1>Can You Prove Your Marketing Is <span class='hl'>Working?</span></h1>
+        <p class="hero-sub">Book a 20-minute call and find out what your marketing actually produced, before you set next year's budget on a guess.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Request Your Marketing Review</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+        <div id="hs-marketing-review-form"></div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createMarketingReviewForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createMarketingReviewForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-marketing-review-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 14px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #ef4444; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #ffffff !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #d96d10 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #f48021; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createMarketingReviewForm();
+  </script>
+
+  <!-- The attribution gap -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="problem-header fade-up">
+        <p class="section-label">Where the Proof Goes Missing</p>
+        <h2>The Activity Is Happening. The Proof Is Not Being&nbsp;Captured.</h2>
+      </div>
+      <div class="problem-grid fade-up">
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>No Form Tracking</h3>
+          <p>Most agency websites have no tracking on their forms. Nobody can say which submissions came from search, from advertising, or from a referral.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>No Call Attribution</h3>
+          <p>The phone rings and the source disappears. Without call tracking on the numbers you advertise, the calls that close are never connected to what produced them.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f48021" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3>No Line to a Bound Policy</h3>
+          <p>Activity gets measured in impressions and clicks. What matters is quotes and bound policies, and most agencies have nothing connecting the two.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <AboutArchway />
+  <WhyChooseUs />
+
+  <!-- What we cover -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="cover-header fade-up">
+        <p class="section-label">What We Cover in the Call</p>
+        <h2>20 Minutes. A Clear Read on What Your Marketing&nbsp;Produced.</h2>
+      </div>
+      <div class="cover-grid fade-up">
+        <div class="cover-card">
+          <h3>What Your Website Generates</h3>
+          <p>We look at what your site actually produces in form submissions and calls, not what a traffic report says about visits.</p>
+        </div>
+        <div class="cover-card">
+          <h3>Where Your Search Traffic Comes From</h3>
+          <p>Organic search, your Google Business Profile, and paid advertising. We separate them so you can see which one earns its cost.</p>
+        </div>
+        <div class="cover-card">
+          <h3>Whether the Spend Returns Conversations</h3>
+          <p>New business conversations and quotes, not activity. That is the number that should decide next year's budget.</p>
+        </div>
+        <div class="cover-card">
+          <h3>What to Fund Next Year</h3>
+          <p>A plain read on which parts of the spend are worth funding and which are not, in time for Q4 planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <BottomCTA
+    heading="Ready to See What Your Marketing Produced?"
+    subtext="Book 20 minutes. We will tell you plainly which parts are worth funding next year and which are not. If your current setup is working, that is a useful thing to hear too."
+    ctaText="Request My Marketing Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
+
+<style>
+  :global(.hero h1 em) {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .section-label {
+    text-align: center;
+    display: block;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .section-label::before {
+    display: none;
+  }
+
+  .problem-header,
+  .cover-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .problem-header h2,
+  .cover-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .problem-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+  }
+
+  .problem-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(244, 128, 33, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .problem-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .problem-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .cover-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cover-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .cover-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .cover-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .problem-grid { grid-template-columns: 1fr; }
+    .cover-grid { grid-template-columns: 1fr; }
+    .problem-header h2,
+    .cover-header h2 { font-size: 26px; }
+  }
+</style>
