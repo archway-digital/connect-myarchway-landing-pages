@@ -6,7 +6,16 @@
 
 :root {
   /* Brand Colors */
+  /* --orange is a FILL and decoration token. It cannot carry white text
+     (2.64:1) and it cannot be used as text on a light surface (2.64:1 on
+     white, 2.42:1 on --light-bg). */
   --orange: #f48021;
+  /* Orange TEXT on white (5.59:1) or on --light-bg #f5f5f5 (5.12:1). */
+  --orange-text: #a84e08;
+  /* Orange TEXT on navy #293f50 (4.98:1). Also the CTA hover fill: charcoal
+     on it reads 5.47:1, where charcoal on --orange-dark is only 3.52:1. */
+  --orange-on-dark: #ff9440;
+  /* Kept for legacy references. Do not use as a CTA hover fill. */
   --orange-dark: #d96d10;
   --navy: #293f50;
   --navy-deep: #1e3350;
@@ -52,21 +61,31 @@ html {
   html {
     scroll-behavior: auto;
   }
+  /* Kill keyframe animation outright. Do NOT kill transition-duration
+     globally: that also removes hover and focus feedback, which users who
+     ask for reduced motion still need. Instead narrow which properties may
+     transition, so colour, border, and shadow feedback still animates while
+     movement and entrance effects do not. */
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+    transition-property: color, background-color, border-color, outline-color,
+      box-shadow, fill, stroke !important;
   }
 }
 
 /* ── SKIP LINK ── */
 .skip-link {
   position: absolute;
-  top: -40px;
+  /* Parked far enough above the viewport to clear the 44px target height. */
+  top: -72px;
   left: 8px;
   background: var(--navy);
   color: var(--white);
-  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 18px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
@@ -112,7 +131,8 @@ body {
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--orange);
+  /* Eyebrow text on white or --light-bg. Plain --orange is 2.64:1 here. */
+  color: var(--orange-text);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 16px;
@@ -122,8 +142,17 @@ body {
   content: '';
   width: 24px;
   height: 2px;
-  background: var(--orange);
+  background: var(--orange-text);
   display: inline-block;
+}
+
+/* Same eyebrow sitting on a navy band. Apply alongside .section-label. */
+.section-label-on-dark {
+  color: var(--orange-on-dark);
+}
+
+.section-label-on-dark::before {
+  background: var(--orange-on-dark);
 }
 
 .section h2 {
@@ -139,6 +168,20 @@ body {
   font-size: 18px;
   line-height: 1.7;
   color: var(--text-light);
+}
+
+/* The eyebrow is a <p>, so `.section p` (0,1,1) outranked `.section-label`
+   (0,1,0) and silently painted every eyebrow --text-light. Only the ::before
+   dash stayed orange, which is why it read as an orange label at a glance.
+   On light that grey passed at 6.44:1; on a navy band it was 1.63:1 and failed
+   hard. Restated here at matching specificity so the eyebrow keeps its own ink.
+   Order matters: the on-dark rule must follow the light one. */
+.section .section-label {
+  color: var(--orange-text);
+}
+
+.section .section-label-on-dark {
+  color: var(--orange-on-dark);
 }
 
 .section-light {
@@ -300,15 +343,16 @@ body {
   line-height: 1.5;
 }
 
+/* Orange link text on the white form card: --orange would be 2.64:1. */
 .hero-form-card .form-fallback a {
-  color: var(--orange);
+  color: var(--orange-text);
   text-decoration: underline;
-  text-decoration-color: rgba(244, 128, 33, 0.5);
+  text-decoration-color: rgba(168, 78, 8, 0.5);
   text-underline-offset: 3px;
 }
 
 .hero-form-card .form-fallback a:hover {
-  text-decoration-color: var(--orange);
+  text-decoration-color: var(--orange-text);
 }
 
 /* ── BOTTOM CTA SECTION ── */
@@ -332,12 +376,24 @@ body {
   margin-bottom: 32px;
 }
 
+/* ── ORANGE-FILLED BUTTON INK ──
+   The orange fill stays exactly as it was. The label goes charcoal, which
+   reads 4.55:1 on --orange. White was 2.64:1. Hover LIGHTENS to
+   --orange-on-dark (charcoal on it is 5.47:1); darkening to --orange-dark
+   would drop charcoal to 3.52:1, so the hover direction is deliberate. */
+.cta-button,
+.hero-cta,
+.nav-cta,
+.form-submit {
+  color: var(--charcoal);
+}
+
 .cta-section .cta-button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: var(--orange);
-  color: var(--white);
+  color: var(--charcoal);
   font-size: 18px;
   font-weight: 700;
   padding: 18px 40px;
@@ -349,6 +405,8 @@ body {
 }
 
 .cta-section .cta-button:hover {
+  background: var(--orange-on-dark);
+  color: var(--charcoal);
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
@@ -369,9 +427,11 @@ body {
   transition: all 0.2s;
 }
 
+/* Rest state stays white-on-transparent over navy. The hover fills with
+   orange, so the label has to flip to charcoal to hold 4.55:1. */
 .cta-section .cta-button-secondary:hover {
   background: var(--orange);
-  color: var(--white);
+  color: var(--charcoal);
   border-color: var(--orange);
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -484,7 +544,7 @@ button:focus-visible,
   width: 100%;
   padding: 18px;
   background: var(--orange);
-  color: var(--white);
+  color: var(--charcoal);
   font-size: 18px;
   font-weight: 700;
   font-family: inherit;
@@ -500,14 +560,15 @@ button:focus-visible,
 }
 
 .form-submit:hover {
-  background: var(--orange-dark);
+  background: var(--orange-on-dark);
+  color: var(--charcoal);
   transform: translateY(-1px);
 }
 
 .form-submit svg {
   width: 20px;
   height: 20px;
-  fill: var(--white);
+  fill: currentColor;
 }
 
 .form-privacy {

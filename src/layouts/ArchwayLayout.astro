@@ -7,9 +7,10 @@ interface Props {
   description: string;
   ctaText?: string;
   ctaHref?: string;
+  cobrand?: boolean;
 }
 
-const { title, description, ctaText = 'Book a Meeting', ctaHref = '#hero-form' } = Astro.props;
+const { title, description, ctaText = 'Book a Meeting', ctaHref = '#hero-form', cobrand = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ const { title, description, ctaText = 'Book a Meeting', ctaHref = '#hero-form' }
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
-  <NavArchway ctaText={ctaText} ctaHref={ctaHref} />
+  <NavArchway ctaText={ctaText} ctaHref={ctaHref} cobrand={cobrand} />
   <main id="main">
     <slot />
   </main>

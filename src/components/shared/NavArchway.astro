@@ -2,16 +2,30 @@
 interface Props {
   ctaText?: string;
   ctaHref?: string;
+  /* Co-branded pages (the AAC webinar) carry the joint lockup in the bar
+     instead of the Archway mark alone, so the partner is present above the
+     fold on every scroll position, not just in the hero. */
+  cobrand?: boolean;
 }
 
-const { ctaText = 'Book a Meeting', ctaHref = '#hero-form' } = Astro.props;
+const { ctaText = 'Book a Meeting', ctaHref = '#hero-form', cobrand = false } = Astro.props;
 ---
 
-<nav class="nav-archway">
+<nav class:list={['nav-archway', cobrand && 'nav-cobrand']}>
   <div class="nav-inner">
-    <a href="https://www.myarchway.com/" class="nav-logo" target="_blank" rel="noopener">
-      <img src="/images/archway-logo.png" alt="Archway" class="nav-logo-img" width="139" height="60" loading="eager" fetchpriority="high" decoding="async" />
-    </a>
+    {cobrand ? (
+      <div class="nav-lockup">
+        <a href="https://www.myarchway.com/" class="nav-logo" target="_blank" rel="noopener">
+          <img src="/images/archway-logo.png" alt="Archway" class="nav-lockup-img" width="83" height="36" loading="eager" fetchpriority="high" decoding="async" />
+        </a>
+        <span class="nav-lockup-rule" aria-hidden="true"></span>
+        <img src="/images/aac-logo.png" alt="Angela Adams Consulting" class="nav-lockup-img nav-lockup-aac" width="151" height="36" loading="eager" fetchpriority="high" decoding="async" />
+      </div>
+    ) : (
+      <a href="https://www.myarchway.com/" class="nav-logo" target="_blank" rel="noopener">
+        <img src="/images/archway-logo.png" alt="Archway" class="nav-logo-img" width="139" height="60" loading="eager" fetchpriority="high" decoding="async" />
+      </a>
+    )}
     <a href={ctaHref} class="nav-cta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       <span class="nav-cta-text">{ctaText}</span>
@@ -48,12 +62,40 @@ const { ctaText = 'Book a Meeting', ctaHref = '#hero-form' } = Astro.props;
     width: auto;
   }
 
+  /* Co-brand variant. An orange hairline across the top and the tighter bar
+     keep it from reading as the standard Archway header. */
+  .nav-cobrand {
+    border-top: 3px solid var(--orange);
+    padding: 12px 24px;
+  }
+
+  .nav-lockup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-lockup-img {
+    display: block;
+    height: 36px;
+    width: auto;
+  }
+
+  .nav-lockup-rule {
+    width: 1px;
+    height: 28px;
+    background: var(--border);
+  }
+
   .nav-cta {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    /* Fill unchanged. Charcoal label reads 4.55:1 on --orange; white was
+       2.64:1. Hover lightens rather than darkens, because charcoal on
+       --orange-dark falls to 3.52:1. */
     background: var(--orange);
-    color: var(--white);
+    color: var(--charcoal);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -64,14 +106,27 @@ const { ctaText = 'Book a Meeting', ctaHref = '#hero-form' } = Astro.props;
   }
 
   .nav-cta:hover {
-    background: var(--orange-dark);
+    background: var(--orange-on-dark);
+    color: var(--charcoal);
   }
 
   .nav-cta svg {
     width: 16px;
     height: 16px;
     fill: none;
-    stroke: var(--white);
+    stroke: currentColor;
+  }
+
+  @media (max-width: 600px) {
+    .nav-lockup {
+      gap: 11px;
+    }
+    .nav-lockup-img {
+      height: 26px;
+    }
+    .nav-lockup-rule {
+      height: 20px;
+    }
   }
 
   @media (max-width: 480px) {

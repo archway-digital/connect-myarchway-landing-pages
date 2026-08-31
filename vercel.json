@@ -19,6 +19,16 @@
       "source": "/july-2026-marketing-proof-guide",
       "destination": "/june-2026-marketing-performance-guide",
       "permanent": true
+    },
+    {
+      "source": "/aac-webinar-september-8",
+      "destination": "/hours-webinar",
+      "permanent": true
+    },
+    {
+      "source": "/aac-webinar-september-8/thank-you",
+      "destination": "/hours-webinar/thank-you",
+      "permanent": true
     }
   ]
 }

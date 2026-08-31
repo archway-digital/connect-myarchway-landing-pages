@@ -58,10 +58,15 @@
     gap: 24px;
   }
 
+  /* 44px tall hit area. The negative margins pull the extra padding back out
+     of the layout box, so the footer keeps its original density. */
   .footer-contact a {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    min-height: 44px;
+    padding: 0 8px;
+    margin: -11px -8px;
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     font-size: 13px;
@@ -79,9 +84,12 @@
 
   .footer-social {
     display: flex;
-    gap: 16px;
+    gap: 8px;
   }
 
+  /* Each icon owns a full 44x44 box. The -4px margin absorbs most of the
+     padding, but stops short of the -8px that made neighbouring hit areas
+     overlap across the 8px gap. */
   .footer-social a {
     color: rgba(255, 255, 255, 0.65);
     transition: color 0.2s;
@@ -91,15 +99,11 @@
     width: 44px;
     height: 44px;
     border-radius: 6px;
-    margin: -8px;
+    margin: -4px;
   }
 
   .footer-social a:hover {
     color: var(--white);
-  }
-
-  .footer-social {
-    gap: 8px;
   }
 
   .footer-divider {
@@ -128,21 +132,27 @@
   }
 
   .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 8px;
+    margin: -8px;
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: color 0.2s;
-    padding: 4px 0;
   }
 
+  /* Orange text on navy: --orange is 4.14:1, --orange-on-dark is 4.98:1. */
   .footer-links a:hover {
-    color: var(--orange);
+    color: var(--orange-on-dark);
   }
 
   @media (max-width: 768px) {
+    /* Stacked: 16px keeps the contact and social hit areas from overlapping. */
     .footer-utility {
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
     }
 
     .footer-bottom {
@@ -153,10 +163,16 @@
   }
 
   @media (max-width: 480px) {
+    /* Stacked contact links keep their full 44px height instead of pulling it
+       back with a negative margin, so the two hit areas never overlap. */
     .footer-contact {
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 0;
+    }
+
+    .footer-contact a {
+      margin: 0 -8px;
     }
   }
 </style>

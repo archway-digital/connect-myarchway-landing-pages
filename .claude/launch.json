@@ -4,8 +4,8 @@
     {
       "name": "dev",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "export PATH=/Users/keviyoung/.local/node/bin:$PATH && npx astro dev"],
-      "port": 4321
+      "runtimeArgs": ["-c", "export PATH=/Users/keviyoung/.local/node/bin:$PATH && npx astro dev --port 4331"],
+      "port": 4331
     }
   ]
 }
