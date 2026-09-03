@@ -1,0 +1,123 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+
+// [TIME] is unresolved per ARCHWAY_SEPTEMBER_2026_LANDING_PAGES.docx ("Insurance
+// Hacks time. Not yet set in any of the copy.") — left as a literal bracketed
+// placeholder in the rendered copy below rather than invented.
+const WEBINAR_DATE_LONG = 'Tuesday, September 22';
+const WEBINAR_TIME = '[TIME]';
+
+// No real HubSpot form exists yet — the source doc names it
+// "LeadGen - IT - Insurance Hacks September" but it has not been built. The
+// hero form below is a static, non-functional placeholder until that form ID
+// is available; swap in the real hbspt.forms.create() embed then (see
+// hours-webinar.astro for the working embed pattern this repo already uses).
+
+const threatCards = [
+  {
+    title: 'How It Starts',
+    body: 'Which is almost never what people expect. Real cases from this industry.',
+  },
+  {
+    title: 'What It Costs',
+    body: 'In hours, in client trust, and in what a carrier does with the answers on your application afterward.',
+  },
+  {
+    title: 'What Actually Stops It',
+    body: 'The specific controls that would have interrupted each case.',
+  },
+];
+---
+
+<ArchwayLayout
+  title="Insurance Hacks Webinar | Archway Computer"
+  description="What is actually hitting independent insurance agencies this year, not general security advice that applies to everyone. Live September 22 with Brad Ruben and SueAnn Priem."
+  ctaText="Register for the Webinar"
+  ctaHref="#hero-form"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Live Webinar &middot; September 22
+        </div>
+
+        <h1>Insurance Hacks: what is actually hitting agencies <span class="hl">this year</span>.</h1>
+
+        <p class="hero-sub">{WEBINAR_DATE_LONG}, {WEBINAR_TIME} Eastern. Brad Ruben and SueAnn Priem.</p>
+        <p class="hero-intro">Independent agencies hold dates of birth, driver license numbers, loss histories, and banking details for every client on the book. That makes an agency a better target than most businesses its size, and attackers have worked that out.</p>
+        <p class="hero-intro">This session covers what is hitting agencies right now rather than general security advice that applies to everyone.</p>
+        <p class="hero-note">Something for Applied Net attendees gets announced live during this session.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Register for Insurance Hacks</h2>
+          <p>We will send the calendar invite and join link by email.</p>
+        </div>
+
+        <!-- TODO: replace with real hbspt.forms.create() embed once
+             "LeadGen - IT - Insurance Hacks September" exists in HubSpot.
+             Field list below matches what that form should collect. -->
+        <div class="form-group">
+          <label for="ih-first-name">First name</label>
+          <input type="text" id="ih-first-name" placeholder="First name" disabled />
+        </div>
+        <div class="form-group">
+          <label for="ih-last-name">Last name</label>
+          <input type="text" id="ih-last-name" placeholder="Last name" disabled />
+        </div>
+        <div class="form-group">
+          <label for="ih-email">Business email</label>
+          <input type="email" id="ih-email" placeholder="you@youragency.com" disabled />
+        </div>
+        <div class="form-group">
+          <label for="ih-agency">Agency name</label>
+          <input type="text" id="ih-agency" placeholder="Agency name" disabled />
+        </div>
+        <div class="form-group">
+          <label for="ih-phone">Phone <span class="form-optional">(optional)</span></label>
+          <input type="tel" id="ih-phone" placeholder="Phone" disabled />
+        </div>
+        <button type="button" class="form-submit" disabled>Register for the Webinar</button>
+        <p class="form-fallback">Placeholder form &mdash; HubSpot form &ldquo;LeadGen - IT - Insurance Hacks September&rdquo; embeds here once it exists.</p>
+      </div>
+    </div>
+  </section>
+
+  <ProblemCardsThree
+    sectionLabel="This Year's Threats"
+    heading="What Is Actually Hitting Agencies This Year"
+    subhead="What is hitting agencies right now, not general security advice that applies to everyone."
+    cards={threatCards}
+  />
+</ArchwayLayout>
+
+<style>
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .hero-note {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .form-optional {
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  .form-submit[disabled] {
+    cursor: default;
+    opacity: 0.92;
+  }
+</style>

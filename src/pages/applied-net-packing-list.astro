@@ -1,0 +1,329 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+
+const items = [
+  {
+    title: 'Two pairs of comfortable shoes',
+    body: 'The walk between the exhibit hall and the session rooms adds up faster than anyone expects. Rotating pairs is the difference between day three being fine and day three being miserable.',
+  },
+  {
+    title: 'A light jacket or sweater',
+    body: 'Session rooms run cold. This is true at every conference and somehow surprises everyone every year.',
+  },
+  {
+    title: 'A conference day bag',
+    body: 'Something light that holds a notebook, a charger, a water bottle, and whatever swag you collect. You will collect swag.',
+  },
+  {
+    title: 'A portable charger',
+    body: 'The conference app, the photos of slides, and the group texts about dinner will finish your battery by two in the afternoon.',
+  },
+  {
+    title: 'A refillable water bottle',
+    body: 'There are fill stations. Buying bottled water for four days is a choice.',
+  },
+  {
+    title: 'Extra business cards',
+    body: 'More than you think. This one has been on the list for over ten years and people still run out.',
+  },
+  {
+    title: 'A travel medicine kit',
+    body: 'Advil, Tums, Band-Aids. Trust the people who have done this more than ten times.',
+  },
+  {
+    title: 'Blister plasters',
+    body: 'See item one. This is the item people thank us for.',
+  },
+];
+---
+
+<!-- Buy-link hrefs are "#" placeholders. Real product/affiliate links need to
+     be added before this page goes live — see the doc's own disclosure note:
+     if any link is an affiliate link, the page has to say so plainly. -->
+<ArchwayLayout
+  title="What to Bring to Applied Net 2026 | Archway Computer"
+  description="A packing list for Applied Net 2026 at the Gaylord National. Every item links to where you can buy it."
+  ctaText="Book Your Meeting"
+  ctaHref="/applied-net-meeting"
+>
+  <div class="header-band">
+    <div class="kit-stamp"><span>FIELD<br />KIT</span></div>
+    <div class="header-halftone"></div>
+    <div class="case-tag">
+      <span class="redaction-chip"></span>
+      FILE NO. AWX-2026-KIT
+    </div>
+    <h1>What to actually bring to Applied Net.</h1>
+    <p class="subhead">Over ten years of learning this the hard way. Every item links straight to where you can buy it.</p>
+    <p class="body-text">Everything on this list is here because at some point one of us did not bring it and regretted it. That is a more reliable source than a generic conference article written by somebody who has never been.</p>
+  </div>
+
+  <div class="list-wrap">
+    <div class="manifest-frame-wrap">
+      <div class="manifest-tab">EXHIBIT: FIELD KIT MANIFEST</div>
+      <div class="manifest-frame">
+        {items.map((item, i) => (
+          <div class="item-row">
+            <span class="item-tag">{String(i + 1).padStart(2, '0')}</span>
+            <div class="item-body">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+            <a href="#" class="buy-link">Buy &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <p>Book twenty minutes with us at the show and we will send you a $100 Visa gift card. Which would, hypothetically, cover most of this list.</p>
+    <a href="/applied-net-meeting" class="cta-button">Book Your Meeting</a>
+  </div>
+</ArchwayLayout>
+
+<style>
+  .header-band {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+    text-align: center;
+  }
+
+  .header-halftone {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 24px;
+    background-image: radial-gradient(circle, rgba(41, 63, 80, 0.08) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .kit-stamp {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    width: 90px;
+    height: 90px;
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+    transform: rotate(-7deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .kit-stamp span {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--orange);
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .case-tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+
+  .redaction-chip {
+    width: 28px;
+    height: 7px;
+    background: #1a1a1a;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+  }
+
+  .subhead {
+    font-size: 18px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+
+  .body-text {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .list-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px 72px;
+  }
+
+  .manifest-frame-wrap {
+    position: relative;
+    margin-top: 18px;
+  }
+
+  .manifest-tab {
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    background: #b89f70;
+    color: var(--charcoal);
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px 4px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .manifest-frame {
+    background: #d9c7a0;
+    border: 1px solid #b89f70;
+    border-radius: 0 8px 8px 8px;
+    padding: 28px 24px;
+  }
+
+  .item-row {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 20px 20px 16px;
+    background: #ffffff;
+    border-left: 4px solid #b89f70;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .item-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .item-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #6b5233;
+    font-weight: 700;
+  }
+
+  .item-body h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 0 4px;
+  }
+
+  .item-body p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .buy-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange-text);
+    white-space: nowrap;
+    padding: 8px 14px;
+    border: 1px solid var(--orange);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+
+  .buy-link:hover {
+    background: var(--orange-on-dark);
+    border-color: var(--orange-on-dark);
+    color: var(--charcoal);
+  }
+
+  .footer-band {
+    background: var(--navy);
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .footer-band p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 17px;
+    max-width: 640px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+
+  .footer-band .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .footer-band .cta-button:hover {
+    background: var(--orange-on-dark);
+    color: var(--charcoal);
+  }
+
+  @media (max-width: 640px) {
+    .header-band {
+      padding: 48px 20px 36px;
+    }
+
+    .kit-stamp {
+      width: 64px;
+      height: 64px;
+      top: 16px;
+      right: 16px;
+    }
+
+    .kit-stamp span {
+      font-size: 9px;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    .item-row {
+      grid-template-columns: 1fr;
+      justify-items: start;
+      gap: 8px;
+    }
+
+    .item-tag {
+      display: none;
+    }
+
+    .buy-link {
+      margin-top: 4px;
+    }
+  }
+</style>

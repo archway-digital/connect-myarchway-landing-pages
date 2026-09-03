@@ -1,0 +1,474 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+
+// Live count of the 50 $100 Visa gift card slots — update manually (or wire to
+// a real source) before this page ships. Never hardcode a real number here
+// without confirming it against the actual booking count.
+const spotsRemaining = '[N]';
+---
+
+<ArchwayLayout
+  title="Book a Meeting at Applied Net 2026 | Archway Computer"
+  description="Book twenty minutes with Archway at Applied Net 2026 and get a $100 Visa gift card. First 50 meetings booked. No presentation, no proposal, no obligation."
+  ctaText="Book My Meeting"
+  ctaHref="#hero-form"
+>
+  <section class="hero dossier-hero">
+    <div class="redaction-stack" aria-hidden="true">
+      <span class="bar"></span>
+      <span class="bar accent"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="file-tag mono">ARCHWAY // FILE DIVISION</div>
+        <div class="halftone-strip" aria-hidden="true"></div>
+        <div class="hero-badge">APPLIED NET 2026</div>
+        <h1>Book twenty minutes. We will send you <span class="hl">$100</span>.</h1>
+        <p class="hero-sub">First 50 meetings booked. No presentation, no proposal, no obligation.</p>
+        <p class="hero-intro">Your time at Applied Net is the scarcest thing you have that week. Asking for it without offering anything back is the reason most booth conversations go nowhere, so we are offering something back.</p>
+        <div class="ink-stamp" aria-hidden="true">
+          <span class="mono">{spotsRemaining} OF 50<br />OPEN</span>
+        </div>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-tab mono">CASE FILE: INTAKE</div>
+        <div class="form-header">
+          <h2>Book My Meeting</h2>
+          <p>We will follow up within one business day.</p>
+        </div>
+
+        <!-- TODO: replace this static form with a real hbspt.forms.create() embed once the "Meeting - Event - Applied Net 2026" form exists in HubSpot — see HeroLeadMagnet.astro or book-compliance-review.astro for the embed pattern (portalId 6869933, region na2) -->
+        <form class="static-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="First name" disabled />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Last name" disabled />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="agency">Agency Name</label>
+            <input type="text" id="agency" name="agency" placeholder="Agency name" disabled />
+          </div>
+          <div class="form-group">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" placeholder="name@agency.com" disabled />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" disabled />
+          </div>
+          <div class="form-group">
+            <label for="topic">What do you want to talk about?</label>
+            <select id="topic" name="topic" disabled>
+              <option>Cybersecurity and compliance</option>
+              <option>Managed IT and migrations</option>
+              <option>AI and automation</option>
+              <option>Digital marketing</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="day">Preferred Day</label>
+              <select id="day" name="day" disabled>
+                <option>Monday, September 28</option>
+                <option>Tuesday, September 29</option>
+                <option>Wednesday, September 30</option>
+                <option>I am not attending, schedule by video</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="time" disabled>
+                <option>Select a time</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Are you currently an Archway client?</label>
+            <div class="radio-row">
+              <label class="radio-option"><input type="radio" name="client" disabled /> Yes</label>
+              <label class="radio-option"><input type="radio" name="client" disabled /> No</label>
+            </div>
+          </div>
+          <button type="button" class="form-submit" disabled>Book My Meeting</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- How This Works -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="how-header">
+        <div class="ink-stamp small navy" aria-hidden="true">
+          <span class="mono">PROCESS<br />ON FILE</span>
+        </div>
+        <p class="section-label">How This Works</p>
+        <h2>How This Works</h2>
+      </div>
+
+      <div class="numbered-list">
+        <div class="numbered-card">
+          <div class="numbered-block">1</div>
+          <div class="numbered-content">
+            <h3>Pick your topic and time.</h3>
+            <p>The form puts you with the person who handles that area rather than whoever is free at the booth.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="numbered-block">2</div>
+          <div class="numbered-content">
+            <h3>We confirm.</h3>
+            <p>You get a confirmation with the booth number, your time, and the name of the person you are meeting.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="numbered-block">3</div>
+          <div class="numbered-content">
+            <h3>Twenty minutes, your agenda.</h3>
+            <p>You direct it. If we do not have a useful answer, we will say so.</p>
+          </div>
+        </div>
+        <div class="numbered-card manila">
+          <div class="numbered-block">4</div>
+          <div class="numbered-content">
+            <h3>We send the $100.</h3>
+            <p><em class="placeholder">[DELIVERY METHOD AND TIMING]</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms -->
+  <section class="section">
+    <div class="section-inner terms-inner">
+      <p class="section-label">Terms</p>
+      <h2>The Terms, In Plain Language</h2>
+
+      <div class="exhibit-wrap">
+        <div class="exhibit-tab mono">EXHIBIT: TERMS</div>
+        <div class="exhibit-panel">
+          <div class="ink-stamp navy corner" aria-hidden="true">
+            <span class="mono">VERIFIED<br />ON FILE</span>
+          </div>
+          <ul class="terms-list">
+            <li><span class="redaction-mark"></span><span>The first 50 meetings booked and completed receive a $100 Visa gift card.</span></li>
+            <li><span class="redaction-mark"></span><span>One Visa gift card per agency, not per person.</span></li>
+            <li><span class="redaction-mark"></span><span>Current Archway clients are welcome to book time. The Visa gift card offer applies to non-clients only.</span></li>
+            <li><span class="redaction-mark"></span><span>The meeting has to actually happen. Booking and not showing does not qualify.</span></li>
+            <li><span class="redaction-mark"></span><span>The meeting can take place at Applied Net or by video afterward through <em class="placeholder">[DATE]</em>. Both qualify.</span></li>
+            <li><span class="redaction-mark"></span><span>Twenty minutes is the commitment. Nothing further is required and nothing is being sold in the room.</span></li>
+            <li><span class="redaction-mark accent"></span><span>Visa gift card delivered <em class="placeholder">[METHOD]</em> within <em class="placeholder">[TIMEFRAME]</em> of the meeting.</span></li>
+            <li><span class="redaction-mark"></span><span>Archway reserves the right to close the offer once 50 meetings are booked.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  .mono {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+  }
+
+  .placeholder {
+    font-style: normal;
+    color: #a84e08;
+    background: rgba(244, 128, 33, 0.16);
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+
+  /* ── Hero ── */
+  .dossier-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .redaction-stack {
+    position: absolute;
+    top: 56px;
+    right: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.9;
+  }
+
+  .redaction-stack .bar {
+    height: 14px;
+    background: #1a1a1a;
+    border-radius: 2px;
+  }
+
+  .redaction-stack .bar:nth-child(1) { width: 220px; }
+  .redaction-stack .bar:nth-child(2) { width: 150px; }
+  .redaction-stack .bar:nth-child(3) { width: 190px; }
+  .redaction-stack .bar.accent { border-bottom: 2px solid var(--orange); }
+
+  .file-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 10px;
+  }
+
+  .halftone-strip {
+    height: 26px;
+    max-width: 320px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+    max-width: 56ch;
+  }
+
+  .ink-stamp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 104px;
+    height: 104px;
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+    transform: rotate(-7deg);
+    text-align: center;
+  }
+
+  .ink-stamp .mono {
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--orange);
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .ink-stamp.navy {
+    border-color: var(--navy);
+  }
+
+  .ink-stamp.navy .mono {
+    color: var(--navy);
+  }
+
+  .ink-stamp.small {
+    width: 84px;
+    height: 84px;
+  }
+
+  .hero-form-card {
+    position: relative;
+  }
+
+  .form-tab {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: #b89f70;
+    color: var(--charcoal);
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 12px 3px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .static-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .radio-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333333;
+    font-weight: 400;
+  }
+
+  .radio-option input {
+    accent-color: var(--orange);
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ── How This Works ── */
+  .how-header {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .how-header .ink-stamp {
+    position: absolute;
+    top: -8px;
+    right: 0;
+  }
+
+  .numbered-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .numbered-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .numbered-card.manila {
+    background: #d9c7a0;
+    border-color: #b89f70;
+  }
+
+  .numbered-block {
+    background: var(--navy);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  .numbered-content {
+    padding: 24px 28px;
+  }
+
+  .numbered-content h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .numbered-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .numbered-card.manila .numbered-content p {
+    color: var(--charcoal);
+  }
+
+  /* ── Terms ── */
+  .terms-inner {
+    max-width: 820px;
+  }
+
+  .exhibit-wrap {
+    position: relative;
+  }
+
+  .exhibit-tab {
+    display: inline-block;
+    background: #d9c7a0;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 24px;
+    margin-left: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--charcoal);
+  }
+
+  .exhibit-panel {
+    position: relative;
+    background: #d9c7a0;
+    border: 1px solid #b89f70;
+    border-radius: 0 12px 12px 12px;
+    padding: 40px;
+  }
+
+  .exhibit-panel .ink-stamp.corner {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    width: 90px;
+    height: 90px;
+    background: #d9c7a0;
+  }
+
+  .terms-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 620px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .terms-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .terms-list li span:last-child {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333333;
+  }
+
+  .redaction-mark {
+    width: 16px;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 1px;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .redaction-mark.accent {
+    border-bottom: 2px solid var(--orange);
+  }
+
+  @media (max-width: 768px) {
+    .redaction-stack {
+      display: none;
+    }
+
+    .exhibit-panel .ink-stamp.corner {
+      position: static;
+      margin-bottom: 20px;
+    }
+
+    .numbered-card {
+      grid-template-columns: 60px 1fr;
+    }
+  }
+</style>
