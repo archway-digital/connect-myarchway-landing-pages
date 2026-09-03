@@ -15,7 +15,8 @@ dist/
 # astro
 .astro/
 
-# internal email content (do not publish — public repo)
+# internal content (do not publish — public repo)
 EMAIL-EXAMPLES.md
 LANDING-PAGES.md
 hubspot-emails/
+ARCHWAY_REVENUE_OS.md
