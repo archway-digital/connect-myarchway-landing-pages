@@ -5,6 +5,11 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 // a real source) before this page ships. Never hardcode a real number here
 // without confirming it against the actual booking count.
 const spotsRemaining = '[N]';
+
+// HubSpot form: Meeting - Event - Applied Net 2026 (portal 6869933, region na2).
+// Same form as the /applied-net-2026 hero.
+const FORM_ID = '07c32a63-99be-47bf-8b57-10a373403196';
+const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%20meeting';
 ---
 
 <ArchwayLayout
@@ -40,69 +45,80 @@ const spotsRemaining = '[N]';
           <p>We will follow up within one business day.</p>
         </div>
 
-        <!-- TODO: replace this static form with a real hbspt.forms.create() embed once the "Meeting - Event - Applied Net 2026" form exists in HubSpot — see HeroLeadMagnet.astro or book-compliance-review.astro for the embed pattern (portalId 6869933, region na2) -->
-        <form class="static-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" placeholder="First name" disabled />
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Last name" disabled />
-            </div>
+        <div id="hs-applied-net-form"></div>
+
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The booking form needs JavaScript.</p>
+            <p>Email <a href={FALLBACK_MAILTO}>info@myarchway.com</a> with your agency name and the topic you want to cover, and we will set the time by reply.</p>
           </div>
-          <div class="form-group">
-            <label for="agency">Agency Name</label>
-            <input type="text" id="agency" name="agency" placeholder="Agency name" disabled />
-          </div>
-          <div class="form-group">
-            <label for="email">Business Email</label>
-            <input type="email" id="email" name="email" placeholder="name@agency.com" disabled />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" disabled />
-          </div>
-          <div class="form-group">
-            <label for="topic">What do you want to talk about?</label>
-            <select id="topic" name="topic" disabled>
-              <option>Cybersecurity and compliance</option>
-              <option>Managed IT and migrations</option>
-              <option>AI and automation</option>
-              <option>Digital marketing</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="day">Preferred Day</label>
-              <select id="day" name="day" disabled>
-                <option>Monday, September 28</option>
-                <option>Tuesday, September 29</option>
-                <option>Wednesday, September 30</option>
-                <option>I am not attending, schedule by video</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="time">Preferred Time</label>
-              <select id="time" name="time" disabled>
-                <option>Select a time</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Are you currently an Archway client?</label>
-            <div class="radio-row">
-              <label class="radio-option"><input type="radio" name="client" disabled /> Yes</label>
-              <label class="radio-option"><input type="radio" name="client" disabled /> No</label>
-            </div>
-          </div>
-          <button type="button" class="form-submit" disabled>Book My Meeting</button>
-        </form>
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The booking form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={FALLBACK_MAILTO}>info@myarchway.com</a> with your agency name and the topic you want to cover, and we will set the time by reply.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createAppliedNetForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createAppliedNetForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-applied-net-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-field select.hs-input { appearance: auto; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createAppliedNetForm();
+
+    // If the embed target is still empty after 5s, HubSpot is blocked or down.
+    // Reveal the manual booking path rather than leaving an empty card.
+    setTimeout(function () {
+      var target = document.getElementById("hs-applied-net-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
 
   <!-- How This Works -->
   <section class="section section-light">
@@ -291,31 +307,16 @@ const spotsRemaining = '[N]';
     border-radius: 3px 3px 0 0;
   }
 
-  .static-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
   }
-
-  .radio-row {
-    display: flex;
-    gap: 16px;
-  }
-
-  .radio-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: #333333;
-    font-weight: 400;
-  }
-
-  .radio-option input {
-    accent-color: var(--orange);
-    width: 18px;
-    height: 18px;
-  }
+  .form-offline[hidden] { display: none; }
+  .form-offline p { font-size: 15px; line-height: 1.6; color: var(--text-light); margin: 0; }
+  .form-offline-title { font-weight: 700; color: var(--charcoal) !important; margin-bottom: 6px !important; }
+  .form-offline a { color: var(--orange-text); text-decoration: underline; }
 
   /* ── How This Works ── */
   .how-header {
