@@ -12,7 +12,7 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 // Vertafore, Sagitta, TAM, Other, Evaluating now), Where are you with Applied
 // Epic? (radio: Implementing for the first time / Migrating in from another
 // system / Live but not getting full use / Evaluating, not on it yet), and
-// Which brought you here? (radio: Epic setup and utilization / IT security and
+// Which brought you here? (radio: System setup and utilization / IT security and
 // compliance / Both). The last one drives the E4 split send and both
 // post-webinar follow-up sequences, so confirm it is on the form before the
 // first send.
@@ -31,22 +31,23 @@ const WEBINAR_TIME = '2:00 PM Eastern';
 // webinar one. The apostrophe is the one contraction the voice rules allow.
 const WEBINAR_TITLE = 'The Software Is Not the Problem. It’s the Setup.';
 
-// The middle thirty minutes, three blocks of ten. Card copy verbatim from
-// ARCHWAY_AAC_WEBINAR_2_LANDING_PAGE.md, Section 3.
+// The middle thirty minutes, three topics of ten. Card copy verbatim from the
+// E1 topic list in ARCHWAY_AAC_WEBINAR_2_EMAILS.md (2026-09-04 revision), so
+// the page and the emails name the topics the same way.
 const covers = [
   {
-    title: 'How you arrived',
-    body: 'Implementing Applied Epic for the first time and migrating into it from another system are different projects. The difference matters more than most agencies expect going in, and it shapes what the agency can do afterward.',
+    title: 'Getting in',
+    body: 'Implementing for the first time or migrating from another system. What the operations side involves, and the infrastructure side nobody puts on the project plan.',
     icon: '<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>',
   },
   {
-    title: 'How it is built',
-    body: 'There is no correct configuration. There are many valid ones. A small agency and a middle market agency need genuinely different builds, and building the wrong one is not obvious immediately. It shows up slowly, in workarounds and in the parts of the system nobody touches.',
+    title: 'Getting built',
+    body: 'How the system gets structured, why the right build differs between a small agency and a middle market one, and who ends up with access to what.',
     icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
   },
   {
-    title: 'How it is protected',
-    body: 'Configured well and protected well are different things, achieved by different people on different timelines. The gap between them is usually an ownership problem rather than a technology one.',
+    title: 'Staying protected',
+    body: 'What securing an agency actually involves now, and a coverage question most agencies never connect to operations at all.',
     icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
   },
 ];
@@ -54,11 +55,11 @@ const covers = [
 const runsheet = [
   {
     range: 'First fifteen.',
-    body: 'Introductions, and why these two subjects belong in one conversation.',
+    body: 'Introductions, and why operations and IT belong in one conversation.',
   },
   {
     range: 'Next thirty.',
-    body: 'Three blocks, ten minutes each.',
+    body: 'Three topics, ten minutes each: getting in, getting built, staying protected.',
   },
   {
     range: 'Last fifteen.',
@@ -79,7 +80,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
 
 <ArchwayLayout
   title={`${WEBINAR_TITLE} | Archway + Angela Adams Consulting`}
-  description="Applied Epic implementation, structure, and protection for independent insurance agencies. Live Wednesday, September 23, 2:00 PM Eastern."
+  description="How independent insurance agencies get into their management system, how it gets built, and what keeps it protected. Operations and IT in one conversation. Live Wednesday, September 23, 2:00 PM Eastern."
   ctaText="Save My Seat"
   ctaHref="#hero-form"
   cobrand
@@ -101,8 +102,8 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
 
         <h1>The Software Is Not the Problem. <span class="hl">It&rsquo;s the Setup.</span></h1>
 
-        <p class="hero-sub">Two agencies implement Applied Epic in the same year. One is running most of what it pays for inside eighteen months. The other is still working around the setup three years later.</p>
-        <p class="hero-sub hero-sub-second">Same software. Different outcome. DeAnn Sheldon and Brad Ruben spend an hour on what accounts for the difference.</p>
+        <p class="hero-sub">Two agencies put in the same management system the same year and end up in very different places.</p>
+        <p class="hero-sub hero-sub-second">On September 23, DeAnn Sheldon and Brad Ruben spend an hour on why, and it is rarely the software. Operations and IT in the same conversation, which is rarer than it should be.</p>
 
         <div class="hero-facts">
           <span class="hero-fact">
@@ -111,7 +112,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
           </span>
           <span class="hero-fact">
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            Three things, ten minutes each
+            Three topics, ten minutes each
           </span>
           <span class="hero-fact">
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -144,7 +145,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
           <p>An ad blocker or privacy extension is the usual reason. Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
         </div>
 
-        <p class="form-fallback">Cannot attend live? Register anyway. The recording goes to everyone on the list.</p>
+        <p class="form-fallback">Cannot attend live? Register anyway. The recording goes to everyone registered.</p>
       </div>
     </div>
   </section>
@@ -208,15 +209,16 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
 
   <!-- Section 2: the argument. Prose in a full-width band rather than cards, and
        it sits directly under the hero because it is what makes the rest of the
-       page worth reading. Left-aligned at a reading measure: three paragraphs
-       are an argument, not a header. -->
+       page worth reading. Left-aligned at a reading measure: it is an argument,
+       not a header. Names the topics without resolving them, same as the emails. -->
   <section class="section">
     <div class="section-inner argument fade-up">
       <p class="section-label">The Argument</p>
-      <h2>Epic Is Not the&nbsp;Variable</h2>
-      <p class="argument-lead">Applied Epic does what it does. It works the same way for every agency that buys it.</p>
-      <p class="argument-para">What differs is three decisions that get made early and then lived with for years. How the agency arrived in the system. How it was structured for that particular agency. And how well the whole thing is protected.</p>
-      <p class="argument-para">Those decisions rarely get revisited. They also rarely get made by the same people, which is a large part of why they do not line up.</p>
+      <h2>It Is Rarely the&nbsp;Software</h2>
+      <p class="argument-lead">There is no single correct way to configure an agency management system. There are many valid ones, and they are not equally right for every agency.</p>
+      <p class="argument-para">What separates the two agencies is three decisions that get made early and then lived with for years. How the agency got into the system. How it was built. And what keeps it protected.</p>
+      <p class="argument-para">Those decisions rarely get revisited. They also rarely get made by the same people. Operations owns some of them, IT owns the rest, and the two rarely compare notes.</p>
+      <p class="argument-close">Applied Epic is the working example. The problem is the same on any system.</p>
     </div>
   </section>
 
@@ -225,7 +227,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     <div class="section-inner">
       <div class="block-header fade-up">
         <p class="section-label">What the Hour Covers</p>
-        <h2>Three Things, Ten Minutes&nbsp;Each</h2>
+        <h2>Three Topics, Ten Minutes&nbsp;Each</h2>
       </div>
 
       <div class="card-grid fade-up">
@@ -251,13 +253,13 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     <div class="section-inner band-grid fade-up">
       <div class="band-rail">
         <p class="section-label section-label-on-dark">Why Both</p>
-        <h2>Operations and Coverage Are the Same&nbsp;Problem</h2>
+        <h2>Operations and IT in the Same&nbsp;Conversation</h2>
       </div>
 
       <div class="band-body">
-        <p class="band-lead">An agency can have Applied Epic configured well and still be exposed.</p>
-        <p class="band-para">Cyber coverage is underwritten against what an agency actually has in place, not what it believes it has. When those two do not match, the agency is exposed on both sides at once, and it tends to find out during an application or a claim rather than before one.</p>
-        <p class="band-para">Operations belongs to one person. Coverage belongs to another. They rarely compare notes until something forces it.</p>
+        <p class="band-lead">An agency can have its system configured well and still be exposed.</p>
+        <p class="band-para">The build gets planned by one side. The half underneath it, what has to be ready before any of it works and who ends up able to see what once it does, usually gets planned separately or not at all.</p>
+        <p class="band-para">And there is a connection between what an agency has in place and what its cyber coverage assumes it has, which most agencies find out about at the worst possible moment.</p>
       </div>
 
       <p class="band-kicker">That is why DeAnn Sheldon and Brad Ruben are on one call instead of two.</p>
@@ -340,7 +342,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
 
       <a href="#hero-form" class="closing-button">Save My Seat</a>
 
-      <p class="closing-note">Cannot attend live? Register anyway and we will send you the recording.</p>
+      <p class="closing-note">Cannot attend live? Register anyway for the recording.</p>
     </div>
   </section>
 </ArchwayLayout>
@@ -466,8 +468,13 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     text-wrap: pretty;
   }
 
-  .argument-para:last-child {
-    margin-bottom: 0;
+  .argument-close {
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin: 26px 0 0;
+    text-wrap: pretty;
   }
 
   /* Section headers */
@@ -833,7 +840,8 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     .argument-lead {
       font-size: 19px;
     }
-    .argument-para {
+    .argument-para,
+    .argument-close {
       font-size: 17px;
     }
     .cobrand {
