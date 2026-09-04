@@ -18,12 +18,12 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 // first send.
 //
 // STILL TO SET, in HubSpot rather than here: the post-submit redirect must
-// point at /setup-webinar/thank-you.
+// point at /it-epic-webinar/thank-you.
 const FORM_ID = 'REPLACE-ME-FORM-ID';
 
 // BLOCKER: 2:00 PM Eastern came from Kevin, not from the planning transcript.
 // Every date on this page comes from the constants below, so a change is one
-// edit here and one in setup-webinar/thank-you.astro.
+// edit here and one in it-epic-webinar/thank-you.astro.
 const WEBINAR_DATE_LONG = 'Wednesday, September 23';
 const WEBINAR_TIME = '2:00 PM Eastern';
 
@@ -125,7 +125,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
           <h2>Save your seat</h2>
           <p>{WEBINAR_DATE_LONG}. {WEBINAR_TIME}. 60 minutes.</p>
         </div>
-        <div id="hs-setup-webinar-form"></div>
+        <div id="hs-it-epic-webinar-form"></div>
 
         <!-- Two-layer fallback for the HubSpot embed, per PRODUCT.md "no JS-only
              content". The <noscript> copy covers JS-off visitors. The hidden copy
@@ -151,16 +151,16 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
 
   <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
   <script is:inline define:vars={{ FORM_ID }}>
-    function _createSetupWebinarForm() {
+    function _createItEpicWebinarForm() {
       if (!window.hbspt || !window.hbspt.forms) {
-        setTimeout(_createSetupWebinarForm, 80);
+        setTimeout(_createItEpicWebinarForm, 80);
         return;
       }
       window.hbspt.forms.create({
         portalId: "6869933",
         formId: FORM_ID,
         region: "na2",
-        target: "#hs-setup-webinar-form",
+        target: "#hs-it-epic-webinar-form",
         css: "\
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
           .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
@@ -193,12 +193,12 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
         "
       });
     }
-    _createSetupWebinarForm();
+    _createItEpicWebinarForm();
 
     // If the embed target is still empty after 5s, HubSpot is blocked or down.
     // Reveal the manual registration path rather than leaving an empty card.
     setTimeout(function () {
-      var target = document.getElementById("hs-setup-webinar-form");
+      var target = document.getElementById("hs-it-epic-webinar-form");
       var offline = document.getElementById("form-offline");
       if (target && offline && target.children.length === 0) {
         offline.hidden = false;

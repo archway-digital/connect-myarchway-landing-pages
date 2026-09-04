@@ -29,6 +29,16 @@
       "source": "/aac-webinar-september-8/thank-you",
       "destination": "/hours-webinar/thank-you",
       "permanent": true
+    },
+    {
+      "source": "/setup-webinar",
+      "destination": "/it-epic-webinar",
+      "permanent": true
+    },
+    {
+      "source": "/setup-webinar/thank-you",
+      "destination": "/it-epic-webinar/thank-you",
+      "permanent": true
     }
   ]
 }
