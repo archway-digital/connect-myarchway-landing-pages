@@ -3,9 +3,8 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 
 // HubSpot form "LeadGen - IT - AAC Partner Webinar Sept 23".
 //
-// BLOCKER: the form is not built and its ID is unknown. With the placeholder
-// below hbspt renders nothing, and the offline panel in the card appears after
-// five seconds. Replace the string, nothing else, once the form exists.
+// If hbspt renders nothing, the offline panel in the card appears after five
+// seconds.
 //
 // Fields (all required): First name, Last name, Email, Agency name,
 // Management system (dropdown: Applied Epic, AMS360, HawkSoft, EZLynx, Nexsure,
@@ -19,7 +18,7 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 //
 // STILL TO SET, in HubSpot rather than here: the post-submit redirect must
 // point at /it-epic-webinar/thank-you.
-const FORM_ID = 'REPLACE-ME-FORM-ID';
+const FORM_ID = 'f5c48a8a-b222-4801-b53f-c6cbbfa4fa64';
 
 // BLOCKER: 2:00 PM Eastern came from Kevin, not from the planning transcript.
 // Every date on this page comes from the constants below, so a change is one
@@ -207,20 +206,6 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     }, 5000);
   </script>
 
-  <!-- Section 2: the argument. Prose in a full-width band rather than cards, and
-       it sits directly under the hero because it is what makes the rest of the
-       page worth reading. Left-aligned at a reading measure: it is an argument,
-       not a header. Names the topics without resolving them, same as the emails. -->
-  <section class="section">
-    <div class="section-inner argument fade-up">
-      <p class="section-label">The Argument</p>
-      <h2>It Is Rarely the&nbsp;Software</h2>
-      <p class="argument-lead">There is no single correct way to configure an agency management system. There are many valid ones, and they are not equally right for every agency.</p>
-      <p class="argument-para">What separates the two agencies is three decisions that get made early and then lived with for years. How the agency got into the system. How it was built. And what keeps it protected.</p>
-      <p class="argument-para">Those decisions rarely get revisited. They also rarely get made by the same people. Operations owns some of them, IT owns the rest, and the two rarely compare notes.</p>
-      <p class="argument-close">Applied Epic is the working example. The problem is the same on any system.</p>
-    </div>
-  </section>
 
   <!-- Section 3: what the hour covers -->
   <section class="section section-light">
@@ -253,7 +238,7 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     <div class="section-inner band-grid fade-up">
       <div class="band-rail">
         <p class="section-label section-label-on-dark">Why Both</p>
-        <h2>Operations and IT in the Same&nbsp;Conversation</h2>
+        <h2>Applied Epic Operations and IT in the Same&nbsp;Conversation</h2>
       </div>
 
       <div class="band-body">
@@ -436,46 +421,6 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
     text-underline-offset: 3px;
   }
 
-  /* Section 2: the argument, set as prose at a reading measure. Sizes stay on
-     the ramp: 34 for the H2, 22 for the lead, 19 for body. */
-  .argument {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  .argument h2 {
-    font-size: 34px;
-    line-height: 1.25;
-    text-wrap: balance;
-    margin-bottom: 22px;
-  }
-
-  .argument-lead {
-    font-size: 22px;
-    line-height: 1.5;
-    font-weight: 600;
-    color: var(--charcoal);
-    margin: 0 0 20px;
-    text-wrap: pretty;
-  }
-
-  .argument-para {
-    font-size: 19px;
-    line-height: 1.7;
-    color: var(--text);
-    margin: 0 0 18px;
-    text-wrap: pretty;
-  }
-
-  .argument-close {
-    font-size: 19px;
-    line-height: 1.6;
-    font-weight: 600;
-    color: var(--charcoal);
-    margin: 26px 0 0;
-    text-wrap: pretty;
-  }
 
   /* Section headers */
   .block-header {
@@ -833,16 +778,8 @@ const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
   @media (max-width: 768px) {
     .block-header h2,
     .band-navy h2,
-    .closing-cta h2,
-    .argument h2 {
+    .closing-cta h2 {
       font-size: 27px;
-    }
-    .argument-lead {
-      font-size: 19px;
-    }
-    .argument-para,
-    .argument-close {
-      font-size: 17px;
     }
     .cobrand {
       gap: 13px;
