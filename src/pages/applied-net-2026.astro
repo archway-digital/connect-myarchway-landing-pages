@@ -45,40 +45,45 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
         </p>
         <h2>Who you will meet</h2>
       </div>
-      <p class="section-intro">Four people at the booth and one on video. Pick the conversation that matters and we will put you with the right person.</p>
+      <p class="section-intro">Three people at the booth and one on video. Pick the conversation that matters and we will put you with the right person.</p>
       <div class="people-grid">
         <div class="people-card featured">
-          <div class="card-stamp" style="top:20px; right:20px; transform:rotate(-6deg);"><span>VERIFIED</span></div>
-          <div class="people-card-top">
-            <div class="avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+          <div class="folder-tab">FILE 01</div>
+          <div class="folder-body">
+            <div class="card-stamp" style="top:18px; right:18px; transform:rotate(-6deg);"><span>VERIFIED</span></div>
+            <div class="people-photo"><img src="/images/brad-ruben.jpg" alt="Brad Ruben, President of Archway" width="440" height="440" loading="lazy" /></div>
+            <h3>Brad Ruben</h3>
+            <span class="people-title">PRESIDENT</span>
+            <p>Over thirty years running Archway, all of it with independent agencies. Talk to Brad about cybersecurity posture, what carriers and regulators are asking agencies to document, and where your agency would stand if someone asked for proof rather than a description.</p>
           </div>
-          <h3>Brad Ruben</h3>
-          <span class="people-title">PRESIDENT</span>
-          <p>Over thirty years running Archway, all of it with independent agencies. Talk to Brad about cybersecurity posture, what carriers and regulators are asking agencies to document, and where your agency would stand if someone asked for proof rather than a description.</p>
         </div>
         <div class="people-card">
-          <div class="avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>Walter Harry</h3>
-          <span class="people-title">ACCOUNT EXECUTIVE</span>
-          <p>Managed IT and migrations. Aging servers, moving Applied Epic or AMS360 to hosted, and working out what your current provider is actually delivering for the monthly fee.</p>
+          <div class="folder-tab">FILE 02</div>
+          <div class="folder-body">
+            <div class="people-photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6" width="40" height="40"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+            <h3>Walter Harry</h3>
+            <span class="people-title">ACCOUNT EXECUTIVE</span>
+            <p>Managed IT and migrations. Aging servers, moving Applied Epic or AMS360 to hosted, and working out what your current provider is actually delivering for the monthly fee.</p>
+          </div>
         </div>
         <div class="people-card">
-          <div class="avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>Hannah Ruben</h3>
-          <span class="people-title">DIGITAL MARKETING</span>
-          <p>Websites, search visibility, and attribution. Which marketing produced business rather than which produced activity, and what that means for next year&rsquo;s budget.</p>
-        </div>
-        <div class="people-card">
-          <div class="avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>SueAnn Priem</h3>
-          <span class="people-title">VP CUSTOMER SUCCESS</span>
-          <p>Over ten Applied Nets. If you want to talk about getting more out of the week itself, or what working with Archway actually looks like day to day, SueAnn is the honest version.</p>
+          <div class="folder-tab">FILE 03</div>
+          <div class="folder-body">
+            <div class="people-photo placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6" width="40" height="40"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
+            <h3>Hannah Ruben</h3>
+            <span class="people-title">DIGITAL MARKETING</span>
+            <p>Websites, search visibility, and attribution. Which marketing produced business rather than which produced activity, and what that means for next year&rsquo;s budget.</p>
+          </div>
         </div>
         <div class="people-card video">
-          <div class="avatar-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-          <h3>Sam Ruben</h3>
-          <span class="people-title">AI AND AUTOMATION</span>
-          <p>Sam is not on the floor this year. He is taking video meetings during and after the show, and they count the same, Visa gift card included. AI governance, approved tools, and automation that removes real hours from intake, service triage, and documentation.</p>
+          <div class="folder-tab">FILE 04</div>
+          <div class="folder-body">
+            <span class="video-tag">BY VIDEO</span>
+            <div class="people-photo"><img src="/images/sam-ruben.jpg" alt="Sam Ruben, AI and Automation at Archway" width="440" height="440" loading="lazy" /></div>
+            <h3>Sam Ruben</h3>
+            <span class="people-title">AI AND AUTOMATION</span>
+            <p>Sam is not on the floor this year. He is taking video meetings during and after the show, and they count the same, Visa gift card included. AI governance, approved tools, and automation that removes real hours from intake, service triage, and documentation.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -86,60 +91,70 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 
   <div class="divider-tick"></div>
 
-  <section class="section section-light">
+  <section class="section section-light" id="what-we-do">
     <div class="section-inner">
       <div class="section-header">
         <p class="section-label-manila">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5"/></svg>
-          At Booth 131
+          What We Do
         </p>
-        <h2>What is at the booth</h2>
+        <h2>What twenty minutes can cover</h2>
       </div>
+      <p class="section-intro">Archway works exclusively with independent insurance agencies, across three areas. Bring the one that is costing you time or sleep and we will tell you honestly whether we are useful to you or not.</p>
       <div class="section-halftone"></div>
       <div class="booth-grid">
-        <div class="booth-card">
-          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></div>
-          <h3>The phishing game</h3>
-          <p>Six messages, and you decide which are real. Two minutes, and most people get at least one wrong. Bring the producer who says they would never fall for it.</p>
-        </div>
-        <div class="booth-card">
-          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <h3>Live automation demonstration</h3>
-          <p>Run against a real agency workflow rather than a slide deck. Intake, service triage, documentation. What still needs a person and what does not.</p>
-        </div>
-        <div class="booth-card" style="position:relative;">
-          <div class="card-stamp" style="top:20px; right:20px; transform:rotate(-8deg);"><span>VERIFIED</span></div>
-          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5.6 3.8 9.7 8 11 4.2-1.3 8-5.4 8-11V6z"/></svg></div>
-          <h3>The cyber insurance program</h3>
-          <p>Agencies running managed detection can be underwritten from a verified security posture instead of a self-reported questionnaire. Worth ten minutes if your own cyber renewal is coming up.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <p class="section-label">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Before You Go
-        </p>
-        <h2>Before you go</h2>
-      </div>
-      <p class="section-intro" style="margin-bottom:0;">Two things we put together from over ten years of attending this conference. Both are free and neither requires a conversation with us.</p>
-      <div class="before-grid">
-        <div class="before-card">
-          <div class="file-corner"></div>
-          <h3>The Applied Net Survival Guide</h3>
-          <p>What the conference is, why it is worth the week, a do and do not list built from experience, and a post-conference section covering the ten days after the show, which is where the value of the week is actually decided.</p>
-          <a href="#" class="btn-outline">Get the Survival Guide</a>
+        <div class="booth-card">
+          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5.6 3.8 9.7 8 11 4.2-1.3 8-5.4 8-11V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <span class="booth-kicker">FILE A</span>
+          <h3>IT and Cybersecurity</h3>
+          <p>Most agencies run on a setup nobody has audited in years. Aging servers, backups nobody has restored from, and security settings that were fine in 2021. Carriers and state regulators now ask for proof of what is in place, not a description of it.</p>
+          <ul class="booth-list">
+            <li>Managed IT support and help desk for the whole office</li>
+            <li>Managed detection and response, endpoint protection, and MFA rollout</li>
+            <li>Security assessments, compliance reviews, and penetration testing</li>
+            <li>Carrier and NYDFS documentation, written to survive an audit</li>
+            <li>Microsoft 365, Azure AD, and cloud infrastructure</li>
+            <li>Hosting or moving Applied Epic, AMS360, HawkSoft, or EZLynx</li>
+            <li>Incident response planning and cyber insurance readiness</li>
+          </ul>
+          <p class="booth-who">Talk to Brad about security posture. Talk to Walter about managed IT and migrations.</p>
         </div>
-        <div class="before-card">
-          <div class="file-corner"></div>
-          <h3>The pre-conference checklist</h3>
-          <p>Planning, networking prep, packing, and a learning strategy. About five minutes to run.</p>
-          <a href="#" class="btn-outline">Get the Checklist</a>
+
+        <div class="booth-card">
+          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <span class="booth-kicker">FILE B</span>
+          <h3>AI and Automation</h3>
+          <p>Skepticism is warranted. Most of what is sold as AI to agencies moves the busywork somewhere else. The places it actually removes hours are narrower than the pitch suggests, and those places are where we work.</p>
+          <ul class="booth-list">
+            <li>Workflow audit: where hours actually go, and what should stay with a person</li>
+            <li>Intake, service triage, and documentation automation</li>
+            <li>Renewal drafting, certificate generation, and commission reconciliation</li>
+            <li>AMS workflow automation and attachments for Applied Epic and AMS360</li>
+            <li>Voice and chat agents that know your book and your hours</li>
+            <li>SharePoint and Microsoft 365 AI integration</li>
+            <li>AI governance: what client data can go into a tool and what never can</li>
+          </ul>
+          <p class="booth-who">Talk to Sam, by video, during or after the show. Brad, Walter, and Hannah can start the conversation at the booth.</p>
         </div>
+
+        <div class="booth-card">
+          <div class="booth-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div>
+          <span class="booth-kicker">FILE C</span>
+          <h3>Digital Marketing</h3>
+          <p>Most agency websites were built to exist, not to convert. They look fine, rank for the agency name, and produce nothing the owner can point to. The question is not whether the marketing produced activity. It is whether it produced business.</p>
+          <ul class="booth-list">
+            <li>Website redesign built around quote requests and calls, not brochures</li>
+            <li>Local SEO and Google Business Profile for every office location</li>
+            <li>Review strategy that runs without chasing clients by hand</li>
+            <li>Email marketing: welcome series, renewal touches, cross-sell campaigns</li>
+            <li>Attribution: which channel produced which policy, in HubSpot or your CRM</li>
+            <li>Agency branding and ongoing website maintenance</li>
+            <li>A straight read on next year&rsquo;s budget, line by line</li>
+          </ul>
+          <p class="booth-who">Talk to Hannah. Bring your analytics login if you want the honest version.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -371,42 +386,40 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     background: var(--orange);
   }
 
-  /* ---- People cards ---- */
+  /* ---- People cards (full manila folders) ---- */
   .people-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
   .people-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 28px 24px;
     position: relative;
+    padding-top: 18px;
   }
-  .people-card::before {
-    content: '';
+  .folder-tab {
     position: absolute;
-    top: 0; left: 24px;
-    width: 34px; height: 8px;
-    background: #d9c7a0;
-    border-radius: 0 0 3px 3px;
+    top: 0; left: 22px;
+    height: 20px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    background: #c7b285;
+    border: 1px solid #b89f70;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #4a3a1f;
   }
-  .people-card.featured::before { display: none; }
-  .people-card-top {
+  .folder-body {
     position: relative;
-    margin: -28px -24px 16px;
-    padding: 24px 24px 16px;
     background: #d9c7a0;
-    border-radius: 12px 12px 0 0;
-  }
-  .people-card-top::before {
-    content: '';
-    position: absolute;
-    top: -12px; left: 24px;
-    width: 64px; height: 12px;
-    background: #b89f70;
-    border-radius: 3px 3px 0 0;
+    border: 1px solid #b89f70;
+    border-radius: 0 12px 12px 12px;
+    padding: 26px 26px 28px;
+    box-shadow: 0 2px 0 #b89f70, 0 8px 22px rgba(41,63,80,0.10);
   }
   .card-stamp {
     position: absolute;
@@ -415,6 +428,7 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
+    opacity: 0.85;
   }
   .card-stamp span {
     font-family: 'Courier Prime', monospace;
@@ -423,39 +437,50 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     color: var(--navy);
     letter-spacing: 0.5px;
   }
-  .avatar-placeholder {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: var(--light-bg);
-    border: 2px solid var(--navy);
+  .people-photo {
+    width: 104px; height: 104px;
+    background: var(--white);
+    padding: 5px;
+    border: 1px solid #b89f70;
+    box-shadow: 0 2px 6px rgba(41,63,80,0.18);
+    transform: rotate(-2deg);
+    margin: 0 0 18px 2px;
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px;
+    overflow: hidden;
   }
-  .avatar-placeholder svg { width: 34px; height: 34px; }
-  .people-card h3 { font-size: 18px; font-weight: 800; color: var(--charcoal); margin: 0 0 2px; }
+  .people-photo img {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+  }
+  .people-photo.placeholder { background: var(--light-bg); }
+  .people-card h3 { font-size: 19px; font-weight: 800; color: var(--charcoal); margin: 0 0 2px; }
   .people-title {
     font-family: 'Courier Prime', monospace;
     font-size: 12px;
-    color: var(--orange-text);
-    letter-spacing: 0.3px;
+    font-weight: 700;
+    color: #a84e08;
+    letter-spacing: 0.5px;
     margin-bottom: 12px;
     display: block;
   }
-  .people-card p { font-size: 14.5px; line-height: 1.65; color: var(--text-light); margin: 0; }
-  .people-card.video::after {
-    content: 'BY VIDEO';
+  .people-card p { font-size: 14.5px; line-height: 1.65; color: #3d3628; margin: 0; }
+  .video-tag {
     position: absolute;
-    top: 24px; right: 20px;
+    top: 18px; right: 18px;
     font-family: 'Courier Prime', monospace;
     font-size: 10px;
+    font-weight: 700;
     letter-spacing: 0.5px;
-    color: var(--orange-text);
-    background: rgba(244,128,33,0.08);
+    color: #a84e08;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid #b89f70;
     padding: 3px 8px;
     border-radius: 3px;
   }
 
-  /* ---- Booth cards ---- */
+  /* ---- Service cards ---- */
   .booth-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -465,7 +490,18 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    padding: 32px 24px;
+    padding: 32px 26px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .booth-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px;
+    width: 34px; height: 8px;
+    background: #d9c7a0;
+    border-radius: 0 0 3px 3px;
   }
   .booth-icon {
     width: 48px; height: 48px;
@@ -475,44 +511,49 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     margin-bottom: 16px;
   }
   .booth-icon svg { width: 24px; height: 24px; stroke: var(--orange); fill: none; stroke-width: 1.6; }
-  .booth-card h3 { font-size: 18px; font-weight: 800; color: var(--charcoal); margin: 0 0 8px; }
-  .booth-card p { font-size: 15px; line-height: 1.65; color: var(--text-light); margin: 0; }
-
-  /* ---- Before you go ---- */
-  .before-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 32px;
-  }
-  .before-card {
-    background: var(--white);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 32px;
-    position: relative;
-  }
-  .before-card .file-corner {
-    position: absolute;
-    top: -12px; left: 24px;
-    width: 56px; height: 12px;
-    background: #b89f70;
-    border-radius: 3px 3px 0 0;
-  }
-  .before-card h3 { font-size: 18px; font-weight: 800; color: var(--charcoal); margin: 0 0 10px; }
-  .before-card p { font-size: 15px; line-height: 1.65; color: var(--text-light); margin: 0 0 20px; }
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    border: 2px solid var(--navy);
-    color: var(--navy);
-    font-size: 14px;
+  .booth-kicker {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
     font-weight: 700;
-    padding: 12px 22px;
-    border-radius: 8px;
-    text-decoration: none;
+    letter-spacing: 1.5px;
+    color: #a84e08;
+    display: block;
+    margin-bottom: 4px;
   }
-  .btn-outline:hover { background: var(--navy); color: var(--white); }
+  .booth-card h3 { font-size: 20px; font-weight: 800; color: var(--charcoal); margin: 0 0 10px; }
+  .booth-card p { font-size: 15px; line-height: 1.65; color: var(--text-light); margin: 0 0 16px; }
+  .booth-list {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+  .booth-list li {
+    position: relative;
+    padding: 9px 0 9px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .booth-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 16px;
+    width: 8px; height: 8px;
+    border: 1.5px solid var(--navy);
+    border-radius: 1px;
+  }
+  .booth-card .booth-who {
+    margin: auto 0 0;
+    padding: 12px 14px;
+    background: rgba(217,199,160,0.28);
+    border-left: 3px solid #d9c7a0;
+    border-radius: 0 6px 6px 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--charcoal);
+  }
 
   /* ---- Bottom CTA ---- */
   .cta-band {
@@ -526,7 +567,7 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
   .cta-band .case-tag { text-align: center; margin: 0 0 18px; color: rgba(255,255,255,0.4); }
 
   @media (max-width: 900px) {
-    .people-grid, .booth-grid, .before-grid { grid-template-columns: 1fr; }
+    .people-grid, .booth-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
