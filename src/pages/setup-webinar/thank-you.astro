@@ -1,0 +1,287 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+// Registration confirmation for the AAC partner webinar two. Point the HubSpot
+// form's redirect at /setup-webinar/thank-you once the form
+// ("LeadGen - IT - AAC Partner Webinar Sept 23") exists.
+
+// BLOCKER: 2:00 PM Eastern came from Kevin, not from the planning transcript.
+// Kept in constants so a change is one edit here and one in setup-webinar.astro.
+const WEBINAR_DATE_LONG = 'Wednesday, September 23';
+const WEBINAR_TIME = '2:00 PM Eastern';
+const WEBINAR_TITLE = 'The Software Is Not the Problem. It’s the Setup.';
+
+// BLOCKER: which calendar takes these depends on whether Brad or Walter owns
+// the follow-up. Placeholder until Kevin decides.
+const ARCHWAY_MEETING = 'https://meetings-na2.hubspot.com/REPLACE-ME';
+---
+
+<ArchwayLayout
+  title="You Are Registered | Archway + Angela Adams Consulting"
+  description="Your seat is saved for the September 23 webinar. The calendar invite is on its way, and it has the join link in it."
+  ctaText="Book Time with Archway"
+  ctaHref={ARCHWAY_MEETING}
+>
+  <section class="hero confirm-hero">
+    <div class="confirm-inner">
+      <div class="cobrand">
+        <img src="/images/archway-logo.png" alt="Archway" class="cobrand-archway" width="79" height="34" loading="eager" decoding="async" />
+        <span class="cobrand-rule" aria-hidden="true"></span>
+        <img src="/images/aac-logo.png" alt="Angela Adams Consulting" class="cobrand-aac" width="143" height="34" loading="eager" decoding="async" />
+      </div>
+
+      <div class="confirm-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6.5"/></svg>
+      </div>
+
+      <h1>You are registered.</h1>
+      <p class="confirm-title">{WEBINAR_TITLE}</p>
+      <p class="hero-sub">The calendar invite is on its way to your inbox with the join link.</p>
+
+      <div class="confirm-when">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {WEBINAR_DATE_LONG}, {WEBINAR_TIME}
+      </div>
+    </div>
+  </section>
+
+  <!-- The one ask that makes the hour worth more -->
+  <section class="section">
+    <div class="section-inner ask-inner">
+      <div class="ask-card fade-up">
+        <p class="section-label">Before the 23rd</p>
+        <h2>One Thing That Will Make the Hour More&nbsp;Useful</h2>
+        <p class="ask-body">Reply to that confirmation with where your agency is: implementing for the first time, migrating in, or live but working around a setup that never quite fit. DeAnn and Brad will take specific situations over general questions, and anything sent ahead gets answered first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secondary CTA -->
+  <section class="section section-light">
+    <div class="section-inner wait-inner">
+      <div class="wait-card fade-up">
+        <div class="wait-text">
+          <h3>Not able to wait?</h3>
+          <p>Book time with Archway before the 23rd and bring your Applied Epic questions with you.</p>
+        </div>
+        <a href={ARCHWAY_MEETING} class="wait-cta" target="_blank" rel="noopener">
+          Book Time with Archway
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* ── Hero ── */
+  .confirm-hero {
+    min-height: 0;
+    padding: 76px 24px 88px;
+  }
+
+  .confirm-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cobrand {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .cobrand-archway,
+  .cobrand-aac {
+    display: block;
+    height: 34px;
+    width: auto;
+  }
+
+  .cobrand-rule {
+    width: 1px;
+    height: 30px;
+    background: var(--border);
+    display: block;
+  }
+
+  .confirm-check {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 28px -10px rgba(244, 128, 33, 0.7);
+  }
+
+  .confirm-hero h1 {
+    font-size: 46px;
+    margin-bottom: 18px;
+  }
+
+  .confirm-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--orange-on-dark);
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .confirm-hero .hero-sub {
+    max-width: 52ch;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+
+  .confirm-when {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* ── The ask ── */
+  .ask-inner {
+    max-width: 760px;
+  }
+
+  .ask-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 38px 40px 36px;
+  }
+
+  .ask-card h2 {
+    font-size: 27px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .ask-body {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* ── Secondary CTA ── */
+  .wait-inner {
+    max-width: 860px;
+  }
+
+  .wait-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 32px 36px;
+  }
+
+  .wait-text h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .wait-text p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .wait-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .wait-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .wait-cta:hover {
+    background: var(--orange-on-dark);
+  }
+
+  .wait-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wait-cta svg {
+      transition: none;
+    }
+    .wait-cta:hover svg {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .confirm-hero {
+      padding: 52px 22px 64px;
+    }
+    .confirm-hero h1 {
+      font-size: 34px;
+    }
+    .cobrand {
+      gap: 13px;
+      padding: 10px 15px;
+    }
+    .cobrand-archway,
+    .cobrand-aac {
+      height: 26px;
+    }
+    .ask-card {
+      padding: 28px 24px 26px;
+    }
+    .ask-card h2 {
+      font-size: 22px;
+    }
+    .wait-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 26px 24px;
+      gap: 22px;
+    }
+    .wait-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

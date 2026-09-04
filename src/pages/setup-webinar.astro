@@ -1,0 +1,871 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+
+// HubSpot form "LeadGen - IT - AAC Partner Webinar Sept 23".
+//
+// BLOCKER: the form is not built and its ID is unknown. With the placeholder
+// below hbspt renders nothing, and the offline panel in the card appears after
+// five seconds. Replace the string, nothing else, once the form exists.
+//
+// Fields (all required): First name, Last name, Email, Agency name,
+// Management system (dropdown: Applied Epic, AMS360, HawkSoft, EZLynx, Nexsure,
+// Vertafore, Sagitta, TAM, Other, Evaluating now), Where are you with Applied
+// Epic? (radio: Implementing for the first time / Migrating in from another
+// system / Live but not getting full use / Evaluating, not on it yet), and
+// Which brought you here? (radio: Epic setup and utilization / IT security and
+// compliance / Both). The last one drives the E4 split send and both
+// post-webinar follow-up sequences, so confirm it is on the form before the
+// first send.
+//
+// STILL TO SET, in HubSpot rather than here: the post-submit redirect must
+// point at /setup-webinar/thank-you.
+const FORM_ID = 'REPLACE-ME-FORM-ID';
+
+// BLOCKER: 2:00 PM Eastern came from Kevin, not from the planning transcript.
+// Every date on this page comes from the constants below, so a change is one
+// edit here and one in setup-webinar/thank-you.astro.
+const WEBINAR_DATE_LONG = 'Wednesday, September 23';
+const WEBINAR_TIME = '2:00 PM Eastern';
+
+// The webinar title. Proposed, not agreed; built to run as a series with
+// webinar one. The apostrophe is the one contraction the voice rules allow.
+const WEBINAR_TITLE = 'The Software Is Not the Problem. It’s the Setup.';
+
+// The middle thirty minutes, three blocks of ten. Card copy verbatim from
+// ARCHWAY_AAC_WEBINAR_2_LANDING_PAGE.md, Section 3.
+const covers = [
+  {
+    title: 'How you arrived',
+    body: 'Implementing Applied Epic for the first time and migrating into it from another system are different projects. The difference matters more than most agencies expect going in, and it shapes what the agency can do afterward.',
+    icon: '<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>',
+  },
+  {
+    title: 'How it is built',
+    body: 'There is no correct configuration. There are many valid ones. A small agency and a middle market agency need genuinely different builds, and building the wrong one is not obvious immediately. It shows up slowly, in workarounds and in the parts of the system nobody touches.',
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
+  },
+  {
+    title: 'How it is protected',
+    body: 'Configured well and protected well are different things, achieved by different people on different timelines. The gap between them is usually an ownership problem rather than a technology one.',
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  },
+];
+
+const runsheet = [
+  {
+    range: 'First fifteen.',
+    body: 'Introductions, and why these two subjects belong in one conversation.',
+  },
+  {
+    range: 'Next thirty.',
+    body: 'Three blocks, ten minutes each.',
+  },
+  {
+    range: 'Last fifteen.',
+    body: 'Open questions. Drop them in chat at any point.',
+  },
+];
+
+const closingFacts = [WEBINAR_DATE_LONG, WEBINAR_TIME, '60 minutes'];
+
+// Manual registration path for when the HubSpot embed never renders. Built from
+// the date constant above so a date change stays a single edit.
+// ASSUMED inbox: Brad's. Webinar one used sam@; whoever takes replies for this
+// sequence should own this address too.
+const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
+  `Register me for the ${WEBINAR_DATE_LONG} webinar`
+)}`;
+---
+
+<ArchwayLayout
+  title={`${WEBINAR_TITLE} | Archway + Angela Adams Consulting`}
+  description="Applied Epic implementation, structure, and protection for independent insurance agencies. Live Wednesday, September 23, 2:00 PM Eastern."
+  ctaText="Save My Seat"
+  ctaHref="#hero-form"
+  cobrand
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="cobrand">
+          <img src="/images/archway-logo.png" alt="Archway" class="cobrand-archway" width="65" height="28" loading="eager" decoding="async" />
+          <span class="cobrand-rule" aria-hidden="true"></span>
+          <img src="/images/aac-logo.png" alt="Angela Adams Consulting" class="cobrand-aac" width="118" height="28" loading="eager" decoding="async" />
+        </div>
+
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Live webinar, {WEBINAR_DATE_LONG}, {WEBINAR_TIME}
+        </div>
+
+        <h1>The Software Is Not the Problem. <span class="hl">It&rsquo;s the Setup.</span></h1>
+
+        <p class="hero-sub">Two agencies implement Applied Epic in the same year. One is running most of what it pays for inside eighteen months. The other is still working around the setup three years later.</p>
+        <p class="hero-sub hero-sub-second">Same software. Different outcome. DeAnn Sheldon and Brad Ruben spend an hour on what accounts for the difference.</p>
+
+        <div class="hero-facts">
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            60 minutes
+          </span>
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Three things, ten minutes each
+          </span>
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Fifteen minutes of questions
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Save your seat</h2>
+          <p>{WEBINAR_DATE_LONG}. {WEBINAR_TIME}. 60 minutes.</p>
+        </div>
+        <div id="hs-setup-webinar-form"></div>
+
+        <!-- Two-layer fallback for the HubSpot embed, per PRODUCT.md "no JS-only
+             content". The <noscript> copy covers JS-off visitors. The hidden copy
+             below is revealed by a timeout in the embed script when JS runs but
+             js-na2.hsforms.net is blocked, which ad blockers and privacy
+             extensions do routinely. Both give the same manual way to register. -->
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The registration form needs JavaScript.</p>
+            <p>Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
+          </div>
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The registration form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
+        </div>
+
+        <p class="form-fallback">Cannot attend live? Register anyway. The recording goes to everyone on the list.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createSetupWebinarForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createSetupWebinarForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-setup-webinar-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createSetupWebinarForm();
+
+    // If the embed target is still empty after 5s, HubSpot is blocked or down.
+    // Reveal the manual registration path rather than leaving an empty card.
+    setTimeout(function () {
+      var target = document.getElementById("hs-setup-webinar-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
+
+  <!-- Section 2: the argument. Prose in a full-width band rather than cards, and
+       it sits directly under the hero because it is what makes the rest of the
+       page worth reading. Left-aligned at a reading measure: three paragraphs
+       are an argument, not a header. -->
+  <section class="section">
+    <div class="section-inner argument fade-up">
+      <p class="section-label">The Argument</p>
+      <h2>Epic Is Not the&nbsp;Variable</h2>
+      <p class="argument-lead">Applied Epic does what it does. It works the same way for every agency that buys it.</p>
+      <p class="argument-para">What differs is three decisions that get made early and then lived with for years. How the agency arrived in the system. How it was structured for that particular agency. And how well the whole thing is protected.</p>
+      <p class="argument-para">Those decisions rarely get revisited. They also rarely get made by the same people, which is a large part of why they do not line up.</p>
+    </div>
+  </section>
+
+  <!-- Section 3: what the hour covers -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">What the Hour Covers</p>
+        <h2>Three Things, Ten Minutes&nbsp;Each</h2>
+      </div>
+
+      <div class="card-grid fade-up">
+        {covers.map((item) => (
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#f48021" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: navy statement band. No cards by design: this sits between two
+       light sections so the argument reads as a hard break, not another grid.
+       Editorial split rather than a centered column: the headline and the
+       conclusion stay pinned on the left rail while the argument runs down the
+       right, so the two ends of it are on screen together. -->
+  <section class="section band-navy">
+    <div class="section-inner band-grid fade-up">
+      <div class="band-rail">
+        <p class="section-label section-label-on-dark">Why Both</p>
+        <h2>Operations and Coverage Are the Same&nbsp;Problem</h2>
+      </div>
+
+      <div class="band-body">
+        <p class="band-lead">An agency can have Applied Epic configured well and still be exposed.</p>
+        <p class="band-para">Cyber coverage is underwritten against what an agency actually has in place, not what it believes it has. When those two do not match, the agency is exposed on both sides at once, and it tends to find out during an application or a claim rather than before one.</p>
+        <p class="band-para">Operations belongs to one person. Coverage belongs to another. They rarely compare notes until something forces it.</p>
+      </div>
+
+      <p class="band-kicker">That is why DeAnn Sheldon and Brad Ruben are on one call instead of two.</p>
+    </div>
+  </section>
+
+  <!-- Section 5: speakers -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">Speakers</p>
+        <h2>Who Is&nbsp;Presenting</h2>
+      </div>
+
+      <div class="speaker-grid fade-up">
+        <div class="speaker-card">
+          <div class="speaker-head">
+            <img src="/images/deann-sheldon.jpg" alt="DeAnn Sheldon" class="speaker-photo" width="88" height="88" loading="lazy" decoding="async" />
+            <div class="speaker-id">
+              <h3>DeAnn Sheldon</h3>
+              <p class="speaker-role">Angela Adams Consulting</p>
+            </div>
+          </div>
+          <p class="speaker-bio">DeAnn works inside agency operations and Applied Epic every day. Implementation and migration, system training, help desk support, and the structural decisions that determine whether an agency ever uses what it bought. Her starting point with any agency is utilization, because most are running a fraction of what they already pay for.</p>
+          <div class="speaker-mark">
+            <img src="/images/aac-logo.png" alt="Angela Adams Consulting" width="126" height="30" loading="lazy" decoding="async" />
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-head">
+            <img src="/images/brad-ruben.jpg" alt="Brad Ruben" class="speaker-photo" width="88" height="88" loading="lazy" decoding="async" />
+            <div class="speaker-id">
+              <h3>Brad Ruben</h3>
+              <p class="speaker-role">President, Archway</p>
+            </div>
+          </div>
+          <p class="speaker-bio">Brad leads an IT, cybersecurity, and managed services firm working with independent insurance agencies exclusively. Everything an agency builds operationally sits on infrastructure somebody has to protect, and what counts as protected has moved considerably in three years.</p>
+          <div class="speaker-mark">
+            <img src="/images/archway-logo.png" alt="Archway" width="69" height="30" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+
+      <p class="closing-line fade-up host-line">Hosted by Kevin Young, Archway.</p>
+    </div>
+  </section>
+
+  <!-- Section 6: how the hour runs -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">How the Hour Runs</p>
+        <h2>Sixty&nbsp;Minutes</h2>
+      </div>
+
+      <ol class="runsheet fade-up">
+        {runsheet.map((item) => (
+          <li class="runsheet-item">
+            <span class="runsheet-range">{item.range}</span>
+            <span class="runsheet-body">{item.body}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Section 7: closing CTA. Deliberately NOT a second HubSpot embed: the form
+       lives in the hero only, and two embeds of the same form ID on one page
+       conflict. This button scrolls back up to #hero-form. -->
+  <section class="section section-light">
+    <div class="section-inner closing-cta fade-up">
+      <h2>Save Your&nbsp;Seat</h2>
+
+      <ul class="closing-facts">
+        {closingFacts.map((fact) => (
+          <li>{fact}</li>
+        ))}
+      </ul>
+
+      <a href="#hero-form" class="closing-button">Save My Seat</a>
+
+      <p class="closing-note">Cannot attend live? Register anyway and we will send you the recording.</p>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* Co-brand lockup (hero) */
+  .cobrand {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .cobrand-archway {
+    display: block;
+    height: 34px;
+    width: auto;
+  }
+
+  .cobrand-aac {
+    display: block;
+    height: 34px;
+    width: auto;
+  }
+
+  .cobrand-rule {
+    width: 1px;
+    height: 30px;
+    background: var(--border);
+    display: block;
+  }
+
+  .hero-sub-second {
+    margin-bottom: 26px;
+  }
+
+  /* Hero fact strip */
+  .hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-fact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50px;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  /* Hero form card: fallback shown when the HubSpot embed never renders.
+     Styled as a quiet panel inside the card, not an error banner. */
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .form-offline[hidden] {
+    display: none;
+  }
+
+  .form-offline p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .form-offline .form-offline-title {
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .form-offline a {
+    color: var(--orange-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Section 2: the argument, set as prose at a reading measure. Sizes stay on
+     the ramp: 34 for the H2, 22 for the lead, 19 for body. */
+  .argument {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .argument h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 22px;
+  }
+
+  .argument-lead {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin: 0 0 20px;
+    text-wrap: pretty;
+  }
+
+  .argument-para {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 18px;
+    text-wrap: pretty;
+  }
+
+  .argument-para:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Section headers */
+  .block-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .block-header h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 16px;
+  }
+
+  .block-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .section-label {
+    display: inline-flex;
+  }
+
+  /* Card grids */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 30px 26px;
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(244, 128, 33, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .info-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .info-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .closing-line {
+    max-width: 760px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 500;
+    text-wrap: pretty;
+  }
+
+  .host-line {
+    font-size: 15px;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-top: 32px;
+  }
+
+  /* Section 4: navy statement band */
+  .band-navy {
+    background: var(--navy);
+  }
+
+  .band-grid {
+    display: grid;
+    grid-template-columns: 42fr 58fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 72px;
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .band-rail {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .band-body {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .band-navy h2 {
+    color: var(--white);
+    font-size: 34px;
+    line-height: 1.2;
+    text-wrap: balance;
+    margin-bottom: 28px;
+  }
+
+  /* Sits under the headline on the left rail. The h2's bottom margin is the
+     gap, so row-gap stays 0. */
+  .band-navy .band-kicker {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 18px;
+    line-height: 1.55;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    padding-left: 18px;
+    border-left: 3px solid var(--orange);
+    text-wrap: pretty;
+  }
+
+  .band-navy .band-lead {
+    font-size: 24px;
+    line-height: 1.55;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0 0 24px;
+    text-wrap: pretty;
+  }
+
+  .band-navy .band-para {
+    font-size: 18px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 20px;
+    text-wrap: pretty;
+  }
+
+  .band-navy .band-para:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Speakers */
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .speaker-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 30px;
+  }
+
+  .speaker-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .speaker-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.3);
+  }
+
+  .speaker-id h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 5px;
+    letter-spacing: -0.3px;
+  }
+
+  .speaker-role {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange-text);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .speaker-bio {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0 0 22px;
+    flex-grow: 1;
+  }
+
+  .speaker-mark {
+    border-top: 1px solid var(--card-border);
+    padding-top: 18px;
+  }
+
+  .speaker-mark img {
+    display: block;
+    height: 30px;
+    width: auto;
+  }
+
+  /* Section 6: run of show, set on white, since section 4 already carries the
+     dark band. */
+  .runsheet {
+    list-style: none;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .runsheet-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 26px;
+    align-items: baseline;
+    padding: 22px 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .runsheet-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .runsheet-range {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--orange-text);
+    line-height: 1.5;
+  }
+
+  .runsheet-body {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-light);
+  }
+
+  /* Section 7: closing CTA */
+  .closing-cta {
+    text-align: center;
+    max-width: 640px;
+  }
+
+  .closing-cta h2 {
+    font-size: 34px;
+    line-height: 1.2;
+    text-wrap: balance;
+    margin-bottom: 28px;
+  }
+
+  .closing-facts {
+    list-style: none;
+    margin: 0 0 32px;
+    padding: 0;
+  }
+
+  .closing-facts li {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.55;
+  }
+
+  .closing-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    background: var(--orange);
+    /* Charcoal, not white. White on the brand orange is 2.64:1 and fails AA.
+       This rule is Astro-scoped, so it outranks the global .cta-button fix and
+       has to carry the correct ink itself. */
+    color: var(--charcoal);
+    font-size: 17px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  /* Hover lightens rather than darkens: charcoal on --orange-dark is 3.52:1
+     and would fail while the rest state passes. */
+  .closing-button:hover {
+    background: var(--orange-on-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .closing-button:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 3px;
+  }
+
+  .closing-note {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 20px 0 0;
+  }
+
+  @media (max-width: 900px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .speaker-grid {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Stacks in DOM order: headline, argument, conclusion. */
+    .band-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      row-gap: 28px;
+    }
+    .band-rail,
+    .band-body,
+    .band-navy .band-kicker {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .band-rail h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .block-header h2,
+    .band-navy h2,
+    .closing-cta h2,
+    .argument h2 {
+      font-size: 27px;
+    }
+    .argument-lead {
+      font-size: 19px;
+    }
+    .argument-para {
+      font-size: 17px;
+    }
+    .cobrand {
+      gap: 13px;
+      padding: 10px 15px;
+    }
+    .cobrand-archway,
+    .cobrand-aac {
+      height: 26px;
+    }
+    .band-navy .band-lead {
+      font-size: 21px;
+    }
+    .band-navy .band-para {
+      font-size: 17px;
+    }
+    .band-navy .band-kicker {
+      font-size: 17px;
+    }
+    .runsheet-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .speaker-head {
+      gap: 14px;
+    }
+    .speaker-photo {
+      width: 72px;
+      height: 72px;
+    }
+    .closing-line {
+      font-size: 15px;
+    }
+  }
+</style>
