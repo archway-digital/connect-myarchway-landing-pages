@@ -1,0 +1,282 @@
+---
+import ArchwayLayout from '../../../layouts/ArchwayLayout.astro';
+
+// Lands after the recording form on /hours-webinar/recording submits. The
+// video is embedded here, and the two speaker meeting links are the only CTAs.
+// Point the HubSpot form's redirect at this URL.
+
+const WEBINAR_TITLE = 'The Work Is Not the Problem. It’s the Hours.';
+
+// Supplied 2026-09-09. The ?si= share token is stripped; nocookie host so the
+// embed does not set YouTube cookies before playback.
+const YOUTUBE_ID = '7182zxch7x0';
+const EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1`;
+const WATCH_URL = `https://youtu.be/${YOUTUBE_ID}`;
+
+// Decoded from the QR codes used on the closing slide of the webinar deck.
+const SAM_MEETING = 'https://meetings-na2.hubspot.com/sam-ruben/website-forms-discovery-call';
+// This bit.ly resolves to angelaadamsconsulting.com/licensed-insurance-account-managers/,
+// a service page rather than a scheduler. Swap for a calendar link if AAC has one.
+const ANGELA_MEETING = 'https://bit.ly/4x98VBX';
+
+const conversations = [
+  {
+    accent: 'red',
+    logo: '/images/aac-logo.png',
+    logoAlt: 'Angela Adams Consulting',
+    logoW: 138,
+    logoH: 33,
+    title: 'Licensed service professionals inside your workflow',
+    body: 'Certificates, policy checking, quoting and remarketing, account management. Service billed by the hour and scaled to what the agency actually needs.',
+    cta: 'Book time with Angela',
+    href: ANGELA_MEETING,
+  },
+  {
+    accent: 'orange',
+    logo: '/images/archway-logo.png',
+    logoAlt: 'Archway',
+    logoW: 76,
+    logoH: 33,
+    title: 'Custom AI built around your agency',
+    body: 'Your carriers, your management system, your exceptions. Built once, for one agency. What you get is yours, not a version of what the agency down the street is running.',
+    cta: 'Book time with Sam',
+    href: SAM_MEETING,
+  },
+];
+---
+
+<ArchwayLayout
+  title={`Watch: ${WEBINAR_TITLE} | Archway + Angela Adams Consulting`}
+  description="The full sixty-minute recording with Angela Bunch and Sam Ruben, and two ways to keep going."
+  ctaText="Book Time with Sam"
+  ctaHref={SAM_MEETING}
+  cobrand
+>
+  <section class="hero video-hero">
+    <div class="video-inner">
+      <p class="section-label section-label-on-dark">Webinar recording</p>
+      <h1>The Work Is Not the Problem. <span class="hl">It&rsquo;s the Hours.</span></h1>
+      <p class="hero-sub">Sixty minutes. Context from Angela and Sam first, thirty minutes of live demonstration, then questions from the room.</p>
+
+      <div class="video-frame">
+        <iframe
+          src={EMBED_URL}
+          title={`Webinar recording: ${WEBINAR_TITLE}`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="video-alt">Player not loading? <a href={WATCH_URL} target="_blank" rel="noopener">Open the recording on YouTube</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">Next Steps</p>
+        <h2>Two Conversations, Whichever Side&nbsp;Fits</h2>
+        <p class="block-sub">Both are thirty minutes. Bring your management system and one process that eats the most hours.</p>
+      </div>
+
+      <div class="meeting-grid fade-up">
+        {conversations.map((c) => (
+          <div class={`meeting-card meeting-card-${c.accent}`}>
+            <img src={c.logo} alt={c.logoAlt} width={c.logoW} height={c.logoH} loading="lazy" decoding="async" class="meeting-logo" />
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+            <a href={c.href} class="meeting-cta" target="_blank" rel="noopener">
+              {c.cta}
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  .video-hero {
+    min-height: 0;
+    padding: 72px 24px 0;
+    border-bottom: 0;
+  }
+
+  .video-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .video-hero h1 {
+    font-size: 44px;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .video-hero .hero-sub {
+    max-width: 60ch;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  /* 16:9 frame that bleeds into the white section below, so the player sits
+     across the navy/white seam the way the poster does on the design. */
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-alt {
+    align-self: flex-start;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 12px 0 18px;
+  }
+
+  .video-alt a {
+    color: var(--orange-on-dark);
+    font-weight: 600;
+  }
+
+  .block-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .block-header h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 16px;
+  }
+
+  .block-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .section-label {
+    display: inline-flex;
+  }
+
+  .meeting-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .meeting-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 32px 30px;
+  }
+
+  /* AAC red is the partner's brand colour; the same split runs through the
+     deck's closing slide and the follow-up emails. */
+  .meeting-card-red {
+    border-color: #8c0c04;
+  }
+
+  .meeting-card-orange {
+    border-color: var(--orange);
+  }
+
+  /* align-self stops the flex column stretching the image to the card width,
+     which distorts a logo whose height is fixed. */
+  .meeting-logo {
+    display: block;
+    align-self: flex-start;
+    width: auto;
+    height: 33px;
+    margin-bottom: 18px;
+  }
+
+  .meeting-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .meeting-card p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0 0 22px;
+    flex-grow: 1;
+  }
+
+  .meeting-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 30px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .meeting-cta:hover {
+    background: var(--orange-on-dark);
+  }
+
+  .meeting-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .meeting-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 860px) {
+    .meeting-grid {
+      grid-template-columns: 1fr;
+    }
+    .video-hero h1 {
+      font-size: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .meeting-cta svg {
+      transition: none;
+    }
+    .meeting-cta:hover svg {
+      transform: none;
+    }
+  }
+</style>

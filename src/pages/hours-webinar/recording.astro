@@ -1,0 +1,413 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+// Gated recording of the September 8 AAC partner webinar. Same hero shape as
+// /hours-webinar: headline left, HubSpot form right. Submitting the form is the
+// gate; the HubSpot redirect lands on /hours-webinar/recording/thank-you where
+// the video is embedded.
+//
+// BLOCKER: the HubSpot form for the recording does not exist yet. Neither API
+// token can create forms, so it has to be made in the portal by hand:
+//   Name: LeadGen - AI - AAC Webinar Recording
+//   Fields: First name, Last name, Email, Company (Agency), Management system
+//   Redirect: https://connect.myarchway.com/hours-webinar/recording/thank-you
+// Paste the GUID below. Until then the embed never renders and the manual
+// fallback shows.
+const FORM_ID = '00000000-0000-0000-0000-000000000000';
+
+const WEBINAR_TITLE = 'The Work Is Not the Problem. It’s the Hours.';
+const RECORDED_ON = 'September 8, 2026';
+
+const tools = [
+  {
+    title: 'Client intake',
+    body: 'A customer-facing form that opens into an internal working file, writing into the management system or producing an ACORD file to import. Intake stops being something a CSR retypes.',
+    icon: '<path d="M4 4h16v5H4z"/><path d="M4 13h9"/><path d="M4 17h6"/><path d="M17 13.5V21"/><polyline points="14 18.5 17 21.5 20 18.5"/>',
+  },
+  {
+    title: 'Policy comparison',
+    body: 'Current against renewal, coverage differences surfaced. The same comparison that catches a coverage gap is the one that shows you the upsell.',
+    icon: '<rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>',
+  },
+  {
+    title: 'Quote to proposal',
+    body: 'The comparison converted into a proposal a client can actually read, and sent. The round-out conversation happens the same day instead of next quarter.',
+    icon: '<path d="M4 4h13l3 3v13H4z"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/><polyline points="17 7 20 7 20 10" fill="none"/>',
+  },
+];
+
+const REQUEST_MAILTO = `mailto:sam@myarchway.com?subject=${encodeURIComponent(
+  'Send me the September 8 webinar recording'
+)}`;
+---
+
+<ArchwayLayout
+  title={`Recording: ${WEBINAR_TITLE} | Archway + Angela Adams Consulting`}
+  description="Sixty minutes with Angela Bunch and Sam Ruben on getting service hours back without hiring. Three tools shown live, then how a licensed service team runs them."
+  ctaText="Watch the Recording"
+  ctaHref="#hero-form"
+  cobrand
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="cobrand">
+          <img src="/images/archway-logo.png" alt="Archway" class="cobrand-archway" width="65" height="28" loading="eager" decoding="async" />
+          <span class="cobrand-rule" aria-hidden="true"></span>
+          <img src="/images/aac-logo.png" alt="Angela Adams Consulting" class="cobrand-aac" width="118" height="28" loading="eager" decoding="async" />
+        </div>
+
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.85)" stroke="none"><polygon points="8 5 19 12 8 19"/></svg>
+          Webinar recording, recorded {RECORDED_ON}
+        </div>
+
+        <h1>The Work Is Not the Problem. <span class="hl">It&rsquo;s the Hours.</span></h1>
+
+        <p class="hero-sub">Sixty minutes with Angela Bunch and Sam Ruben on what changes when service hours come back. Three tools shown live, then how a licensed service team runs each one in production.</p>
+        <p class="hero-sub hero-sub-second">Most of it is a live screen, not a slide.</p>
+
+        <div class="hero-facts">
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+            60 minutes
+          </span>
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            30 minutes of live demo
+          </span>
+          <span class="hero-fact">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            20 minutes of questions
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Get the recording</h2>
+          <p>Sixty minutes. Opens right after you submit.</p>
+        </div>
+        <div id="hs-aac-recording-form"></div>
+
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The form needs JavaScript.</p>
+            <p>Email <a href={REQUEST_MAILTO}>sam@myarchway.com</a> and we will send you the recording link.</p>
+          </div>
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={REQUEST_MAILTO}>sam@myarchway.com</a> and we will send you the recording link.</p>
+        </div>
+
+        <p class="form-fallback">Registered for the live session? Same form, same recording.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createAacRecordingForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createAacRecordingForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-aac-recording-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #f48021; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createAacRecordingForm();
+
+    setTimeout(function () {
+      var target = document.getElementById("hs-aac-recording-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
+
+  <!-- What you will see -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">What You Will See</p>
+        <h2>Three Tools, Live on&nbsp;Screen</h2>
+        <p class="block-sub">Roughly thirty minutes of the hour is Sam Ruben demonstrating working software. After each tool, Angela Bunch covers how a licensed service team runs it in production.</p>
+      </div>
+
+      <div class="card-grid fade-up">
+        {tools.map((item) => (
+          <div class="info-card tool-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#f48021" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="closing-line fade-up">Sam also takes the question every agency asks first, which is how any of this interacts with your management system.</p>
+    </div>
+  </section>
+
+  <!-- Closing CTA. Not a second embed: two embeds of one form ID conflict. -->
+  <section class="section section-light">
+    <div class="section-inner closing-cta fade-up">
+      <h2>Get the&nbsp;Recording</h2>
+      <ul class="closing-facts">
+        <li>60 minutes</li>
+        <li>Recorded {RECORDED_ON}</li>
+        <li>Opens immediately</li>
+      </ul>
+      <a href="#hero-form" class="closing-button">Watch the Recording</a>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  .cobrand {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .cobrand-archway,
+  .cobrand-aac {
+    display: block;
+    height: 34px;
+    width: auto;
+  }
+
+  .cobrand-rule {
+    width: 1px;
+    height: 30px;
+    background: var(--border);
+    display: block;
+  }
+
+  .hero-sub-second {
+    margin-bottom: 26px;
+  }
+
+  .hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-fact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50px;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .form-offline[hidden] {
+    display: none;
+  }
+
+  .form-offline p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .form-offline .form-offline-title {
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .form-offline a {
+    color: var(--orange-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .block-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .block-header h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 16px;
+  }
+
+  .block-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .section-label {
+    display: inline-flex;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 30px 26px;
+  }
+
+  .tool-card {
+    background: var(--light-bg);
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(244, 128, 33, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .info-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .info-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .closing-line {
+    max-width: 760px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+    font-weight: 500;
+    text-wrap: pretty;
+  }
+
+  .closing-cta {
+    text-align: center;
+    max-width: 640px;
+  }
+
+  .closing-cta h2 {
+    font-size: 34px;
+    margin-bottom: 18px;
+  }
+
+  .closing-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-size: 17px;
+    color: var(--text-light);
+  }
+
+  .closing-facts li + li::before {
+    content: '·';
+    margin-right: 22px;
+    color: var(--border);
+  }
+
+  .closing-button {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .closing-button:hover {
+    background: var(--orange-on-dark);
+  }
+
+  @media (max-width: 900px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
