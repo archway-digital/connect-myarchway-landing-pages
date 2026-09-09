@@ -6,14 +6,9 @@ import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 // gate; the HubSpot redirect lands on /hours-webinar/recording/thank-you where
 // the video is embedded.
 //
-// BLOCKER: the HubSpot form for the recording does not exist yet. Neither API
-// token can create forms, so it has to be made in the portal by hand:
-//   Name: LeadGen - AI - AAC Webinar Recording
-//   Fields: First name, Last name, Email, Company (Agency), Management system
-//   Redirect: https://connect.myarchway.com/hours-webinar/recording/thank-you
-// Paste the GUID below. Until then the embed never renders and the manual
-// fallback shows.
-const FORM_ID = '00000000-0000-0000-0000-000000000000';
+// The recording form, supplied by Kevin 2026-09-09. Its post-submit redirect
+// must point at /hours-webinar/recording/thank-you (set in HubSpot, not here).
+const FORM_ID = '69a82c7d-a27e-4b34-a8a3-936b761dd8aa';
 
 const WEBINAR_TITLE = 'The Work Is Not the Problem. It’s the Hours.';
 const RECORDED_ON = 'September 8, 2026';

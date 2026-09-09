@@ -19,6 +19,17 @@ const SAM_MEETING = 'https://meetings-na2.hubspot.com/sam-ruben/website-forms-di
 // a service page rather than a scheduler. Swap for a calendar link if AAC has one.
 const ANGELA_MEETING = 'https://bit.ly/4x98VBX';
 
+// BLOCKER: the "see the tools Sam demoed" form does not exist yet. Kevin is
+// creating it in HubSpot. Paste its GUID here; until then the embed never
+// renders and the manual fallback shows.
+const DEMO_FORM_ID = '00000000-0000-0000-0000-000000000000';
+
+const DEMO_MAILTO = `mailto:sam@myarchway.com?subject=${encodeURIComponent(
+  'Show me the tools from the September 8 webinar'
+)}`;
+
+const demoTools = ['Client intake', 'Policy comparison', 'Quote to proposal'];
+
 const conversations = [
   {
     accent: 'red',
@@ -72,7 +83,101 @@ const conversations = [
     </div>
   </section>
 
-  <section class="section">
+  <!-- See the tools: form on the right, the three tools on the left -->
+  <section class="section demo-section" id="demo-form">
+    <div class="section-inner demo-grid fade-up">
+      <div class="demo-text">
+        <p class="section-label">See the tools</p>
+        <h2>See What Sam Demoed, on Your Own&nbsp;Workflow</h2>
+        <p class="demo-sub">Thirty minutes on a screen share. Sam walks through the three tools from the webinar against your carriers and your management system, and answers the question every agency asks first.</p>
+        <ul class="demo-tools">
+          {demoTools.map((t) => (
+            <li>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><polyline points="8 12.3 11 15.2 16.2 9.2"/></svg>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="hero-form-card demo-card">
+        <div class="form-header">
+          <h2>See the tools</h2>
+          <p>Tell us your management system and Sam will set up the walkthrough.</p>
+        </div>
+        <div id="hs-aac-demo-form"></div>
+
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The form needs JavaScript.</p>
+            <p>Email <a href={DEMO_MAILTO}>sam@myarchway.com</a> and we will set up the walkthrough.</p>
+          </div>
+        </noscript>
+
+        <div class="form-offline" id="demo-form-offline" hidden>
+          <p class="form-offline-title">The form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={DEMO_MAILTO}>sam@myarchway.com</a> and we will set up the walkthrough.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ DEMO_FORM_ID }}>
+    function _createAacDemoForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createAacDemoForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: DEMO_FORM_ID,
+        region: "na2",
+        target: "#hs-aac-demo-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #f48021; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createAacDemoForm();
+
+    setTimeout(function () {
+      var target = document.getElementById("hs-aac-demo-form");
+      var offline = document.getElementById("demo-form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
+
+  <section class="section section-light">
     <div class="section-inner">
       <div class="block-header fade-up">
         <p class="section-label">Next Steps</p>
@@ -156,6 +261,91 @@ const conversations = [
   .video-alt a {
     color: var(--orange-on-dark);
     font-weight: 600;
+  }
+
+  /* ── See the tools: copy left, form card right, same split as the hero form
+        on the registration page. ── */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .demo-text .section-label {
+    display: inline-flex;
+  }
+
+  .demo-text h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .demo-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin: 0 0 24px;
+    text-wrap: pretty;
+  }
+
+  .demo-tools {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .demo-tools li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  /* The shared hero-form-card is styled for the navy hero; on white it needs
+     a border instead of a drop shadow to hold its edge. */
+  .demo-card {
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .form-offline[hidden] {
+    display: none;
+  }
+
+  .form-offline p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .form-offline .form-offline-title {
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .form-offline a {
+    color: var(--orange-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .block-header {
@@ -263,8 +453,12 @@ const conversations = [
   }
 
   @media (max-width: 860px) {
-    .meeting-grid {
+    .meeting-grid,
+    .demo-grid {
       grid-template-columns: 1fr;
+    }
+    .demo-grid {
+      gap: 36px;
     }
     .video-hero h1 {
       font-size: 32px;
