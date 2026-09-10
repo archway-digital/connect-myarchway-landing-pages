@@ -35,14 +35,15 @@ const items = [
     body: 'Even comfortable shoes turn on you by day two. This is the item people thank us for.',
   },
 ];
+
+// The per-item "Buy" links were removed on 2026-09-10: every href was a "#"
+// placeholder, and the page, its meta description and E04 all promised links
+// that did not exist. To restore them, put an <a class="buy-link"> back as the
+// third child of .item-row (the CSS is still there, and the grid already has a
+// third column) and put the promise back in the subhead. Per the campaign copy
+// doc, if any link is an affiliate link the page has to say so plainly.
 ---
 
-<!-- The per-item "Buy" links were removed on 2026-09-10: every href was a "#"
-     placeholder, and the page, its meta description and E04 all promised links
-     that did not exist. To restore them, put an <a class="buy-link"> back as the
-     third child of .item-row (the CSS is still below, and the grid already has a
-     third column) and put the promise back in the subhead. Per the campaign copy
-     doc, if any link is an affiliate link the page has to say so plainly. -->
 <ArchwayLayout
   title="What to Bring to Applied Net 2026 | Archway Computer"
   description="A packing list for Applied Net 2026 at the Gaylord National. Ten years of learning it the hard way, in eight items."
