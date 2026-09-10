@@ -12,7 +12,7 @@ const items = [
   },
   {
     title: 'A conference day bag',
-    body: 'Something light that holds a notebook, a charger, a water bottle, and whatever swag you collect. You will collect swag.',
+    body: 'Light, with a strap that does not cut into your shoulder by the afternoon. You will collect swag.',
   },
   {
     title: 'A portable charger',
@@ -28,21 +28,24 @@ const items = [
   },
   {
     title: 'A travel medicine kit',
-    body: 'Advil, Tums, Band-Aids. Trust the people who have done this more than ten times.',
+    body: 'Advil, Tums, throat lozenges. Four days of talking does things to a voice.',
   },
   {
-    title: 'Blister plasters',
-    body: 'See item one. This is the item people thank us for.',
+    title: 'Blister bandages',
+    body: 'Even comfortable shoes turn on you by day two. This is the item people thank us for.',
   },
 ];
 ---
 
-<!-- Buy-link hrefs are "#" placeholders. Real product/affiliate links need to
-     be added before this page goes live — see the doc's own disclosure note:
-     if any link is an affiliate link, the page has to say so plainly. -->
+<!-- The per-item "Buy" links were removed on 2026-09-10: every href was a "#"
+     placeholder, and the page, its meta description and E04 all promised links
+     that did not exist. To restore them, put an <a class="buy-link"> back as the
+     third child of .item-row (the CSS is still below, and the grid already has a
+     third column) and put the promise back in the subhead. Per the campaign copy
+     doc, if any link is an affiliate link the page has to say so plainly. -->
 <ArchwayLayout
   title="What to Bring to Applied Net 2026 | Archway Computer"
-  description="A packing list for Applied Net 2026 at the Gaylord National. Every item links to where you can buy it."
+  description="A packing list for Applied Net 2026 at the Gaylord National. Ten years of learning it the hard way, in eight items."
   ctaText="Book Your Meeting"
   ctaHref="/applied-net-meeting"
 >
@@ -54,7 +57,7 @@ const items = [
       FILE NO. AWX-2026-KIT
     </div>
     <h1>What to actually bring to Applied Net.</h1>
-    <p class="subhead">Over ten years of learning this the hard way. Every item links straight to where you can buy it.</p>
+    <p class="subhead">Over ten years of learning this the hard way, in eight items.</p>
     <p class="body-text">Everything on this list is here because at some point one of us did not bring it and regretted it. That is a more reliable source than a generic conference article written by somebody who has never been.</p>
   </div>
 
@@ -69,7 +72,6 @@ const items = [
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </div>
-            <a href="#" class="buy-link">Buy &rarr;</a>
           </div>
         ))}
       </div>
