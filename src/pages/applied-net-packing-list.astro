@@ -1,332 +1,464 @@
 ---
 import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 
-const items = [
-  {
-    title: 'Two pairs of comfortable shoes',
-    body: 'The walk between the exhibit hall and the session rooms adds up faster than anyone expects. Rotating pairs is the difference between day three being fine and day three being miserable.',
-  },
-  {
-    title: 'A light jacket or sweater',
-    body: 'Session rooms run cold. This is true at every conference and somehow surprises everyone every year.',
-  },
-  {
-    title: 'A conference day bag',
-    body: 'Light, with a strap that does not cut into your shoulder by the afternoon. You will collect swag.',
-  },
-  {
-    title: 'A portable charger',
-    body: 'The conference app, the photos of slides, and the group texts about dinner will finish your battery by two in the afternoon.',
-  },
-  {
-    title: 'A refillable water bottle',
-    body: 'There are fill stations. Buying bottled water for four days is a choice.',
-  },
-  {
-    title: 'Extra business cards',
-    body: 'More than you think. This one has been on the list for over ten years and people still run out.',
-  },
-  {
-    title: 'A travel medicine kit',
-    body: 'Advil, Tums, throat lozenges. Four days of talking does things to a voice.',
-  },
-  {
-    title: 'Blister bandages',
-    body: 'Even comfortable shoes turn on you by day two. This is the item people thank us for.',
-  },
-];
+// Gated lead magnet. The asset is the one-page field kit PDF in /public.
+//
+// BLOCKER: this carries the shared lead-magnet form ID, the same one
+// pen-test-readiness-guide.astro is already flagged for. It needs its own
+// HubSpot form so Applied Net download conversions report separately, and that
+// form has to REDIRECT to /applied-net-packing-list/thank-you on submit.
+// Until the redirect is set, a submission collects the email and delivers
+// nothing. Neither token in .env can create a form, so this is a HubSpot UI job.
+const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d';
 
-// The per-item "Buy" links were removed on 2026-09-10: every href was a "#"
-// placeholder, and the page, its meta description and E04 all promised links
-// that did not exist. To restore them, put an <a class="buy-link"> back as the
-// third child of .item-row (the CSS is still there, and the grid already has a
-// third column) and put the promise back in the subhead. Per the campaign copy
-// doc, if any link is an affiliate link the page has to say so plainly.
+const ASSET_HREF = '/applied-net-2026-field-kit.pdf';
+const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%20field%20kit';
 ---
 
 <ArchwayLayout
-  title="What to Bring to Applied Net 2026 | Archway Computer"
-  description="A packing list for Applied Net 2026 at the Gaylord National. Ten years of learning it the hard way, in eight items."
-  ctaText="Book Your Meeting"
-  ctaHref="/applied-net-meeting"
+  title="The Applied Net 2026 Field Kit | Archway Computer"
+  description="A one-page checklist for Applied Net 2026 at the Gaylord National. Twenty-one things ten years of going has taught us, in five sections. Free PDF."
+  ctaText="Get the Field Kit"
+  ctaHref="#hero-form"
 >
-  <div class="header-band">
-    <div class="kit-stamp"><span>FIELD<br />KIT</span></div>
-    <div class="header-halftone"></div>
-    <div class="case-tag">
-      <span class="redaction-chip"></span>
-      FILE NO. AWX-2026-KIT
+  <section class="hero dossier-hero">
+    <div class="redaction-stack" aria-hidden="true">
+      <span class="bar"></span>
+      <span class="bar accent"></span>
+      <span class="bar"></span>
     </div>
-    <h1>What to actually bring to Applied Net.</h1>
-    <p class="subhead">Over ten years of learning this the hard way, in eight items.</p>
-    <p class="body-text">Everything on this list is here because at some point one of us did not bring it and regretted it. That is a more reliable source than a generic conference article written by somebody who has never been.</p>
-  </div>
 
-  <div class="list-wrap">
-    <div class="manifest-frame-wrap">
-      <div class="manifest-tab">EXHIBIT: FIELD KIT MANIFEST</div>
-      <div class="manifest-frame">
-        {items.map((item, i) => (
-          <div class="item-row">
-            <span class="item-tag">{String(i + 1).padStart(2, '0')}</span>
-            <div class="item-body">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="file-tag mono">ARCHWAY // FILE DIVISION &middot; FILE NO. AWX-2026-KIT</div>
+        <div class="halftone-strip" aria-hidden="true"></div>
+        <div class="hero-badge">APPLIED NET 2026 &middot; FIELD KIT</div>
+        <h1>Twenty-one things ten years of Applied Net has <span class="hl">taught us</span>.</h1>
+        <p class="hero-sub">One page. Five sections. Print it, or keep it on your phone for the week.</p>
+        <p class="hero-intro">Everything on it is there because at some point one of us did not do it and regretted it. That is a more reliable source than a conference article written by somebody who has never been.</p>
+        <p class="hero-trust">Archway works exclusively with independent insurance agencies.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-tab mono">CASE FILE: RELEASE</div>
+        <div class="form-header">
+          <h2>Get the field kit</h2>
+          <p>Tell us where to send it and the PDF opens on the next page.</p>
+        </div>
+
+        <div id="hs-applied-net-form"></div>
+
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The form needs JavaScript.</p>
+            <p>You can <a href={ASSET_HREF}>download the field kit directly</a>, or email <a href={FALLBACK_MAILTO}>info@myarchway.com</a> and we will send it over.</p>
           </div>
-        ))}
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. You can <a href={ASSET_HREF}>download the field kit directly</a>, or email <a href={FALLBACK_MAILTO}>info@myarchway.com</a>.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="footer-band">
-    <p>Book twenty minutes with us at the show and we will send you a $100 Visa gift card. Which would, hypothetically, cover most of this list.</p>
-    <a href="/applied-net-meeting" class="cta-button">Book Your Meeting</a>
-  </div>
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createAppliedNetForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createAppliedNetForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-applied-net-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-field select.hs-input { appearance: auto; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createAppliedNetForm();
+
+    // If the embed target is still empty after 5s, HubSpot is blocked or down.
+    // Reveal the manual booking path rather than leaving an empty card.
+    setTimeout(function () {
+      var target = document.getElementById("hs-applied-net-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
+
+  <!-- What is on it -->
+  <section class="section section-light">
+    <div class="section-inner inside-inner">
+      <p class="section-label">Contents</p>
+      <h2>What is on the page</h2>
+
+      <div class="manifest-wrap">
+        <div class="manifest-tab mono">EXHIBIT: FIELD KIT MANIFEST</div>
+        <div class="manifest-panel">
+          <div class="inside-row">
+            <span class="inside-tag mono">8 items</span>
+            <div>
+              <h3>PACK AND PREP</h3>
+              <p>What goes in the bag, including the two nobody packs and regrets.</p>
+            </div>
+          </div>
+          <div class="inside-row">
+            <span class="inside-tag mono">3 items</span>
+            <div>
+              <h3>PLAN AHEAD</h3>
+              <p>What to settle before you fly, while it is still cheap to change.</p>
+            </div>
+          </div>
+          <div class="inside-row">
+            <span class="inside-tag mono">3 items</span>
+            <div>
+              <h3>NETWORKING PREP</h3>
+              <p>The twenty seconds and the three goals that make the week count.</p>
+            </div>
+          </div>
+          <div class="inside-row">
+            <span class="inside-tag mono">4 items</span>
+            <div>
+              <h3>ON SITE AT THE GAYLORD</h3>
+              <p>The walk, the noise, the meal lines, and the evening rush for rides.</p>
+            </div>
+          </div>
+          <div class="inside-row">
+            <span class="inside-tag mono">3 items</span>
+            <div>
+              <h3>LEARNING STRATEGY</h3>
+              <p>How to leave with something your team can actually use.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Archway -->
+  <section class="section">
+    <div class="section-inner about-inner">
+      <div class="about-stamp" aria-hidden="true"><span class="mono">ON<br />FILE</span></div>
+      <p class="section-label">About Archway</p>
+      <h2>We work with one kind of business, and only that kind.</h2>
+      <p class="about-lede">Archway Computer is a technology partner for independent insurance agencies. Not general small business. Not healthcare. Insurance agencies, and nothing else, which is why we can name your AMS in the first sentence instead of the fifth.</p>
+
+      <div class="pillar-grid">
+        <div class="pillar">
+          <h3>IT and cybersecurity</h3>
+          <p>Carrier cyber questionnaires and NYDFS documentation, security posture reviews and penetration testing, managed IT, and hosted Applied Epic and AMS360 migrations.</p>
+        </div>
+        <div class="pillar">
+          <h3>AI and automation</h3>
+          <p>Workflow automation inside the AMS you already run. Commission reconciliation, document generation, and the manual steps that quietly consume a staff week every month.</p>
+        </div>
+        <div class="pillar">
+          <h3>Digital marketing</h3>
+          <p>Agency websites built to convert rather than to exist, local SEO, and review strategy. Marketing as a real practice area, not something bolted onto an IT contract.</p>
+        </div>
+      </div>
+
+      <p class="about-close">We are at <strong>booth 131</strong> at Applied Net 2026, September 28 to October 1 at the Gaylord National. <a href="/applied-net-meeting">Book twenty minutes</a> and we will send you a $100 Visa gift card for the time. First 50 meetings booked.</p>
+    </div>
+  </section>
 </ArchwayLayout>
 
 <style>
-  .header-band {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 64px 24px 48px;
-    text-align: center;
+  .mono {
+    font-family: 'Courier Prime', 'Courier New', monospace;
   }
 
-  .header-halftone {
+  /* ── Hero ── */
+  .dossier-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .redaction-stack {
     position: absolute;
-    top: 44px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 24px;
-    background-image: radial-gradient(circle, rgba(41, 63, 80, 0.08) 1px, transparent 1px);
+    top: 56px;
+    right: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.9;
+  }
+
+  .redaction-stack .bar {
+    height: 14px;
+    background: #1a1a1a;
+    border-radius: 2px;
+  }
+
+  .redaction-stack .bar:nth-child(1) { width: 220px; }
+  .redaction-stack .bar:nth-child(2) { width: 150px; }
+  .redaction-stack .bar:nth-child(3) { width: 190px; }
+  .redaction-stack .bar.accent { border-bottom: 2px solid var(--orange); }
+
+  .file-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 10px;
+  }
+
+  .halftone-strip {
+    height: 26px;
+    max-width: 320px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 8px 8px;
   }
 
-  .kit-stamp {
-    position: absolute;
-    top: 22px;
-    right: 24px;
-    width: 90px;
-    height: 90px;
-    border: 3px solid var(--orange);
-    border-radius: 50%;
-    transform: rotate(-7deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .kit-stamp span {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 11px;
-    color: var(--orange);
-    letter-spacing: 1px;
-    line-height: 1.4;
-  }
-
-  .case-tag {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    color: var(--text-light);
-    margin-bottom: 18px;
-  }
-
-  .redaction-chip {
-    width: 28px;
-    height: 7px;
-    background: #1a1a1a;
-    border-bottom: 2px solid var(--orange);
-    display: inline-block;
-  }
-
-  h1 {
-    font-size: 38px;
-    font-weight: 800;
-    color: var(--charcoal);
-    line-height: 1.2;
-    letter-spacing: -0.5px;
-    margin: 0 0 16px;
-  }
-
-  .subhead {
-    font-size: 18px;
-    color: var(--text-light);
-    line-height: 1.5;
-    margin: 0 0 16px;
-  }
-
-  .body-text {
-    font-size: 15px;
-    color: var(--text-light);
+  .hero-intro {
+    font-size: 16px;
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    max-width: 56ch;
+  }
+
+  .hero-trust {
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
     margin: 0;
   }
 
-  .list-wrap {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px 72px;
-  }
-
-  .manifest-frame-wrap {
+  .hero-form-card {
     position: relative;
-    margin-top: 18px;
   }
 
-  .manifest-tab {
+  .form-tab {
     position: absolute;
     top: -14px;
-    left: 20px;
+    left: 24px;
     background: #b89f70;
     color: var(--charcoal);
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
-    padding: 6px 14px 4px;
+    padding: 5px 12px 3px;
     border-radius: 3px 3px 0 0;
   }
 
-  .manifest-frame {
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .form-offline[hidden] { display: none; }
+  .form-offline p { font-size: 15px; line-height: 1.6; color: var(--text-light); margin: 0; }
+  .form-offline-title { font-weight: 700; color: var(--charcoal) !important; margin-bottom: 6px !important; }
+  .form-offline a { color: var(--orange-text); text-decoration: underline; }
+
+  /* ── Contents ── */
+  .inside-inner {
+    max-width: 860px;
+  }
+
+  .manifest-wrap {
+    margin-top: 8px;
+  }
+
+  .manifest-tab {
+    display: inline-block;
+    background: #d9c7a0;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 24px;
+    margin-left: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--charcoal);
+  }
+
+  .manifest-panel {
     background: #d9c7a0;
     border: 1px solid #b89f70;
-    border-radius: 0 8px 8px 8px;
-    padding: 28px 24px;
+    border-radius: 0 12px 12px 12px;
+    padding: 14px 32px 22px;
   }
 
-  .item-row {
+  .inside-row {
     display: grid;
-    grid-template-columns: 28px 1fr auto;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 20px 20px 16px;
-    background: #ffffff;
-    border-left: 4px solid #b89f70;
-    border-radius: 8px;
-    margin-bottom: 12px;
+    grid-template-columns: 78px 1fr;
+    gap: 18px;
+    align-items: start;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(90, 75, 48, 0.22);
   }
 
-  .item-row:last-child {
-    margin-bottom: 0;
+  .inside-row:last-child {
+    border-bottom: none;
   }
 
-  .item-tag {
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: #6b5233;
+  .inside-tag {
+    font-size: 11.5px;
     font-weight: 700;
+    letter-spacing: 1px;
+    color: #5a4b30;
+    border: 1px solid #b89f70;
+    border-radius: 3px;
+    padding: 4px 8px;
+    text-align: center;
+    white-space: nowrap;
   }
 
-  .item-body h3 {
-    font-size: 16px;
-    font-weight: 700;
+  .inside-row h3 {
+    font-size: 17px;
+    font-weight: 800;
     color: var(--charcoal);
     margin: 0 0 4px;
   }
 
-  .item-body p {
-    font-size: 14px;
-    color: var(--text-light);
-    line-height: 1.5;
+  .inside-row p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #5a4b30;
     margin: 0;
   }
 
-  .buy-link {
-    display: inline-flex;
+  /* ── About ── */
+  .about-inner {
+    position: relative;
+    max-width: 900px;
+  }
+
+  .about-stamp {
+    position: absolute;
+    top: -6px;
+    right: 0;
+    width: 84px;
+    height: 84px;
+    border: 3px solid var(--navy);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 13px;
+    justify-content: center;
+    transform: rotate(-7deg);
+  }
+
+  .about-stamp .mono {
+    font-size: 11px;
     font-weight: 700;
-    color: var(--orange-text);
-    white-space: nowrap;
-    padding: 8px 14px;
-    border: 1px solid var(--orange);
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-
-  .buy-link:hover {
-    background: var(--orange-on-dark);
-    border-color: var(--orange-on-dark);
-    color: var(--charcoal);
-  }
-
-  .footer-band {
-    background: var(--navy);
-    padding: 56px 24px;
+    letter-spacing: 1px;
+    line-height: 1.35;
+    color: var(--navy);
     text-align: center;
   }
 
-  .footer-band p {
-    color: rgba(255, 255, 255, 0.85);
+  .about-lede {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 68ch;
+    margin-bottom: 32px;
+  }
+
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .pillar {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--orange);
+    border-radius: 10px;
+    padding: 22px 22px 24px;
+  }
+
+  .pillar h3 {
     font-size: 17px;
-    max-width: 640px;
-    margin: 0 auto 24px;
-    line-height: 1.6;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin: 0 0 8px;
   }
 
-  .footer-band .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--orange);
-    color: var(--charcoal);
-    font-weight: 700;
+  .pillar p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .about-close {
     font-size: 16px;
-    padding: 16px 32px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0;
   }
 
-  .footer-band .cta-button:hover {
-    background: var(--orange-on-dark);
-    color: var(--charcoal);
+  .about-close a {
+    color: var(--orange-text);
+    font-weight: 700;
+    text-decoration: underline;
   }
 
-  @media (max-width: 640px) {
-    .header-band {
-      padding: 48px 20px 36px;
-    }
-
-    .kit-stamp {
-      width: 64px;
-      height: 64px;
-      top: 16px;
-      right: 16px;
-    }
-
-    .kit-stamp span {
-      font-size: 9px;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    .item-row {
+  @media (max-width: 900px) {
+    .pillar-grid {
       grid-template-columns: 1fr;
-      justify-items: start;
-      gap: 8px;
     }
+  }
 
-    .item-tag {
+  @media (max-width: 768px) {
+    .redaction-stack {
       display: none;
     }
 
-    .buy-link {
-      margin-top: 4px;
+    .about-stamp {
+      position: static;
+      margin-bottom: 18px;
+    }
+
+    .inside-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .inside-tag {
+      justify-self: start;
     }
   }
 </style>

@@ -1,0 +1,160 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+// Where the Applied Net field kit form lands after submit. Point the HubSpot
+// form's redirect here; until that is set, the form collects the email and
+// delivers nothing.
+const ASSET_HREF = '/applied-net-2026-field-kit.pdf';
+const MEETING_HREF = '/applied-net-meeting';
+---
+
+<ArchwayLayout
+  title="Your Applied Net Field Kit | Archway Computer"
+  description="Your one-page Applied Net 2026 field kit is ready to download."
+  ctaText="Book Your Meeting"
+  ctaHref={MEETING_HREF}
+>
+  <section class="hero release-hero">
+    <div class="release-inner">
+      <div class="file-tag mono">ARCHWAY // FILE DIVISION &middot; FILE NO. AWX-2026-KIT</div>
+
+      <div class="release-stamp" aria-hidden="true">
+        <span class="mono">FILE<br />RELEASED</span>
+      </div>
+
+      <h1>Here is your field kit.</h1>
+      <p class="hero-sub">One page, five sections, twenty-one items. Print it, or keep it on your phone for the week.</p>
+
+      <a href={ASSET_HREF} class="download-btn" download>
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+        Download the PDF
+      </a>
+
+      <p class="release-note">A copy is on its way to your inbox as well, so you do not have to find this page again.</p>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="section-inner next-inner">
+      <p class="section-label">While you are here</p>
+      <h2>We are at booth 131.</h2>
+      <p class="next-lede">Applied Net 2026 runs September 28 to October 1 at the Gaylord National. Book twenty minutes with us at the show and we will send you a $100 Visa gift card for the time. First 50 meetings booked. No presentation, no proposal, and no obligation attached to any of it.</p>
+      <a href={MEETING_HREF} class="cta-button">Book Your Meeting</a>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  .mono {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+  }
+
+  .release-hero {
+    text-align: center;
+  }
+
+  .release-inner {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 24px 12px;
+  }
+
+  .file-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 24px;
+  }
+
+  .release-stamp {
+    width: 108px;
+    height: 108px;
+    margin: 0 auto 26px;
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-7deg);
+  }
+
+  .release-stamp .mono {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: var(--orange);
+    text-align: center;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 16px 30px;
+    min-height: 44px;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .download-btn:hover {
+    background: var(--orange-on-dark);
+  }
+
+  .release-note {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .next-inner {
+    max-width: 720px;
+    text-align: center;
+  }
+
+  .next-inner .section-label {
+    display: block;
+    text-align: center;
+  }
+
+  .next-inner .section-label::before {
+    display: none;
+  }
+
+  .next-lede {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 28px;
+  }
+
+  .next-inner .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    min-height: 44px;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .next-inner .cta-button:hover {
+    background: var(--orange-dark);
+    color: #ffffff;
+  }
+</style>
