@@ -3,13 +3,13 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 
 // Gated lead magnet. The asset is the one-page field kit PDF in /public.
 //
-// BLOCKER: this carries the shared lead-magnet form ID, the same one
-// pen-test-readiness-guide.astro is already flagged for. It needs its own
-// HubSpot form so Applied Net download conversions report separately, and that
-// form has to REDIRECT to /applied-net-packing-list/thank-you on submit.
-// Until the redirect is set, a submission collects the email and delivers
-// nothing. Neither token in .env can create a form, so this is a HubSpot UI job.
-const FORM_ID = 'a25f33ac-dd5d-4af5-a861-25805cbfdb9d';
+// Its own HubSpot form, supplied by Kevin on 2026-09-11, so Applied Net download
+// conversions report separately from the other lead magnets.
+//
+// The form must REDIRECT to /applied-net-packing-list/thank-you on submit. That
+// is the only thing that hands over the PDF; without it a submission collects
+// the email and delivers nothing.
+const FORM_ID = '73b6b1d8-3f67-469b-abb1-d0afa036682b';
 
 const ASSET_HREF = '/applied-net-2026-field-kit.pdf';
 const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%20field%20kit';
