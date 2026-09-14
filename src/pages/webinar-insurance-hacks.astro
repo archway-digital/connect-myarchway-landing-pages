@@ -2,17 +2,14 @@
 import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
 
-// [TIME] is unresolved per ARCHWAY_SEPTEMBER_2026_LANDING_PAGES.docx ("Insurance
-// Hacks time. Not yet set in any of the copy.") — left as a literal bracketed
-// placeholder in the rendered copy below rather than invented.
-const WEBINAR_DATE_LONG = 'Tuesday, September 22';
+// The two constants below are the only things to change on this page: the
+// HubSpot form ID for "LeadGen - IT - Insurance Hacks September" (portal
+// 6869933, region na2) and the session time once it is set. The same
+// WEBINAR_TIME lives in webinar-insurance-hacks/thank-you.astro.
+const FORM_ID = 'REPLACE-ME-FORM-ID';
 const WEBINAR_TIME = '[TIME]';
 
-// No real HubSpot form exists yet — the source doc names it
-// "LeadGen - IT - Insurance Hacks September" but it has not been built. The
-// hero form below is a static, non-functional placeholder until that form ID
-// is available; swap in the real hbspt.forms.create() embed then (see
-// hours-webinar.astro for the working embed pattern this repo already uses).
+const WEBINAR_DATE_LONG = 'Tuesday, September 22';
 
 const threatCards = [
   {
@@ -28,6 +25,11 @@ const threatCards = [
     body: 'The specific controls that would have interrupted each case.',
   },
 ];
+
+// Manual registration path for when the HubSpot embed never renders.
+const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
+  `Register me for the ${WEBINAR_DATE_LONG} Insurance Hacks webinar`
+)}`;
 ---
 
 <ArchwayLayout
@@ -58,35 +60,84 @@ const threatCards = [
           <h2>Register for Insurance Hacks</h2>
           <p>We will send the calendar invite and join link by email.</p>
         </div>
+        <div id="hs-insurance-hacks-form"></div>
 
-        <!-- TODO: replace with real hbspt.forms.create() embed once
-             "LeadGen - IT - Insurance Hacks September" exists in HubSpot.
-             Field list below matches what that form should collect. -->
-        <div class="form-group">
-          <label for="ih-first-name">First name</label>
-          <input type="text" id="ih-first-name" placeholder="First name" disabled />
+        <!-- Two-layer fallback for the HubSpot embed. The <noscript> copy covers
+             JS-off visitors. The hidden panel below is revealed by a timeout in
+             the embed script when JS runs but js-na2.hsforms.net is blocked. -->
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The registration form needs JavaScript.</p>
+            <p>Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
+          </div>
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The registration form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
         </div>
-        <div class="form-group">
-          <label for="ih-last-name">Last name</label>
-          <input type="text" id="ih-last-name" placeholder="Last name" disabled />
-        </div>
-        <div class="form-group">
-          <label for="ih-email">Business email</label>
-          <input type="email" id="ih-email" placeholder="you@youragency.com" disabled />
-        </div>
-        <div class="form-group">
-          <label for="ih-agency">Agency name</label>
-          <input type="text" id="ih-agency" placeholder="Agency name" disabled />
-        </div>
-        <div class="form-group">
-          <label for="ih-phone">Phone <span class="form-optional">(optional)</span></label>
-          <input type="tel" id="ih-phone" placeholder="Phone" disabled />
-        </div>
-        <button type="button" class="form-submit" disabled>Register for the Webinar</button>
-        <p class="form-fallback">Placeholder form &mdash; HubSpot form &ldquo;LeadGen - IT - Insurance Hacks September&rdquo; embeds here once it exists.</p>
+
+        <p class="form-fallback">Cannot attend live? Register anyway. The recording goes to everyone registered.</p>
       </div>
     </div>
   </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createInsuranceHacksForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createInsuranceHacksForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-insurance-hacks-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createInsuranceHacksForm();
+
+    // If the embed target is still empty after 5s, HubSpot is blocked or down.
+    // Reveal the manual registration path rather than leaving an empty card.
+    setTimeout(function () {
+      var target = document.getElementById("hs-insurance-hacks-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
 
   <ProblemCardsThree
     sectionLabel="This Year's Threats"
@@ -111,13 +162,36 @@ const threatCards = [
     margin-top: 4px;
   }
 
-  .form-optional {
-    color: var(--text-light);
-    font-weight: 400;
+  /* Hero form card: fallback shown when the HubSpot embed never renders.
+     Styled as a quiet panel inside the card, not an error banner. */
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
   }
 
-  .form-submit[disabled] {
-    cursor: default;
-    opacity: 0.92;
+  .form-offline[hidden] {
+    display: none;
+  }
+
+  .form-offline p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .form-offline .form-offline-title {
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .form-offline a {
+    color: var(--orange-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 </style>
