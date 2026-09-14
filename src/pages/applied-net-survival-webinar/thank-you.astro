@@ -1,0 +1,227 @@
+---
+import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
+
+// Registration confirmation for the Applied Net 2026 Survival Guide webinar.
+// Point the HubSpot form's redirect ("LeadGen - Event - Applied Net Survival
+// Guide Webinar") at /applied-net-survival-webinar/thank-you.
+//
+// WEBINAR_TIME is the only thing to change here once the time is set. The same
+// constant lives in applied-net-survival-webinar.astro.
+const WEBINAR_TIME = '[TIME]';
+
+const WEBINAR_DATE_LONG = 'Tuesday, September 22';
+const APPLIED_NET_MEETING = 'https://connect.myarchway.com/applied-net-meeting';
+const PACKING_LIST = 'https://connect.myarchway.com/applied-net-packing-list';
+---
+
+<ArchwayLayout
+  title="You Are Registered | Applied Net 2026 Survival Guide Webinar | Archway Computer"
+  description="Your seat is saved for the September 22 Applied Net 2026 Survival Guide webinar with Brad Ruben and SueAnn Priem. The join link and calendar invite arrive by email."
+  ctaText="Going to Applied Net?"
+  ctaHref={APPLIED_NET_MEETING}
+>
+  <section class="hero confirm-hero">
+    <div class="confirm-inner">
+      <div class="confirm-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6.5"/></svg>
+      </div>
+
+      <h1>You are registered.</h1>
+      <p class="confirm-title">Applied Net 2026 Survival Guide.</p>
+      <p class="hero-sub">The join link and calendar invite arrive by email. Cannot make it live? The recording goes to everyone registered.</p>
+
+      <div class="confirm-when">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {WEBINAR_DATE_LONG}, {WEBINAR_TIME} Eastern
+      </div>
+
+      <p class="confirm-note">Something for anyone heading to the show is announced live on the session.</p>
+    </div>
+  </section>
+
+  <!-- Secondary CTAs -->
+  <section class="section section-light">
+    <div class="section-inner wait-inner">
+      <div class="wait-card fade-up">
+        <div class="wait-text">
+          <h3>Going to Applied Net?</h3>
+          <p>Book twenty minutes with the team at the show. The first fifty bookings get a $100 Visa gift card. No obligation.</p>
+        </div>
+        <a href={APPLIED_NET_MEETING} class="wait-cta">
+          Book Time at the Show
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="wait-card fade-up">
+        <div class="wait-text">
+          <h3>Packing list.</h3>
+          <p>Everything we bring, and why.</p>
+        </div>
+        <a href={PACKING_LIST} class="wait-cta">
+          Get the Packing List
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
+
+<style>
+  /* ── Hero ── */
+  .confirm-hero {
+    min-height: 0;
+    padding: 76px 24px 88px;
+  }
+
+  .confirm-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .confirm-check {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 28px -10px rgba(244, 128, 33, 0.7);
+  }
+
+  .confirm-hero h1 {
+    font-size: 46px;
+    margin-bottom: 18px;
+  }
+
+  .confirm-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--orange-on-dark);
+    margin-bottom: 14px;
+    text-wrap: balance;
+  }
+
+  .confirm-hero .hero-sub {
+    max-width: 52ch;
+    margin: 0 auto 28px;
+    text-align: center;
+  }
+
+  .confirm-when {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .confirm-note {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin: 26px 0 0;
+    max-width: 52ch;
+  }
+
+  /* ── Secondary CTAs: two cards stacked ── */
+  .wait-inner {
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .wait-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    background: var(--white);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 32px 36px;
+  }
+
+  .wait-text h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .wait-text p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .wait-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    background: var(--orange);
+    color: var(--charcoal);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .wait-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .wait-cta:hover {
+    background: var(--orange-on-dark);
+  }
+
+  .wait-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wait-cta svg {
+      transition: none;
+    }
+    .wait-cta:hover svg {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .confirm-hero {
+      padding: 52px 22px 64px;
+    }
+    .confirm-hero h1 {
+      font-size: 34px;
+    }
+    .wait-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 26px 24px;
+      gap: 22px;
+    }
+    .wait-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

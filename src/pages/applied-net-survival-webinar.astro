@@ -1,0 +1,227 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import ProblemCardsThree from '../components/shared/ProblemCardsThree.astro';
+
+// The two constants below are the only things to change on this page: the
+// HubSpot form ID for "LeadGen - Event - Applied Net Survival Guide Webinar"
+// (portal 6869933, region na2) and the session time once it is set. The same
+// WEBINAR_TIME lives in applied-net-survival-webinar/thank-you.astro.
+const FORM_ID = 'REPLACE-ME-FORM-ID';
+const WEBINAR_TIME = '[TIME]';
+
+const WEBINAR_DATE_LONG = 'Tuesday, September 22';
+
+const sessionCards = [
+  {
+    title: 'What to Pack',
+    body: 'The list, and the three things everyone forgets. Every item is there because one of us did not bring it and regretted it.',
+  },
+  {
+    title: 'How to Pace the Week',
+    body: 'Building a schedule you can still keep on Wednesday, and which sessions earn a seat versus a hallway conversation.',
+  },
+  {
+    title: 'The Ten Days After',
+    body: 'Where the value of the week is actually decided, and what to do with the notes before they sit in a bag.',
+  },
+];
+
+// Manual registration path for when the HubSpot embed never renders.
+const REGISTER_MAILTO = `mailto:brad@myarchway.com?subject=${encodeURIComponent(
+  'Register me for the Applied Net Survival Guide webinar'
+)}`;
+---
+
+<ArchwayLayout
+  title="Applied Net 2026 Survival Guide Webinar | Archway Computer"
+  description="Four days, thousands of people, and a convention center where the walk between the exhibit hall and the session rooms counts as exercise. Brad Ruben and SueAnn Priem cover what to pack, how to pace the week, what to do on the exhibit floor, and the ten days after. Live September 22."
+  ctaText="Register for the Webinar"
+  ctaHref="#hero-form"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-topline">
+          <div class="hero-badge">Live Webinar &middot; September 22</div>
+          <div class="an26-plate"><img src="/images/an26-logo-horizontal-fullcolor.svg" alt="Applied Net 26" width="120" height="30" /></div>
+        </div>
+
+        <h1>Applied Net 2026 <span class="hl">Survival Guide</span>.</h1>
+
+        <p class="hero-sub">{WEBINAR_DATE_LONG}, {WEBINAR_TIME} Eastern. Brad Ruben and SueAnn Priem. 45 minutes.</p>
+        <p class="hero-intro">Four days, thousands of people, and a convention center where the walk between the exhibit hall and the session rooms counts as exercise. Brad and SueAnn have each been to more than ten of these.</p>
+        <p class="hero-intro">In 45 minutes they cover what to pack, how to pace the week, what to do on the exhibit floor, and what to do in the ten days after the show, which is where the value of the week is actually decided.</p>
+        <p class="hero-note">Something for anyone heading to the show is announced live on the session.</p>
+      </div>
+
+      <div class="hero-form-card" id="hero-form">
+        <div class="form-header">
+          <h2>Register for the Survival Guide</h2>
+          <p>We will send the calendar invite and join link by email.</p>
+        </div>
+        <div id="hs-survival-guide-form"></div>
+
+        <!-- Two-layer fallback for the HubSpot embed. The <noscript> copy covers
+             JS-off visitors. The hidden panel below is revealed by a timeout in
+             the embed script when JS runs but js-na2.hsforms.net is blocked. -->
+        <noscript>
+          <div class="form-offline">
+            <p class="form-offline-title">The registration form needs JavaScript.</p>
+            <p>Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
+          </div>
+        </noscript>
+
+        <div class="form-offline" id="form-offline" hidden>
+          <p class="form-offline-title">The registration form did not load.</p>
+          <p>An ad blocker or privacy extension is the usual reason. Email <a href={REGISTER_MAILTO}>brad@myarchway.com</a> and we will put you on the list for the {WEBINAR_DATE_LONG} session.</p>
+        </div>
+
+        <p class="form-fallback">Cannot attend live? Register anyway. The recording goes to everyone registered.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createSurvivalGuideForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createSurvivalGuideForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-survival-guide-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createSurvivalGuideForm();
+
+    // If the embed target is still empty after 5s, HubSpot is blocked or down.
+    // Reveal the manual registration path rather than leaving an empty card.
+    setTimeout(function () {
+      var target = document.getElementById("hs-survival-guide-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
+
+  <ProblemCardsThree
+    sectionLabel="What the 45 Minutes Cover"
+    heading="What You Will Leave With"
+    subhead="Built from more than ten Applied Nets, not from a conference article."
+    cards={sessionCards}
+  />
+</ArchwayLayout>
+
+<style>
+  /* Badge row matches the Applied Net hub (applied-net-2026.astro): square
+     badge plus the AN26 logo plate. */
+  .hero-topline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .hero-topline .hero-badge {
+    border-radius: 4px;
+    margin-bottom: 0;
+  }
+
+  .an26-plate {
+    display: inline-flex;
+    align-items: center;
+    background: var(--light-bg);
+    border-radius: 6px;
+    padding: 8px 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .an26-plate img {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .hero-note {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* Hero form card: fallback shown when the HubSpot embed never renders.
+     Styled as a quiet panel inside the card, not an error banner. */
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .form-offline[hidden] {
+    display: none;
+  }
+
+  .form-offline p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .form-offline .form-offline-title {
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .form-offline a {
+    color: var(--orange-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
