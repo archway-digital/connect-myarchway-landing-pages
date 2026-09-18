@@ -289,6 +289,14 @@ const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%
     <h2>Twenty minutes on what you can prove.</h2>
     <p>Tell us the topic and we will call you to set the time. A $100 Visa gift card for the time, first 50 meetings booked.</p>
     <a href="#hero-form" class="cta-button">Book My Meeting</a>
+    <div class="prize-strip">
+      <img src="/images/thinkpad-x1-2in1-gen11.png" alt="Lenovo ThinkPad X1 2-in-1 Gen 11" width="576" height="519" loading="lazy" />
+      <div class="prize-text">
+        <p class="prize-kicker mono">ALSO AT BOOTH 131 &middot; NO MEETING REQUIRED</p>
+        <h3>Enter to win a Lenovo ThinkPad X1 2-in-1 Gen 11.</h3>
+        <p>Stop by the booth and scan the code. Thirty seconds, no purchase, and you do not need to be present to win. Entries close when the floor closes on Wednesday, September 30.</p>
+      </div>
+    </div>
   </section>
 
 </ArchwayLayout>
@@ -296,6 +304,34 @@ const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%
 <style>
   .mono {
     font-family: 'Courier Prime', 'Courier New', monospace;
+  }
+
+  .prize-strip {
+    max-width: 760px;
+    margin: 48px auto 0;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    text-align: left;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-left: 4px solid var(--orange);
+    border-radius: 10px;
+  }
+  .prize-strip img { width: 190px; height: auto; flex-shrink: 0; }
+  .prize-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    margin: 0 0 6px;
+  }
+  .prize-strip h3 { font-size: 21px; font-weight: 800; color: var(--white); margin: 0 0 8px; letter-spacing: -0.3px; }
+  .prize-strip .prize-text p:last-child { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; }
+  @media (max-width: 640px) {
+    .prize-strip { flex-direction: column; text-align: center; }
+    .prize-strip img { width: 200px; }
   }
 
   /* ── Hero ── */
