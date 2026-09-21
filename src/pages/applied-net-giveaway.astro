@@ -1,270 +1,448 @@
 ---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+
+// The printed booth flyer's QR code points at this URL. Do not move or rename
+// this page without leaving a redirect behind.
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enter to Win at Applied Net 2026 | Archway Computer</title>
-  <meta name="description" content="Stop by booth 131 at Applied Net 2026 and enter to win. Thirty seconds, no meeting required." />
-  <meta name="robots" content="noindex" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
-</head>
-<body>
+<ArchwayLayout
+  title="Enter to Win at Applied Net 2026 | Archway Computer"
+  description="Stop by booth 131 at Applied Net 2026 and enter to win a Lenovo ThinkPad X1 2-in-1 Gen 11. Thirty seconds, no meeting required."
+  ctaText="Enter to Win"
+  ctaHref="#hero-form"
+>
+  <section class="hero giveaway-hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="case-tag mono">
+          <span class="redaction-chip" aria-hidden="true"></span>
+          FILE NO. AWX-2026-131 &middot; APPLIED NET 2026 &middot; BOOTH 131
+        </div>
+        <h1>Enter to win a Lenovo ThinkPad X1 2-in-1 Gen 11.</h1>
+        <p class="hero-sub">Fill in the form and you are entered. That is the whole thing. We draw after the show and email the winner, so you do not need to be present to win.</p>
+        <div class="prize-wrap">
+          <img class="prize-photo" src="/images/thinkpad-x1-2in1-gen11.png" alt="Lenovo ThinkPad X1 2-in-1 Gen 11" width="576" height="519" />
+          <div class="entry-stamp mono" aria-hidden="true"><span>ENTRY<br />OPEN</span></div>
+        </div>
+        <p class="hero-trust">Archway works exclusively with independent insurance agencies.</p>
+      </div>
 
-  <div class="page">
-    <div class="entry-stamp"><span>ENTRY<br/>OPEN</span></div>
-
-    <div class="case-tag">
-      <span class="redaction-chip"></span>
-      FILE NO. AWX-2026-131 &middot; BOOTH 131
-    </div>
-
-    <img class="prize-photo" src="/images/thinkpad-x1-2in1-gen11.png" alt="Lenovo ThinkPad X1 2-in-1 Gen 11" width="576" height="519" />
-    <h1>Enter to win a Lenovo ThinkPad X1 2-in-1 Gen 11.</h1>
-    <p class="subhead">Booth 131, Applied Net 2026. We draw after the show and email the winner.</p>
-    <p class="body-line">Fill this in and you are entered. That is the whole thing.</p>
-
-    <div class="form-wrap">
-      <div class="form-tab">ENTRY FORM</div>
-      <div class="form-card">
-        <!-- TODO: replace with real hbspt.forms.create() embed once "LeadGen - Event - Applied Net Giveaway" exists in HubSpot -->
-        <div class="field">
-          <label for="giveaway-name">First and last name</label>
-          <input id="giveaway-name" type="text" placeholder="Jane Smith" disabled>
+      <div class="form-wrap" id="hero-form">
+        <div class="form-tab mono">ENTRY FORM</div>
+        <div class="hero-form-card">
+          <div class="form-header">
+            <h2>Enter the drawing</h2>
+          </div>
+          <!-- TODO: replace with real hbspt.forms.create() embed once "LeadGen - Event - Applied Net Giveaway" exists in HubSpot -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="giveaway-first">First name</label>
+              <input id="giveaway-first" type="text" placeholder="Jane" disabled />
+            </div>
+            <div class="form-group">
+              <label for="giveaway-last">Last name</label>
+              <input id="giveaway-last" type="text" placeholder="Smith" disabled />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="giveaway-agency">Agency name</label>
+            <input id="giveaway-agency" type="text" placeholder="Smith Insurance Group" disabled />
+          </div>
+          <div class="form-group">
+            <label for="giveaway-email">Business email</label>
+            <input id="giveaway-email" type="email" placeholder="jane@agency.com" disabled />
+          </div>
+          <div class="form-group">
+            <label for="giveaway-phone">Phone</label>
+            <input id="giveaway-phone" type="tel" placeholder="(555) 555-5555" disabled />
+          </div>
+          <div class="checkbox-row">
+            <input id="giveaway-rules" type="checkbox" disabled />
+            <label for="giveaway-rules">I have read and accept the <a href="/applied-net-giveaway-rules">official rules</a>.</label>
+          </div>
+          <button class="form-submit" type="button" disabled>Enter to Win</button>
+          <p class="form-note">No purchase necessary. One entry per person.</p>
         </div>
-        <div class="field">
-          <label for="giveaway-agency">Agency name</label>
-          <input id="giveaway-agency" type="text" placeholder="Smith Insurance Group" disabled>
-        </div>
-        <div class="field">
-          <label for="giveaway-email">Business email</label>
-          <input id="giveaway-email" type="text" placeholder="jane@agency.com" disabled>
-        </div>
-        <div class="field">
-          <label for="giveaway-phone">Phone</label>
-          <input id="giveaway-phone" type="text" placeholder="(555) 555-5555" disabled>
-        </div>
-        <div class="checkbox-row">
-          <span class="box"></span>
-          <p>I have read and accept the <a href="/applied-net-giveaway-rules">official rules</a>.</p>
-        </div>
-        <div class="enter-btn">Enter to Win</div>
       </div>
     </div>
+    <div class="halftone-strip" aria-hidden="true"></div>
+  </section>
+  <div class="orange-band" aria-hidden="true"></div>
 
-    <p class="footer-tag">Archway // File Division</p>
-  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="eyebrow mono">HOW IT WORKS</div>
+      <h2>Thirty seconds, then you are in the drawing.</h2>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num mono">01</div>
+          <h3>Fill in the form</h3>
+          <p>Name, agency, business email, and phone. No meeting, no demo, and no purchase attached to it.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num mono">02</div>
+          <h3>Entries close with the floor</h3>
+          <p>The drawing stays open until the exhibit floor closes on Wednesday, September 30, 2026. One entry per person.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num mono">03</div>
+          <h3>We email the winner</h3>
+          <p>We draw after the show from all eligible entries. You do not need to be at the booth, or at the conference, when it happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- HubSpot Tracking Code -->
-  <script is:inline type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/6869933.js"></script>
-
-</body>
-</html>
-
-<style is:global>
-  @import '../styles/global.css';
-</style>
+  <section class="section terms-section">
+    <div class="section-inner terms-grid">
+      <div>
+        <h2>The terms, in plain language</h2>
+        <ul class="terms-list">
+          <li><span class="redaction-mark" aria-hidden="true"></span><span>The prize is one Lenovo ThinkPad X1 2-in-1 Gen 11. No cash substitution.</span></li>
+          <li><span class="redaction-mark" aria-hidden="true"></span><span>No purchase necessary. One entry per person.</span></li>
+          <li><span class="redaction-mark" aria-hidden="true"></span><span>Entries close when the floor closes on Wednesday, September 30, 2026.</span></li>
+          <li><span class="redaction-mark" aria-hidden="true"></span><span>Full details are in the <a href="/applied-net-giveaway-rules">official rules</a>.</span></li>
+        </ul>
+      </div>
+      <div class="meeting-card">
+        <div class="meeting-eyebrow mono">WHILE YOU ARE AT BOOTH 131</div>
+        <h2>Book twenty minutes. We will send you $100.</h2>
+        <p>The first 50 meetings booked and completed receive a $100 Visa gift card. No presentation, no proposal, and no obligation.</p>
+        <a class="meeting-link" href="/applied-net-meeting">Book Your Meeting</a>
+      </div>
+    </div>
+  </section>
+</ArchwayLayout>
 
 <style>
-  body {
-    margin: 0;
-    background: var(--navy);
-    font-family: 'Inter', Arial, sans-serif;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
-  a {
-    color: var(--orange);
-  }
-
-  a:hover {
-    color: var(--orange-on-dark);
-  }
-
-  .page {
-    width: 100%;
-    max-width: 430px;
-    min-height: 100vh;
-    margin: 0 auto;
-    background: var(--navy);
-    display: flex;
-    flex-direction: column;
-    padding: 28px 22px 22px;
-    position: relative;
-    box-sizing: border-box;
-  }
-
-  .entry-stamp {
-    position: absolute;
-    top: 22px;
-    right: 16px;
-    width: 56px;
-    height: 56px;
-    border: 2.5px solid var(--orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(-10deg);
-    text-align: center;
-  }
-
-  .entry-stamp span {
+  .mono {
     font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 8px;
-    color: var(--orange);
-    letter-spacing: 0.5px;
-    line-height: 1.3;
+  }
+
+  .giveaway-hero {
+    padding-bottom: 96px;
+  }
+
+  .giveaway-hero .hero-inner {
+    grid-template-columns: 55fr 45fr;
+    align-items: start;
   }
 
   .case-tag {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
+    gap: 10px;
+    font-size: 13px;
     letter-spacing: 0.5px;
-    color: rgba(245, 245, 245, 0.65);
-    margin-bottom: 18px;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 22px;
   }
 
   .redaction-chip {
-    width: 34px;
-    height: 8px;
-    background: #1a1a1a;
+    flex: 0 0 auto;
+    width: 38px;
+    height: 9px;
+    background: #0f1a26;
     border-bottom: 2px solid var(--orange);
-    display: inline-block;
+  }
+
+  .prize-wrap {
+    position: relative;
+    max-width: 520px;
+    margin-top: 4px;
   }
 
   .prize-photo {
     display: block;
-    width: 250px;
+    width: 366px;
+    max-width: 72%;
     height: auto;
-    margin: 0 auto 14px;
   }
 
-  h1 {
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--white);
-    margin: 0 0 12px;
-    letter-spacing: -0.5px;
+  .entry-stamp {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    width: 104px;
+    height: 104px;
+    border: 3px solid var(--orange);
+    border-radius: 50%;
+    transform: rotate(-10deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    color: var(--orange-on-dark);
   }
 
-  .subhead {
+  .hero-trust {
+    margin: 8px 0 0;
     font-size: 15px;
-    line-height: 1.5;
-    color: rgba(245, 245, 245, 0.8);
-    margin: 0 0 6px;
-  }
-
-  .body-line {
-    font-size: 13px;
-    color: rgba(245, 245, 245, 0.55);
-    margin: 0 0 18px;
+    font-weight: 600;
+    color: var(--white);
   }
 
   .form-wrap {
     position: relative;
-    margin-top: 4px;
+    margin-top: 18px;
   }
 
   .form-tab {
     position: absolute;
-    top: -14px;
-    left: 18px;
+    top: -24px;
+    left: 24px;
     background: #b8a172;
     color: var(--charcoal);
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 5px 12px 3px;
-    border-radius: 3px 3px 0 0;
-  }
-
-  .form-card {
-    background: var(--light-bg);
-    border-radius: 14px;
-    padding: 22px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.35);
-  }
-
-  .field label {
-    display: block;
+    font-weight: 700;
     font-size: 12px;
-    font-weight: 600;
-    color: var(--charcoal);
-    margin-bottom: 6px;
+    letter-spacing: 1.5px;
+    padding: 7px 16px 4px;
+    border-radius: 4px 4px 0 0;
   }
 
-  .field input {
-    width: 100%;
-    padding: 13px 14px;
-    background: var(--white);
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
-    color: var(--input-text);
-    font-size: 15px;
-    font-family: 'Inter', Arial, sans-serif;
-    box-sizing: border-box;
+  .form-wrap .hero-form-card {
+    background: var(--light-bg);
+    justify-content: flex-start;
+  }
+
+  .form-wrap .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-wrap .form-group input:disabled {
+    cursor: not-allowed;
   }
 
   .checkbox-row {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    margin-bottom: 12px;
   }
 
-  .checkbox-row .box {
-    width: 18px;
-    height: 18px;
-    border: 1px solid #b8a172;
-    border-radius: 4px;
-    background: var(--white);
+  .checkbox-row input {
+    width: 20px;
+    height: 20px;
+    margin: 1px 0 0;
     flex: 0 0 auto;
-    margin-top: 1px;
+    accent-color: var(--navy);
   }
 
-  .checkbox-row p {
-    margin: 0;
-    font-size: 12.5px;
+  .checkbox-row label {
+    font-size: 13.5px;
     line-height: 1.5;
     color: var(--text-light);
   }
 
-  .checkbox-row a {
+  .checkbox-row a,
+  .terms-list a {
+    color: var(--orange-text);
     text-decoration: underline;
   }
 
-  .enter-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--orange);
-    color: var(--charcoal);
-    font-size: 17px;
-    font-weight: 700;
-    padding: 16px;
-    border-radius: 8px;
-    margin-top: 4px;
+  .form-submit:disabled {
+    cursor: not-allowed;
+    transform: none;
   }
 
-  .footer-tag {
+  .form-note {
+    margin: 12px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-light);
     text-align: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: rgba(245, 245, 245, 0.4);
-    margin-top: 20px;
-    text-transform: uppercase;
+  }
+
+  .halftone-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 22px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+    background-size: 9px 9px;
+  }
+
+  .orange-band {
+    height: 6px;
+    background: var(--orange);
+  }
+
+  .eyebrow {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--orange-text);
+    margin-bottom: 10px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  .step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 26px 24px;
+  }
+
+  .step-num {
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--orange-text);
+    margin-bottom: 10px;
+  }
+
+  .step-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 0 10px;
+  }
+
+  .step-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .terms-section {
+    background: var(--light-bg);
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .terms-grid {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .terms-section h2 {
+    font-size: 26px;
+    margin: 0 0 16px;
+  }
+
+  .terms-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+  }
+
+  .terms-list li {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .redaction-mark {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 7px;
+    background: #1a1a1a;
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .meeting-card {
+    background: var(--navy-deep);
+    border-radius: 14px;
+    padding: 30px 30px 32px;
+  }
+
+  .meeting-eyebrow {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--orange-on-dark);
+    margin-bottom: 12px;
+  }
+
+  .meeting-card h2 {
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--white);
+    margin: 0 0 12px;
+  }
+
+  .meeting-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 18px;
+  }
+
+  .meeting-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 0 22px;
+    border: 2px solid var(--orange-on-dark);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .meeting-link:hover {
+    background: rgba(255, 148, 64, 0.14);
+  }
+
+  @media (max-width: 768px) {
+    .giveaway-hero {
+      padding-top: 36px;
+    }
+
+    .giveaway-hero .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .case-tag {
+      font-size: 11.5px;
+      margin-bottom: 16px;
+    }
+
+    .prize-photo {
+      width: 240px;
+    }
+
+    .entry-stamp {
+      width: 66px;
+      height: 66px;
+      border-width: 2.5px;
+      font-size: 10px;
+      top: 4px;
+    }
+
+    .steps,
+    .terms-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .steps {
+      gap: 12px;
+    }
+
+    .terms-grid {
+      gap: 32px;
+    }
   }
 </style>
