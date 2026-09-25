@@ -6,12 +6,9 @@ import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 // headline left, HubSpot form right. Submitting the form is the gate; the
 // HubSpot redirect lands on /it-epic-webinar/thank-you where the video is embedded.
 //
-// ASSUMED: the registration form is reused as the gate. Its post-submit redirect
-// already points at /it-epic-webinar/thank-you, so the flow works today. If a
-// dedicated "recording" form is built (cleaner segments, no registration
-// workflow firing after the event), swap the ID here and point that form's
-// redirect at the same thank-you page.
-const FORM_ID = 'f5c48a8a-b222-4801-b53f-c6cbbfa4fa64';
+// The recording form, supplied by Kevin 2026-09-25. Its post-submit redirect
+// must point at /it-epic-webinar/thank-you (set in HubSpot, not here).
+const FORM_ID = 'eb7072be-7c10-4b3f-9786-0ccdae6ce7e3';
 
 const WEBINAR_TITLE = 'The Software Is Not the Problem. It’s the Setup.';
 const RECORDED_ON = 'September 23, 2026';
