@@ -1,287 +1,346 @@
 ---
 import ArchwayLayout from '../../layouts/ArchwayLayout.astro';
 
-// Registration confirmation for the AAC partner webinar two. Point the HubSpot
-// form's redirect at /it-epic-webinar/thank-you once the form
-// ("LeadGen - IT - AAC Partner Webinar Sept 23") exists.
+// The recording page for the September 23 AAC partner webinar. Two ways in:
+// attendees get this URL directly in the follow-up email, and people who
+// missed it land here after the form on /it-epic-webinar/recording (the
+// HubSpot redirect). The copy is written to work for both.
+//
+// Before the event this was the registration confirmation page; the form's
+// post-submit redirect still points here, which is what the gated page relies on.
 
-// BLOCKER: 2:00 PM Eastern came from Kevin, not from the planning transcript.
-// Kept in constants so a change is one edit here and one in it-epic-webinar.astro.
-const WEBINAR_DATE_LONG = 'Wednesday, September 23';
-const WEBINAR_TIME = '2:00 PM Eastern';
 const WEBINAR_TITLE = 'The Software Is Not the Problem. It’s the Setup.';
 
-// BLOCKER: which calendar takes these depends on whether Brad or Walter owns
-// the follow-up. Placeholder until Kevin decides.
-const ARCHWAY_MEETING = 'https://meetings-na2.hubspot.com/REPLACE-ME';
+// Supplied 2026-09-25. nocookie host so the embed does not set YouTube cookies
+// before playback.
+const YOUTUBE_ID = 'j7elDjQXf-g';
+const EMBED_URL = `https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1`;
+const WATCH_URL = `https://youtu.be/${YOUTUBE_ID}`;
+
+// The two booking links from the closing slide of the deck (supplied 2026-09-23).
+const BRAD_MEETING = 'https://meetings-na2.hubspot.com/brad-ruben/website-forms-discovery-call';
+const DEANN_MEETING = 'https://meetings.hubspot.com/deann-sheldon';
+
+// Where things are in the hour, so a viewer can skip ahead.
+const chapters = [
+  { range: 'First fifteen', body: 'Introductions, and why operations and IT belong in one conversation.' },
+  { range: 'Next thirty', body: 'Three topics, ten minutes each: getting in, getting built, staying protected.' },
+  { range: 'Last fifteen', body: 'Questions from the room.' },
+];
+
+const conversations = [
+  {
+    accent: 'red',
+    logo: '/images/aac-logo.png',
+    logoAlt: 'Angela Adams Consulting',
+    logoW: 138,
+    logoH: 33,
+    title: 'Agency operations and Applied Epic',
+    body: 'Implementation and migration, how the system gets structured for your agency, training, and help desk support. Start with utilization: most agencies run a fraction of what they already pay for.',
+    cta: 'Book time with DeAnn',
+    href: DEANN_MEETING,
+  },
+  {
+    accent: 'orange',
+    logo: '/images/archway-logo.png',
+    logoAlt: 'Archway',
+    logoW: 76,
+    logoH: 33,
+    title: 'IT, cybersecurity, and managed services',
+    body: 'Everything an agency builds operationally sits on infrastructure somebody has to protect. Bring what you have in place and what your coverage assumes you have, and we will look at the gap.',
+    cta: 'Book time with Brad',
+    href: BRAD_MEETING,
+  },
+];
 ---
 
 <ArchwayLayout
-  title="You Are Registered | Archway + Angela Adams Consulting"
-  description="Your seat is saved for the September 23 webinar. The calendar invite is on its way, and it has the join link in it."
-  ctaText="Book Time with Archway"
-  ctaHref={ARCHWAY_MEETING}
+  title={`Watch: ${WEBINAR_TITLE} | Archway + Angela Adams Consulting`}
+  description="The full sixty-minute recording with DeAnn Sheldon and Brad Ruben, and two ways to keep going."
+  ctaText="Book Time with Brad"
+  ctaHref={BRAD_MEETING}
+  cobrand
 >
-  <section class="hero confirm-hero">
-    <div class="confirm-inner">
-      <div class="cobrand">
-        <img src="/images/archway-logo.png" alt="Archway" class="cobrand-archway" width="79" height="34" loading="eager" decoding="async" />
-        <span class="cobrand-rule" aria-hidden="true"></span>
-        <img src="/images/aac-logo.png" alt="Angela Adams Consulting" class="cobrand-aac" width="143" height="34" loading="eager" decoding="async" />
-      </div>
+  <section class="hero video-hero">
+    <div class="video-inner">
+      <p class="section-label section-label-on-dark">Webinar recording</p>
+      <h1>The Software Is Not the Problem. <span class="hl">It&rsquo;s the Setup.</span></h1>
+      <p class="hero-sub">Sixty minutes with DeAnn Sheldon and Brad Ruben. How agencies get into their management system, how it gets built, and what keeps it protected, then questions from the room.</p>
 
-      <div class="confirm-check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6.5"/></svg>
+      <div class="video-frame">
+        <iframe
+          src={EMBED_URL}
+          title={`Webinar recording: ${WEBINAR_TITLE}`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
-
-      <h1>You are registered.</h1>
-      <p class="confirm-title">{WEBINAR_TITLE}</p>
-      <p class="hero-sub">The calendar invite is on its way to your inbox with the join link.</p>
-
-      <div class="confirm-when">
-        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#f48021" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        {WEBINAR_DATE_LONG}, {WEBINAR_TIME}
-      </div>
+      <p class="video-alt">Player not loading? <a href={WATCH_URL} target="_blank" rel="noopener">Open the recording on YouTube</a>.</p>
     </div>
   </section>
 
-  <!-- The one ask that makes the hour worth more -->
+  <!-- Skip ahead -->
   <section class="section">
-    <div class="section-inner ask-inner">
-      <div class="ask-card fade-up">
-        <p class="section-label">Before the 23rd</p>
-        <h2>One Thing That Will Make the Hour More&nbsp;Useful</h2>
-        <p class="ask-body">Reply to that confirmation with where your agency is. Implementing, migrating in, or live but working around a setup that never quite fit. Include what you are running. DeAnn and Brad take specific situations over general questions, and questions sent ahead get answered first.</p>
+    <div class="section-inner chapters-inner fade-up">
+      <p class="section-label">Skip ahead if you need to</p>
+      <div class="chapter-grid">
+        {chapters.map((c) => (
+          <div class="chapter">
+            <h3>{c.range}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Secondary CTA -->
   <section class="section section-light">
-    <div class="section-inner wait-inner">
-      <div class="wait-card fade-up">
-        <div class="wait-text">
-          <h3>Not able to wait?</h3>
-          <p>Book time with Archway before the 23rd and bring your management system questions with you.</p>
-        </div>
-        <a href={ARCHWAY_MEETING} class="wait-cta" target="_blank" rel="noopener">
-          Book Time with Archway
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+    <div class="section-inner">
+      <div class="block-header fade-up">
+        <p class="section-label">Next Steps</p>
+        <h2>Two Conversations, Whichever Side&nbsp;Fits</h2>
+        <p class="block-sub">Both are thirty minutes. Bring your management system and where your agency is with it: implementing, migrating in, or live but working around a setup that never quite fit.</p>
+      </div>
+
+      <div class="meeting-grid fade-up">
+        {conversations.map((c) => (
+          <div class={`meeting-card meeting-card-${c.accent}`}>
+            <img src={c.logo} alt={c.logoAlt} width={c.logoW} height={c.logoH} loading="lazy" decoding="async" class="meeting-logo" />
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+            <a href={c.href} class="meeting-cta" target="_blank" rel="noopener">
+              {c.cta}
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 </ArchwayLayout>
 
 <style>
-  /* ── Hero ── */
-  .confirm-hero {
+  .video-hero {
     min-height: 0;
-    padding: 76px 24px 88px;
+    padding: 72px 24px 0;
+    border-bottom: 0;
   }
 
-  .confirm-inner {
-    max-width: 720px;
+  .video-inner {
+    max-width: 1000px;
     margin: 0 auto;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
-  .cobrand {
-    display: inline-flex;
-    align-items: center;
-    gap: 18px;
-    background: var(--white);
-    border-radius: 10px;
-    padding: 12px 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
-  }
-
-  .cobrand-archway,
-  .cobrand-aac {
-    display: block;
-    height: 34px;
-    width: auto;
-  }
-
-  .cobrand-rule {
-    width: 1px;
-    height: 30px;
-    background: var(--border);
-    display: block;
-  }
-
-  .confirm-check {
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: var(--orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    box-shadow: 0 10px 28px -10px rgba(244, 128, 33, 0.7);
-  }
-
-  .confirm-hero h1 {
-    font-size: 46px;
-    margin-bottom: 18px;
-  }
-
-  .confirm-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--orange-on-dark);
+  .video-hero h1 {
+    font-size: 44px;
+    letter-spacing: -1px;
     margin-bottom: 14px;
     text-wrap: balance;
   }
 
-  .confirm-hero .hero-sub {
-    max-width: 52ch;
-    margin: 0 auto 28px;
+  .video-hero .hero-sub {
+    max-width: 60ch;
+    margin: 0 auto 40px;
     text-align: center;
   }
 
-  .confirm-when {
+  /* 16:9 frame that bleeds into the white section below, so the player sits
+     across the navy/white seam. */
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-alt {
+    align-self: flex-start;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 12px 0 18px;
+  }
+
+  .video-alt a {
+    color: var(--orange-on-dark);
+    font-weight: 600;
+  }
+
+  /* ── Skip ahead ── */
+  .chapters-inner {
+    max-width: 1000px;
+  }
+
+  .chapters-inner .section-label {
     display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--white);
+    margin-bottom: 20px;
   }
 
-  /* ── The ask ── */
-  .ask-inner {
-    max-width: 760px;
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 
-  .ask-card {
-    background: var(--card-bg);
+  .chapter {
+    background: var(--light-bg);
     border: 1px solid var(--card-border);
+    border-left: 3px solid var(--orange);
     border-radius: 12px;
-    padding: 38px 40px 36px;
+    padding: 22px 24px;
   }
 
-  .ask-card h2 {
-    font-size: 27px;
+  .chapter h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .chapter p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .block-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .block-header h2 {
+    font-size: 34px;
     line-height: 1.25;
-    margin-bottom: 16px;
     text-wrap: balance;
+    margin-bottom: 16px;
   }
 
-  .ask-body {
+  .block-sub {
     font-size: 17px;
     line-height: 1.7;
     color: var(--text-light);
     margin: 0;
+    text-wrap: pretty;
   }
 
-  /* ── Secondary CTA ── */
-  .wait-inner {
-    max-width: 860px;
+  .section-label {
+    display: inline-flex;
   }
 
-  .wait-card {
+  .meeting-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .meeting-card {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    flex-direction: column;
     background: var(--white);
     border: 1px solid var(--card-border);
     border-radius: 14px;
-    padding: 32px 36px;
+    padding: 32px 30px;
   }
 
-  .wait-text h3 {
+  /* AAC red is the partner's brand colour; the same split runs through the
+     deck's closing slide and the follow-up emails. */
+  .meeting-card-red {
+    border-color: #8c0c04;
+  }
+
+  .meeting-card-orange {
+    border-color: var(--orange);
+  }
+
+  /* align-self stops the flex column stretching the image to the card width,
+     which distorts a logo whose height is fixed. */
+  .meeting-logo {
+    display: block;
+    align-self: flex-start;
+    width: auto;
+    height: 33px;
+    margin-bottom: 18px;
+  }
+
+  .meeting-card h3 {
     font-size: 22px;
     font-weight: 800;
-    color: var(--charcoal);
-    margin-bottom: 8px;
     letter-spacing: -0.3px;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 12px;
   }
 
-  .wait-text p {
-    font-size: 15px;
+  .meeting-card p {
+    font-size: 16px;
     line-height: 1.65;
     color: var(--text-light);
-    margin: 0;
-    max-width: 52ch;
+    margin: 0 0 22px;
+    flex-grow: 1;
   }
 
-  .wait-cta {
+  .meeting-cta {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    flex-shrink: 0;
+    gap: 10px;
+    align-self: flex-start;
     background: var(--orange);
     color: var(--charcoal);
     font-size: 17px;
     font-weight: 700;
     text-decoration: none;
-    padding: 16px 28px;
+    padding: 16px 30px;
     border-radius: 8px;
     transition: background 0.2s;
   }
 
-  .wait-cta svg {
-    transition: transform 0.2s;
-  }
-
-  .wait-cta:hover {
+  .meeting-cta:hover {
     background: var(--orange-on-dark);
   }
 
-  .wait-cta:hover svg {
+  .meeting-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .meeting-cta:hover svg {
     transform: translateX(4px);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .wait-cta svg {
-      transition: none;
+  @media (max-width: 860px) {
+    .meeting-grid,
+    .chapter-grid {
+      grid-template-columns: 1fr;
     }
-    .wait-cta:hover svg {
-      transform: none;
+    .video-hero h1 {
+      font-size: 32px;
     }
   }
 
-  @media (max-width: 768px) {
-    .confirm-hero {
-      padding: 52px 22px 64px;
+  @media (prefers-reduced-motion: reduce) {
+    .meeting-cta svg {
+      transition: none;
     }
-    .confirm-hero h1 {
-      font-size: 34px;
-    }
-    .cobrand {
-      gap: 13px;
-      padding: 10px 15px;
-    }
-    .cobrand-archway,
-    .cobrand-aac {
-      height: 26px;
-    }
-    .ask-card {
-      padding: 28px 24px 26px;
-    }
-    .ask-card h2 {
-      font-size: 22px;
-    }
-    .wait-card {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 26px 24px;
-      gap: 22px;
-    }
-    .wait-cta {
-      width: 100%;
-      justify-content: center;
+    .meeting-cta:hover svg {
+      transform: none;
     }
   }
 </style>
