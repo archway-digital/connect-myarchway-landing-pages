@@ -3,6 +3,10 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
 
 // The printed booth flyer's QR code points at this URL. Do not move or rename
 // this page without leaving a redirect behind.
+
+// HubSpot form: LeadGen - Event - Applied Net Giveaway (portal 6869933, region na2).
+const FORM_ID = '69b51b22-79b7-40d3-b4ef-86facd20fca1';
+const FALLBACK_MAILTO = 'mailto:info@myarchway.com?subject=Applied%20Net%202026%20giveaway%20entry';
 ---
 
 <ArchwayLayout
@@ -33,34 +37,20 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
           <div class="form-header">
             <h2>Enter the drawing</h2>
           </div>
-          <!-- TODO: replace with real hbspt.forms.create() embed once "LeadGen - Event - Applied Net Giveaway" exists in HubSpot -->
-          <div class="form-row">
-            <div class="form-group">
-              <label for="giveaway-first">First name</label>
-              <input id="giveaway-first" type="text" placeholder="Jane" disabled />
+          <div id="hs-giveaway-form"></div>
+
+          <noscript>
+            <div class="form-offline">
+              <p class="form-offline-title">The entry form needs JavaScript.</p>
+              <p>Email <a href={FALLBACK_MAILTO}>info@myarchway.com</a> with your name, agency, and phone, and we will enter you by hand.</p>
             </div>
-            <div class="form-group">
-              <label for="giveaway-last">Last name</label>
-              <input id="giveaway-last" type="text" placeholder="Smith" disabled />
-            </div>
+          </noscript>
+
+          <div class="form-offline" id="form-offline" hidden>
+            <p class="form-offline-title">The entry form did not load.</p>
+            <p>An ad blocker or privacy extension is the usual reason. Email <a href={FALLBACK_MAILTO}>info@myarchway.com</a> with your name, agency, and phone, and we will enter you by hand.</p>
           </div>
-          <div class="form-group">
-            <label for="giveaway-agency">Agency name</label>
-            <input id="giveaway-agency" type="text" placeholder="Smith Insurance Group" disabled />
-          </div>
-          <div class="form-group">
-            <label for="giveaway-email">Business email</label>
-            <input id="giveaway-email" type="email" placeholder="jane@agency.com" disabled />
-          </div>
-          <div class="form-group">
-            <label for="giveaway-phone">Phone</label>
-            <input id="giveaway-phone" type="tel" placeholder="(555) 555-5555" disabled />
-          </div>
-          <div class="checkbox-row">
-            <input id="giveaway-rules" type="checkbox" disabled />
-            <label for="giveaway-rules">I have read and accept the <a href="/applied-net-giveaway-rules">official rules</a>.</label>
-          </div>
-          <button class="form-submit" type="button" disabled>Enter to Win</button>
+
           <p class="form-note">No purchase necessary. One entry per person.</p>
         </div>
       </div>
@@ -68,6 +58,62 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     <div class="halftone-strip" aria-hidden="true"></div>
   </section>
   <div class="orange-band" aria-hidden="true"></div>
+
+  <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
+  <script is:inline define:vars={{ FORM_ID }}>
+    function _createGiveawayForm() {
+      if (!window.hbspt || !window.hbspt.forms) {
+        setTimeout(_createGiveawayForm, 80);
+        return;
+      }
+      window.hbspt.forms.create({
+        portalId: "6869933",
+        formId: FORM_ID,
+        region: "na2",
+        target: "#hs-giveaway-form",
+        css: "\
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
+          .hs-form { font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .hs-form fieldset { max-width: 100% !important; }\
+          .hs-form fieldset.form-columns-2 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-2 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form fieldset.form-columns-3 { display: flex; gap: 16px; }\
+          .hs-form fieldset.form-columns-3 > .hs-form-field { flex: 1; width: auto !important; }\
+          .hs-form-field { margin-bottom: 16px; }\
+          .hs-form-field > label { display: block; font-size: 15px; font-weight: 600; color: #333333; margin-bottom: 8px; }\
+          .hs-form-required { color: #b91c1c; margin-left: 2px; }\
+          .hs-input { width: 100% !important; padding: 14px 16px !important; background: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 8px !important; color: #333333 !important; font-size: 16px !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; outline: none !important; box-sizing: border-box !important; transition: border-color 0.2s, box-shadow 0.2s; }\
+          .hs-input:focus { border-color: #f48021 !important; box-shadow: 0 0 0 3px rgba(244, 128, 33, 0.25) !important; }\
+          .hs-input::placeholder { color: #9ca3af; }\
+          .hs-form-field textarea.hs-input { min-height: 88px; resize: vertical; }\
+          .hs-form-field select.hs-input { appearance: auto; }\
+          .hs-form-booleancheckbox-display, .hs-form-radio-display { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; }\
+          .hs-form-radio-display input[type='radio'], .hs-form-booleancheckbox-display input[type='checkbox'] { width: auto !important; margin: 3px 0 0 !important; accent-color: #f48021; }\
+          .hs-form-radio-display span, .hs-form-booleancheckbox-display span { font-size: 15px; color: #333333; font-weight: 500; }\
+          .inputs-list { list-style: none; padding: 0; margin: 0; }\
+          .hs-submit { margin-top: 8px; }\
+          .hs-button { width: 100% !important; padding: 16px !important; background: #f48021 !important; color: #32373c !important; font-size: 16px !important; font-weight: 700 !important; font-family: 'Inter', Arial, Helvetica, sans-serif !important; border: none !important; border-radius: 8px !important; cursor: pointer; transition: all 0.2s; min-height: 44px; }\
+          .hs-button:hover { background: #ff9440 !important; }\
+          .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }\
+          .hs-error-msgs li label { font-size: 13px !important; color: #ef4444 !important; font-weight: 500 !important; }\
+          .hs-input.error { border-color: #ef4444 !important; }\
+          .submitted-message { text-align: center; padding: 30px 10px; font-size: 16px; line-height: 1.55; color: #333333; font-family: 'Inter', Arial, Helvetica, sans-serif; }\
+          .legal-consent-container { font-size: 13px; color: #5a5f66; line-height: 1.5; margin-top: 8px; }\
+          .legal-consent-container a { color: #a84e08; }\
+          @media (max-width: 480px) { .hs-form fieldset.form-columns-2, .hs-form fieldset.form-columns-3 { flex-direction: column; gap: 0; } }\
+        "
+      });
+    }
+    _createGiveawayForm();
+
+    setTimeout(function () {
+      var target = document.getElementById("hs-giveaway-form");
+      var offline = document.getElementById("form-offline");
+      if (target && offline && target.children.length === 0) {
+        offline.hidden = false;
+      }
+    }, 5000);
+  </script>
 
   <section class="section">
     <div class="section-inner">
@@ -211,45 +257,21 @@ import ArchwayLayout from '../layouts/ArchwayLayout.astro';
     justify-content: flex-start;
   }
 
-  .form-wrap .form-group {
-    margin-bottom: 16px;
-  }
-
-  .form-wrap .form-group input:disabled {
-    cursor: not-allowed;
-  }
-
-  .checkbox-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .checkbox-row input {
-    width: 20px;
-    height: 20px;
-    margin: 1px 0 0;
-    flex: 0 0 auto;
-    accent-color: var(--navy);
-  }
-
-  .checkbox-row label {
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: var(--text-light);
-  }
-
-  .checkbox-row a,
   .terms-list a {
     color: var(--orange-text);
     text-decoration: underline;
   }
 
-  .form-submit:disabled {
-    cursor: not-allowed;
-    transform: none;
+  .form-offline {
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
   }
+  .form-offline[hidden] { display: none; }
+  .form-offline p { font-size: 15px; line-height: 1.6; color: var(--text-light); margin: 0; }
+  .form-offline-title { font-weight: 700; color: var(--charcoal) !important; margin-bottom: 6px !important; }
+  .form-offline a { color: var(--orange-text); text-decoration: underline; }
 
   .form-note {
     margin: 12px 0 0;
