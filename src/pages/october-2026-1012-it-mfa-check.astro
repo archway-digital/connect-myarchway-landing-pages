@@ -1,0 +1,42 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="Is MFA Enforced Everywhere Your Team Signs In? | Archway"
+  description="Book a 30-minute MFA check and find out where multi-factor authentication is enforced at your agency and where it is not."
+  ctaText="Book My MFA Check"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    badge="Cybersecurity Awareness Month"
+    formTitle="Book Your MFA Check"
+    headline="Is MFA Enforced <span class='hl'>Everywhere Your Team Signs In?</span>"
+    subhead="Book a 30-minute MFA check and find out where multi-factor authentication is enforced at your agency and where it is not."
+    formId="1b1111a8-5676-4e36-abaa-526149652cfa"
+    submitText="Book My MFA Check"
+    showFallback={false}
+  />
+  <ComplianceBody
+    bodyHtml="<p>Most agencies have multi-factor authentication turned on in some places and off in others. Email is covered because Microsoft forced it. The management system and the carrier portals are a different story.</p><p>The gaps are usually the same few: a shared mailbox, an owner who asked for an exception, or a remote employee on a personal laptop. Attackers look for exactly those, and carrier cyber questionnaires now ask about them directly.</p><p>In 30 minutes we go through every place your team signs in and sort it into where a second step is enforced and where it is not. You leave with the gaps listed in the order we would close them.</p>"
+    bullets={[
+      "Email and Microsoft 365 or Google Workspace sign-ins",
+      "Applied Epic, AMS360, HawkSoft, EZLynx, or the management system you run",
+      "Carrier portals and shared logins",
+      "Shared mailboxes, service accounts, and owner exceptions",
+      "Remote staff and personal devices",
+      "The gaps, listed in the order we would close them"
+    ]}
+    authorityLine="Archway works exclusively with independent insurance agencies, on Applied Epic, AMS360, HawkSoft, EZLynx, and the other management systems agencies run on."
+    whoThisIsFor="Agency owners and operations managers who answer the carrier cyber questionnaire and are not certain the honest answer to the MFA question is yes."
+  />
+  <BottomCTA
+    heading="Find out where MFA is on, and where it is not."
+    subtext="Thirty minutes by phone or video. We follow up within one business day to schedule it."
+    ctaText="Book My MFA Check"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>

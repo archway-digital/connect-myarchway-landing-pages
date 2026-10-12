@@ -1,0 +1,42 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="When Did Your Agency Last Restore From Its Backup? | Archway"
+  description="Book a 30-minute backup review and find out what your backup covers, how long a restore would take, and what a restore test involves."
+  ctaText="Book My Backup Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    badge="Cybersecurity Awareness Month"
+    formTitle="Book Your Backup Review"
+    headline="When Did Your Agency Last <span class='hl'>Restore From Its Backup?</span>"
+    subhead="Book a 30-minute backup review and find out what your backup covers, how long a restore would take, and what a restore test involves."
+    formId="1b1111a8-5676-4e36-abaa-526149652cfa"
+    submitText="Book My Backup Review"
+    showFallback={false}
+  />
+  <ComplianceBody
+    bodyHtml="<p>Most agencies can say they have a backup. Far fewer can say when someone last restored a file from it.</p><p>A backup you have never restored from is a guess. The job reports success every night, and nobody finds out what is missing until the day it is needed. That day is usually a ransomware day or a dead server.</p><p>In 30 minutes we go through what your backup covers, what it leaves out, and how long your team would be down while everything comes back. Then we walk through what a restore test involves.</p>"
+    bullets={[
+      "Servers, workstations, and shared files",
+      "Microsoft 365 or Google Workspace mailboxes and documents",
+      "Management system data, hosted or on-site",
+      "What is not being backed up at all",
+      "How long a full restore would take",
+      "What a restore test involves, and how often to run one"
+    ]}
+    authorityLine="Archway works exclusively with independent insurance agencies, on Applied Epic, AMS360, HawkSoft, EZLynx, and the other management systems agencies run on."
+    whoThisIsFor="Agency owners and operations managers who have a backup in place and have never watched it restore."
+  />
+  <BottomCTA
+    heading="Find out whether your backup would come back."
+    subtext="Thirty minutes by phone or video. We follow up within one business day to schedule it."
+    ctaText="Book My Backup Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>

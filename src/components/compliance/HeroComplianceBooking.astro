@@ -4,9 +4,20 @@ interface Props {
   subhead: string;
   formId: string;
   showFallback?: boolean;
+  badge?: string;
+  formTitle?: string;
+  submitText?: string;
 }
 
-const { headline, subhead, formId, showFallback = true } = Astro.props;
+const {
+  headline,
+  subhead,
+  formId,
+  showFallback = true,
+  badge = 'Compliance Season 2026',
+  formTitle = 'Request Your Compliance Review',
+  submitText = '',
+} = Astro.props;
 ---
 
 <section class="hero">
@@ -14,7 +25,7 @@ const { headline, subhead, formId, showFallback = true } = Astro.props;
     <div class="hero-text">
       <div class="hero-badge">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,0.8)" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-        Compliance Season 2026
+        {badge}
       </div>
       <h1 set:html={headline} />
       <p class="hero-sub">{subhead}</p>
@@ -22,7 +33,7 @@ const { headline, subhead, formId, showFallback = true } = Astro.props;
 
     <div class="hero-form-card" id="hero-form">
       <div class="form-header">
-        <h2>Request Your Compliance Review</h2>
+        <h2>{formTitle}</h2>
         <p>We will follow up within one business day.</p>
       </div>
       <div id="hs-compliance-form"></div>
@@ -32,12 +43,19 @@ const { headline, subhead, formId, showFallback = true } = Astro.props;
 </section>
 
 <script is:inline src="//js-na2.hsforms.net/forms/embed/v2.js"></script>
-<script is:inline define:vars={{ formId }}>
+<script is:inline define:vars={{ formId, submitText }}>
   hbspt.forms.create({
     portalId: "6869933",
     formId: formId,
     region: "na2",
     target: "#hs-compliance-form",
+    // A page borrowing another page's form overrides that form's button label.
+    onFormReady: function (form) {
+      if (!submitText) return;
+      var el = form && form.jquery ? form[0] : form;
+      var btn = el && el.querySelector('input[type="submit"]');
+      if (btn) btn.value = submitText;
+    },
     css: "\
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');\
       \

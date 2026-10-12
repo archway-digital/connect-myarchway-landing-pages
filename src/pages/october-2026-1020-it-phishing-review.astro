@@ -1,0 +1,42 @@
+---
+import ArchwayLayout from '../layouts/ArchwayLayout.astro';
+import HeroComplianceBooking from '../components/compliance/HeroComplianceBooking.astro';
+import ComplianceBody from '../components/compliance/ComplianceBody.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+---
+
+<ArchwayLayout
+  title="What Happens After a CSR Clicks a Phishing Email? | Archway"
+  description="Book a 30-minute phishing review and find out what one stolen password would open at your agency, and what stops it."
+  ctaText="Book My Phishing Review"
+  ctaHref="#hero-form"
+>
+  <HeroComplianceBooking
+    badge="Cybersecurity Awareness Month"
+    formTitle="Book Your Phishing Review"
+    headline="What Happens After a CSR <span class='hl'>Clicks the Wrong Email?</span>"
+    subhead="Book a 30-minute phishing review and find out what one stolen password would open at your agency, and what stops it."
+    formId="1b1111a8-5676-4e36-abaa-526149652cfa"
+    submitText="Book My Phishing Review"
+    showFallback={false}
+  />
+  <ComplianceBody
+    bodyHtml="<p>The phishing email that gets into an agency rarely looks like a scam. It looks like a carrier asking you to confirm a portal login, a client sending a document to review, or Microsoft saying a mailbox is full.</p><p>It arrives at a busy moment, and your CSRs are paid to be responsive. Training helps, but it cannot be the only thing standing between that click and your client data.</p><p>In 30 minutes we look at what one stolen password would open at your agency today, and at the controls that decide whether a click is an inconvenience or an incident.</p>"
+    bullets={[
+      "The lures aimed at agencies, and why they work on good employees",
+      "What one stolen password would open today",
+      "Email filtering and impersonation protection",
+      "Sign-in rules that stop a stolen password from being enough",
+      "Staff training and simulated phishing",
+      "What to do in the first hour after someone clicks"
+    ]}
+    authorityLine="Archway works exclusively with independent insurance agencies, on Applied Epic, AMS360, HawkSoft, EZLynx, and the other management systems agencies run on."
+    whoThisIsFor="Agency owners and operations managers whose staff handle carrier portals, client documents, and a full inbox every day."
+  />
+  <BottomCTA
+    heading="Find out what one click would reach."
+    subtext="Thirty minutes by phone or video. We follow up within one business day to schedule it."
+    ctaText="Book My Phishing Review"
+    ctaHref="#hero-form"
+  />
+</ArchwayLayout>
